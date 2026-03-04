@@ -1,0 +1,1603 @@
+{
+  "timestamp": "2026-03-03T15:41:55.258Z",
+  "machine": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.19.2",
+    "logicalCores": 16
+  },
+  "workload": {
+    "scriptPath": "G:\\LeapWorkSpace\\work\\h5st.js",
+    "scriptSizeBytes": 486286
+  },
+  "plan": {
+    "totalCases": 9,
+    "totalTasksPerCase": 320
+  },
+  "reports": [
+    {
+      "mode": "thread",
+      "caseName": "thread-p1-c1",
+      "config": {
+        "poolSize": 1,
+        "concurrency": 1,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 90,
+        "execMs": 17216,
+        "totalMs": 17306,
+        "throughputRps": 18.59,
+        "latencyMs": {
+          "min": 51,
+          "p50": 53,
+          "p90": 55,
+          "p95": 57,
+          "p99": 61,
+          "max": 71
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 889.29,
+          "heapUsedMb": 8.82
+        },
+        "worker": {
+          "rssTotalMb": 889.29,
+          "heapUsedTotalMb": 15.36,
+          "workersWithMemory": 1
+        },
+        "totalRuntimeRssMb": 889.29,
+        "totalRuntimeRssGrowthMb": 806.13,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 1,
+        "idleWorkers": 1,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 932491264,
+            "heapTotal": 10051584,
+            "heapUsed": 9249552,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 1,
+          "workerRssTotal": 932491264,
+          "workerHeapUsedTotal": 16102608
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 1,
+            "tasksHandled": 320,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 932491264,
+              "heapTotal": 21688320,
+              "heapUsed": 16102608,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "caseName": "thread-p2-c8",
+      "config": {
+        "poolSize": 2,
+        "concurrency": 8,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 84,
+        "execMs": 8695,
+        "totalMs": 8779,
+        "throughputRps": 36.8,
+        "latencyMs": {
+          "min": 51,
+          "p50": 53,
+          "p90": 56,
+          "p95": 58,
+          "p99": 64,
+          "max": 69
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 993.51,
+          "heapUsedMb": 12.52
+        },
+        "worker": {
+          "rssTotalMb": 1986.77,
+          "heapUsedTotalMb": 23.47,
+          "workersWithMemory": 2
+        },
+        "totalRuntimeRssMb": 993.51,
+        "totalRuntimeRssGrowthMb": 692.58,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 2,
+        "idleWorkers": 2,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 1041772544,
+            "heapTotal": 14958592,
+            "heapUsed": 13132024,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 2,
+          "workerRssTotal": 2083282944,
+          "workerHeapUsedTotal": 24606216
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 2,
+            "tasksHandled": 160,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1041772544,
+              "heapTotal": 18034688,
+              "heapUsed": 12400392,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 53080,
+            "threadId": 3,
+            "tasksHandled": 160,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1041510400,
+              "heapTotal": 17772544,
+              "heapUsed": 12205824,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "caseName": "thread-p4-c16",
+      "config": {
+        "poolSize": 4,
+        "concurrency": 16,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 90,
+        "execMs": 4805,
+        "totalMs": 4895,
+        "throughputRps": 66.6,
+        "latencyMs": {
+          "min": 53,
+          "p50": 58,
+          "p90": 64,
+          "p95": 67,
+          "p99": 72,
+          "max": 77
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 1189.55,
+          "heapUsedMb": 16.17
+        },
+        "worker": {
+          "rssTotalMb": 4744.81,
+          "heapUsedTotalMb": 43.13,
+          "workersWithMemory": 4
+        },
+        "totalRuntimeRssMb": 1189.55,
+        "totalRuntimeRssGrowthMb": 805.26,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 4,
+        "idleWorkers": 4,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 1247334400,
+            "heapTotal": 18554880,
+            "heapUsed": 16954408,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 4,
+          "workerRssTotal": 4975292416,
+          "workerHeapUsedTotal": 45224592
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 4,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1247178752,
+              "heapTotal": 14696448,
+              "heapUsed": 11243096,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 53080,
+            "threadId": 5,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1242873856,
+              "heapTotal": 15220736,
+              "heapUsed": 11495776,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-3",
+            "pid": 53080,
+            "threadId": 6,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1243430912,
+              "heapTotal": 14696448,
+              "heapUsed": 11242824,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-4",
+            "pid": 53080,
+            "threadId": 7,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1241808896,
+              "heapTotal": 14696448,
+              "heapUsed": 11242896,
+              "external": 2465133,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "caseName": "thread-p8-c32",
+      "config": {
+        "poolSize": 8,
+        "concurrency": 32,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 114,
+        "execMs": 3454,
+        "totalMs": 3568,
+        "throughputRps": 92.65,
+        "latencyMs": {
+          "min": 65,
+          "p50": 83,
+          "p90": 94,
+          "p95": 97,
+          "p99": 103,
+          "max": 105
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 1599.37,
+          "heapUsedMb": 9.95
+        },
+        "worker": {
+          "rssTotalMb": 12783.32,
+          "heapUsedTotalMb": 121.85,
+          "workersWithMemory": 8
+        },
+        "totalRuntimeRssMb": 1599.37,
+        "totalRuntimeRssGrowthMb": 1084.43,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 8,
+        "idleWorkers": 8,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 1677062144,
+            "heapTotal": 13983744,
+            "heapUsed": 10438512,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 8,
+          "workerRssTotal": 13404286976,
+          "workerHeapUsedTotal": 127765040
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 8,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1676996608,
+              "heapTotal": 20910080,
+              "heapUsed": 15970600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 53080,
+            "threadId": 9,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1674285056,
+              "heapTotal": 20647936,
+              "heapUsed": 15970680,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-3",
+            "pid": 53080,
+            "threadId": 10,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1674424320,
+              "heapTotal": 21172224,
+              "heapUsed": 15970648,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-4",
+            "pid": 53080,
+            "threadId": 11,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1675788288,
+              "heapTotal": 20647936,
+              "heapUsed": 15970656,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-5",
+            "pid": 53080,
+            "threadId": 12,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1675362304,
+              "heapTotal": 20910080,
+              "heapUsed": 15970600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-6",
+            "pid": 53080,
+            "threadId": 13,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1676492800,
+              "heapTotal": 20910080,
+              "heapUsed": 15970600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-7",
+            "pid": 53080,
+            "threadId": 14,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1675530240,
+              "heapTotal": 20910080,
+              "heapUsed": 15970656,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-8",
+            "pid": 53080,
+            "threadId": 15,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1675407360,
+              "heapTotal": 20910080,
+              "heapUsed": 15970600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "caseName": "thread-p12-c48",
+      "config": {
+        "poolSize": 12,
+        "concurrency": 48,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 156,
+        "execMs": 3193,
+        "totalMs": 3349,
+        "throughputRps": 100.22,
+        "latencyMs": {
+          "min": 72,
+          "p50": 113,
+          "p90": 130,
+          "p95": 138,
+          "p99": 148,
+          "max": 159
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 1634.26,
+          "heapUsedMb": 13.97
+        },
+        "worker": {
+          "rssTotalMb": 19405.2,
+          "heapUsedTotalMb": 160.8,
+          "workersWithMemory": 12
+        },
+        "totalRuntimeRssMb": 1634.26,
+        "totalRuntimeRssGrowthMb": 965.65,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 12,
+        "idleWorkers": 12,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 1713643520,
+            "heapTotal": 17580032,
+            "heapUsed": 14649824,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 12,
+          "workerRssTotal": 20347826176,
+          "workerHeapUsedTotal": 168612576
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 16,
+            "tasksHandled": 26,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1704603648,
+              "heapTotal": 18690048,
+              "heapUsed": 14023528,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 53080,
+            "threadId": 17,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1713643520,
+              "heapTotal": 18952192,
+              "heapUsed": 14056600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-3",
+            "pid": 53080,
+            "threadId": 18,
+            "tasksHandled": 26,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1691197440,
+              "heapTotal": 18952192,
+              "heapUsed": 14056512,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-4",
+            "pid": 53080,
+            "threadId": 19,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1692012544,
+              "heapTotal": 19214336,
+              "heapUsed": 14024144,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-5",
+            "pid": 53080,
+            "threadId": 20,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1683734528,
+              "heapTotal": 18690048,
+              "heapUsed": 14056304,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-6",
+            "pid": 53080,
+            "threadId": 21,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1692139520,
+              "heapTotal": 18952192,
+              "heapUsed": 14056600,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-7",
+            "pid": 53080,
+            "threadId": 22,
+            "tasksHandled": 26,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1683976192,
+              "heapTotal": 19214336,
+              "heapUsed": 14056592,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-8",
+            "pid": 53080,
+            "threadId": 23,
+            "tasksHandled": 28,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1705840640,
+              "heapTotal": 19214336,
+              "heapUsed": 14056696,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-9",
+            "pid": 53080,
+            "threadId": 24,
+            "tasksHandled": 26,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1695465472,
+              "heapTotal": 18952192,
+              "heapUsed": 14056488,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-10",
+            "pid": 53080,
+            "threadId": 25,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1707663360,
+              "heapTotal": 18690048,
+              "heapUsed": 14056312,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-11",
+            "pid": 53080,
+            "threadId": 26,
+            "tasksHandled": 26,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1683369984,
+              "heapTotal": 19214336,
+              "heapUsed": 14056488,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-12",
+            "pid": 53080,
+            "threadId": 27,
+            "tasksHandled": 27,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1694179328,
+              "heapTotal": 19214336,
+              "heapUsed": 14056312,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "caseName": "thread-p16-c64",
+      "config": {
+        "poolSize": 16,
+        "concurrency": 64,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 210,
+        "execMs": 3104,
+        "totalMs": 3314,
+        "throughputRps": 103.09,
+        "latencyMs": {
+          "min": 80,
+          "p50": 141,
+          "p90": 178,
+          "p95": 189,
+          "p99": 207,
+          "max": 238
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 1888.26,
+          "heapUsedMb": 18.26
+        },
+        "worker": {
+          "rssTotalMb": 29924.78,
+          "heapUsedTotalMb": 188.14,
+          "workersWithMemory": 16
+        },
+        "totalRuntimeRssMb": 1888.26,
+        "totalRuntimeRssGrowthMb": 1056.69,
+        "uniqueWorkerPids": [
+          53080
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 16,
+        "idleWorkers": 16,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 1979985920,
+            "heapTotal": 26157056,
+            "heapUsed": 19146776,
+            "external": 1619526,
+            "arrayBuffers": 10479
+          },
+          "workersWithMemory": 16,
+          "workerRssTotal": 31378403328,
+          "workerHeapUsedTotal": 197276160
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 53080,
+            "threadId": 28,
+            "tasksHandled": 19,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1959784448,
+              "heapTotal": 20209664,
+              "heapUsed": 11107096,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 53080,
+            "threadId": 29,
+            "tasksHandled": 19,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1957736448,
+              "heapTotal": 20209664,
+              "heapUsed": 11107144,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-3",
+            "pid": 53080,
+            "threadId": 30,
+            "tasksHandled": 21,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1935228928,
+              "heapTotal": 20471808,
+              "heapUsed": 11107320,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-4",
+            "pid": 53080,
+            "threadId": 31,
+            "tasksHandled": 22,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1976397824,
+              "heapTotal": 22433792,
+              "heapUsed": 13063496,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-5",
+            "pid": 53080,
+            "threadId": 32,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1960574976,
+              "heapTotal": 22171648,
+              "heapUsed": 13063360,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-6",
+            "pid": 53080,
+            "threadId": 33,
+            "tasksHandled": 19,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1949556736,
+              "heapTotal": 20471808,
+              "heapUsed": 11107144,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-7",
+            "pid": 53080,
+            "threadId": 34,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1961439232,
+              "heapTotal": 22433792,
+              "heapUsed": 13063416,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-8",
+            "pid": 53080,
+            "threadId": 35,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1960865792,
+              "heapTotal": 22171648,
+              "heapUsed": 13063360,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-9",
+            "pid": 53080,
+            "threadId": 36,
+            "tasksHandled": 19,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1959763968,
+              "heapTotal": 20209664,
+              "heapUsed": 11107200,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-10",
+            "pid": 53080,
+            "threadId": 37,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1945202688,
+              "heapTotal": 22171648,
+              "heapUsed": 13063360,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-11",
+            "pid": 53080,
+            "threadId": 38,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1959464960,
+              "heapTotal": 21647360,
+              "heapUsed": 13063392,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-12",
+            "pid": 53080,
+            "threadId": 39,
+            "tasksHandled": 22,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1979461632,
+              "heapTotal": 21909504,
+              "heapUsed": 13062664,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-13",
+            "pid": 53080,
+            "threadId": 40,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1974800384,
+              "heapTotal": 21909504,
+              "heapUsed": 13063360,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-14",
+            "pid": 53080,
+            "threadId": 41,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1975144448,
+              "heapTotal": 21647360,
+              "heapUsed": 13063360,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-15",
+            "pid": 53080,
+            "threadId": 42,
+            "tasksHandled": 19,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1947332608,
+              "heapTotal": 20471808,
+              "heapUsed": 11107152,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-16",
+            "pid": 53080,
+            "threadId": 43,
+            "tasksHandled": 20,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 1975648256,
+              "heapTotal": 21909504,
+              "heapUsed": 13063336,
+              "external": 2497760,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "process",
+      "caseName": "process-p2-c8",
+      "config": {
+        "poolSize": 2,
+        "concurrency": 8,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 105,
+        "execMs": 9475,
+        "totalMs": 9580,
+        "throughputRps": 33.77,
+        "latencyMs": {
+          "min": 51,
+          "p50": 53,
+          "p90": 56,
+          "p95": 58,
+          "p99": 63,
+          "max": 71
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 267.58,
+          "heapUsedMb": 9.65
+        },
+        "worker": {
+          "rssTotalMb": 1023.2,
+          "heapUsedTotalMb": 25.9,
+          "workersWithMemory": 2
+        },
+        "totalRuntimeRssMb": 1290.77,
+        "totalRuntimeRssGrowthMb": 886.98,
+        "uniqueWorkerPids": [
+          48216,
+          52888
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 2,
+        "idleWorkers": 2,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 280576000,
+            "heapTotal": 27156480,
+            "heapUsed": 10123992,
+            "external": 1646616,
+            "arrayBuffers": 12272
+          },
+          "workersWithMemory": 2,
+          "workerRssTotal": 1072898048,
+          "workerHeapUsedTotal": 27162800
+        },
+        "workersDetail": [
+          {
+            "workerId": "worker-1",
+            "pid": 48216,
+            "tasksHandled": 160,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 539500544,
+              "heapTotal": 48304128,
+              "heapUsed": 13580288,
+              "external": 2624837,
+              "arrayBuffers": 1049852
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-2",
+            "pid": 52888,
+            "tasksHandled": 160,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 533397504,
+              "heapTotal": 48304128,
+              "heapUsed": 13582512,
+              "external": 2624837,
+              "arrayBuffers": 1049852
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "process",
+      "caseName": "process-p4-c16",
+      "config": {
+        "poolSize": 4,
+        "concurrency": 16,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 111,
+        "execMs": 5281,
+        "totalMs": 5392,
+        "throughputRps": 60.59,
+        "latencyMs": {
+          "min": 53,
+          "p50": 58,
+          "p90": 65,
+          "p95": 68,
+          "p99": 74,
+          "max": 76
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 282.66,
+          "heapUsedMb": 12.19
+        },
+        "worker": {
+          "rssTotalMb": 1335.02,
+          "heapUsedTotalMb": 36.33,
+          "workersWithMemory": 4
+        },
+        "totalRuntimeRssMb": 1617.69,
+        "totalRuntimeRssGrowthMb": 1069.94,
+        "uniqueWorkerPids": [
+          55708,
+          30928,
+          41956,
+          47088
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 4,
+        "idleWorkers": 4,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 296394752,
+            "heapTotal": 44978176,
+            "heapUsed": 12778584,
+            "external": 1647838,
+            "arrayBuffers": 13494
+          },
+          "workersWithMemory": 4,
+          "workerRssTotal": 1399873536,
+          "workerHeapUsedTotal": 38097832
+        },
+        "workersDetail": [
+          {
+            "workerId": "worker-1",
+            "pid": 55708,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 346771456,
+              "heapTotal": 44257280,
+              "heapUsed": 9524840,
+              "external": 2624837,
+              "arrayBuffers": 1049852
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-2",
+            "pid": 30928,
+            "tasksHandled": 81,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 363171840,
+              "heapTotal": 47263744,
+              "heapUsed": 12524376,
+              "external": 3144434,
+              "arrayBuffers": 1569449
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-3",
+            "pid": 41956,
+            "tasksHandled": 80,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 348741632,
+              "heapTotal": 44257280,
+              "heapUsed": 9522488,
+              "external": 2624837,
+              "arrayBuffers": 1049852
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-4",
+            "pid": 47088,
+            "tasksHandled": 79,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 341188608,
+              "heapTotal": 41250816,
+              "heapUsed": 6526128,
+              "external": 2105240,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "process",
+      "caseName": "process-p8-c32",
+      "config": {
+        "poolSize": 8,
+        "concurrency": 32,
+        "totalTasks": 320,
+        "taskTimeoutMs": 15000,
+        "workerInitTimeoutMs": 30000,
+        "heartbeatIntervalMs": 3000,
+        "heartbeatTimeoutMs": 12000,
+        "maxTasksPerWorker": 500
+      },
+      "results": {
+        "success": 320,
+        "failed": 0,
+        "timeoutFailed": 0,
+        "successRatio": 1,
+        "warmupMs": 143,
+        "execMs": 3771,
+        "totalMs": 3914,
+        "throughputRps": 84.86,
+        "latencyMs": {
+          "min": 65,
+          "p50": 83,
+          "p90": 95,
+          "p95": 98,
+          "p99": 103,
+          "max": 111
+        }
+      },
+      "memory": {
+        "host": {
+          "rssMb": 291.1,
+          "heapUsedMb": 18.57
+        },
+        "worker": {
+          "rssTotalMb": 1907.53,
+          "heapUsedTotalMb": 75.32,
+          "workersWithMemory": 8
+        },
+        "totalRuntimeRssMb": 2198.63,
+        "totalRuntimeRssGrowthMb": 1355.98,
+        "uniqueWorkerPids": [
+          36696,
+          53148,
+          46584,
+          40908,
+          73360,
+          69776,
+          37896,
+          50832
+        ]
+      },
+      "poolStats": {
+        "enqueued": 320,
+        "started": 320,
+        "succeeded": 320,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 8,
+        "idleWorkers": 8,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 305238016,
+            "heapTotal": 47325184,
+            "heapUsed": 19472472,
+            "external": 1650653,
+            "arrayBuffers": 16309
+          },
+          "workersWithMemory": 8,
+          "workerRssTotal": 2000187392,
+          "workerHeapUsedTotal": 78983288
+        },
+        "workersDetail": [
+          {
+            "workerId": "worker-1",
+            "pid": 36696,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 253259776,
+              "heapTotal": 27475968,
+              "heapUsed": 9866448,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-2",
+            "pid": 53148,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 246562816,
+              "heapTotal": 27475968,
+              "heapUsed": 9893200,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-3",
+            "pid": 46584,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 246263808,
+              "heapTotal": 27475968,
+              "heapUsed": 9877464,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-4",
+            "pid": 40908,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 252645376,
+              "heapTotal": 27475968,
+              "heapUsed": 9844184,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-5",
+            "pid": 73360,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 252604416,
+              "heapTotal": 27475968,
+              "heapUsed": 9865800,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-6",
+            "pid": 69776,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 250261504,
+              "heapTotal": 27475968,
+              "heapUsed": 9888688,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-7",
+            "pid": 37896,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 250810368,
+              "heapTotal": 27475968,
+              "heapUsed": 9879552,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-8",
+            "pid": 50832,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 247779328,
+              "heapTotal": 27475968,
+              "heapUsed": 9867952,
+              "external": 3664031,
+              "arrayBuffers": 530255
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    }
+  ]
+}

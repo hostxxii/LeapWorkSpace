@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Leap Skeleton Puller",
+  "version": "1.0",
+  "description": "在页面脚本执行前拉取 skeleton，避免触发站点检测",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}

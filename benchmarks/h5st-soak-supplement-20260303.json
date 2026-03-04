@@ -1,0 +1,140 @@
+{
+  "timestamp": "2026-03-03",
+  "workload": "work/h5st.js",
+  "notes": [
+    "Supplementary soak tests beyond the 320-task matrix in h5st-detailed-20260303_234155.json.",
+    "ThreadPool total RSS uses host RSS only (single process / multi-thread).",
+    "ProcessPool total RSS uses host RSS + worker RSS."
+  ],
+  "cases": [
+    {
+      "name": "thread-p12-c48-max1000-t2000",
+      "mode": "thread",
+      "config": {
+        "poolSize": 12,
+        "concurrency": 48,
+        "totalTasks": 2000,
+        "timeoutMs": 15000,
+        "maxTasksPerWorker": 1000
+      },
+      "results": {
+        "success": 1999,
+        "failed": 1,
+        "elapsedMs": 137423,
+        "throughputRps": 14.55,
+        "latencyMs": {
+          "p50": 116,
+          "p90": 4009,
+          "p95": 4326,
+          "p99": 5871,
+          "max": 13856
+        },
+        "hostRssMb": 6162.19
+      },
+      "warnings": [
+        "MaxListenersExceededWarning"
+      ]
+    },
+    {
+      "name": "thread-p12-c48-max50-t2000",
+      "mode": "thread",
+      "config": {
+        "poolSize": 12,
+        "concurrency": 48,
+        "totalTasks": 2000,
+        "timeoutMs": 15000,
+        "maxTasksPerWorker": 50
+      },
+      "results": {
+        "success": 2000,
+        "failed": 0,
+        "elapsedMs": 22890,
+        "throughputRps": 87.37,
+        "latencyMs": {
+          "p50": 113,
+          "p90": 133,
+          "p95": 140,
+          "p99": 156,
+          "max": 202
+        },
+        "hostRssMb": 1735.93
+      },
+      "poolStats": {
+        "recycled": 36,
+        "respawned": 36
+      }
+    },
+    {
+      "name": "process-p8-c32-max1000-t2000",
+      "mode": "process",
+      "config": {
+        "poolSize": 8,
+        "concurrency": 32,
+        "totalTasks": 2000,
+        "timeoutMs": 15000,
+        "maxTasksPerWorker": 1000
+      },
+      "results": {
+        "success": 2000,
+        "failed": 0,
+        "elapsedMs": 23432,
+        "throughputRps": 85.35,
+        "latencyMs": {
+          "p50": 83,
+          "p90": 96,
+          "p95": 102,
+          "p99": 117,
+          "max": 143
+        },
+        "totalRssMb": 5754.21
+      }
+    },
+    {
+      "name": "process-p8-c32-max200-t2000",
+      "mode": "process",
+      "config": {
+        "poolSize": 8,
+        "concurrency": 32,
+        "totalTasks": 2000,
+        "timeoutMs": 15000,
+        "maxTasksPerWorker": 200
+      },
+      "results": {
+        "success": 2000,
+        "failed": 0,
+        "elapsedMs": 24021,
+        "throughputRps": 83.26,
+        "latencyMs": {
+          "p50": 83,
+          "p90": 94,
+          "p95": 99,
+          "p99": 111,
+          "max": 161
+        },
+        "totalRssMb": 2197.58
+      },
+      "poolStats": {
+        "recycled": 8,
+        "respawned": 8
+      }
+    },
+    {
+      "name": "thread-p12-c48-max1000-t5000",
+      "mode": "thread",
+      "config": {
+        "poolSize": 12,
+        "concurrency": 48,
+        "totalTasks": 5000,
+        "timeoutMs": 15000,
+        "maxTasksPerWorker": 1000
+      },
+      "results": {
+        "status": "crashed",
+        "error": "Fatal JavaScript out of memory: CALL_AND_RETRY_LAST"
+      },
+      "warnings": [
+        "MaxListenersExceededWarning"
+      ]
+    }
+  ]
+}

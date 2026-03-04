@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(DUMPBIN=\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\VC\\\\Tools\\\\MSVC\\\\14.44.35207\\\\bin\\\\Hostx64\\\\x64\\\\dumpbin.exe\")",
+      "Bash(NODE_LIB=\"C:\\\\Users\\\\hostxxii\\\\AppData\\\\Local\\\\node-gyp\\\\Cache\\\\20.19.2\\\\x64\\\\node.lib\")",
+      "Bash(__NEW_LINE_986c8ade10ba9cd9__ powershell.exe -Command \"& ''$DUMPBIN'' /exports ''$NODE_LIB''\")"
+    ]
+  }
+}

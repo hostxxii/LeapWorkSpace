@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "includePath": [
+                "${workspaceFolder}/src/leapvm",
+                "${workspaceFolder}/third_party/v8/include",
+                "${workspaceFolder}/node_modules/node-addon-api",
+                "C:/Users/hostxxii/AppData/Local/node-gyp/Cache/20.19.2/include/node",
+                "${workspaceFolder}/third_party/uWebSockets/src",
+                "${workspaceFolder}/build/_deps/lexbor-src/source",
+                "${workspaceFolder}/third_party/uSockets/src",
+                "${workspaceFolder}/src"
+            ],
+            "defines": [
+                "WIN32",
+                "_WINDOWS",
+                "NDEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "LEAPVM_HAS_LEXBOR=1",
+                "V8_COMPRESS_POINTERS",
+                "V8_ENABLE_SANDBOX",
+                "V8_STATIC_LIBRARY",
+                "V8_ENABLE_I18N_SUPPORT",
+                "NAPI_DISABLE_CPP_EXCEPTIONS",
+                "LEXBOR_STATIC",
+                "leapvm_EXPORTS"
+            ],
+            "windowsSdkVersion": "10.0.22000.0",
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
