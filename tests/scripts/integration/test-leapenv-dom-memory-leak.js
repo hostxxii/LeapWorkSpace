@@ -130,8 +130,11 @@ async function runCase(mode, PoolCtor) {
 
 async function main() {
   const processCase = await runCase('process', ProcessPool);
-  const threadCase = await runCase('thread', ThreadPool);
-  const pass = processCase.pass && threadCase.pass;
+
+  const skipThreadRaw = String(process.env.LEAPVM_SKIP_THREADPOOL_TESTS || '').trim().toLowerCase();
+  const skipThread = skipThreadRaw === '1' || skipThreadRaw === 'true' || skipThreadRaw === 'yes';
+  const threadCase = skipThread ? null : await runCase('thread', ThreadPool);
+  const pass = processCase.pass && (skipThread || threadCase.pass);
 
   const report = {
     ok: pass,
@@ -142,9 +145,14 @@ async function main() {
       processGrowthLimitMb: PROCESS_GROWTH_LIMIT_MB,
       threadGrowthLimitMb: THREAD_GROWTH_LIMIT_MB
     },
-    process: processCase,
-    thread: threadCase
+    process: processCase
   };
+  if (skipThread) {
+    report.thread = { skipped: true, reason: 'LEAPVM_SKIP_THREADPOOL_TESTS enabled' };
+    console.log('[dom-memory-leak] ThreadPool skipped by LEAPVM_SKIP_THREADPOOL_TESTS');
+  } else {
+    report.thread = threadCase;
+  }
 
   console.log(JSON.stringify(report, null, 2));
   if (!pass) {

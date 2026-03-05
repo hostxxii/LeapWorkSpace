@@ -1,0 +1,199 @@
+{
+  "timestamp": "2026-03-05T06:47:41.935Z",
+  "config": {
+    "poolSize": 1,
+    "concurrency": 1,
+    "totalTasks": 20,
+    "taskTimeoutMs": 12000,
+    "maxTasksPerWorker": 400
+  },
+  "js": {
+    "backend": "js",
+    "config": {
+      "poolSize": 1,
+      "concurrency": 1,
+      "totalTasks": 20,
+      "taskTimeoutMs": 12000,
+      "maxTasksPerWorker": 400
+    },
+    "totals": {
+      "success": 20,
+      "failed": 0,
+      "timedOut": 0
+    },
+    "throughputRps": 224.72,
+    "latencyMs": {
+      "p50": 3,
+      "p90": 6,
+      "p99": 14,
+      "max": 14
+    },
+    "memory": {
+      "rssGrowthMb": 32.5
+    },
+    "stability": {
+      "failureRate": 0,
+      "timeoutRate": 0,
+      "workerRecycleRate": 0,
+      "leakedDocsAutoReleased": 0,
+      "releasedNodes": 2480
+    },
+    "errorSamples": [],
+    "poolStats": {
+      "enqueued": 20,
+      "started": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "timedOut": 0,
+      "recycled": 0,
+      "respawned": 0,
+      "workers": 1,
+      "idleWorkers": 1,
+      "activeTasks": 0,
+      "pendingTasks": 0,
+      "memory": {
+        "host": {
+          "rss": 124968960,
+          "heapTotal": 9601024,
+          "heapUsed": 7953856,
+          "external": 1558743,
+          "arrayBuffers": 10515
+        },
+        "workersWithMemory": 1,
+        "workerRssTotal": 124968960,
+        "workerHeapUsedTotal": 12965320
+      },
+      "workersDetail": [
+        {
+          "workerId": "thread-worker-1",
+          "pid": 32697,
+          "threadId": 1,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 124968960,
+            "heapTotal": 17129472,
+            "heapUsed": 12965320,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        }
+      ]
+    }
+  },
+  "spec": {
+    "backend": "spec",
+    "config": {
+      "poolSize": 1,
+      "concurrency": 1,
+      "totalTasks": 20,
+      "taskTimeoutMs": 12000,
+      "maxTasksPerWorker": 400
+    },
+    "totals": {
+      "success": 20,
+      "failed": 0,
+      "timedOut": 0
+    },
+    "throughputRps": 253.16,
+    "latencyMs": {
+      "p50": 3,
+      "p90": 4,
+      "p99": 11,
+      "max": 11
+    },
+    "memory": {
+      "rssGrowthMb": 30.5
+    },
+    "stability": {
+      "failureRate": 0,
+      "timeoutRate": 0,
+      "workerRecycleRate": 0,
+      "leakedDocsAutoReleased": 0,
+      "releasedNodes": 2480
+    },
+    "errorSamples": [],
+    "poolStats": {
+      "enqueued": 20,
+      "started": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "timedOut": 0,
+      "recycled": 0,
+      "respawned": 0,
+      "workers": 1,
+      "idleWorkers": 1,
+      "activeTasks": 0,
+      "pendingTasks": 0,
+      "memory": {
+        "host": {
+          "rss": 163786752,
+          "heapTotal": 13197312,
+          "heapUsed": 11721752,
+          "external": 1558743,
+          "arrayBuffers": 10515
+        },
+        "workersWithMemory": 1,
+        "workerRssTotal": 163786752,
+        "workerHeapUsedTotal": 13033520
+      },
+      "workersDetail": [
+        {
+          "workerId": "thread-worker-1",
+          "pid": 32697,
+          "threadId": 2,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 163786752,
+            "heapTotal": 17391616,
+            "heapUsed": 13033520,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "spec": {
+      "ok": true,
+      "checks": [
+        {
+          "name": "RPS_spec >= RPS_js * 0.98",
+          "pass": true,
+          "actual": 253.16,
+          "expected": ">= 220.23"
+        },
+        {
+          "name": "p99_spec <= p99_js * 1.05",
+          "pass": true,
+          "actual": 11,
+          "expected": "<= 14.70"
+        },
+        {
+          "name": "rssGrowth_spec <= rssGrowth_js * 1.10",
+          "pass": true,
+          "actual": 30.5,
+          "expected": "<= 35.75"
+        },
+        {
+          "name": "failureRate_spec <= failureRate_js",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0"
+        },
+        {
+          "name": "timeoutRate_spec <= timeoutRate_js",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0"
+        }
+      ]
+    }
+  }
+}

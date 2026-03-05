@@ -36,11 +36,18 @@ execute_process(
 )
 
 # node-gyp 缓存的头文件和库文件路径
-set(NODE_GYP_DIR "${USER_HOME}/AppData/Local/node-gyp/Cache/${NODE_VERSION}")
+if(WIN32)
+    set(NODE_GYP_DIR "${USER_HOME}/AppData/Local/node-gyp/Cache/${NODE_VERSION}")
+    set(NODE_LIB "${NODE_GYP_DIR}/x64/node.lib")
+else()
+    set(NODE_GYP_DIR "${USER_HOME}/.cache/node-gyp/${NODE_VERSION}")
+    set(NODE_LIB "")
+endif()
 set(NODE_GYP_HEADERS "${NODE_GYP_DIR}/include/node")
-set(NODE_LIB "${NODE_GYP_DIR}/x64/node.lib")
 message(STATUS "Node.js headers: ${NODE_GYP_HEADERS}")
-message(STATUS "Node.js library: ${NODE_LIB}")
+if(WIN32)
+    message(STATUS "Node.js library: ${NODE_LIB}")
+endif()
 
 # 4. 头文件路径
 #  关键：BEFORE 强制让你的 V8 头文件排在最前面
@@ -53,8 +60,12 @@ include_directories(BEFORE
 # Node-API 头文件（放在后面，避免污染 V8 头文件）
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/node_modules/node-addon-api"
-    "${NODE_GYP_HEADERS}"
 )
+if(CMAKE_JS_INC)
+    include_directories(${CMAKE_JS_INC})
+else()
+    include_directories("${NODE_GYP_HEADERS}")
+endif()
 
 # 5. 源文件
 file(GLOB SOURCE_FILES
@@ -94,10 +105,64 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 #    Node.js 升级后需重新运行该脚本
 # 注意：v8_monolith.lib 使用 v8_enable_i18n_support=true 编译，ICU 符号已通过
 #       U_ICU_VERSION_SUFFIX(_leapvm) rename，不与 Node.js 自带 ICU 冲突
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib/v8_monolith.lib"
-    "${CMAKE_CURRENT_SOURCE_DIR}/third_party/node/node_napi_only.lib"
-)
+if(WIN32)
+    set(V8_LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib/v8_monolith.lib")
+
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        "${V8_LIB_PATH}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/third_party/node/node_napi_only.lib"
+    )
+else()
+    set(V8_LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib-linux/libv8_monolith.a")
+    if(NOT EXISTS "${V8_LIB_PATH}")
+        message(FATAL_ERROR "Missing Linux V8 static library: ${V8_LIB_PATH}")
+    endif()
+    # 注意：该静态库必须用 v8_monolithic_for_shared_library=true 重新编译，
+    # 否则链接到 .node(共享库) 时会出现 TLS relocation 错误。
+    set(V8_LIBCXX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib-linux/libc++.a")
+    set(V8_LIBCXXABI_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib-linux/libc++abi.a")
+    set(V8_LIBCXX_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib-linux/libcxx/include")
+    set(V8_LIBCXXABI_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/v8/lib-linux/libcxxabi/include")
+    set(V8_STDLIB_LIBS "")
+    if(EXISTS "${V8_LIBCXX_PATH}" AND EXISTS "${V8_LIBCXXABI_PATH}")
+        list(APPEND V8_STDLIB_LIBS "${V8_LIBCXX_PATH}" "${V8_LIBCXXABI_PATH}")
+        if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+            if(EXISTS "${V8_LIBCXX_INCLUDE_DIR}" AND EXISTS "${V8_LIBCXXABI_INCLUDE_DIR}")
+                # V8(use_custom_libcxx=true) 使用 libc++ ABI(std::__Cr)，addon 需同 ABI。
+                target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE
+                    "${V8_LIBCXX_INCLUDE_DIR}"
+                    "${V8_LIBCXXABI_INCLUDE_DIR}"
+                )
+                target_compile_definitions(${PROJECT_NAME} PRIVATE
+                    _LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_NONE
+                )
+                target_compile_options(${PROJECT_NAME} PRIVATE -stdlib=libc++)
+            else()
+                message(FATAL_ERROR "Missing libc++ headers for Linux V8 build: ${V8_LIBCXX_INCLUDE_DIR}")
+            endif()
+        endif()
+    endif()
+
+    # ThinLTO: 跨编译单元内联优化，对齐 Windows MSVC LTCG
+    # 需要 Clang + LLD（系统 ld 不支持 ThinLTO bitcode）
+    option(LEAPVM_ENABLE_LTO "Enable ThinLTO for Linux builds" ON)
+    if(LEAPVM_ENABLE_LTO AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        target_compile_options(${PROJECT_NAME} PRIVATE -flto=thin)
+        target_link_options(${PROJECT_NAME} PRIVATE -flto=thin -fuse-ld=lld)
+        message(STATUS "ThinLTO enabled for leapvm (using LLD)")
+    endif()
+
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        "${V8_LIB_PATH}"
+        ${V8_STDLIB_LIBS}
+        pthread
+        dl
+    )
+    target_link_options(${PROJECT_NAME} PRIVATE
+        "-Wl,-Bsymbolic"
+        "-Wl,--exclude-libs,ALL"
+    )
+endif()
 
 if(LEAPVM_ENABLE_LEXBOR)
     include(FetchContent)
@@ -164,6 +229,9 @@ endif()
 # ============================================================================
 
 set(USOCKETS_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/uSockets/src")
+if(NOT EXISTS "${USOCKETS_SRC_DIR}")
+    message(FATAL_ERROR "uSockets source directory not found: ${USOCKETS_SRC_DIR}")
+endif()
 
 # uSockets 源文件
 file(GLOB USOCKETS_SOURCES
@@ -173,6 +241,7 @@ file(GLOB USOCKETS_SOURCES
 
 # 编译 uSockets 为静态库
 add_library(usockets STATIC ${USOCKETS_SOURCES})
+set_target_properties(usockets PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # uSockets 编译选项 (禁用 SSL 简化依赖)
 target_compile_definitions(usockets PRIVATE

@@ -64,11 +64,17 @@
 - uWebSockets 的 `idleTimeout` 存在上限（来源记录指出最大 960 秒）
 - 需结合自动 ping 与发送时重置 idle timeout 使用
 
-来源记录方案（摘要）：
+来源记录方案（历史摘要）：
 
 - `idleTimeout = 960`
 - `resetIdleTimeoutOnSend = true`
 - `sendPingsAutomatically = true`
+
+当前实现（2026-03-05）：
+
+- `idleTimeout = 0`（默认不断联）
+- `resetIdleTimeoutOnSend = true`
+- `sendPingsAutomatically = false`（避免 `idleTimeout=0` 场景的 timeout 分量异常）
 
 ### 3. `debugger;` 语句不暂停（时序问题）
 
@@ -121,7 +127,8 @@
 - DevTools Console 表达式求值恢复正常
 - 变量查看、调用栈、步进调试可用
 - `--inspect-brk` 类使用方式可用
-- 连接稳定性在 `960s + 自动 ping` 策略下显著改善
+- 历史阶段：连接稳定性在 `960s + 自动 ping` 策略下显著改善
+- 当前阶段：默认策略已切换为“不断联”
 - Inspector 消息链路在 Cork 修复后稳定性进一步提升
 
 ## 当前口径说明（2026-02-22）
@@ -129,7 +136,7 @@
 来源记录中的部分实现细节（如超时策略默认值、等待时长、个别内部结构）可能在后续版本迭代中调整。当前使用与事实校验应优先参考：
 
 - `leap_manual/reference/LEAPVM_API.md`
-- `leap_manual/maintenance/2026-02-22_运行时缺陷修复.md`（Inspector 稳定性折中与后续策略）
+- `leap_manual/maintenance/2026-02-22_运行时缺陷修复.md`（Inspector 稳定性后续策略；2026-03-05 起默认不断联）
 - `leap_manual/maintenance/2025-12-04_LeapVM_Inspector_CorkBuffer线程修复.md`
 
 ## 影响文件（来源记录主题映射）

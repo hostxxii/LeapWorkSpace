@@ -20,6 +20,18 @@ CMakeFiles/
 cmake_install.cmake
 install_manifest.txt
 
+# V8 platform-specific compiled libraries (clone then build per platform)
+leap-vm/third_party/v8/lib-win/
+leap-vm/third_party/v8/lib-linux/
+
+# Compiled objects and binaries
+*.o
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.node
+
 # Visual Studio
 *.vcxproj.user
 *.vcxproj.filters
@@ -31,21 +43,6 @@ install_manifest.txt
 .vs/
 *.VC.db
 *.VC.VC.opendb
-
-# Compiled objects and binaries
-*.o
-*.obj
-*.pdb
-*.ilk
-*.exp
-*.lib
-*.dll
-*.so
-*.dylib
-*.exe
-*.node
-
-# Static analysis / cache
 *.ncb
 *.opensdf
 *.sdf
@@ -77,15 +74,11 @@ Thumbs.db
 desktop.ini
 
 # ------ Editor ------
-# VS Code - keep shared settings, ignore personal/local overrides
 .vscode/*.log
 .vscode/extensions.json
-
-# Claude Code - keep shared settings, ignore local overrides
 .claude/settings.local.json
 
 # ------ Temporary / Working files ------
-work/
 tmp/
 temp/
 *.tmp
@@ -93,13 +86,13 @@ temp/
 *.swp
 *~
 
-# ------ Python build artifacts (build scripts) ------
+# ------ Python build artifacts ------
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 .Python
 
-# ------ PowerShell ------
-# (no common artifacts to ignore)
-.gitnexus
+# ------ Root-level markdown (only keep README.md) ------
+/*.md
+!/README.md

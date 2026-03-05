@@ -70,8 +70,9 @@ bool WsInspectorServer::Start(std::string* error_out) {
         return false;
     }
 
-    // 回退方案：不启用自定义 heartbeat 线程，使用 uWS 自带 idleTimeout/ping 机制
-    // 16 分钟（idleTimeout=960）对当前调试场景已足够，优先避免额外心跳干扰交互稳定性。
+    // 不启用自定义 heartbeat 线程，使用 uWS 自带机制。
+    // Inspector 仅用于调试，关闭空闲超时（idleTimeout=0）避免长时间断点时断连。
+    // 注意：idleTimeout=0 时需同时关闭自动 ping，避免 uWS 内部 timeout 分量计算下溢。
 
     return true;
 }
@@ -177,11 +178,11 @@ void WsInspectorServer::RunEventLoop() {
             app->template ws<PerSocketData>(route_path, {
             .compression = uWS::DISABLED,
             .maxPayloadLength = 16 * 1024 * 1024,
-            .idleTimeout = 960,
+            .idleTimeout = 0,
             .maxBackpressure = 1 * 1024 * 1024,
             .closeOnBackpressureLimit = false,
             .resetIdleTimeoutOnSend = true,
-            .sendPingsAutomatically = true,
+            .sendPingsAutomatically = false,
 
             .upgrade = nullptr,
 

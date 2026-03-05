@@ -1960,6 +1960,166 @@ bool VmInstance::RunScript(const std::string& source_utf8,
 }
 
 // ============================================================================
+// Code Cache Implementation
+// ============================================================================
+
+bool VmInstance::CreateCodeCache(const std::string& source_utf8,
+                                 std::vector<uint8_t>& cache_out,
+                                 std::string* error_out,
+                                 const std::string& resource_name) {
+    if (!isolate_) return false;
+
+    std::promise<bool> done_promise;
+    auto future = done_promise.get_future();
+
+    PostTask([this, source_utf8, resource_name, &cache_out, error_out, &done_promise]
+             (v8::Isolate* isolate, v8::Local<v8::Context> context) {
+        v8::HandleScope handle_scope(isolate);
+        v8::Context::Scope context_scope(context);
+
+        v8::Local<v8::String> source;
+        if (!v8::String::NewFromUtf8(isolate, source_utf8.c_str(),
+                                     v8::NewStringType::kNormal,
+                                     static_cast<int>(source_utf8.size()))
+                 .ToLocal(&source)) {
+            if (error_out) *error_out = "Failed to create source string";
+            done_promise.set_value(false);
+            return;
+        }
+
+        std::string effective_name = resource_name.empty()
+            ? "https://www.example.com/js/main.js" : resource_name;
+        v8::Local<v8::String> res_name =
+            v8::String::NewFromUtf8(isolate, effective_name.c_str(),
+                                    v8::NewStringType::kNormal).ToLocalChecked();
+        v8::ScriptOrigin origin(res_name);
+        v8::ScriptCompiler::Source compiler_source(source, origin);
+
+        v8::Local<v8::UnboundScript> unbound;
+        if (!v8::ScriptCompiler::CompileUnboundScript(
+                isolate, &compiler_source,
+                v8::ScriptCompiler::kNoCompileOptions)
+                 .ToLocal(&unbound)) {
+            if (error_out) *error_out = "Compile failed during code cache generation";
+            done_promise.set_value(false);
+            return;
+        }
+
+        std::unique_ptr<v8::ScriptCompiler::CachedData> cached_data(
+            v8::ScriptCompiler::CreateCodeCache(unbound));
+
+        if (!cached_data || cached_data->length == 0) {
+            if (error_out) *error_out = "V8 returned empty code cache";
+            done_promise.set_value(false);
+            return;
+        }
+
+        cache_out.assign(cached_data->data,
+                         cached_data->data + cached_data->length);
+        done_promise.set_value(true);
+    });
+
+    return future.get();
+}
+
+bool VmInstance::RunScriptWithCache(const std::string& source_utf8,
+                                    const uint8_t* cache_data,
+                                    size_t cache_length,
+                                    std::string& result_out,
+                                    bool* cache_rejected_out,
+                                    std::string* error_out,
+                                    const std::string& resource_name) {
+    if (!isolate_) return false;
+
+    // Copy cache data so the lambda owns it (the caller's buffer may be transient).
+    std::vector<uint8_t> cache_copy(cache_data, cache_data + cache_length);
+
+    std::promise<bool> done_promise;
+    auto future = done_promise.get_future();
+
+    PostTask([this, source_utf8, resource_name, cache_copy = std::move(cache_copy),
+              &result_out, cache_rejected_out, error_out, &done_promise]
+             (v8::Isolate* isolate, v8::Local<v8::Context> context) {
+        pending_script_source_ = source_utf8;
+
+        v8::HandleScope handle_scope(isolate);
+        v8::Context::Scope context_scope(context);
+        v8::TryCatch try_catch(isolate);
+
+        v8::Local<v8::String> source;
+        if (!v8::String::NewFromUtf8(isolate, source_utf8.c_str(),
+                                     v8::NewStringType::kNormal,
+                                     static_cast<int>(source_utf8.size()))
+                 .ToLocal(&source)) {
+            if (error_out) *error_out = "Failed to create source string";
+            done_promise.set_value(false);
+            return;
+        }
+
+        std::string effective_name = resource_name.empty()
+            ? "https://www.example.com/js/main.js" : resource_name;
+        v8::Local<v8::String> res_name =
+            v8::String::NewFromUtf8(isolate, effective_name.c_str(),
+                                    v8::NewStringType::kNormal).ToLocalChecked();
+        v8::ScriptOrigin origin(res_name);
+
+        // Create CachedData from our copy. V8 takes ownership of the data pointer
+        // when we pass kBufferNotOwned=false (default), but we allocated with new[]
+        // so V8 can delete[] it. Copy into a new[] buffer for V8's ownership.
+        uint8_t* v8_cache_buf = new uint8_t[cache_copy.size()];
+        std::memcpy(v8_cache_buf, cache_copy.data(), cache_copy.size());
+        v8::ScriptCompiler::CachedData* cached_data =
+            new v8::ScriptCompiler::CachedData(
+                v8_cache_buf,
+                static_cast<int>(cache_copy.size()),
+                v8::ScriptCompiler::CachedData::BufferOwned);
+
+        v8::ScriptCompiler::Source compiler_source(source, origin, cached_data);
+        v8::ScriptCompiler::CompileOptions compile_options =
+            v8::ScriptCompiler::kConsumeCodeCache;
+
+        v8::Local<v8::Script> script;
+        if (!v8::ScriptCompiler::Compile(context, &compiler_source, compile_options)
+                 .ToLocal(&script)) {
+            if (error_out) {
+                if (try_catch.HasCaught()) {
+                    v8::String::Utf8Value msg(isolate, try_catch.Exception());
+                    *error_out = *msg ? *msg : "Compile error (with cache)";
+                } else {
+                    *error_out = "Compile error (with cache)";
+                }
+            }
+            done_promise.set_value(false);
+            return;
+        }
+
+        // Check if V8 rejected the cache (version mismatch, source hash mismatch, etc.)
+        if (cache_rejected_out) {
+            *cache_rejected_out = compiler_source.GetCachedData()->rejected;
+        }
+
+        v8::Local<v8::Value> result;
+        if (!script->Run(context).ToLocal(&result)) {
+            if (error_out) {
+                v8::String::Utf8Value message(isolate, try_catch.Exception());
+                *error_out = *message ? *message : "Runtime error";
+            }
+            done_promise.set_value(false);
+            return;
+        }
+
+        isolate->PerformMicrotaskCheckpoint();
+
+        v8::String::Utf8Value utf8(isolate, result);
+        result_out.assign(*utf8 ? *utf8 : "", utf8.length());
+        pending_script_source_.clear();
+        done_promise.set_value(true);
+    });
+
+    return future.get();
+}
+
+// ============================================================================
 // Timer Implementation
 // ============================================================================
 
@@ -5660,7 +5820,7 @@ void VmInstance::ThreadMain() {
         if (v8::String::NewFromUtf8(isolate_, "1", v8::NewStringType::kNormal)
                 .ToLocal(&test_source)) {
             v8::Local<v8::Script> test_script;
-            v8::Script::Compile(ctx, test_source).ToLocal(&test_script);
+            (void)v8::Script::Compile(ctx, test_source).ToLocal(&test_script);
         }
     }
 

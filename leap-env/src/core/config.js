@@ -25,6 +25,11 @@
   const runtimeConfig = readRuntimeConfig();
   leapenv.config = runtimeConfig;
 
+  function normalizeHardeningMode(raw) {
+    const normalized = String(raw == null ? '' : raw).trim().toLowerCase();
+    return normalized === 'strict' ? 'strict' : 'compat';
+  }
+
   // dispatch 缺失实现时的行为
   // 'warn': 打印警告 (默认)
   // 'silent': 静默返回 undefined
@@ -68,5 +73,15 @@
   } else {
     runtimeConfig.signatureProfile = 'fp-lean';
   }
+
+  // 全局收敛策略（风险优先）：
+  // compat: 兼容优先，保留旧桥接名（不可枚举）且不冻结替换 globalThis.leapenv
+  // strict: 彻底去名 + 严格 facade 锁定
+  runtimeConfig.bridgeExposureMode = normalizeHardeningMode(
+    runtimeConfig.bridgeExposureMode || 'strict'
+  );
+  runtimeConfig.globalFacadeMode = normalizeHardeningMode(
+    runtimeConfig.globalFacadeMode || 'strict'
+  );
 
 })(globalThis);

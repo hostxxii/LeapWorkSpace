@@ -1,7 +1,7 @@
 # Intl_ICU与node_napi_only方案
 
 > 源文件：`leap-vm/CMakeLists.txt`（ICU 配置段），`leap-vm/src/leapvm/v8_platform.cc`（InitOnce/InitializeICU），`leap-vm/third_party/node/node_napi_only.lib`，`leap-vm/third_party/node/node_napi_only.def`
-> 更新：2026-03-01
+> 更新：2026-03-05
 
 ## 功能概述
 
@@ -52,10 +52,25 @@ v8::V8::InitializeICU();
 
 此调用是唯一的 ICU 初始化路径，保证 Intl API 在 leapvm 内的 V8 Isolate 中可用。
 
+### 4. Linux 链接方案
+
+Linux 不使用 `node_napi_only.lib`（Windows 专用），改为直接链接 `libv8_monolith.a` + 符号隔离：
+
+| 链接元素 | 说明 |
+|---------|------|
+| `libv8_monolith.a` | V8 静态库，需 `v8_monolithic_for_shared_library=true` 编译 |
+| `libc++.a` + `libc++abi.a` | V8 自带的 libc++（`use_custom_libcxx=true` 时） |
+| `-Wl,-Bsymbolic` | 优先解析 addon 内部符号，防止与 Node 进程 V8 符号冲突 |
+| `-Wl,--exclude-libs,ALL` | 不导出静态库内符号到 `.dynsym`，彻底隔离 |
+
+这组链接参数在 Linux 上等价于 Windows 的 `node_napi_only.lib` + `/DELAYLOAD:NODE.EXE` 方案——确保 leapvm 内的 V8/ICU 符号不与 Node.js 宿主冲突。
+
+Linux 不需要 `node.lib` 或 `node_napi_only.lib`，因为 `.node` 共享库在加载时通过 `dlopen` 的 `RTLD_GLOBAL` 机制自动绑定 Node 宿主的 NAPI 符号。
+
 ## 主要流程
 
 ```
-构建阶段：
+构建阶段（Windows）：
   编译 v8_monolith.lib（外部预编译）
     └── v8_enable_i18n_support=true + U_ICU_VERSION_SUFFIX(_leapvm)
           → 所有 ICU 符号带 _leapvm 后缀
@@ -64,6 +79,15 @@ v8::V8::InitializeICU();
     v8_monolith.lib（含重命名 ICU）
     + node_napi_only.lib（仅 napi_* 符号）
     → 无重叠，无需 /FORCE:MULTIPLE
+
+构建阶段（Linux）：
+  编译 libv8_monolith.a（外部预编译）
+    └── 同上 ICU 重命名 + v8_monolithic_for_shared_library=true
+
+  链接 leapvm.node：
+    libv8_monolith.a + libc++.a + libc++abi.a
+    + -Bsymbolic + --exclude-libs,ALL（符号隔离）
+    + ThinLTO -flto=thin -fuse-ld=lld（跨文件优化）
 
 运行阶段（addon 加载）：
   Node.js 进程已初始化自身 ICU（标准符号 u_init_75 等）

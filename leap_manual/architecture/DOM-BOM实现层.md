@@ -1,7 +1,7 @@
 # DOM-BOM实现层
 
 > 源文件：`leap-env/src/impl/`（30 个文件）、`leap-vm/src/leapvm/dom_core.cc/h`
-> 更新：2026-03-03（补充 DOM 基础 CRUD、事件阶段、NS 属性与 selector 子集能力）
+> 更新：2026-03-05（同步 runtime bridge dispatch 路径）
 
 ## 功能概述
 
@@ -26,7 +26,7 @@ DOM-BOM实现层是 Leap 环境中 Web API 行为的实现载体。每个 `.impl
 })(globalThis);
 ```
 
-`runtime.js` 的 `registerImpl` 将 ImplClass 存入 `leapenv.implRegistry`，同时遍历整个原型链预缓存 descriptor（O1 性能），供 `__LEAP_DISPATCH__` 在调用时直接查找，避免每次 dispatch 重新遍历原型链。
+`runtime.js` 的 `registerImpl` 将 ImplClass 存入 `leapenv.implRegistry`，同时遍历整个原型链预缓存 descriptor（O1 性能），供 runtime bridge dispatch 在调用时直接查找，避免每次 dispatch 重新遍历原型链。
 
 ### 2. domShared — 节点状态中枢
 
@@ -105,7 +105,7 @@ endTaskScope(taskId) / releaseTaskScope(taskId)
   → C++ Skeleton stub 触发
   → DispatchBridge 读取 DispatchMeta（typeName + propName + actionType）
   → 品牌校验
-  → C++ 调用 global.__LEAP_DISPATCH__(typeName, propName, actionType, ...args)
+  → C++ 调用 leapenv.__runtime.bridge.dispatch(typeName, propName, actionType, ...args)
   → JS dispatch 函数：从 leapenv.implRegistry[typeName] 取 ImplClass
                        从 _implDescCache 取 descriptor
                        对 this（skeleton 实例）执行 getter/setter/method

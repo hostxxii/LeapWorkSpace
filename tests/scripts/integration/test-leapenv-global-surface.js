@@ -12,7 +12,7 @@ const {
   runEnvironmentBundle,
   executeSignatureTask,
   shutdownEnvironment
-} = require('../runner');
+} = require('../../../leap-env/runner');
 
 const DEFAULT_BLACKLIST = [
   'hookRuntime',
@@ -188,7 +188,7 @@ function main() {
   const outPathArg = getArg('--out', '');
   const outPath = outPathArg
     ? path.resolve(process.cwd(), outPathArg)
-    : path.join(__dirname, '..', 'global-surface-report.json');
+    : path.join(__dirname, '..', '..', '..', 'leap-env', 'global-surface-report.json');
   const domBackend = getArg('--dom-backend', 'dod');
   const signatureProfile = getArg('--signature-profile', 'fp-lean');
   const debug = hasFlag('--debug');

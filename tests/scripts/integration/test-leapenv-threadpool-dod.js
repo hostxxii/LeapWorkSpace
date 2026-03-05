@@ -108,6 +108,12 @@ class IntegrationTester {
 
 const tester = new IntegrationTester();
 
+const skipThreadpool = String(process.env.LEAPVM_SKIP_THREADPOOL_TESTS || '').trim().toLowerCase();
+if (skipThreadpool === '1' || skipThreadpool === 'true' || skipThreadpool === 'yes') {
+  console.log('[threadpool-dod] SKIP: LEAPVM_SKIP_THREADPOOL_TESTS enabled');
+  process.exit(0);
+}
+
 (async () => {
   // ─────────────────────────────────────────────────────────────────────────
   // Test 1: ThreadPool 初始化和 DoD 支持

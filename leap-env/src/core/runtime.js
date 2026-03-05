@@ -77,6 +77,16 @@
     return normalized === 'fp-occupy' ? 'fp-occupy' : 'fp-lean';
   }
 
+  function normalizeBridgeExposureMode(raw) {
+    const normalized = String(raw == null ? '' : raw).trim().toLowerCase();
+    return normalized === 'strict' ? 'strict' : 'compat';
+  }
+
+  function normalizeGlobalFacadeMode(raw) {
+    const normalized = String(raw == null ? '' : raw).trim().toLowerCase();
+    return normalized === 'strict' ? 'strict' : 'compat';
+  }
+
   function bindGlobalTimer(name) {
     if (typeof global[name] !== 'function') {
       return null;
@@ -161,6 +171,9 @@
     runtime.bridge.dispatch = typeof runtime.bridge.dispatch === 'function'
       ? runtime.bridge.dispatch
       : null;
+    runtime.bridge.native = runtime.bridge.native && typeof runtime.bridge.native === 'object'
+      ? runtime.bridge.native
+      : {};
 
     return runtime;
   }
@@ -173,6 +186,126 @@
       return fallbackLegacy;
     }
     return null;
+  }
+
+  const LEGACY_BRIDGE_METHODS = [
+    ['defineEnvironmentSkeleton', 'defineEnvironmentSkeleton'],
+    ['createSkeletonInstance', 'createSkeletonInstance'],
+    ['createTrustedEvent', 'createTrustedEvent'],
+    ['createNative', '__createNative__'],
+    ['applyInstanceSkeleton', '__applyInstanceSkeleton__'],
+    ['createChildFrame', '__createChildFrame__'],
+    ['destroyChildFrame', '__destroyChildFrame__'],
+    ['navigateChildFrame', '__navigateChildFrame__'],
+    ['getChildFrameCount', '__getChildFrameCount__'],
+    ['getChildFrameProxy', '__getChildFrameProxy__']
+  ];
+
+  function defineHiddenGlobalValue(key, value) {
+    try {
+      Object.defineProperty(global, key, {
+        value: value,
+        writable: true,
+        enumerable: false,
+        configurable: true
+      });
+      return true;
+    } catch (_) {
+      try {
+        global[key] = value;
+        return true;
+      } catch (__){
+        return false;
+      }
+    }
+  }
+
+  function removeGlobalKey(key) {
+    if (!hasOwn.call(global, key)) return true;
+    try {
+      return delete global[key];
+    } catch (_) {}
+    try {
+      Object.defineProperty(global, key, {
+        value: undefined,
+        writable: false,
+        enumerable: false,
+        configurable: false
+      });
+      return true;
+    } catch (__){
+      return false;
+    }
+  }
+
+  function getNativeBridge(runtime) {
+    if (!runtime || typeof runtime !== 'object') return {};
+    const bridge = runtime.bridge && typeof runtime.bridge === 'object'
+      ? runtime.bridge
+      : null;
+    const nativeBridge = bridge && bridge.native && typeof bridge.native === 'object'
+      ? bridge.native
+      : null;
+    return nativeBridge || {};
+  }
+
+  function ensureLegacyNativeNamespace(runtime) {
+    const nativeBridge = getNativeBridge(runtime);
+    const bridge = runtime.bridge && typeof runtime.bridge === 'object'
+      ? runtime.bridge
+      : (runtime.bridge = {});
+    const legacy = bridge.legacyNativeNamespace && typeof bridge.legacyNativeNamespace === 'object'
+      ? bridge.legacyNativeNamespace
+      : {};
+
+    for (let i = 0; i < LEGACY_BRIDGE_METHODS.length; i++) {
+      const pair = LEGACY_BRIDGE_METHODS[i];
+      const targetKey = pair[0];
+      if (typeof nativeBridge[targetKey] !== 'function') continue;
+      defineNonEnumerableValue(legacy, targetKey, nativeBridge[targetKey]);
+    }
+    if (nativeBridge.dom && typeof nativeBridge.dom === 'object') {
+      defineNonEnumerableValue(legacy, 'dom', nativeBridge.dom);
+    }
+
+    bridge.legacyNativeNamespace = legacy;
+    return legacy;
+  }
+
+  function syncLegacyBridgeGlobals(runtime, mode) {
+    const normalizedMode = normalizeBridgeExposureMode(mode);
+    const nativeBridge = getNativeBridge(runtime);
+    if (normalizedMode === 'strict') {
+      for (let i = 0; i < LEGACY_BRIDGE_METHODS.length; i++) {
+        removeGlobalKey(LEGACY_BRIDGE_METHODS[i][1]);
+      }
+      removeGlobalKey('$native');
+      return {
+        mode: 'strict',
+        exposedKeys: [],
+        removed: true
+      };
+    }
+
+    const nativeNamespace = ensureLegacyNativeNamespace(runtime);
+    const exposedKeys = [];
+    for (let i = 0; i < LEGACY_BRIDGE_METHODS.length; i++) {
+      const pair = LEGACY_BRIDGE_METHODS[i];
+      const targetKey = pair[0];
+      const globalKey = pair[1];
+      if (typeof nativeBridge[targetKey] !== 'function') continue;
+      if (defineHiddenGlobalValue(globalKey, nativeBridge[targetKey])) {
+        exposedKeys.push(globalKey);
+      }
+    }
+    if (defineHiddenGlobalValue('$native', nativeNamespace)) {
+      exposedKeys.push('$native');
+    }
+    return {
+      mode: 'compat',
+      exposedKeys: exposedKeys.sort(),
+      removed: false
+    };
   }
 
   function consumeBootstrap(runtime) {
@@ -199,6 +332,12 @@
     const bootstrapSignatureProfile = bootstrap && typeof bootstrap.signatureProfile === 'string'
       ? bootstrap.signatureProfile
       : '';
+    const bootstrapBridgeExposureMode = bootstrap && typeof bootstrap.bridgeExposureMode === 'string'
+      ? bootstrap.bridgeExposureMode
+      : '';
+    const bootstrapGlobalFacadeMode = bootstrap && typeof bootstrap.globalFacadeMode === 'string'
+      ? bootstrap.globalFacadeMode
+      : '';
     const bootstrapHostTimers = readBootstrapCandidate(bootstrap && bootstrap.hostTimers, legacyHostTimers);
     const bootstrapHookRuntime = readBootstrapCandidate(bootstrap && bootstrap.hookRuntimeSeed, legacyHookRuntime);
 
@@ -208,6 +347,12 @@
     runtime.config.signatureProfile = normalizeSignatureProfile(
       bootstrapSignatureProfile || runtime.config.signatureProfile || legacySignatureProfile || 'fp-lean'
     );
+    runtime.config.bridgeExposureMode = normalizeBridgeExposureMode(
+      bootstrapBridgeExposureMode || runtime.config.bridgeExposureMode || 'strict'
+    );
+    runtime.config.globalFacadeMode = normalizeGlobalFacadeMode(
+      bootstrapGlobalFacadeMode || runtime.config.globalFacadeMode || 'strict'
+    );
     runtime.host.timers = normalizeHostTimers(bootstrapHostTimers, runtime.host.timers);
     runtime.debug.enabled = !!(bootstrap && bootstrap.debugEnabled);
 
@@ -215,6 +360,53 @@
       runtime.debug.hookRuntime.active = !!bootstrapHookRuntime.active;
       runtime.debug.hookRuntime.phase = String(bootstrapHookRuntime.phase || 'bundle');
     }
+
+    // Capture LeapVM native bridge first, then scrub bridge symbols from global scope.
+    (function captureNativeBridge() {
+      const bridge = runtime.bridge && typeof runtime.bridge === 'object'
+        ? runtime.bridge
+        : (runtime.bridge = {});
+      const nativeBridge = bridge.native && typeof bridge.native === 'object'
+        ? bridge.native
+        : (bridge.native = {});
+
+      const nativeNs = (global.$native && typeof global.$native === 'object')
+        ? global.$native
+        : null;
+      const nativeDom = nativeNs && nativeNs.dom && typeof nativeNs.dom === 'object'
+        ? nativeNs.dom
+        : null;
+
+      function captureMethod(targetKey, holder, key) {
+        if (typeof nativeBridge[targetKey] === 'function') return;
+        if (!holder || typeof holder[key] !== 'function') return;
+        try {
+          nativeBridge[targetKey] = holder[key].bind(holder);
+        } catch (_) {
+          nativeBridge[targetKey] = holder[key];
+        }
+      }
+
+      captureMethod('defineEnvironmentSkeleton', nativeNs, 'defineEnvironmentSkeleton');
+      captureMethod('createSkeletonInstance', nativeNs, 'createSkeletonInstance');
+      captureMethod('createTrustedEvent', nativeNs, 'createTrustedEvent');
+      captureMethod('createNative', global, '__createNative__');
+      captureMethod('applyInstanceSkeleton', global, '__applyInstanceSkeleton__');
+      captureMethod('createChildFrame', global, '__createChildFrame__');
+      captureMethod('destroyChildFrame', global, '__destroyChildFrame__');
+      captureMethod('navigateChildFrame', global, '__navigateChildFrame__');
+      captureMethod('getChildFrameCount', global, '__getChildFrameCount__');
+      captureMethod('getChildFrameProxy', global, '__getChildFrameProxy__');
+
+      if (!nativeBridge.dom) {
+        nativeBridge.dom = nativeDom || null;
+      }
+    })();
+
+    runtime.config.bridgeExposureMode = normalizeBridgeExposureMode(
+      runtime.config.bridgeExposureMode || 'strict'
+    );
+    syncLegacyBridgeGlobals(runtime, runtime.config.bridgeExposureMode);
 
     const cleanupKeys = [
       '__LEAP_BOOTSTRAP__',
@@ -226,11 +418,7 @@
       '__LEAP_TASK_ID__'
     ];
     for (let i = 0; i < cleanupKeys.length; i++) {
-      const key = cleanupKeys[i];
-      if (!hasOwn.call(global, key)) continue;
-      try {
-        delete global[key];
-      } catch (_) {}
+      removeGlobalKey(cleanupKeys[i]);
     }
 
     if (hasOwn.call(leapenv, '__runtimeBootstrap')) {
@@ -294,6 +482,17 @@
 
   leapenv.getHostTimers = function getHostTimers() {
     return ensureRuntimeStore().host.timers;
+  };
+
+  leapenv.getNativeBridge = function getNativeBridge() {
+    const runtime = ensureRuntimeStore();
+    const bridge = runtime.bridge && typeof runtime.bridge === 'object'
+      ? runtime.bridge
+      : null;
+    const nativeBridge = bridge && bridge.native && typeof bridge.native === 'object'
+      ? bridge.native
+      : null;
+    return nativeBridge || {};
   };
 
   leapenv.getHookRuntime = function getHookRuntime() {
@@ -492,6 +691,7 @@
     'getRuntimeStore',
     'getRuntimeConfig',
     'getHostTimers',
+    'getNativeBridge',
     'getHookRuntime',
     'beginTask',
     'endTask',
@@ -507,10 +707,19 @@
   ]);
 
   const DEFAULT_FACADE_PUBLIC_KEYS = [
+    // host task lifecycle (runner.js / worker cleanup)
+    'domShared',
+    'getRuntimeStore',
+    'beginTask',
+    'endTask',
+    'getCurrentTaskId',
+    'getTaskState',
+    // task override APIs
     'applyFingerprintSnapshot',
     'applyStorageSnapshot',
     'applyDocumentSnapshot',
     'resetSignatureTaskState',
+    // bootstrap stage hooks (safe to keep in facade)
     'loadSkeleton',
     'installConstructibleWindowWrappers'
   ];
@@ -614,6 +823,134 @@
     };
   }
 
+  function createForwardingFacade(source, keys, publicSet) {
+    const facade = {};
+    for (let i = 0; i < keys.length; i++) {
+      const key = String(keys[i] == null ? '' : keys[i]).trim();
+      if (!key) continue;
+      if (!Object.prototype.hasOwnProperty.call(source, key)) continue;
+      const isPublic = !!(publicSet && publicSet[key]);
+      try {
+        Object.defineProperty(facade, key, {
+          enumerable: isPublic,
+          configurable: false,
+          get: function () {
+            return source[key];
+          },
+          set: function (value) {
+            try { source[key] = value; } catch (_) {}
+          }
+        });
+      } catch (_) {}
+    }
+    return facade;
+  }
+
+  function resolveGlobalFacadeMode(explicitMode) {
+    const runtime = ensureRuntimeStore();
+    const fromConfig = runtime && runtime.config ? runtime.config.globalFacadeMode : '';
+    return normalizeGlobalFacadeMode(explicitMode || fromConfig || 'compat');
+  }
+
+  function lockdownGlobalFacade(publicKeys, options) {
+    const source = leapenv;
+    const runtime = ensureRuntimeStore();
+    const requestedMode = (typeof options === 'string')
+      ? options
+      : (options && typeof options === 'object' && typeof options.mode === 'string'
+        ? options.mode
+        : '');
+    const mode = resolveGlobalFacadeMode(requestedMode);
+    runtime.config.globalFacadeMode = mode;
+
+    const publicKeysSorted = collectFacadePublicKeys(publicKeys);
+    const publicSet = Object.create(null);
+    for (let i = 0; i < publicKeysSorted.length; i++) {
+      publicSet[String(publicKeysSorted[i])] = true;
+    }
+
+    // Required by C++ dispatch/runtime bridge; keep non-enumerable in facade.
+    if (!Object.prototype.hasOwnProperty.call(source, '__runtime')) {
+      source.__runtime = ensureRuntimeStore();
+    }
+    if (!Object.prototype.hasOwnProperty.call(source, 'config')) {
+      source.config = ensureRuntimeStore().config;
+    }
+    if (!Object.prototype.hasOwnProperty.call(source, 'nativeInstances') ||
+        !source.nativeInstances ||
+        typeof source.nativeInstances !== 'object') {
+      source.nativeInstances = {};
+    }
+
+    if (mode !== 'strict') {
+      runtime.facade = runtime.facade && typeof runtime.facade === 'object' ? runtime.facade : {};
+      runtime.facade.internalLeapenv = source;
+      runtime.facade.globalFacade = source;
+      runtime.facade.globalLocked = false;
+
+      const facadeState = ensureFacadeState();
+      facadeState.finalized = true;
+
+      try {
+        Object.defineProperty(global, 'leapenv', {
+          value: source,
+          writable: true,
+          enumerable: false,
+          configurable: true
+        });
+      } catch (_) {}
+
+      return {
+        exposedCount: Object.keys(source).length,
+        exposedKeys: Object.keys(source).sort(),
+        locked: false,
+        mode: 'compat'
+      };
+    }
+
+    const internalCompatKeys = ['__runtime', 'config', 'nativeInstances'];
+
+    const allKeySet = Object.create(null);
+    for (let i = 0; i < publicKeysSorted.length; i++) {
+      allKeySet[String(publicKeysSorted[i])] = true;
+    }
+    for (let i = 0; i < internalCompatKeys.length; i++) {
+      allKeySet[internalCompatKeys[i]] = true;
+    }
+    const allKeys = Object.keys(allKeySet).sort();
+
+    const facade = createForwardingFacade(source, allKeys, publicSet);
+    const facadeOwnKeys = Object.keys(facade);
+    const facadeState = ensureFacadeState();
+
+    try { Object.freeze(facade); } catch (_) {}
+
+    // Keep internal reference in runtime store; only expose minimal facade to global.
+    runtime.facade = runtime.facade && typeof runtime.facade === 'object' ? runtime.facade : {};
+    runtime.facade.internalLeapenv = source;
+    runtime.facade.globalFacade = facade;
+    runtime.facade.globalLocked = true;
+    facadeState.finalized = true;
+
+    try {
+      Object.defineProperty(global, 'leapenv', {
+        value: facade,
+        writable: false,
+        enumerable: false,
+        configurable: false
+      });
+    } catch (_) {
+      try { global.leapenv = facade; } catch (__){}
+    }
+
+    return {
+      exposedCount: facadeOwnKeys.length,
+      exposedKeys: facadeOwnKeys.slice().sort(),
+      locked: true,
+      mode: 'strict'
+    };
+  }
+
   defineNonEnumerableValue(leapenv, 'registerFacadePublicKeys', addFacadePublicKeys);
   defineNonEnumerableValue(leapenv, 'registerFacadePublicKey', function registerFacadePublicKey(key) {
     addFacadePublicKeys([key]);
@@ -624,6 +961,7 @@
   });
   defineNonEnumerableValue(leapenv, 'definePublicApi', definePublicApi);
   defineNonEnumerableValue(leapenv, 'finalizeFacade', finalizeFacade);
+  defineNonEnumerableValue(leapenv, 'lockdownGlobalFacade', lockdownGlobalFacade);
   defineNonEnumerableValue(leapenv, 'DEFAULT_FACADE_PUBLIC_KEYS', DEFAULT_FACADE_PUBLIC_KEYS.slice());
 
 })(globalThis);

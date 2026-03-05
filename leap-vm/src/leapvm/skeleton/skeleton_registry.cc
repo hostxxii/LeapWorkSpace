@@ -460,7 +460,7 @@ v8::Intercepted SkeletonSymbolNamedGetter(
     v8::Local<v8::Value> prop_value;
     {
         v8::TryCatch tc(isolate);
-        info.This()->Get(ctx, property).ToLocal(&prop_value);
+        (void)info.This()->Get(ctx, property).ToLocal(&prop_value);
     }
     g_in_skeleton_symbol_hook = false;
 
@@ -794,7 +794,7 @@ void SkeletonRegistry::ExposeTypeConstructorIfNeeded(const std::string& name) {
     }
 
     v8::Local<v8::Value> proto_val;
-    ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
+    (void)ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
 
     v8::Local<v8::Function> exposed_ctor = ctor;
     if (skeleton.ctor_illegal) {
@@ -1208,7 +1208,7 @@ void SkeletonRegistry::CreateInstance(const std::string& name) {
 
     auto context = context_.Get(isolate_);
     v8::Local<v8::Function> ctor;
-    tmpl->GetFunction(context).ToLocal(&ctor);  // may remain empty if creation fails
+    (void)tmpl->GetFunction(context).ToLocal(&ctor);  // may remain empty if creation fails
 
     // Special-case Window: reuse existing global object.
     if (skeleton.name == "Window") {
@@ -1271,7 +1271,7 @@ void SkeletonRegistry::CreateInstance(const std::string& name) {
 
         if (skeleton.expose_ctor && !skeleton.ctor_name.empty() && !ctor.IsEmpty()) {
             v8::Local<v8::Value> proto_val3;
-            ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val3);
+            (void)ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val3);
             v8::Local<v8::Function> exposed_ctor = ctor;
             if (skeleton.ctor_illegal) {
                 exposed_ctor = v8::Function::New(
@@ -1302,10 +1302,10 @@ void SkeletonRegistry::CreateInstance(const std::string& name) {
         // Bypass calling into user-visible constructor: create via InstanceTemplate.
         v8::Local<v8::ObjectTemplate> itmpl = tmpl->InstanceTemplate();
         if (!itmpl.IsEmpty()) {
-            itmpl->NewInstance(context).ToLocal(&instance);
+            (void)itmpl->NewInstance(context).ToLocal(&instance);
         }
     } else if (!ctor.IsEmpty()) {
-        ctor->NewInstance(context).ToLocal(&instance);
+        (void)ctor->NewInstance(context).ToLocal(&instance);
     }
     if (instance.IsEmpty()) {
         return;
@@ -1346,7 +1346,7 @@ void SkeletonRegistry::CreateInstance(const std::string& name) {
 
     if (!skeleton.ctor_name.empty() && !ctor.IsEmpty()) {
         v8::Local<v8::Value> proto_val;
-        ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
+        (void)ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
         v8::Local<v8::Function> exposed_ctor = ctor;
         if (skeleton.ctor_illegal) {
             exposed_ctor = v8::Function::New(
@@ -1387,7 +1387,7 @@ v8::Local<v8::Object> SkeletonRegistry::CreateInstanceByCtorName(const std::stri
         }
 
         v8::Local<v8::Function> ctor;
-        tmpl->GetFunction(context).ToLocal(&ctor);
+        (void)tmpl->GetFunction(context).ToLocal(&ctor);
         v8::Local<v8::Object> instance;
 
         if (skeleton.name == "Window") {
@@ -1399,10 +1399,10 @@ v8::Local<v8::Object> SkeletonRegistry::CreateInstanceByCtorName(const std::stri
         if (skeleton.ctor_illegal) {
             v8::Local<v8::ObjectTemplate> itmpl = tmpl->InstanceTemplate();
             if (!itmpl.IsEmpty()) {
-                itmpl->NewInstance(context).ToLocal(&instance);
+                (void)itmpl->NewInstance(context).ToLocal(&instance);
             }
         } else if (!ctor.IsEmpty()) {
-            ctor->NewInstance(context).ToLocal(&instance);
+            (void)ctor->NewInstance(context).ToLocal(&instance);
         }
 
         if (instance.IsEmpty()) {
@@ -2413,7 +2413,7 @@ void SkeletonRegistry::CreateInstanceFromInstanceSkeleton(const std::string& nam
 
         if (type_skeleton.expose_ctor && !type_skeleton.ctor_name.empty() && !ctor.IsEmpty()) {
             v8::Local<v8::Value> proto_val;
-            ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
+            (void)ctor->Get(context, V8String(isolate_, "prototype")).ToLocal(&proto_val);
 
             v8::Local<v8::Function> exposed_ctor = ctor;
 

@@ -3,8 +3,9 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { hostLog } = require('../instance/host-log');
-const { resolveRunOptions } = require('../../runner');
+const { resolveRunOptions, generateBundleCodeCache } = require('../../runner');
 const { toPositiveInteger } = require('./worker-common');
+const { ProcessPool } = require('./process-pool');
 
 function getCpuCount() {
   if (typeof os.availableParallelism === 'function') {
@@ -53,8 +54,59 @@ function getHostMemorySnapshot() {
   };
 }
 
+function resolveLeapVmEntryForPin() {
+  if (process.env.LEAP_VM_PACKAGE_PATH) {
+    return path.resolve(process.env.LEAP_VM_PACKAGE_PATH);
+  }
+
+  const workspacePackagePath = path.resolve(__dirname, '../../..', 'leap-vm');
+  if (fs.existsSync(workspacePackagePath)) {
+    return workspacePackagePath;
+  }
+
+  return 'leap-vm';
+}
+
+function shouldUseProcessPoolDelegate(options = {}) {
+  if (options && options.forceProcessPool === true) {
+    return true;
+  }
+  const forceProcessRaw = String(
+    process.env.LEAPVM_THREADPOOL_FORCE_PROCESSPOOL || ''
+  ).trim().toLowerCase();
+  return forceProcessRaw === '1' || forceProcessRaw === 'true' || forceProcessRaw === 'yes';
+}
+
 class ThreadPool {
   constructor(options = {}) {
+    this.delegate = null;
+    this.fallbackReason = null;
+
+    if (shouldUseProcessPoolDelegate(options)) {
+      this.fallbackReason = 'explicit-processpool-delegate';
+      this.delegate = new ProcessPool(options);
+      this.size = this.delegate.size;
+      this.workerScriptPath = this.delegate.workerScriptPath;
+      this.taskTimeoutMs = this.delegate.taskTimeoutMs;
+      this.workerInitTimeoutMs = this.delegate.workerInitTimeoutMs;
+      this.maxTasksPerWorker = this.delegate.maxTasksPerWorker;
+      this.heartbeatIntervalMs = this.delegate.heartbeatIntervalMs;
+      this.heartbeatTimeoutMs = this.delegate.heartbeatTimeoutMs;
+      this.shutdownGraceMs = this.delegate.shutdownGraceMs;
+      this.workerInitOptions = this.delegate.workerInitOptions;
+      this.started = false;
+      this.closing = false;
+      this.metrics = this.delegate.metrics;
+      this.dodSupported = false;
+      this.dodTransferMode = 'clone';
+      this.enableDodZeroCopy = false;
+      hostLog(
+        'warn',
+        '[ThreadPool] Using ProcessPool delegate due to forceProcessPool/LEAPVM_THREADPOOL_FORCE_PROCESSPOOL.'
+      );
+      return;
+    }
+
     const defaultSize = computeDefaultWorkerCount(options.workerMultiplier || 1);
 
     this.size = toPositiveInteger(options.size, defaultSize);
@@ -103,9 +155,50 @@ class ThreadPool {
       recycled: 0,
       respawned: 0
     };
+
+    this.pinnedLeapVmAddon = null;
+    this._pinLeapVmAddonForLinuxWorkers();
+  }
+
+  _pinLeapVmAddonForLinuxWorkers() {
+    if (process.platform !== 'linux') {
+      return;
+    }
+
+    if (this.delegate) {
+      return;
+    }
+
+    const disablePinRaw = String(process.env.LEAPVM_DISABLE_MAIN_ADDON_PIN || '')
+      .trim()
+      .toLowerCase();
+    if (disablePinRaw === '1' || disablePinRaw === 'true' || disablePinRaw === 'yes') {
+      return;
+    }
+
+    if (global.__leapvmMainAddonPin) {
+      this.pinnedLeapVmAddon = global.__leapvmMainAddonPin;
+      return;
+    }
+
+    try {
+      const entry = resolveLeapVmEntryForPin();
+      this.pinnedLeapVmAddon = require(entry);
+      global.__leapvmMainAddonPin = this.pinnedLeapVmAddon;
+      hostLog('info', `[ThreadPool] Pinned leap-vm addon in main thread: ${entry}`);
+    } catch (error) {
+      hostLog('warn', `[ThreadPool] Failed to pin leap-vm addon in main thread: ${error && error.message}`);
+    }
   }
 
   async start() {
+    if (this.delegate) {
+      await this.delegate.start();
+      this.started = true;
+      this.closing = false;
+      return;
+    }
+
     if (this.started) {
       return;
     }
@@ -129,6 +222,24 @@ class ThreadPool {
       }
     }
 
+    // Generate V8 code cache for the bundle so workers skip parse+compile.
+    if (this.workerInitOptions.bundleCode && !this.workerInitOptions.bundleCodeCache) {
+      try {
+        if (this.pinnedLeapVmAddon && typeof this.pinnedLeapVmAddon.createCodeCache === 'function') {
+          const cache = generateBundleCodeCache(this.pinnedLeapVmAddon, this.workerInitOptions.bundleCode);
+          if (cache && cache.length > 0) {
+            this.workerInitOptions = {
+              ...this.workerInitOptions,
+              bundleCodeCache: cache
+            };
+            hostLog('info', `Bundle code cache generated (${cache.length} bytes), workers will use cached compilation.`);
+          }
+        }
+      } catch (err) {
+        hostLog('warn', `Failed to generate bundle code cache: ${err && err.message}`);
+      }
+    }
+
     const bootPromises = [];
     for (let i = 0; i < this.size; i += 1) {
       bootPromises.push(this._spawnWorker());
@@ -140,10 +251,17 @@ class ThreadPool {
   }
 
   runTask(payload = {}, options = {}) {
+    if (this.delegate) {
+      return this.delegate.runTask(payload, options);
+    }
     return this.runSignature(payload, options);
   }
 
   runSignature(payload = {}, options = {}) {
+    if (this.delegate) {
+      return this.delegate.runSignature(payload, options);
+    }
+
     if (!this.started) {
       return Promise.reject(createTaskError('Thread pool is not started'));
     }
@@ -168,6 +286,14 @@ class ThreadPool {
   }
 
   async close(options = {}) {
+    if (this.delegate) {
+      this.closing = true;
+      await this.delegate.close(options);
+      this.started = false;
+      this.closing = false;
+      return;
+    }
+
     if (!this.started) {
       return;
     }
@@ -668,6 +794,15 @@ class ThreadPool {
   }
 
   getStats() {
+    if (this.delegate) {
+      const delegateStats = this.delegate.getStats();
+      return {
+        ...delegateStats,
+        backend: 'process-fallback',
+        fallbackReason: this.fallbackReason
+      };
+    }
+
     let workerRssTotal = 0;
     let workerHeapUsedTotal = 0;
     let workersWithMemory = 0;

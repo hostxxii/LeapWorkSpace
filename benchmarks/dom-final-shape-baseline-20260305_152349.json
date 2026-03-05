@@ -1,0 +1,231 @@
+{
+  "timestamp": "2026-03-05T07:23:49.967Z",
+  "config": {
+    "poolSize": 2,
+    "concurrency": 4,
+    "totalTasks": 40,
+    "taskTimeoutMs": 10000,
+    "maxTasksPerWorker": 400
+  },
+  "js": {
+    "backend": "js",
+    "config": {
+      "poolSize": 2,
+      "concurrency": 4,
+      "totalTasks": 40,
+      "taskTimeoutMs": 10000,
+      "maxTasksPerWorker": 400
+    },
+    "totals": {
+      "success": 40,
+      "failed": 0,
+      "timedOut": 0
+    },
+    "throughputRps": 506.33,
+    "latencyMs": {
+      "p50": 3,
+      "p90": 5,
+      "p99": 11,
+      "max": 11
+    },
+    "memory": {
+      "rssGrowthMb": 77.5
+    },
+    "stability": {
+      "failureRate": 0,
+      "timeoutRate": 0,
+      "workerRecycleRate": 0,
+      "leakedDocsAutoReleased": 0,
+      "releasedNodes": 4960
+    },
+    "errorSamples": [],
+    "poolStats": {
+      "enqueued": 40,
+      "started": 40,
+      "succeeded": 40,
+      "failed": 0,
+      "timedOut": 0,
+      "recycled": 0,
+      "respawned": 0,
+      "workers": 2,
+      "idleWorkers": 2,
+      "activeTasks": 0,
+      "pendingTasks": 0,
+      "memory": {
+        "host": {
+          "rss": 178130944,
+          "heapTotal": 9601024,
+          "heapUsed": 8115216,
+          "external": 1558743,
+          "arrayBuffers": 10515
+        },
+        "workersWithMemory": 2,
+        "workerRssTotal": 355999744,
+        "workerHeapUsedTotal": 25883472
+      },
+      "workersDetail": [
+        {
+          "workerId": "thread-worker-1",
+          "pid": 41770,
+          "threadId": 1,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 178130944,
+            "heapTotal": 17391616,
+            "heapUsed": 13000024,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        },
+        {
+          "workerId": "thread-worker-2",
+          "pid": 41770,
+          "threadId": 2,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 177868800,
+            "heapTotal": 17129472,
+            "heapUsed": 12883448,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        }
+      ]
+    }
+  },
+  "spec": {
+    "backend": "spec",
+    "config": {
+      "poolSize": 2,
+      "concurrency": 4,
+      "totalTasks": 40,
+      "taskTimeoutMs": 10000,
+      "maxTasksPerWorker": 400
+    },
+    "totals": {
+      "success": 40,
+      "failed": 0,
+      "timedOut": 0
+    },
+    "throughputRps": 519.48,
+    "latencyMs": {
+      "p50": 3,
+      "p90": 4,
+      "p99": 12,
+      "max": 12
+    },
+    "memory": {
+      "rssGrowthMb": 49.88
+    },
+    "stability": {
+      "failureRate": 0,
+      "timeoutRate": 0,
+      "workerRecycleRate": 0,
+      "leakedDocsAutoReleased": 0,
+      "releasedNodes": 4960
+    },
+    "errorSamples": [],
+    "poolStats": {
+      "enqueued": 40,
+      "started": 40,
+      "succeeded": 40,
+      "failed": 0,
+      "timedOut": 0,
+      "recycled": 0,
+      "respawned": 0,
+      "workers": 2,
+      "idleWorkers": 2,
+      "activeTasks": 0,
+      "pendingTasks": 0,
+      "memory": {
+        "host": {
+          "rss": 216653824,
+          "heapTotal": 16080896,
+          "heapUsed": 11711880,
+          "external": 1558743,
+          "arrayBuffers": 10515
+        },
+        "workersWithMemory": 2,
+        "workerRssTotal": 433176576,
+        "workerHeapUsedTotal": 26007440
+      },
+      "workersDetail": [
+        {
+          "workerId": "thread-worker-1",
+          "pid": 41770,
+          "threadId": 3,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 216522752,
+            "heapTotal": 17391616,
+            "heapUsed": 12981112,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        },
+        {
+          "workerId": "thread-worker-2",
+          "pid": 41770,
+          "threadId": 4,
+          "tasksHandled": 20,
+          "cleanupFailureCount": 0,
+          "status": "idle",
+          "memoryUsage": {
+            "rss": 216653824,
+            "heapTotal": 17391616,
+            "heapUsed": 13026328,
+            "external": 2414268,
+            "arrayBuffers": 10379
+          },
+          "runtimeStats": null
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "spec": {
+      "ok": false,
+      "checks": [
+        {
+          "name": "RPS_spec >= RPS_js * 0.98",
+          "pass": true,
+          "actual": 519.48,
+          "expected": ">= 496.20"
+        },
+        {
+          "name": "p99_spec <= p99_js * 1.05",
+          "pass": false,
+          "actual": 12,
+          "expected": "<= 11.55"
+        },
+        {
+          "name": "rssGrowth_spec <= rssGrowth_js * 1.10",
+          "pass": true,
+          "actual": 49.88,
+          "expected": "<= 85.25"
+        },
+        {
+          "name": "failureRate_spec <= failureRate_js",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0"
+        },
+        {
+          "name": "timeoutRate_spec <= timeoutRate_js",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0"
+        }
+      ]
+    }
+  }
+}

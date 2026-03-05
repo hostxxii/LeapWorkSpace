@@ -3336,19 +3336,22 @@
   }
 
   function createNodeObject(ctorName, label) {
+    var bridge = (typeof leapenv.getNativeBridge === 'function')
+      ? (function () { try { return leapenv.getNativeBridge(); } catch (_) { return null; } })()
+      : null;
     var created = null;
 
-    if (global.$native && typeof global.$native.createSkeletonInstance === 'function') {
+    if (bridge && typeof bridge.createSkeletonInstance === 'function') {
       try {
-        created = global.$native.createSkeletonInstance(ctorName, label || '');
+        created = bridge.createSkeletonInstance(ctorName, label || '');
       } catch (_) {
         created = null;
       }
     }
 
-    if (!created && typeof global.__createNative__ === 'function') {
+    if (!created && bridge && typeof bridge.createNative === 'function') {
       try {
-        created = global.__createNative__(ctorName);
+        created = bridge.createNative(ctorName);
       } catch (_) {
         created = null;
       }
@@ -3363,9 +3366,9 @@
     // Layer 2：为有 instance skeleton 的类型补装 C++ 级 instance-level 拦截器
     // C++ 通过 super_type == ctorName 自动匹配，无需手动维护映射表
     // 没有 instance skeleton 的类型（如 HTMLDivElement）C++ 侧静默返回
-    if (typeof global.__applyInstanceSkeleton__ === 'function') {
+    if (bridge && typeof bridge.applyInstanceSkeleton === 'function') {
       try {
-        global.__applyInstanceSkeleton__(created, ctorName);
+        bridge.applyInstanceSkeleton(created, ctorName);
       } catch (_) {}
     }
 

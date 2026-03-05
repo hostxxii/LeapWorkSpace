@@ -16,13 +16,13 @@ public:
     VmInstance* instance() const { return vm_.get(); }
 
 private:
-    static Napi::FunctionReference constructor_;
-
     std::unique_ptr<VmInstance> vm_;
 
     void EnsureAlive(const Napi::Env& env) const;
 
     Napi::Value RunScript(const Napi::CallbackInfo& info);
+    Napi::Value CreateCodeCache(const Napi::CallbackInfo& info);
+    Napi::Value RunScriptWithCache(const Napi::CallbackInfo& info);
     Napi::Value RunLoop(const Napi::CallbackInfo& info);
     Napi::Value Shutdown(const Napi::CallbackInfo& info);
     Napi::Value SetMonitorEnabled(const Napi::CallbackInfo& info);

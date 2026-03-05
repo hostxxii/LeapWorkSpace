@@ -23,18 +23,26 @@
     });
   }
 
+  function getNativeBridge() {
+    if (typeof leapenv.getNativeBridge === 'function') {
+      try { return leapenv.getNativeBridge(); } catch (_) {}
+    }
+    return null;
+  }
+
   function createHTMLAllCollectionObject() {
+    var bridge = getNativeBridge();
     let obj = null;
-    if (global.$native && typeof global.$native.createSkeletonInstance === 'function') {
+    if (bridge && typeof bridge.createSkeletonInstance === 'function') {
       try {
-        obj = global.$native.createSkeletonInstance('HTMLAllCollection', '');
+        obj = bridge.createSkeletonInstance('HTMLAllCollection', '');
       } catch (_) {
         obj = null;
       }
     }
-    if (!obj && typeof global.__createNative__ === 'function') {
+    if (!obj && bridge && typeof bridge.createNative === 'function') {
       try {
-        obj = global.__createNative__('HTMLAllCollection');
+        obj = bridge.createNative('HTMLAllCollection');
       } catch (_) {
         obj = null;
       }
@@ -42,8 +50,8 @@
     if (!obj) {
       obj = {};
     }
-    if (typeof global.__applyInstanceSkeleton__ === 'function') {
-      try { global.__applyInstanceSkeleton__(obj, 'HTMLAllCollection'); } catch (_) {}
+    if (bridge && typeof bridge.applyInstanceSkeleton === 'function') {
+      try { bridge.applyInstanceSkeleton(obj, 'HTMLAllCollection'); } catch (_) {}
     }
     return obj;
   }

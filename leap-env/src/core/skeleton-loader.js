@@ -1,5 +1,5 @@
 // Skeleton Loader - 在 runtime 之后, tools 之前加载
-// 负责收集所有 skeleton 描述并调用 $native.defineEnvironmentSkeleton
+// 负责收集所有 skeleton 描述并调用 LeapVM bridge defineEnvironmentSkeleton
 
 (function (global) {
     const leapenv = global.leapenv || (global.leapenv = {});
@@ -158,11 +158,15 @@
             return;
         }
 
+        const nativeBridge = (typeof leapenv.getNativeBridge === 'function')
+            ? leapenv.getNativeBridge()
+            : null;
+
         // 检查是否在 LeapVM 环境中
-        if (typeof global.$native === 'undefined' ||
-            typeof global.$native.defineEnvironmentSkeleton !== 'function') {
+        if (!nativeBridge ||
+            typeof nativeBridge.defineEnvironmentSkeleton !== 'function') {
             throw new Error(
-                '[leapenv][skeleton] FATAL: $native.defineEnvironmentSkeleton not available. ' +
+                '[leapenv][skeleton] FATAL: native bridge defineEnvironmentSkeleton not available. ' +
                 'Skeleton-based environment REQUIRES LeapVM. ' +
                 'Old JS def/instance approach is deprecated and removed.'
             );
@@ -179,7 +183,7 @@
 
         // 调用 C++ API
         try {
-            global.$native.defineEnvironmentSkeleton(envDescriptor);
+            nativeBridge.defineEnvironmentSkeleton(envDescriptor);
             leapenv.skeletonLoaded = true;
         } catch (err) {
             try { global.__envError = err; } catch (_) {}

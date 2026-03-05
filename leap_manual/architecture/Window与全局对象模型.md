@@ -1,7 +1,7 @@
 # Window与全局对象模型
 
 > 源文件：`leap-env/src/impl/Window.impl.js`，`leap-env/src/instance/skeleton-init.instance.js`，`leap-env/src/skeleton/instance/window.instance.skeleton.js`
-> 更新：2026-03-01（M05 全链路审查）
+> 更新：2026-03-05（同步 strict 全局收敛）
 
 ## 功能概述
 
@@ -60,7 +60,7 @@ getMetricNumber('innerWidth', 1920)  // 优先 signatureTaskState，无则回退
 
 ### 5. 定时器（宿主定时器代理）
 
-优先使用 `global.__LEAP_HOST_TIMERS__`（宿主注入对象），回退到全局 `setTimeout/setInterval/clearTimeout/clearInterval`：
+优先使用 `leapenv.getHostTimers()`（来源于 `__runtimeBootstrap.hostTimers`），回退到全局 `setTimeout/setInterval/clearTimeout/clearInterval`：
 
 - `setTimeout/setInterval/clearTimeout/clearInterval`：透传到宿主定时器
 - `requestAnimationFrame(cb)`：用 `setTimeout(16ms)` 模拟，cb 接收 `performance.now()` 或 `Date.now()`
@@ -101,7 +101,7 @@ Window 级事件监听不走 DOM 冒泡，纯 JS 实现：
 | `btoa/atob` | 纯 JS 实现，兼容 Latin1 编码范围 |
 | `getComputedStyle(el)` | 读取 `dom.ensureNodeState(el).styleStore`，返回 Proxy |
 | `window.frames` | 返回 `this`（window 自身） |
-| `window.length` | 调用 C++ `__getChildFrameCount__()`（iframe A3 路径） |
+| `window.length` | 调用 `leapenv.getNativeBridge().getChildFrameCount()`（iframe A3 路径） |
 | `window.self/top/parent` | 当前顶层语义，均返回 `this` |
 | `alert/confirm/prompt` | 存根：alert 打印 log，confirm 返回 false，prompt 返回 null |
 | `open()` | 存根，返回 null |
@@ -127,7 +127,7 @@ skeleton-init.instance.js
   window.crypto           → CryptoPlaceholder（xorshift32 / Math.random 回退）
   fetch(url)              → rejected Promise（LEAP_NETWORK_DISABLED）
   new XMLHttpRequest()    → 占位对象（send 时抛错）
-  setTimeout(fn, 16)      → 宿主 __LEAP_HOST_TIMERS__.setTimeout
+  setTimeout(fn, 16)      → 宿主 hostTimers.setTimeout（经 leapenv runtime 注入）
   requestAnimationFrame   → setTimeout(16ms) 模拟
 ```
 

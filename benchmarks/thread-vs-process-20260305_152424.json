@@ -1,0 +1,167 @@
+{
+  "timestamp": "2026-03-05T07:24:24.503Z",
+  "reports": [
+    {
+      "mode": "process",
+      "config": {
+        "poolSize": 2,
+        "concurrency": 8,
+        "totalTasks": 80,
+        "taskTimeoutMs": 12000,
+        "maxTasksPerWorker": 200
+      },
+      "results": {
+        "success": 80,
+        "failed": 0,
+        "elapsedMs": 178,
+        "throughputRps": 449.44,
+        "latencyMs": {
+          "min": 1,
+          "p50": 2,
+          "p90": 2,
+          "p99": 3,
+          "max": 3
+        }
+      },
+      "poolStats": {
+        "enqueued": 80,
+        "started": 80,
+        "succeeded": 80,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 2,
+        "idleWorkers": 2,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 44302336,
+            "heapTotal": 6529024,
+            "heapUsed": 4486192,
+            "external": 1595231,
+            "arrayBuffers": 22549
+          },
+          "workersWithMemory": 2,
+          "workerRssTotal": 187674624,
+          "workerHeapUsedTotal": 15021280
+        },
+        "workersDetail": [
+          {
+            "workerId": "worker-1",
+            "pid": 41950,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 93843456,
+              "heapTotal": 12222464,
+              "heapUsed": 7510640,
+              "external": 1528120,
+              "arrayBuffers": 12275
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "worker-2",
+            "pid": 41951,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 93831168,
+              "heapTotal": 12222464,
+              "heapUsed": 7510640,
+              "external": 1528120,
+              "arrayBuffers": 12275
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    },
+    {
+      "mode": "thread",
+      "config": {
+        "poolSize": 2,
+        "concurrency": 8,
+        "totalTasks": 80,
+        "taskTimeoutMs": 12000,
+        "maxTasksPerWorker": 200
+      },
+      "results": {
+        "success": 80,
+        "failed": 0,
+        "elapsedMs": 178,
+        "throughputRps": 449.44,
+        "latencyMs": {
+          "min": 1,
+          "p50": 2,
+          "p90": 2,
+          "p99": 4,
+          "max": 4
+        }
+      },
+      "poolStats": {
+        "enqueued": 80,
+        "started": 80,
+        "succeeded": 80,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0,
+        "workers": 2,
+        "idleWorkers": 2,
+        "activeTasks": 0,
+        "pendingTasks": 0,
+        "memory": {
+          "host": {
+            "rss": 166383616,
+            "heapTotal": 10125312,
+            "heapUsed": 8705144,
+            "external": 1595845,
+            "arrayBuffers": 23123
+          },
+          "workersWithMemory": 2,
+          "workerRssTotal": 332767232,
+          "workerHeapUsedTotal": 26284792
+        },
+        "workersDetail": [
+          {
+            "workerId": "thread-worker-1",
+            "pid": 41943,
+            "threadId": 1,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 166383616,
+              "heapTotal": 17391616,
+              "heapUsed": 13130880,
+              "external": 2414268,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          },
+          {
+            "workerId": "thread-worker-2",
+            "pid": 41943,
+            "threadId": 2,
+            "tasksHandled": 40,
+            "cleanupFailureCount": 0,
+            "status": "idle",
+            "memoryUsage": {
+              "rss": 166383616,
+              "heapTotal": 17391616,
+              "heapUsed": 13153912,
+              "external": 2414268,
+              "arrayBuffers": 10379
+            },
+            "runtimeStats": null
+          }
+        ]
+      }
+    }
+  ]
+}

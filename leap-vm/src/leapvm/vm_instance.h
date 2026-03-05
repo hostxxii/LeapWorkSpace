@@ -101,6 +101,24 @@ public:
                    std::string& result_out,
                    std::string* error_out = nullptr,
                    const std::string& resource_name = "");
+
+    // Code Cache: compile script and produce V8 code cache bytes.
+    // Returns true on success; cache_out receives the raw cache data.
+    bool CreateCodeCache(const std::string& source_utf8,
+                         std::vector<uint8_t>& cache_out,
+                         std::string* error_out = nullptr,
+                         const std::string& resource_name = "");
+
+    // Code Cache: run script consuming a previously generated code cache.
+    // Falls back to normal compilation if the cache is rejected.
+    bool RunScriptWithCache(const std::string& source_utf8,
+                            const uint8_t* cache_data,
+                            size_t cache_length,
+                            std::string& result_out,
+                            bool* cache_rejected_out = nullptr,
+                            std::string* error_out = nullptr,
+                            const std::string& resource_name = "");
+
     void RunLoopOnce(std::chrono::milliseconds max_duration);
 
     // --- Skeleton / Env integration ---

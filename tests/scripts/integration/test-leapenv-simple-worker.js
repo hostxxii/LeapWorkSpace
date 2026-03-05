@@ -1,4 +1,4 @@
-const { Worker, isMainThread, threadId } = require('worker_threads');
+const { Worker, isMainThread, parentPort, threadId } = require('worker_threads');
 const fs = require('fs');
 
 const logFile = require('path').join(__dirname, 'test-leapenv-simple-worker.log');
@@ -32,6 +32,6 @@ if (isMainThread) {
   log(`Worker ${threadId}: starting`);
   setTimeout(() => {
     log(`Worker ${threadId}: sending message`);
-    process.send('hello from worker');
+    parentPort.postMessage('hello from worker');
   }, 100);
 }

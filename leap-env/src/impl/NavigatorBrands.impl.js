@@ -25,17 +25,25 @@
     });
   }
 
-  function createNativeObject(ctorName) {
-    var obj = null;
-    if (global.$native && typeof global.$native.createSkeletonInstance === 'function') {
-      try { obj = global.$native.createSkeletonInstance(ctorName, ''); } catch (_) { obj = null; }
+  function getNativeBridge() {
+    if (typeof leapenv.getNativeBridge === 'function') {
+      try { return leapenv.getNativeBridge(); } catch (_) {}
     }
-    if (!obj && typeof global.__createNative__ === 'function') {
-      try { obj = global.__createNative__(ctorName); } catch (_) { obj = null; }
+    return null;
+  }
+
+  function createNativeObject(ctorName) {
+    var bridge = getNativeBridge();
+    var obj = null;
+    if (bridge && typeof bridge.createSkeletonInstance === 'function') {
+      try { obj = bridge.createSkeletonInstance(ctorName, ''); } catch (_) { obj = null; }
+    }
+    if (!obj && bridge && typeof bridge.createNative === 'function') {
+      try { obj = bridge.createNative(ctorName); } catch (_) { obj = null; }
     }
     if (!obj) obj = {};
-    if (typeof global.__applyInstanceSkeleton__ === 'function') {
-      try { global.__applyInstanceSkeleton__(obj, ctorName); } catch (_) {}
+    if (bridge && typeof bridge.applyInstanceSkeleton === 'function') {
+      try { bridge.applyInstanceSkeleton(obj, ctorName); } catch (_) {}
     }
     return obj;
   }

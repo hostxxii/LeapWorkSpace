@@ -1,7 +1,7 @@
 # iframe多上下文
 
 > 源文件：`leap-env/src/impl/HTMLIFrameElement.impl.js`，`leap-vm/src/leapvm/vm_instance.cc`（子帧相关函数段）
-> 更新：2026-03-01
+> 更新：2026-03-05（同步 strict 全局收敛）
 
 ## 功能概述
 
@@ -40,7 +40,7 @@ function isSameOrigin(url) {
 }
 ```
 
-JS 侧计算同源结果后通过 `__createChildFrame__(url, sameOrigin)` 传入 C++，C++ 侧以此值（`cf.same_origin`）决定所有后续访问是否允许。**此判断一旦写入 C++，不可在运行时更改。**
+JS 侧计算同源结果后通过 `leapenv.getNativeBridge().createChildFrame(url, sameOrigin)` 传入 C++，C++ 侧以此值（`cf.same_origin`）决定所有后续访问是否允许。**此判断一旦写入 C++，不可在运行时更改。**
 
 ### 3. 全局函数注册
 
@@ -53,12 +53,12 @@ register_global_fn("__getChildFrameCount__", NativeGetChildFrameCount);
 register_global_fn("__getChildFrameProxy__", NativeGetChildFrameProxy);
 ```
 
-这 5 个函数注册到主上下文全局对象，供 JS 侧直接调用。
+这 5 个函数先注册到主上下文全局对象，随后由 `runtime.js` 在 bootstrap 阶段捕获到内部 bridge（`leapenv.getNativeBridge()`）并按默认 strict 策略从 `window/globalThis` 清理名称；JS impl 层通过内部 bridge 间接调用。
 
 ### 4. window.frames / window.length（C++ 拦截）
 
 - `window[n]`：由 C++ `IndexedPropertyHandler`（`FramesIndexedGetter`）拦截，直接返回 `child_ctx->Global()`（同源）或 `null`（跨域）。
-- `window.length`：`WindowImpl.get length()` → `__getChildFrameCount__()`，返回当前子帧数量。
+- `window.length`：`WindowImpl.get length()` → `leapenv.getNativeBridge().getChildFrameCount()`，返回当前子帧数量。
 - `window.frames`：WindowImpl 中定义为只读属性（setter no-op），读取时返回 `this`（即 window 自身）。
 
 ### 5. IsSameOriginBrandCompatible（跨帧品牌校验）
@@ -80,7 +80,7 @@ register_global_fn("__getChildFrameProxy__", NativeGetChildFrameProxy);
 HTMLIFrameElementImpl.set src(url)
   └─ ensureChildFrame(iframe, url)
        ├─ isSameOrigin(url) → sameOrigin:bool
-       └─ __createChildFrame__(url, sameOrigin)
+       └─ leapenv.getNativeBridge().createChildFrame(url, sameOrigin)
             └─ CreateChildFrameOnVmThread(url, same_origin)
                  1. 以 global_template_ 创建新 V8 Context
                  2. 安装 Console / Timer / NativeWrapper
@@ -98,7 +98,7 @@ HTMLIFrameElementImpl.set src(url)
 ```
 HTMLIFrameElementImpl.get contentWindow()
   ├─ index = _iframeFrameIndex.get(this)
-  └─ __getChildFrameProxy__(index)
+  └─ leapenv.getNativeBridge().getChildFrameProxy(index)
        └─ GetChildFrameProxyOnVmThread(caller_ctx, index)
             ├─ 查 child_frames_[index]
             ├─ cf.same_origin=false → return empty (→ null)
@@ -109,7 +109,7 @@ HTMLIFrameElementImpl.get contentWindow()
 
 ```
 ensureChildFrame(iframe, url)  // existingIndex >= 0
-  └─ __navigateChildFrame__(existingIndex, url)
+  └─ leapenv.getNativeBridge().navigateChildFrame(existingIndex, url)
        └─ NavigateChildFrameOnVmThread(index, url)
             └─ 更新 cf.url，在子 Context 内重新设置 location.href
                （不重建 Context，不重新执行 bundle）
@@ -118,7 +118,7 @@ ensureChildFrame(iframe, url)  // existingIndex >= 0
 ### 子帧销毁
 
 ```
-__destroyChildFrame__(frameId)     // 需 JS 侧主动调用
+leapenv.getNativeBridge().destroyChildFrame(frameId)     // 需 JS 侧主动调用
   └─ DestroyChildFrameOnVmThread(frame_id)
        ├─ Reset dispatch_fn / registry（释放 V8 GC 引用）
        └─ child_frames_.erase(frame_id)

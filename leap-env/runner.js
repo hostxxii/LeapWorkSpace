@@ -108,10 +108,14 @@ function normalizeSignatureProfile(raw) {
   return normalized === 'fp-occupy' ? 'fp-occupy' : 'fp-lean';
 }
 
+const DEFAULT_HARDENING_MODE = 'strict';
+
 function buildBootstrapPayload(options = {}) {
   return {
     domBackend: normalizeDomBackend(options.domBackend),
     signatureProfile: normalizeSignatureProfile(options.signatureProfile),
+    bridgeExposureMode: DEFAULT_HARDENING_MODE,
+    globalFacadeMode: DEFAULT_HARDENING_MODE,
     debugEnabled: !!options.debug,
     hookRuntimeSeed: {
       active: false,
@@ -357,12 +361,22 @@ function applySignatureProfileSetting(leapvm, signatureProfile) {
   `);
 }
 
-function runEnvironmentBundle(leapvm, envCode) {
+function runEnvironmentBundle(leapvm, envCode, bundleCodeCache) {
   const wrappedEnv =
     "try {\n" +
     envCode +
     "\n} catch (e) { try { globalThis.__envError = e; } catch(_) {} if (typeof console !== 'undefined' && console && typeof console.error === 'function') { console.error('[env error]', e && e.stack ? e.stack : e); } throw e; }\n//# sourceURL=leapenv.bundle.exec.js";
-  leapvm.runScript(wrappedEnv);
+
+  // bundleCodeCache may arrive as Uint8Array after worker_threads postMessage.
+  const cacheBuffer = bundleCodeCache
+    ? (Buffer.isBuffer(bundleCodeCache) ? bundleCodeCache : Buffer.from(bundleCodeCache))
+    : null;
+  if (cacheBuffer && cacheBuffer.length > 0 &&
+      typeof leapvm.runScriptWithCache === 'function') {
+    leapvm.runScriptWithCache(wrappedEnv, cacheBuffer, 'leapenv.bundle.exec.js');
+  } else {
+    leapvm.runScript(wrappedEnv);
+  }
 }
 
 function runBeforeScript(leapvm, beforeRunScript) {
@@ -600,7 +614,9 @@ function initializeEnvironment(options = {}) {
   hostLog('info', 'Executing environment bundle...');
   runDebugPrelude(leapvm, resolved);
   runBeforeScript(leapvm, resolved.beforeRunScript);
-  runEnvironmentBundle(leapvm, envCode);
+
+  const bundleCodeCache = resolved.bundleCodeCache || null;
+  runEnvironmentBundle(leapvm, envCode, bundleCodeCache);
   hostLog('info', 'Environment bundle executed successfully!');
 
   return {
@@ -758,6 +774,22 @@ function runEnvironment(options = {}) {
   }
 }
 
+function generateBundleCodeCache(leapvm, bundleCode) {
+  if (!leapvm || typeof leapvm.createCodeCache !== 'function') {
+    return null;
+  }
+  const wrappedEnv =
+    "try {\n" +
+    bundleCode +
+    "\n} catch (e) { try { globalThis.__envError = e; } catch(_) {} if (typeof console !== 'undefined' && console && typeof console.error === 'function') { console.error('[env error]', e && e.stack ? e.stack : e); } throw e; }\n//# sourceURL=leapenv.bundle.exec.js";
+  try {
+    return leapvm.createCodeCache(wrappedEnv, 'leapenv.bundle.exec.js');
+  } catch (err) {
+    hostLog('warn', `Failed to generate bundle code cache: ${err && err.message}`);
+    return null;
+  }
+}
+
 module.exports = {
   runEnvironment,
   DEFAULT_TARGET_SCRIPT,
@@ -773,5 +805,6 @@ module.exports = {
   runEnvironmentBundle,
   initializeEnvironment,
   executeSignatureTask,
-  shutdownEnvironment
+  shutdownEnvironment,
+  generateBundleCodeCache
 };

@@ -1,6 +1,7 @@
 #include "vm_instance_wrapper.h"
 
 #include <chrono>
+#include <cstring>
 #include <string>
 #include <utility>
 #include <vector>
@@ -71,11 +72,11 @@ InspectorOptions ParseInspectorOptions(const Napi::Value& value) {
 
 }  // namespace
 
-Napi::FunctionReference VmInstanceWrapper::constructor_;
-
 Napi::Function VmInstanceWrapper::Init(Napi::Env env) {
     Napi::Function ctor = DefineClass(env, "VmInstance", {
         InstanceMethod("runScript", &VmInstanceWrapper::RunScript),
+        InstanceMethod("createCodeCache", &VmInstanceWrapper::CreateCodeCache),
+        InstanceMethod("runScriptWithCache", &VmInstanceWrapper::RunScriptWithCache),
         InstanceMethod("runLoop", &VmInstanceWrapper::RunLoop),
         InstanceMethod("shutdown", &VmInstanceWrapper::Shutdown),
         InstanceMethod("setMonitorEnabled", &VmInstanceWrapper::SetMonitorEnabled),
@@ -87,8 +88,6 @@ Napi::Function VmInstanceWrapper::Init(Napi::Env env) {
         InstanceMethod("installBuiltinWrappers", &VmInstanceWrapper::InstallBuiltinWrappers),
     });
 
-    constructor_ = Napi::Persistent(ctor);
-    constructor_.SuppressDestruct();
     return ctor;
 }
 
@@ -150,6 +149,76 @@ Napi::Value VmInstanceWrapper::RunScript(const Napi::CallbackInfo& info) {
 
     if (!success) {
         Napi::Error::New(env, error.empty() ? "RunScript failed" : error).ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    return Napi::String::New(env, result);
+}
+
+Napi::Value VmInstanceWrapper::CreateCodeCache(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    EnsureAlive(env);
+    if (!vm_) {
+        return env.Null();
+    }
+
+    if (info.Length() < 1 || !info[0].IsString()) {
+        Napi::TypeError::New(env, "String expected (script source)").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    std::string script_code = info[0].As<Napi::String>().Utf8Value();
+    std::string resource_name;
+    if (info.Length() >= 2 && info[1].IsString()) {
+        resource_name = info[1].As<Napi::String>().Utf8Value();
+    }
+
+    std::vector<uint8_t> cache_data;
+    std::string error;
+    bool success = vm_->CreateCodeCache(script_code, cache_data, &error, resource_name);
+
+    if (!success) {
+        Napi::Error::New(env, error.empty() ? "CreateCodeCache failed" : error)
+            .ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    auto buffer = Napi::Buffer<uint8_t>::Copy(env, cache_data.data(), cache_data.size());
+    return buffer;
+}
+
+Napi::Value VmInstanceWrapper::RunScriptWithCache(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    EnsureAlive(env);
+    if (!vm_) {
+        return env.Null();
+    }
+
+    // args: (scriptSource: string, cacheBuffer: Buffer, resourceName?: string)
+    if (info.Length() < 2 || !info[0].IsString() || !info[1].IsBuffer()) {
+        Napi::TypeError::New(env, "Expected (string, Buffer[, string])")
+            .ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    std::string script_code = info[0].As<Napi::String>().Utf8Value();
+    auto cache_buf = info[1].As<Napi::Buffer<uint8_t>>();
+    std::string resource_name;
+    if (info.Length() >= 3 && info[2].IsString()) {
+        resource_name = info[2].As<Napi::String>().Utf8Value();
+    }
+
+    std::string result;
+    std::string error;
+    bool cache_rejected = false;
+    bool success = vm_->RunScriptWithCache(
+        script_code,
+        cache_buf.Data(), cache_buf.Length(),
+        result, &cache_rejected, &error, resource_name);
+
+    if (!success) {
+        Napi::Error::New(env, error.empty() ? "RunScriptWithCache failed" : error)
+            .ThrowAsJavaScriptException();
         return env.Null();
     }
 

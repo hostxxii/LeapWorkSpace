@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-03T14:36:01.982Z",
+  "generatedAt": "2026-03-05T05:57:36.203Z",
   "options": {
     "domBackend": "dod",
     "signatureProfile": "fp-lean",
@@ -43,7 +43,7 @@
   "stages": [
     {
       "label": "beforeBundle",
-      "capturedAt": "2026-03-03T14:36:01.923Z",
+      "capturedAt": "2026-03-05T05:57:36.136Z",
       "keys": [
         "$native",
         "__applyInstanceSkeleton__",
@@ -270,7 +270,7 @@
     },
     {
       "label": "afterBundle",
-      "capturedAt": "2026-03-03T14:36:01.973Z",
+      "capturedAt": "2026-03-05T05:57:36.194Z",
       "keys": [
         "$native",
         "AbortController",
@@ -3846,7 +3846,7 @@
     },
     {
       "label": "beforeTask",
-      "capturedAt": "2026-03-03T14:36:01.974Z",
+      "capturedAt": "2026-03-05T05:57:36.195Z",
       "keys": [
         "$native",
         "AbortController",
@@ -7422,7 +7422,7 @@
     },
     {
       "label": "afterTask",
-      "capturedAt": "2026-03-03T14:36:01.978Z",
+      "capturedAt": "2026-03-05T05:57:36.199Z",
       "keys": [
         "$native",
         "AbortController",

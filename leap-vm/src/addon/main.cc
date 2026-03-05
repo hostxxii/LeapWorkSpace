@@ -8,9 +8,14 @@
 
 #include <atomic>
 #include <chrono>
+#include <cstring>
 #include <memory>
 #include <string>
 #include <vector>
+#include <cctype>
+#include <mutex>
+#include <thread>
+#include <cstdio>
 
 namespace {
 
@@ -19,10 +24,85 @@ struct AddonData {
     std::atomic<uint64_t> inspector_target_seq{0};
 };
 
+std::mutex g_vm_teardown_mutex;
+
+bool ShouldTraceAddonUnload() {
+#if defined(__linux__)
+    const char* raw = std::getenv("LEAPVM_TRACE_ADDON_UNLOAD");
+    if (!raw || raw[0] == '\0') {
+        return false;
+    }
+    std::string v(raw);
+    for (char& c : v) {
+        c = static_cast<char>(::tolower(static_cast<unsigned char>(c)));
+    }
+    return v == "1" || v == "true" || v == "yes";
+#else
+    return false;
+#endif
+}
+
+bool ShouldSkipVmTeardownOnAddonUnload() {
+#if defined(__linux__)
+    const char* raw = std::getenv("LEAPVM_SKIP_VM_TEARDOWN_ON_UNLOAD");
+    if (!raw || raw[0] == '\0') {
+        return false;
+    }
+    std::string v(raw);
+    for (char& c : v) {
+        c = static_cast<char>(::tolower(static_cast<unsigned char>(c)));
+    }
+    return v == "1" || v == "true" || v == "yes";
+#else
+    return false;
+#endif
+}
+
 void DeleteAddonData(napi_env env, void* data, void* hint) {
     (void)env;
     (void)hint;
-    delete static_cast<AddonData*>(data);
+    AddonData* addon = static_cast<AddonData*>(data);
+    const bool trace_unload = ShouldTraceAddonUnload();
+    if (trace_unload) {
+        std::fprintf(stderr,
+                     "[leapvm][addon] DeleteAddonData begin tid=%zu addon=%p default_vm=%p\n",
+                     static_cast<size_t>(std::hash<std::thread::id>{}(std::this_thread::get_id())),
+                     static_cast<void*>(addon),
+                     addon ? static_cast<void*>(addon->default_vm.get()) : nullptr);
+        std::fflush(stderr);
+    }
+    if (addon && ShouldSkipVmTeardownOnAddonUnload()) {
+        // Linux worker_threads 下 addon 环境销毁阶段偶发触发原生崩溃。
+        // 该开关用于验证崩溃是否来自 VmInstance teardown 路径。
+        (void)addon->default_vm.release();
+        if (trace_unload) {
+            std::fprintf(stderr, "[leapvm][addon] SkipVmTeardown enabled, default_vm released\n");
+            std::fflush(stderr);
+        }
+    } else if (addon) {
+        // 多 worker_threads 同时销毁 addon 环境时，串行化 VmInstance 析构路径，
+        // 避免并发 isolate Dispose 触发的随机 native 崩溃。
+        if (trace_unload) {
+            std::fprintf(stderr, "[leapvm][addon] waiting teardown mutex\n");
+            std::fflush(stderr);
+        }
+        std::lock_guard<std::mutex> lock(g_vm_teardown_mutex);
+        if (trace_unload) {
+            std::fprintf(stderr, "[leapvm][addon] teardown mutex acquired, resetting default_vm=%p\n",
+                         static_cast<void*>(addon->default_vm.get()));
+            std::fflush(stderr);
+        }
+        addon->default_vm.reset();
+        if (trace_unload) {
+            std::fprintf(stderr, "[leapvm][addon] default_vm reset done\n");
+            std::fflush(stderr);
+        }
+    }
+    delete addon;
+    if (trace_unload) {
+        std::fprintf(stderr, "[leapvm][addon] DeleteAddonData end\n");
+        std::fflush(stderr);
+    }
 }
 
 AddonData* GetAddonData(Napi::Env env) {
@@ -133,6 +213,74 @@ Napi::Value RunScript(const Napi::CallbackInfo& info) {
         Napi::Error::New(env, error.empty() ? "RunScript failed" : error).ThrowAsJavaScriptException();
         return env.Null();
     }
+    return Napi::String::New(env, result);
+}
+
+Napi::Value CreateCodeCache(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    if (info.Length() < 1 || !info[0].IsString()) {
+        Napi::TypeError::New(env, "String expected (script source)").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    leapvm::VmInstance* vm = GetOrCreateDefaultVm(env);
+    if (!vm) {
+        return env.Null();
+    }
+
+    std::string script_code = info[0].As<Napi::String>().Utf8Value();
+    std::string resource_name;
+    if (info.Length() >= 2 && info[1].IsString()) {
+        resource_name = info[1].As<Napi::String>().Utf8Value();
+    }
+
+    std::vector<uint8_t> cache_data;
+    std::string error;
+    bool success = vm->CreateCodeCache(script_code, cache_data, &error, resource_name);
+
+    if (!success) {
+        Napi::Error::New(env, error.empty() ? "CreateCodeCache failed" : error)
+            .ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    return Napi::Buffer<uint8_t>::Copy(env, cache_data.data(), cache_data.size());
+}
+
+Napi::Value RunScriptWithCache(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    if (info.Length() < 2 || !info[0].IsString() || !info[1].IsBuffer()) {
+        Napi::TypeError::New(env, "Expected (string, Buffer[, string])")
+            .ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    leapvm::VmInstance* vm = GetOrCreateDefaultVm(env);
+    if (!vm) {
+        return env.Null();
+    }
+
+    std::string script_code = info[0].As<Napi::String>().Utf8Value();
+    auto cache_buf = info[1].As<Napi::Buffer<uint8_t>>();
+    std::string resource_name;
+    if (info.Length() >= 3 && info[2].IsString()) {
+        resource_name = info[2].As<Napi::String>().Utf8Value();
+    }
+
+    std::string result;
+    std::string error;
+    bool cache_rejected = false;
+    bool success = vm->RunScriptWithCache(
+        script_code,
+        cache_buf.Data(), cache_buf.Length(),
+        result, &cache_rejected, &error, resource_name);
+
+    if (!success) {
+        Napi::Error::New(env, error.empty() ? "RunScriptWithCache failed" : error)
+            .ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
     return Napi::String::New(env, result);
 }
 
@@ -492,6 +640,8 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set(Napi::String::New(env, "VmInstance"), leapvm::addon::VmInstanceWrapper::Init(env));
 
     exports.Set(Napi::String::New(env, "runScript"), Napi::Function::New(env, RunScript));
+    exports.Set(Napi::String::New(env, "createCodeCache"), Napi::Function::New(env, CreateCodeCache));
+    exports.Set(Napi::String::New(env, "runScriptWithCache"), Napi::Function::New(env, RunScriptWithCache));
     exports.Set(Napi::String::New(env, "runLoop"), Napi::Function::New(env, RunLoop));
     exports.Set(Napi::String::New(env, "enableHighResTimer"), Napi::Function::New(env, EnableHighResTimer));
     exports.Set(Napi::String::New(env, "disableHighResTimer"), Napi::Function::New(env, DisableHighResTimer));

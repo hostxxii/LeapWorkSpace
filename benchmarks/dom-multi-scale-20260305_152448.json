@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-03-05T07:24:48.628Z",
+  "config": {
+    "poolSize": 4,
+    "concurrency": 16,
+    "totalTasks": 200,
+    "taskTimeoutMs": 10000,
+    "maxTasksPerWorker": 400
+  },
+  "scales": [
+    {
+      "nodes": 10,
+      "js_rps": 2272.73,
+      "spec_rps": 2500,
+      "rps_ratio": 1.1,
+      "js_p99": 7,
+      "spec_p99": 6,
+      "p99_ratio": 0.8571
+    },
+    {
+      "nodes": 50,
+      "js_rps": 1769.91,
+      "spec_rps": 1818.18,
+      "rps_ratio": 1.0273,
+      "js_p99": 7,
+      "spec_p99": 7,
+      "p99_ratio": 1
+    },
+    {
+      "nodes": 200,
+      "js_rps": 813.01,
+      "spec_rps": 823.05,
+      "rps_ratio": 1.0123,
+      "js_p99": 13,
+      "spec_p99": 14,
+      "p99_ratio": 1.0769
+    },
+    {
+      "nodes": 500,
+      "js_rps": 429.18,
+      "spec_rps": 417.54,
+      "rps_ratio": 0.9729,
+      "js_p99": 21,
+      "spec_p99": 26,
+      "p99_ratio": 1.2381
+    }
+  ]
+}

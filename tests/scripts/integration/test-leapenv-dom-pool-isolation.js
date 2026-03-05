@@ -77,17 +77,22 @@ async function runIsolationCase(mode, PoolCtor) {
 
 async function main() {
   const processResult = await runIsolationCase('process', ProcessPool);
-  const threadResult = await runIsolationCase('thread', ThreadPool);
 
-  console.log(JSON.stringify({
+  const skipThreadRaw = String(process.env.LEAPVM_SKIP_THREADPOOL_TESTS || '').trim().toLowerCase();
+  const skipThread = skipThreadRaw === '1' || skipThreadRaw === 'true' || skipThreadRaw === 'yes';
+  const threadResult = skipThread ? null : await runIsolationCase('thread', ThreadPool);
+
+  const report = {
     ok: true,
-    process: {
-      taskCount: processResult.taskCount
-    },
-    thread: {
-      taskCount: threadResult.taskCount
-    }
-  }, null, 2));
+    process: { taskCount: processResult.taskCount }
+  };
+  if (skipThread) {
+    report.thread = { skipped: true, reason: 'LEAPVM_SKIP_THREADPOOL_TESTS enabled' };
+    console.log('[dom-pool-isolation] ThreadPool skipped by LEAPVM_SKIP_THREADPOOL_TESTS');
+  } else {
+    report.thread = { taskCount: threadResult.taskCount };
+  }
+  console.log(JSON.stringify(report, null, 2));
 }
 
 main().catch((error) => {

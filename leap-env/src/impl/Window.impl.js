@@ -18,6 +18,13 @@
     return null;
   }
 
+  function getNativeBridge() {
+    if (typeof leapenv.getNativeBridge === 'function') {
+      try { return leapenv.getNativeBridge(); } catch (_) {}
+    }
+    return null;
+  }
+
   function bindGlobalTimer(name) {
     if (typeof global[name] !== 'function') {
       return null;
@@ -600,8 +607,9 @@
     set frames(_val) { /* no-op */ }
     get length() {
       // A3: return actual child frame count from C++ side
-      if (typeof __getChildFrameCount__ === 'function') {
-        return __getChildFrameCount__();
+      var bridge = getNativeBridge();
+      if (bridge && typeof bridge.getChildFrameCount === 'function') {
+        return bridge.getChildFrameCount();
       }
       return 0;
     }

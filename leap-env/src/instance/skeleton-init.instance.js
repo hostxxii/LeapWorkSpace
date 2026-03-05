@@ -33,10 +33,13 @@
         Object.setPrototypeOf(global.Window, global.EventTarget);
     }
 
-    // 收敛 leapenv 外露面：仅保留白名单键为可枚举属性。
-    // 注意：属性仍可通过直接访问读取，这里只控制枚举可见性。
+    // 收敛 leapenv 外露面（Phase 1）：将 globalThis.leapenv 替换为最小 facade。
+    // 内部完整 leapenv 仍由各模块闭包持有，不影响运行时功能。
     if (typeof leapenv.finalizeFacade === 'function') {
         try { leapenv.finalizeFacade(); } catch (_) {}
+    }
+    if (typeof leapenv.lockdownGlobalFacade === 'function') {
+        try { leapenv.lockdownGlobalFacade(); } catch (_) {}
     }
 
 })(globalThis);

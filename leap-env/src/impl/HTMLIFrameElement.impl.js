@@ -6,6 +6,13 @@
   // Track iframe instances to their child frame index
   var _iframeFrameIndex = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
 
+  function getNativeBridge() {
+    if (typeof leapenv.getNativeBridge === 'function') {
+      try { return leapenv.getNativeBridge(); } catch (_) {}
+    }
+    return null;
+  }
+
   // Determine if a URL is same-origin relative to the main page.
   // For v1, treat all URLs with same scheme+host as same-origin;
   // absent or relative URLs are considered same-origin.
@@ -26,18 +33,19 @@
   }
 
   function ensureChildFrame(iframe, url) {
-    if (typeof __createChildFrame__ !== 'function') return -1;
+    var bridge = getNativeBridge();
+    if (!bridge || typeof bridge.createChildFrame !== 'function') return -1;
     var existingIndex = _iframeFrameIndex ? _iframeFrameIndex.get(iframe) : undefined;
     if (existingIndex !== undefined && existingIndex >= 0) {
       // Already has a frame - navigate it
-      if (typeof __navigateChildFrame__ === 'function') {
-        __navigateChildFrame__(existingIndex, url);
+      if (typeof bridge.navigateChildFrame === 'function') {
+        bridge.navigateChildFrame(existingIndex, url);
       }
       return existingIndex;
     }
     // Create new child frame
     var sameOrigin = isSameOrigin(url);
-    var index = __createChildFrame__(url, sameOrigin);
+    var index = bridge.createChildFrame(url, sameOrigin);
     if (index >= 0 && _iframeFrameIndex) {
       _iframeFrameIndex.set(iframe, index);
     }
@@ -68,10 +76,11 @@
 
     // ── contentWindow ──────────────────────────────────────────────────────
     get contentWindow() {
-      if (typeof __getChildFrameProxy__ !== 'function') return null;
+      var bridge = getNativeBridge();
+      if (!bridge || typeof bridge.getChildFrameProxy !== 'function') return null;
       var index = _iframeFrameIndex ? _iframeFrameIndex.get(this) : undefined;
       if (index === undefined || index < 0) return null;
-      return __getChildFrameProxy__(index);
+      return bridge.getChildFrameProxy(index);
     }
 
     // ── contentDocument ────────────────────────────────────────────────────

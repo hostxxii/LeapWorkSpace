@@ -1,24 +1,20 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Linux",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json",
             "includePath": [
                 "${workspaceFolder}/src/leapvm",
                 "${workspaceFolder}/third_party/v8/include",
                 "${workspaceFolder}/node_modules/node-addon-api",
-                "C:/Users/hostxxii/AppData/Local/node-gyp/Cache/20.19.2/include/node",
+                "/home/hostxxii/.cmake-js/node-x64/v20.20.0/include/node",
                 "${workspaceFolder}/third_party/uWebSockets/src",
                 "${workspaceFolder}/build/_deps/lexbor-src/source",
                 "${workspaceFolder}/third_party/uSockets/src",
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/src",
+                "/usr/include/node"
             ],
             "defines": [
-                "WIN32",
-                "_WINDOWS",
-                "NDEBUG",
-                "UNICODE",
-                "_UNICODE",
                 "LEAPVM_HAS_LEXBOR=1",
                 "V8_COMPRESS_POINTERS",
                 "V8_ENABLE_SANDBOX",
@@ -28,11 +24,10 @@
                 "LEXBOR_STATIC",
                 "leapvm_EXPORTS"
             ],
-            "windowsSdkVersion": "10.0.22000.0",
-            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+            "compilerPath": "/home/hostxxii/v8-build/v8/third_party/llvm-build/Release+Asserts/bin/clang++",
             "cStandard": "c17",
             "cppStandard": "c++20",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "linux-clang-x64"
         }
     ],
     "version": 4
