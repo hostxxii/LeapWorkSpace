@@ -1,0 +1,584 @@
+{
+  "timestamp": "2026-03-06T12:02:59.381Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "logicalCores": 16,
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "totalMemoryMb": 15954.18
+  },
+  "config": {
+    "mode": "baseline",
+    "backend": "thread",
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 50,
+    "warmupTasks": 20,
+    "totalTasks": 500,
+    "sampleEvery": 50,
+    "debug": false,
+    "builtinWrapperEnabled": false,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 3000,
+    "heartbeatTimeoutMs": 12000,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "warmup": {
+    "tasks": 20,
+    "succeeded": 20,
+    "failed": 0,
+    "durationMs": 229,
+    "errors": []
+  },
+  "overall": {
+    "startedAt": "2026-03-06T12:02:55.008Z",
+    "finishedAt": "2026-03-06T12:02:59.381Z",
+    "durationMs": 4373,
+    "success": 500,
+    "failed": 0,
+    "reqPerSec": 114.34,
+    "latencyMs": {
+      "p50": 98,
+      "p95": 128,
+      "p99": 148
+    },
+    "peakRssMb": 2606.75,
+    "peakCpuPct": 97.65
+  },
+  "finalSnapshot": {
+    "cpu": {
+      "totalPct": 89.63,
+      "perCorePct": [
+        85.71,
+        88.57,
+        100,
+        91.67,
+        77.14,
+        80,
+        97.37,
+        91.67,
+        85.71,
+        94.44,
+        80.56,
+        91.67,
+        88.57,
+        94.12,
+        88.89,
+        97.22
+      ]
+    },
+    "memory": {
+      "rssMb": 2606.75,
+      "heapUsedMb": 10.95,
+      "heapTotalMb": 16.89,
+      "externalMb": 2.09
+    },
+    "pool": {
+      "workers": 12,
+      "idleWorkers": 12,
+      "activeTasks": 0,
+      "pendingTasks": 0,
+      "metrics": {
+        "enqueued": 520,
+        "started": 520,
+        "succeeded": 520,
+        "failed": 0,
+        "timedOut": 0,
+        "recycled": 0,
+        "respawned": 0
+      },
+      "memory": {
+        "rssMb": 2606.75,
+        "heapUsedMb": 10.95,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      }
+    }
+  },
+  "samples": [
+    {
+      "sampleIndex": 1,
+      "timestamp": "2026-03-06T12:02:55.540Z",
+      "elapsedMs": 532,
+      "completedTasks": 50,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 114.42,
+      "latencyMs": {
+        "p50": 102,
+        "p95": 133,
+        "p99": 137
+      },
+      "cpu": {
+        "totalPct": 91.7,
+        "perCorePct": [
+          92.31,
+          90.57,
+          81.48,
+          98.08,
+          96.23,
+          92.45,
+          90.74,
+          92.45,
+          94.34,
+          86.54,
+          98.04,
+          92.59,
+          94.34,
+          84.31,
+          90.57,
+          92.31
+        ]
+      },
+      "memory": {
+        "rssMb": 1026.72,
+        "heapUsedMb": 13.13,
+        "heapTotalMb": 16.37,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 2,
+      "timestamp": "2026-03-06T12:02:55.990Z",
+      "elapsedMs": 982,
+      "completedTasks": 100,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 111.61,
+      "latencyMs": {
+        "p50": 105,
+        "p95": 123,
+        "p99": 127
+      },
+      "cpu": {
+        "totalPct": 96.53,
+        "perCorePct": [
+          90.7,
+          100,
+          95.56,
+          97.78,
+          100,
+          95.56,
+          97.78,
+          97.83,
+          91.11,
+          100,
+          91.3,
+          97.73,
+          97.83,
+          95.35,
+          100,
+          95.74
+        ]
+      },
+      "memory": {
+        "rssMb": 1150.57,
+        "heapUsedMb": 13.4,
+        "heapTotalMb": 16.37,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 3,
+      "timestamp": "2026-03-06T12:02:56.417Z",
+      "elapsedMs": 1409,
+      "completedTasks": 150,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 118.2,
+      "latencyMs": {
+        "p50": 104,
+        "p95": 135,
+        "p99": 149
+      },
+      "cpu": {
+        "totalPct": 93.22,
+        "perCorePct": [
+          97.56,
+          100,
+          92.86,
+          95.45,
+          90.7,
+          90.7,
+          100,
+          100,
+          82.93,
+          95.35,
+          95.24,
+          95.35,
+          88.37,
+          86.36,
+          85.71,
+          95
+        ]
+      },
+      "memory": {
+        "rssMb": 1419.68,
+        "heapUsedMb": 13.66,
+        "heapTotalMb": 16.37,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 4,
+      "timestamp": "2026-03-06T12:02:56.849Z",
+      "elapsedMs": 1841,
+      "completedTasks": 200,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 117.65,
+      "latencyMs": {
+        "p50": 97,
+        "p95": 127,
+        "p99": 132
+      },
+      "cpu": {
+        "totalPct": 95.53,
+        "perCorePct": [
+          92.86,
+          95.45,
+          95.24,
+          100,
+          95.35,
+          90.7,
+          97.67,
+          97.73,
+          95.45,
+          93.02,
+          95.56,
+          95.45,
+          95.45,
+          95.35,
+          95.35,
+          97.67
+        ]
+      },
+      "memory": {
+        "rssMb": 1561.03,
+        "heapUsedMb": 9.26,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 5,
+      "timestamp": "2026-03-06T12:02:57.256Z",
+      "elapsedMs": 2248,
+      "completedTasks": 250,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 126.26,
+      "latencyMs": {
+        "p50": 94,
+        "p95": 116,
+        "p99": 119
+      },
+      "cpu": {
+        "totalPct": 97.65,
+        "perCorePct": [
+          92.5,
+          97.44,
+          97.5,
+          97.56,
+          100,
+          97.5,
+          100,
+          95.12,
+          100,
+          97.56,
+          97.44,
+          97.5,
+          97.56,
+          94.74,
+          100,
+          100
+        ]
+      },
+      "memory": {
+        "rssMb": 1646.16,
+        "heapUsedMb": 9.67,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 6,
+      "timestamp": "2026-03-06T12:02:57.669Z",
+      "elapsedMs": 2661,
+      "completedTasks": 300,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 121.07,
+      "latencyMs": {
+        "p50": 100,
+        "p95": 115,
+        "p99": 116
+      },
+      "cpu": {
+        "totalPct": 96.38,
+        "perCorePct": [
+          85.37,
+          100,
+          92.86,
+          100,
+          100,
+          92.86,
+          97.67,
+          97.56,
+          92.68,
+          100,
+          97.62,
+          97.62,
+          100,
+          95.24,
+          97.56,
+          95.12
+        ]
+      },
+      "memory": {
+        "rssMb": 1837.18,
+        "heapUsedMb": 9.94,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 7,
+      "timestamp": "2026-03-06T12:02:58.145Z",
+      "elapsedMs": 3137,
+      "completedTasks": 350,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 107.53,
+      "latencyMs": {
+        "p50": 106,
+        "p95": 151,
+        "p99": 183
+      },
+      "cpu": {
+        "totalPct": 91.32,
+        "perCorePct": [
+          91.11,
+          93.88,
+          84.78,
+          91.49,
+          95.74,
+          82.98,
+          89.36,
+          97.87,
+          87.23,
+          93.62,
+          95.74,
+          90.91,
+          97.87,
+          91.49,
+          87.5,
+          89.36
+        ]
+      },
+      "memory": {
+        "rssMb": 2218.64,
+        "heapUsedMb": 10.22,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 8,
+      "timestamp": "2026-03-06T12:02:58.613Z",
+      "elapsedMs": 3605,
+      "completedTasks": 400,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 114.42,
+      "latencyMs": {
+        "p50": 100,
+        "p95": 131,
+        "p99": 174
+      },
+      "cpu": {
+        "totalPct": 96.67,
+        "perCorePct": [
+          95.74,
+          100,
+          95.83,
+          97.83,
+          95.74,
+          97.87,
+          95.74,
+          93.62,
+          95.65,
+          95.74,
+          97.87,
+          97.87,
+          97.92,
+          97.83,
+          93.62,
+          97.87
+        ]
+      },
+      "memory": {
+        "rssMb": 2393.74,
+        "heapUsedMb": 10.49,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 9,
+      "timestamp": "2026-03-06T12:02:59.026Z",
+      "elapsedMs": 4018,
+      "completedTasks": 450,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 122.55,
+      "latencyMs": {
+        "p50": 94,
+        "p95": 110,
+        "p99": 124
+      },
+      "cpu": {
+        "totalPct": 95.28,
+        "perCorePct": [
+          100,
+          97.62,
+          87.8,
+          100,
+          95.24,
+          92.68,
+          87.8,
+          97.56,
+          93.02,
+          100,
+          92.68,
+          95,
+          100,
+          92.68,
+          92.86,
+          100
+        ]
+      },
+      "memory": {
+        "rssMb": 2510.81,
+        "heapUsedMb": 10.75,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 12,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 0,
+        "activeTasks": 12,
+        "pendingTasks": 35
+      }
+    },
+    {
+      "sampleIndex": 10,
+      "timestamp": "2026-03-06T12:02:59.381Z",
+      "elapsedMs": 4373,
+      "completedTasks": 500,
+      "windowSize": 50,
+      "windowSuccesses": 50,
+      "reqPerSec": 141.24,
+      "latencyMs": {
+        "p50": 86,
+        "p95": 103,
+        "p99": 111
+      },
+      "cpu": {
+        "totalPct": 89.63,
+        "perCorePct": [
+          85.71,
+          88.57,
+          100,
+          91.67,
+          77.14,
+          80,
+          97.37,
+          91.67,
+          85.71,
+          94.44,
+          80.56,
+          91.67,
+          88.57,
+          94.12,
+          88.89,
+          97.22
+        ]
+      },
+      "memory": {
+        "rssMb": 2606.62,
+        "heapUsedMb": 10.93,
+        "heapTotalMb": 16.89,
+        "externalMb": 2.09
+      },
+      "activeWorkers": 0,
+      "pool": {
+        "workers": 12,
+        "idleWorkers": 12,
+        "activeTasks": 0,
+        "pendingTasks": 0
+      }
+    }
+  ],
+  "errors": []
+}

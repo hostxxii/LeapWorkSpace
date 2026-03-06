@@ -29,6 +29,60 @@
     }
   }
 
+  function getDispatchCacheRoot() {
+    if (typeof leapenv.isPerfDispatchCacheEnabled !== 'function' ||
+        !leapenv.isPerfDispatchCacheEnabled() ||
+        typeof leapenv.getDispatchExperimentCache !== 'function') {
+      return null;
+    }
+    try {
+      const root = leapenv.getDispatchExperimentCache();
+      if (!root || typeof root !== 'object') {
+        return null;
+      }
+      if (!root.document || typeof root.document !== 'object') {
+        root.document = {};
+      }
+      return root.document;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function getDocumentCacheEntry(self, createIfMissing) {
+    const root = getDispatchCacheRoot();
+    if (!root) {
+      return null;
+    }
+
+    if (typeof WeakMap === 'function') {
+      if (!(root.byInstance instanceof WeakMap)) {
+        root.byInstance = new WeakMap();
+      }
+      let entry = root.byInstance.get(self);
+      if (!entry && createIfMissing) {
+        entry = {};
+        root.byInstance.set(self, entry);
+      }
+      return entry || null;
+    }
+
+    if (!Array.isArray(root.entries)) {
+      root.entries = [];
+    }
+    for (let i = 0; i < root.entries.length; i++) {
+      if (root.entries[i].self === self) {
+        return root.entries[i].entry;
+      }
+    }
+    if (!createIfMissing) {
+      return null;
+    }
+    const entry = {};
+    root.entries.push({ self, entry });
+    return entry;
+  }
+
   function syncDocumentUrlFromLocation(documentObject) {
     const state = dom.ensureNodeState(documentObject);
     const nativeInstances = leapenv.nativeInstances || {};
@@ -100,8 +154,16 @@
     }
 
     get documentElement() {
+      const cacheEntry = getDocumentCacheEntry(this, true);
+      if (cacheEntry && Object.prototype.hasOwnProperty.call(cacheEntry, 'documentElement')) {
+        return cacheEntry.documentElement;
+      }
       ensureDefaultTree(this);
-      return dom.getDocumentElement(this);
+      const value = dom.getDocumentElement(this);
+      if (cacheEntry) {
+        cacheEntry.documentElement = value;
+      }
+      return value;
     }
 
     get head() {
@@ -110,8 +172,16 @@
     }
 
     get body() {
+      const cacheEntry = getDocumentCacheEntry(this, true);
+      if (cacheEntry && Object.prototype.hasOwnProperty.call(cacheEntry, 'body')) {
+        return cacheEntry.body;
+      }
       ensureDefaultTree(this);
-      return dom.getDocumentBody(this);
+      const value = dom.getDocumentBody(this);
+      if (cacheEntry) {
+        cacheEntry.body = value;
+      }
+      return value;
     }
 
     get children() {
@@ -237,12 +307,25 @@
 
     // B15: cookie
     get cookie() {
+      const cacheEntry = getDocumentCacheEntry(this, true);
+      if (cacheEntry && Object.prototype.hasOwnProperty.call(cacheEntry, 'cookie')) {
+        return cacheEntry.cookie;
+      }
       dom.ensureDocumentRegistration(this);
       const state = dom.ensureNodeState(this);
-      if (!state._cookieStore) { return ''; }
-      return Object.entries(state._cookieStore)
+      if (!state._cookieStore) {
+        if (cacheEntry) {
+          cacheEntry.cookie = '';
+        }
+        return '';
+      }
+      const value = Object.entries(state._cookieStore)
         .map(([k, v]) => k + '=' + v)
         .join('; ');
+      if (cacheEntry) {
+        cacheEntry.cookie = value;
+      }
+      return value;
     }
     set cookie(value) {
       dom.ensureDocumentRegistration(this);
@@ -256,6 +339,10 @@
         const name = pair.slice(0, eq).trim();
         const val = pair.slice(eq + 1).trim();
         state._cookieStore[name] = val;
+      }
+      const cacheEntry = getDocumentCacheEntry(this, false);
+      if (cacheEntry) {
+        delete cacheEntry.cookie;
       }
     }
 

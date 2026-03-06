@@ -1,0 +1,1073 @@
+{
+  "timestamp": "2026-03-06T16:14:02.444Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 10,
+    "totalTasks": 100,
+    "sampleEvery": 25,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 33,
+      "reqPerSec": 3030.3,
+      "p95": 0,
+      "p99": 0,
+      "maxTaskMs": 0,
+      "maxSampleP99Ms": 0,
+      "minSampleReqPerSec": 3125,
+      "slowTaskThresholdMs": 1,
+      "slowTasks": [
+        {
+          "taskId": "measure-3",
+          "workerId": null,
+          "durationMs": 2,
+          "startedOffsetMs": 1,
+          "completedOffsetMs": 3,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-4",
+          "workerId": null,
+          "durationMs": 3,
+          "startedOffsetMs": 1,
+          "completedOffsetMs": 4,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-7",
+          "workerId": null,
+          "durationMs": 2,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 4,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-6",
+          "workerId": null,
+          "durationMs": 2,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 4,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-5",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 1,
+          "completedOffsetMs": 5,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-8",
+          "workerId": null,
+          "durationMs": 3,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 5,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-12",
+          "workerId": null,
+          "durationMs": 2,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 5,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-13",
+          "workerId": null,
+          "durationMs": 2,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 5,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-9",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 6,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-10",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 6,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-11",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 2,
+          "completedOffsetMs": 6,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-1",
+          "workerId": null,
+          "durationMs": 6,
+          "startedOffsetMs": 0,
+          "completedOffsetMs": 6,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-2",
+          "workerId": null,
+          "durationMs": 7,
+          "startedOffsetMs": 0,
+          "completedOffsetMs": 7,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-14",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 7,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-17",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 7,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-18",
+          "workerId": null,
+          "durationMs": 4,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 7,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-19",
+          "workerId": null,
+          "durationMs": 5,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 8,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-15",
+          "workerId": null,
+          "durationMs": 5,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 8,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-20",
+          "workerId": null,
+          "durationMs": 5,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 8,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-16",
+          "workerId": null,
+          "durationMs": 6,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 9,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-21",
+          "workerId": null,
+          "durationMs": 6,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 9,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-22",
+          "workerId": null,
+          "durationMs": 6,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 9,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-23",
+          "workerId": null,
+          "durationMs": 7,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 10,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-24",
+          "workerId": null,
+          "durationMs": 7,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 10,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-25",
+          "workerId": null,
+          "durationMs": 7,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 10,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-26",
+          "workerId": null,
+          "durationMs": 8,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 11,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-27",
+          "workerId": null,
+          "durationMs": 8,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 11,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-28",
+          "workerId": null,
+          "durationMs": 9,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 12,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-29",
+          "workerId": null,
+          "durationMs": 9,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 12,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-30",
+          "workerId": null,
+          "durationMs": 9,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 12,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-31",
+          "workerId": null,
+          "durationMs": 9,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 12,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-32",
+          "workerId": null,
+          "durationMs": 10,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 13,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-33",
+          "workerId": null,
+          "durationMs": 10,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 13,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-34",
+          "workerId": null,
+          "durationMs": 11,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 14,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-35",
+          "workerId": null,
+          "durationMs": 11,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 14,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-36",
+          "workerId": null,
+          "durationMs": 11,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 14,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-37",
+          "workerId": null,
+          "durationMs": 12,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 15,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-38",
+          "workerId": null,
+          "durationMs": 12,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 15,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-42",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 16,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-43",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 16,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-39",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 17,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-40",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 17,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-41",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 17,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-44",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 18,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-46",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 18,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-48",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 18,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-50",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 4,
+          "completedOffsetMs": 19,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-51",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 4,
+          "completedOffsetMs": 19,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-52",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 4,
+          "completedOffsetMs": 19,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-45",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 19,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-47",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 20,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-49",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 3,
+          "completedOffsetMs": 20,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-53",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 5,
+          "completedOffsetMs": 20,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-54",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 5,
+          "completedOffsetMs": 21,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-55",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 5,
+          "completedOffsetMs": 21,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-56",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 5,
+          "completedOffsetMs": 21,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-57",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 6,
+          "completedOffsetMs": 22,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-63",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 7,
+          "completedOffsetMs": 22,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-58",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 6,
+          "completedOffsetMs": 22,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-59",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 6,
+          "completedOffsetMs": 23,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-65",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 8,
+          "completedOffsetMs": 23,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-60",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 6,
+          "completedOffsetMs": 23,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-61",
+          "workerId": null,
+          "durationMs": 16,
+          "startedOffsetMs": 7,
+          "completedOffsetMs": 23,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-68",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 9,
+          "completedOffsetMs": 24,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-62",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 7,
+          "completedOffsetMs": 24,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-69",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 9,
+          "completedOffsetMs": 24,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-70",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 9,
+          "completedOffsetMs": 24,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-71",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 10,
+          "completedOffsetMs": 24,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-64",
+          "workerId": null,
+          "durationMs": 18,
+          "startedOffsetMs": 7,
+          "completedOffsetMs": 25,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-72",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 10,
+          "completedOffsetMs": 25,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-73",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 11,
+          "completedOffsetMs": 25,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-66",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 8,
+          "completedOffsetMs": 25,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-67",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 8,
+          "completedOffsetMs": 25,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-74",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 11,
+          "completedOffsetMs": 26,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-76",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 12,
+          "completedOffsetMs": 26,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-77",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 12,
+          "completedOffsetMs": 26,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-78",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 12,
+          "completedOffsetMs": 26,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-79",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 12,
+          "completedOffsetMs": 27,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-80",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 13,
+          "completedOffsetMs": 27,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-81",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 13,
+          "completedOffsetMs": 27,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-75",
+          "workerId": null,
+          "durationMs": 17,
+          "startedOffsetMs": 11,
+          "completedOffsetMs": 28,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-84",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 14,
+          "completedOffsetMs": 28,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-83",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 14,
+          "completedOffsetMs": 29,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-82",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 14,
+          "completedOffsetMs": 29,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-86",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 15,
+          "completedOffsetMs": 30,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-87",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 16,
+          "completedOffsetMs": 30,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-85",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 15,
+          "completedOffsetMs": 30,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-89",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 17,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-91",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 17,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-92",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 18,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-93",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 18,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-88",
+          "workerId": null,
+          "durationMs": 15,
+          "startedOffsetMs": 16,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-90",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 17,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-95",
+          "workerId": null,
+          "durationMs": 12,
+          "startedOffsetMs": 19,
+          "completedOffsetMs": 31,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-94",
+          "workerId": null,
+          "durationMs": 14,
+          "startedOffsetMs": 18,
+          "completedOffsetMs": 32,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-97",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 19,
+          "completedOffsetMs": 32,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-96",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 19,
+          "completedOffsetMs": 32,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-98",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 19,
+          "completedOffsetMs": 32,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-100",
+          "workerId": null,
+          "durationMs": 12,
+          "startedOffsetMs": 20,
+          "completedOffsetMs": 32,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        },
+        {
+          "taskId": "measure-99",
+          "workerId": null,
+          "durationMs": 13,
+          "startedOffsetMs": 20,
+          "completedOffsetMs": 33,
+          "phaseTimings": null,
+          "memoryUsage": null,
+          "runtimeStats": null
+        }
+      ],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27.851,
+          "duration": 0.464
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31.869,
+          "duration": 0.534
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 286.305,
+          "duration": 27.638
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.481,
+        "maxMs": 42.238,
+        "meanMs": 22.452,
+        "stddevMs": 6.605,
+        "p95Ms": 42.238,
+        "p99Ms": 42.238
+      }
+    }
+  ]
+}

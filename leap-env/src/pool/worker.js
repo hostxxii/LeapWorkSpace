@@ -7,8 +7,13 @@ const {
   toPositiveInteger,
   getMemorySnapshot,
   serializeError,
+  buildRuntimeStatsScript,
+  buildTaskApiTraceSnapshotScript,
   buildPostTaskCleanupScript,
-  CLEANUP_FAILURE_LIMIT
+  parseRuntimeStats,
+  getNativeRuntimeStats,
+  mergeRuntimeStats,
+  shouldRecycleAfterCleanup
 } = require('./worker-common');
 
 let workerId = process.env.LEAP_WORKER_ID || `worker-${process.pid}`;
@@ -18,7 +23,10 @@ let shuttingDown = false;
 let tasksHandled = 0;
 let heartbeatTimer = null;
 let cleanupFailureCount = 0;
+const taskPhaseTraceEnabled = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TASK_PHASE_TRACE || ''));
+const taskApiTraceEnabled = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TASK_API_TRACE || ''));
 let currentDomBackend = 'dod';
+const forceGcOnShutdownStats = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TRACK_GC_OBJECT_STATS || ''));
 
 function send(message) {
   if (typeof process.send !== 'function') {
@@ -40,6 +48,9 @@ function runPostTaskCleanup(taskId) {
     activeDocs: 0,
     activeNodes: 0,
     activeTasks: 0,
+    windowListenerCount: 0,
+    rafCount: 0,
+    runtimeStats: null,
     cleanupFailureCount,
     shouldRecycle: false,
     cleanupError: null
@@ -63,9 +74,7 @@ function runPostTaskCleanup(taskId) {
     if (parsed && typeof parsed === 'object') {
       const releasedDocs = Number.parseInt(parsed.releasedDocs, 10);
       const releasedNodes = Number.parseInt(parsed.releasedNodes, 10);
-      const activeDocs = Number.parseInt(parsed.activeDocs, 10);
-      const activeNodes = Number.parseInt(parsed.activeNodes, 10);
-      const activeTasks = Number.parseInt(parsed.activeTasks, 10);
+      const runtimeStats = mergeRuntimeStats(parsed, getNativeRuntimeStats(leapvm));
       if (Number.isFinite(releasedDocs) && releasedDocs > 0) {
         summary.leakedDocsReleased = releasedDocs;
         summary.releasedDocs = releasedDocs;
@@ -74,14 +83,13 @@ function runPostTaskCleanup(taskId) {
       if (Number.isFinite(releasedNodes) && releasedNodes > 0) {
         summary.releasedNodes = releasedNodes;
       }
-      if (Number.isFinite(activeDocs) && activeDocs >= 0) {
-        summary.activeDocs = activeDocs;
-      }
-      if (Number.isFinite(activeNodes) && activeNodes >= 0) {
-        summary.activeNodes = activeNodes;
-      }
-      if (Number.isFinite(activeTasks) && activeTasks >= 0) {
-        summary.activeTasks = activeTasks;
+      if (runtimeStats) {
+        summary.activeDocs = runtimeStats.activeDocs;
+        summary.activeNodes = runtimeStats.activeNodes;
+        summary.activeTasks = runtimeStats.activeTasks;
+        summary.windowListenerCount = runtimeStats.windowListenerCount;
+        summary.rafCount = runtimeStats.rafCount;
+        summary.runtimeStats = runtimeStats;
       }
     } else {
       const released = Number.parseInt(raw, 10);
@@ -97,7 +105,7 @@ function runPostTaskCleanup(taskId) {
   }
 
   summary.cleanupFailureCount = cleanupFailureCount;
-  summary.shouldRecycle = cleanupFailureCount >= CLEANUP_FAILURE_LIMIT;
+  summary.shouldRecycle = shouldRecycleAfterCleanup(summary);
   return summary;
 }
 
@@ -120,6 +128,7 @@ function startHeartbeat(intervalMs) {
       uptimeMs: Math.floor(process.uptime() * 1000),
       tasksHandled,
       cleanupFailureCount,
+      runtimeStats: getRuntimeStatsSnapshot(),
       memoryUsage: getMemorySnapshot()
     });
   }, intervalMs);
@@ -174,6 +183,7 @@ function handleInit(message) {
       warmupMs: Date.now() - begin,
       tasksHandled,
       cleanupFailureCount,
+      runtimeStats: getRuntimeStatsSnapshot(),
       memoryUsage: getMemorySnapshot()
     });
   } catch (error) {
@@ -220,14 +230,27 @@ function handleRunSignature(message) {
 
   const payload = message.payload || {};
   const begin = Date.now();
+  const phaseTimings = taskPhaseTraceEnabled ? {} : null;
+  const executeStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
 
   try {
     const result = executeSignatureTask(leapvm, {
       ...payload,
       taskId
     });
+    const taskApiTrace = getTaskApiTraceSnapshot();
+    if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
+      phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
+    }
+    if (phaseTimings) {
+      phaseTimings.executeSignatureTaskMs = Date.now() - executeStartedAt;
+    }
     tasksHandled += 1;
+    const cleanupStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
     const cleanup = runPostTaskCleanup(taskId);
+    if (phaseTimings) {
+      phaseTimings.postTaskCleanupMs = Date.now() - cleanupStartedAt;
+    }
     send({
       type: 'result',
       workerId,
@@ -242,12 +265,27 @@ function handleRunSignature(message) {
       activeDocs: cleanup.activeDocs,
       activeNodes: cleanup.activeNodes,
       activeTasks: cleanup.activeTasks,
+      windowListenerCount: cleanup.windowListenerCount,
+      rafCount: cleanup.rafCount,
+      runtimeStats: cleanup.runtimeStats,
+      phaseTimings: phaseTimings,
+      taskApiTrace: taskApiTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
     });
   } catch (error) {
+    const executeFailedAt = taskPhaseTraceEnabled ? Date.now() : 0;
+    const taskApiTrace = getTaskApiTraceSnapshot();
+    if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
+      phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
+    }
+    const cleanupStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
     const cleanup = runPostTaskCleanup(taskId);
+    if (phaseTimings) {
+      phaseTimings.executeSignatureTaskMs = executeFailedAt - executeStartedAt;
+      phaseTimings.postTaskCleanupMs = Date.now() - cleanupStartedAt;
+    }
     send({
       type: 'error',
       workerId,
@@ -262,6 +300,11 @@ function handleRunSignature(message) {
       activeDocs: cleanup.activeDocs,
       activeNodes: cleanup.activeNodes,
       activeTasks: cleanup.activeTasks,
+      windowListenerCount: cleanup.windowListenerCount,
+      rafCount: cleanup.rafCount,
+      runtimeStats: cleanup.runtimeStats,
+      phaseTimings: phaseTimings,
+      taskApiTrace: taskApiTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
@@ -269,36 +312,32 @@ function handleRunSignature(message) {
   }
 }
 
-function getRuntimeStatsSnapshot() {
+function getRuntimeStatsSnapshot(options) {
   if (!leapvm || typeof leapvm.runScript !== 'function') {
     return null;
   }
-  const script = `
-    (function () {
-      var domService = (globalThis.leapenv && globalThis.leapenv.domShared)
-        ? globalThis.leapenv.domShared
-        : null;
-      if (domService && typeof domService.getRuntimeStats === 'function') {
-        return JSON.stringify(domService.getRuntimeStats());
-      }
-      return '';
-    })();
-    //# sourceURL=leapenv.worker.runtime-stats.js
-  `;
   try {
-    const raw = leapvm.runScript(script);
-    const parsed = JSON.parse(String(raw || '{}'));
-    if (parsed && typeof parsed === 'object') {
-      return {
-        activeDocs: Number(parsed.activeDocs || 0),
-        activeNodes: Number(parsed.activeNodes || 0),
-        activeTasks: Number(parsed.activeTasks || 0)
-      };
-    }
+    const raw = leapvm.runScript(buildRuntimeStatsScript());
+    return mergeRuntimeStats(String(raw || ''), getNativeRuntimeStats(leapvm, options));
   } catch (_) {
     // ignore runtime snapshot failures on shutdown
   }
   return null;
+}
+
+function getTaskApiTraceSnapshot() {
+  if (!taskApiTraceEnabled || !leapvm || typeof leapvm.runScript !== 'function') {
+    return null;
+  }
+  try {
+    const raw = leapvm.runScript(buildTaskApiTraceSnapshotScript());
+    if (!raw || raw === 'null') {
+      return null;
+    }
+    return JSON.parse(String(raw));
+  } catch (_) {
+    return null;
+  }
 }
 
 function handleShutdown() {
@@ -307,7 +346,7 @@ function handleShutdown() {
   }
   shuttingDown = true;
 
-  const runtimeStats = getRuntimeStatsSnapshot();
+  const runtimeStats = getRuntimeStatsSnapshot(forceGcOnShutdownStats ? { forceGc: true } : null);
   send({
     type: 'heartbeat',
     workerId,

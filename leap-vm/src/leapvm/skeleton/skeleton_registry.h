@@ -22,6 +22,11 @@ public:
     SkeletonRegistry(v8::Isolate* isolate, v8::Local<v8::Context> context);
     ~SkeletonRegistry() = default;
 
+    size_t skeleton_count() const { return skeletons_.size(); }
+    size_t template_count() const { return templates_.size(); }
+    size_t dispatch_meta_count() const { return dispatch_metas_.size(); }
+    size_t brand_compat_cache_size() const { return brand_compat_cache_.size(); }
+
     // Register a single object skeleton.
     void RegisterSkeleton(ObjectSkeleton skeleton);
 

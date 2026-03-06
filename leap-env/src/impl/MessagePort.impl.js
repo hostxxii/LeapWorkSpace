@@ -51,6 +51,9 @@
       state.onmessage = null;
       state.onmessageerror = null;
       state.deliveryScheduled = false;
+      if (typeof ensureShared().notePortClosed === 'function') {
+        ensureShared().notePortClosed(this);
+      }
       if (Array.isArray(state.queue)) {
         state.queue.length = 0;
       }
@@ -76,6 +79,9 @@
       if (peerState.closed) return;
 
       peerState.queue.push(message);
+      if (typeof ensureShared().noteMessageQueued === 'function') {
+        ensureShared().noteMessageQueued();
+      }
       if (peerState.started) {
         var s = ensureShared();
         s.schedulePortFlush(peer);

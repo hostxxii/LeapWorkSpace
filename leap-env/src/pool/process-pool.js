@@ -3,6 +3,7 @@ const os = require('os');
 const path = require('path');
 const { hostLog } = require('../instance/host-log');
 const { resolveRunOptions } = require('../../runner');
+const { parseRuntimeStats } = require('./worker-common');
 
 function toPositiveInteger(value, fallback) {
   const parsed = Number.parseInt(value, 10);
@@ -78,7 +79,9 @@ class ProcessPool {
       waitForInspector: !!options.waitForInspector,
       beforeRunScript: options.beforeRunScript || '',
       bundlePath: options.bundlePath,
-      domBackend: options.domBackend
+      domBackend: options.domBackend,
+      signatureProfile: options.signatureProfile,
+      debugCppWrapperRules: options.debugCppWrapperRules
     };
     this.workerInitOptions = resolveRunOptions(initOptions);
 
@@ -265,11 +268,7 @@ class ProcessPool {
       state.memoryUsage = toMemorySnapshot(message.memoryUsage);
     }
     if (message.runtimeStats && typeof message.runtimeStats === 'object') {
-      state.runtimeStats = {
-        activeDocs: Number(message.runtimeStats.activeDocs || 0),
-        activeNodes: Number(message.runtimeStats.activeNodes || 0),
-        activeTasks: Number(message.runtimeStats.activeTasks || 0)
-      };
+      state.runtimeStats = parseRuntimeStats(message.runtimeStats);
     }
     if (Number.isFinite(message.cleanupFailureCount)) {
       state.cleanupFailureCount = Number(message.cleanupFailureCount);
@@ -334,6 +333,7 @@ class ProcessPool {
     state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
       ? Number(message.cleanupFailureCount)
       : state.cleanupFailureCount;
+    state.runtimeStats = parseRuntimeStats(message.runtimeStats || message);
     this.metrics.succeeded += 1;
 
     active.resolve({
@@ -347,6 +347,19 @@ class ProcessPool {
       activeDocs: Number(message.activeDocs || 0),
       activeNodes: Number(message.activeNodes || 0),
       activeTasks: Number(message.activeTasks || 0),
+      windowListenerCount: Number(message.windowListenerCount || 0),
+      rafCount: Number(message.rafCount || 0),
+      runtimeStats: parseRuntimeStats(message.runtimeStats || message),
+      phaseTimings: message.phaseTimings && typeof message.phaseTimings === 'object'
+        ? {
+            executeSignatureTaskMs: Number(message.phaseTimings.executeSignatureTaskMs || 0),
+            postTaskCleanupMs: Number(message.phaseTimings.postTaskCleanupMs || 0),
+            taskExecutionBreakdown: message.phaseTimings.taskExecutionBreakdown || null
+          }
+        : null,
+      taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
+        ? message.taskApiTrace
+        : null,
       cleanupFailureCount: Number(message.cleanupFailureCount || 0),
       memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
     });
@@ -378,6 +391,7 @@ class ProcessPool {
       state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
         ? Number(message.cleanupFailureCount)
         : state.cleanupFailureCount;
+      state.runtimeStats = parseRuntimeStats(message.runtimeStats || message);
       this.metrics.failed += 1;
 
       const taskError = createTaskError(
@@ -385,7 +399,19 @@ class ProcessPool {
         {
           workerId,
           taskId: message.taskId,
-          details: message.error || null
+          details: message.error || null,
+          runtimeStats: parseRuntimeStats(message.runtimeStats || message),
+          phaseTimings: message.phaseTimings && typeof message.phaseTimings === 'object'
+            ? {
+                executeSignatureTaskMs: Number(message.phaseTimings.executeSignatureTaskMs || 0),
+                postTaskCleanupMs: Number(message.phaseTimings.postTaskCleanupMs || 0),
+                taskExecutionBreakdown: message.phaseTimings.taskExecutionBreakdown || null
+              }
+            : null,
+          taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
+            ? message.taskApiTrace
+            : null,
+          memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
         }
       );
       active.reject(taskError);

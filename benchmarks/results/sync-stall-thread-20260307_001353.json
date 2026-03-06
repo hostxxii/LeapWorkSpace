@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-03-06T16:13:53.526Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 5,
+    "totalTasks": 20,
+    "sampleEvery": 10,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 10,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 10,
+      "reqPerSec": 2000,
+      "p95": 0,
+      "p99": 0,
+      "maxTaskMs": 0,
+      "maxSampleP99Ms": 0,
+      "minSampleReqPerSec": 3333.33,
+      "slowTaskThresholdMs": 10,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27.698,
+          "duration": 0.445
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31.725,
+          "duration": 0.543
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.481,
+        "maxMs": 20.562,
+        "meanMs": 20.095,
+        "stddevMs": 0.334,
+        "p95Ms": 20.562,
+        "p99Ms": 20.562
+      }
+    }
+  ]
+}

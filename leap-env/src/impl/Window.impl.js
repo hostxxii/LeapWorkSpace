@@ -25,6 +25,19 @@
     return null;
   }
 
+  function getInternalLeapenv() {
+    if (typeof leapenv.getRuntimeStore === 'function') {
+      try {
+        var runtime = leapenv.getRuntimeStore();
+        var internal = runtime && runtime.facade && runtime.facade.internalLeapenv;
+        if (internal && typeof internal === 'object') {
+          return internal;
+        }
+      } catch (_) {}
+    }
+    return leapenv;
+  }
+
   function bindGlobalTimer(name) {
     if (typeof global[name] !== 'function') {
       return null;
@@ -60,7 +73,7 @@
   var _screenInstance = null;
   var _localStorageInstance = null;
   var _sessionStorageInstance = null;
-  var _cryptoInstance = null;
+  var _cryptoInstance = null;  // from leapenv.nativeInstances (Crypto skeleton)
   // window.name 状态
   var _windowName = '';
   // window.status 状态
@@ -71,13 +84,97 @@
   var _locationInstance = null;
   var _rafSeq = 0;
   var _rafMap = new Map();
+  var _timeoutMap = new Map();
+  var _intervalMap = new Map();
   var _xhrSeq = 0;
   var _placeholderXhrMap = (typeof WeakMap === 'function') ? new WeakMap() : null;
   var _fallbackXhrStateList = [];
-  var _cryptoRngTaskId = null;
-  var _cryptoRngSeedKey = null;
-  var _cryptoRngState = 0;
+  var _placeholderXhrCreatedCount = 0;
 
+  function resetWindowVisibleField(target, key, value) {
+    if (!target || (typeof target !== 'object' && typeof target !== 'function')) {
+      return;
+    }
+    try {
+      target[key] = value;
+      return;
+    } catch (_) {}
+    try {
+      Object.defineProperty(target, key, {
+        value: value,
+        writable: true,
+        configurable: true,
+        enumerable: true
+      });
+    } catch (_) {}
+  }
+
+  function getWindowTaskRuntimeStats() {
+    var windowListenerCount = 0;
+    if (_windowListeners && typeof _windowListeners.forEach === 'function') {
+      _windowListeners.forEach(function(typeMap) {
+        if (!typeMap) {
+          return;
+        }
+        if (typeof typeMap.size === 'number') {
+          windowListenerCount += typeMap.size;
+          return;
+        }
+        if (typeof typeMap.forEach === 'function') {
+          typeMap.forEach(function() {
+            windowListenerCount += 1;
+          });
+        }
+      });
+    }
+    return {
+      windowListenerCount: windowListenerCount,
+      rafCount: _rafMap && typeof _rafMap.size === 'number' ? _rafMap.size : 0,
+      timeoutCount: _timeoutMap && typeof _timeoutMap.size === 'number' ? _timeoutMap.size : 0,
+      intervalCount: _intervalMap && typeof _intervalMap.size === 'number' ? _intervalMap.size : 0,
+      pendingTimerCount:
+        (_timeoutMap && typeof _timeoutMap.size === 'number' ? _timeoutMap.size : 0) +
+        (_intervalMap && typeof _intervalMap.size === 'number' ? _intervalMap.size : 0),
+      placeholderXhrCreatedCount: _placeholderXhrCreatedCount,
+      placeholderXhrFallbackCount: _fallbackXhrStateList.length
+    };
+  }
+
+  function resetWindowTaskState() {
+    if (nativeClearTimeout && _rafMap && typeof _rafMap.forEach === 'function') {
+      _rafMap.forEach(function(timeoutId) {
+        try { nativeClearTimeout(timeoutId); } catch (_) {}
+      });
+    }
+    _rafMap.clear();
+    if (nativeClearTimeout && _timeoutMap && typeof _timeoutMap.forEach === 'function') {
+      _timeoutMap.forEach(function(timeoutId) {
+        try { nativeClearTimeout(timeoutId); } catch (_) {}
+      });
+    }
+    _timeoutMap.clear();
+    if (nativeClearInterval && _intervalMap && typeof _intervalMap.forEach === 'function') {
+      _intervalMap.forEach(function(intervalId) {
+        try { nativeClearInterval(intervalId); } catch (_) {}
+      });
+    }
+    _intervalMap.clear();
+    _windowListeners.clear();
+    _windowName = '';
+    _windowStatus = '';
+    _opener = null;
+    _placeholderXhrCreatedCount = 0;
+    _fallbackXhrStateList.length = 0;
+    resetWindowVisibleField(global, 'name', '');
+    resetWindowVisibleField(global, 'status', '');
+    resetWindowVisibleField(global, 'opener', null);
+    if (global.window && global.window !== global) {
+      resetWindowVisibleField(global.window, 'name', '');
+      resetWindowVisibleField(global.window, 'status', '');
+      resetWindowVisibleField(global.window, 'opener', null);
+    }
+    return true;
+  }
   function makeNetworkDisabledError(apiName, detail) {
     if (placeholderPolicy && typeof placeholderPolicy.networkDisabledError === 'function') {
       return placeholderPolicy.networkDisabledError(apiName, detail);
@@ -94,28 +191,6 @@
     return Promise.reject(makeNetworkDisabledError(apiName, detail));
   }
 
-  function makePlaceholderTypeError(message, code) {
-    if (placeholderPolicy && typeof placeholderPolicy.createTypeError === 'function') {
-      return placeholderPolicy.createTypeError(message, code || 'LEAP_CRYPTO_TYPE_ERROR');
-    }
-    var err = new TypeError(String(message || 'Type error'));
-    err.code = code || 'LEAP_CRYPTO_TYPE_ERROR';
-    return err;
-  }
-
-  function makeQuotaExceededError(message) {
-    if (placeholderPolicy && typeof placeholderPolicy.notImplementedError === 'function') {
-      var err0 = placeholderPolicy.notImplementedError(message || 'crypto.getRandomValues');
-      err0.name = 'QuotaExceededError';
-      err0.code = 'LEAP_CRYPTO_QUOTA_EXCEEDED';
-      return err0;
-    }
-    var err = new Error(String(message || 'Quota exceeded'));
-    err.name = 'QuotaExceededError';
-    err.code = 'LEAP_CRYPTO_QUOTA_EXCEEDED';
-    return err;
-  }
-
   function getTaskState() {
     if (typeof leapenv.getTaskState === 'function') {
       try {
@@ -126,14 +201,6 @@
       } catch (_) {}
     }
     return leapenv.signatureTaskState || null;
-  }
-
-  function getTaskRandomSeed() {
-    var state = getTaskState();
-    if (!state || !Object.prototype.hasOwnProperty.call(state, 'randomSeed')) {
-      return undefined;
-    }
-    return state.randomSeed;
   }
 
   function getCurrentTaskId() {
@@ -148,116 +215,6 @@
       } catch (_) {}
     }
     return '';
-  }
-
-  function seedToStableKey(seed) {
-    if (seed === undefined) return 'undefined';
-    if (seed === null) return 'null';
-    var t = typeof seed;
-    if (t === 'string') return 's:' + seed;
-    if (t === 'number') return 'n:' + String(seed);
-    if (t === 'boolean') return 'b:' + String(seed);
-    if (t === 'bigint') return 'bi:' + String(seed);
-    try {
-      return 'j:' + JSON.stringify(seed);
-    } catch (_) {
-      return 'o:' + Object.prototype.toString.call(seed);
-    }
-  }
-
-  function seedStringToUint32(str) {
-    var s = String(str == null ? '' : str);
-    var h = 2166136261 >>> 0;
-    for (var i = 0; i < s.length; i++) {
-      h ^= s.charCodeAt(i);
-      h = Math.imul(h, 16777619) >>> 0;
-    }
-    if (h === 0) h = 0x9e3779b9;
-    return h >>> 0;
-  }
-
-  function nextSeededUint32() {
-    // xorshift32
-    var x = _cryptoRngState >>> 0;
-    if (x === 0) x = 0x6d2b79f5;
-    x ^= (x << 13);
-    x ^= (x >>> 17);
-    x ^= (x << 5);
-    _cryptoRngState = x >>> 0;
-    return _cryptoRngState;
-  }
-
-  function ensureCryptoRngState() {
-    var seed = getTaskRandomSeed();
-    var taskId = getCurrentTaskId();
-    if (seed === undefined) {
-      _cryptoRngTaskId = null;
-      _cryptoRngSeedKey = null;
-      _cryptoRngState = 0;
-      return false;
-    }
-    var seedKey = seedToStableKey(seed);
-    if (_cryptoRngTaskId !== taskId || _cryptoRngSeedKey !== seedKey || !_cryptoRngState) {
-      _cryptoRngTaskId = taskId;
-      _cryptoRngSeedKey = seedKey;
-      _cryptoRngState = seedStringToUint32(seedKey);
-    }
-    return true;
-  }
-
-  function nextRandomByte() {
-    if (ensureCryptoRngState()) {
-      return nextSeededUint32() & 0xFF;
-    }
-    return Math.floor(Math.random() * 256) & 0xFF;
-  }
-
-  function getTypedArrayTag(value) {
-    return Object.prototype.toString.call(value);
-  }
-
-  function isSupportedGetRandomValuesTarget(value) {
-    if (!value || typeof value !== 'object') return false;
-    if (typeof value.byteLength !== 'number' || typeof value.byteOffset !== 'number') return false;
-    if (!value.buffer || typeof value.buffer !== 'object') return false;
-    var tag = getTypedArrayTag(value);
-    return tag === '[object Int8Array]' ||
-      tag === '[object Uint8Array]' ||
-      tag === '[object Uint8ClampedArray]' ||
-      tag === '[object Int16Array]' ||
-      tag === '[object Uint16Array]' ||
-      tag === '[object Int32Array]' ||
-      tag === '[object Uint32Array]' ||
-      tag === '[object BigInt64Array]' ||
-      tag === '[object BigUint64Array]';
-  }
-
-  function fillRandomBytes(byteView) {
-    for (var i = 0; i < byteView.length; i++) {
-      byteView[i] = nextRandomByte();
-    }
-  }
-
-  function createCryptoPlaceholder() {
-    return {
-      getRandomValues: function getRandomValues(typedArray) {
-        if (!isSupportedGetRandomValuesTarget(typedArray)) {
-          throw makePlaceholderTypeError('crypto.getRandomValues requires an integer TypedArray', 'LEAP_CRYPTO_INVALID_TARGET');
-        }
-        var byteLength = Number(typedArray.byteLength || 0);
-        if (byteLength > 65536) {
-          throw makeQuotaExceededError('crypto.getRandomValues quota exceeded');
-        }
-        var bytes;
-        try {
-          bytes = new Uint8Array(typedArray.buffer, typedArray.byteOffset, byteLength);
-        } catch (_) {
-          throw makePlaceholderTypeError('crypto.getRandomValues cannot access target buffer', 'LEAP_CRYPTO_INVALID_TARGET');
-        }
-        fillRandomBytes(bytes);
-        return typedArray;
-      }
-    };
   }
 
   function createPlaceholderEvent(type, init, extra) {
@@ -375,6 +332,7 @@
         timeout: 0,
         withCredentials: false
       };
+      _placeholderXhrCreatedCount += 1;
       _placeholderXhrMap.set(instance, state0);
       return state0;
     }
@@ -398,6 +356,7 @@
       timeout: 0,
       withCredentials: false
     };
+    _placeholderXhrCreatedCount += 1;
     _fallbackXhrStateList.push({ node: instance, state: state });
     return state;
   }
@@ -666,7 +625,7 @@
 
     get crypto() {
       if (!_cryptoInstance) {
-        _cryptoInstance = createCryptoPlaceholder();
+        _cryptoInstance = leapenv.nativeInstances && leapenv.nativeInstances['crypto'];
       }
       return _cryptoInstance;
     }
@@ -806,25 +765,42 @@
     setTimeout(callback, delay) {
       if (!nativeSetTimeout) { return 0; }
       var args = Array.prototype.slice.call(arguments, 2);
-      var id = nativeSetTimeout.apply(global, [callback, delay].concat(args));
-      return Number(id) || 0;
+      var wrappedCallback = callback;
+      if (typeof callback === 'function') {
+        wrappedCallback = function() {
+          _timeoutMap.delete(publicId);
+          return callback.apply(this, arguments);
+        };
+      }
+      var id = nativeSetTimeout.apply(global, [wrappedCallback, delay].concat(args));
+      var publicId = Number(id) || 0;
+      _timeoutMap.set(publicId, id);
+      return publicId;
     }
 
     setInterval(callback, delay) {
       if (!nativeSetInterval) { return 0; }
       var args = Array.prototype.slice.call(arguments, 2);
       var id = nativeSetInterval.apply(global, [callback, delay].concat(args));
-      return Number(id) || 0;
+      var publicId = Number(id) || 0;
+      _intervalMap.set(publicId, id);
+      return publicId;
     }
 
     clearTimeout(id) {
+      var publicId = Number(id) || 0;
+      var handle = _timeoutMap.get(publicId);
+      _timeoutMap.delete(publicId);
       if (nativeClearTimeout) {
-        try { nativeClearTimeout(id); } catch (_) {}
+        try { nativeClearTimeout(handle == null ? id : handle); } catch (_) {}
       }
     }
     clearInterval(id) {
+      var publicId = Number(id) || 0;
+      var handle = _intervalMap.get(publicId);
+      _intervalMap.delete(publicId);
       if (nativeClearInterval) {
-        try { nativeClearInterval(id); } catch (_) {}
+        try { nativeClearInterval(handle == null ? id : handle); } catch (_) {}
       }
     }
 
@@ -936,6 +912,24 @@
   }
 
   leapenv.registerImpl('Window', WindowImpl);
+  try {
+    WindowImpl.__leapResetTaskState = resetWindowTaskState;
+  } catch (_) {}
+  try {
+    WindowImpl.__leapGetTaskRuntimeStats = getWindowTaskRuntimeStats;
+  } catch (_) {}
+  try {
+    if (leapenv.implRegistry && leapenv.implRegistry.Window) {
+      leapenv.implRegistry.Window.__leapResetTaskState = resetWindowTaskState;
+      leapenv.implRegistry.Window.__leapGetTaskRuntimeStats = getWindowTaskRuntimeStats;
+    }
+  } catch (_) {}
+  try {
+    if (leapenv.__runtime && typeof leapenv.__runtime === 'object') {
+      leapenv.__runtime.windowTaskReset = resetWindowTaskState;
+      leapenv.__runtime.windowTaskGetStats = getWindowTaskRuntimeStats;
+    }
+  } catch (_) {}
 
   // Some Window-exposed APIs are used as constructors in site scripts.
   // If native skeleton stubs expose them as non-constructible callables,

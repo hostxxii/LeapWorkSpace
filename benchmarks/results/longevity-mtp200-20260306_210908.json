@@ -1,0 +1,481 @@
+{
+  "timestamp": "2026-03-06T13:09:11.605Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "logicalCores": 16,
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "totalMemoryMb": 15954.18
+  },
+  "config": {
+    "backend": "thread",
+    "poolSize": 1,
+    "concurrency": 1,
+    "maxTasksPerWorker": 200,
+    "warmupTasks": 5,
+    "totalTasks": 60,
+    "sampleEvery": 10,
+    "debug": false,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 3000,
+    "heartbeatTimeoutMs": 12000,
+    "signatureProfile": "fp-occupy",
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "warmup": {
+    "tasks": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": []
+  },
+  "samples": [
+    {
+      "sampleIndex": 1,
+      "timestamp": "2026-03-06T13:09:09.044Z",
+      "elapsedMs": 505,
+      "tasksDone": 10,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 22.17,
+      "latencyMs": {
+        "p50": 49,
+        "p95": 53,
+        "p99": 53
+      },
+      "memory": {
+        "rssMb": 222.66,
+        "heapUsedMb": 12.29,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 15,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 222.53,
+            "heapUsedMb": 10.79,
+            "heapTotalMb": 19.64,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 2,
+      "timestamp": "2026-03-06T13:09:09.537Z",
+      "elapsedMs": 998,
+      "tasksDone": 20,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 22.88,
+      "latencyMs": {
+        "p50": 47,
+        "p95": 54,
+        "p99": 54
+      },
+      "memory": {
+        "rssMb": 262.6,
+        "heapUsedMb": 12.35,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 25,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 262.47,
+            "heapUsedMb": 10.79,
+            "heapTotalMb": 19.64,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 3,
+      "timestamp": "2026-03-06T13:09:10.046Z",
+      "elapsedMs": 1507,
+      "tasksDone": 30,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 21.98,
+      "latencyMs": {
+        "p50": 47,
+        "p95": 55,
+        "p99": 55
+      },
+      "memory": {
+        "rssMb": 316.25,
+        "heapUsedMb": 12.42,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 35,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 316.25,
+            "heapUsedMb": 10.79,
+            "heapTotalMb": 19.64,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 4,
+      "timestamp": "2026-03-06T13:09:10.569Z",
+      "elapsedMs": 2030,
+      "tasksDone": 40,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 21.23,
+      "latencyMs": {
+        "p50": 50,
+        "p95": 55,
+        "p99": 55
+      },
+      "memory": {
+        "rssMb": 339.03,
+        "heapUsedMb": 12.48,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 45,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 339.03,
+            "heapUsedMb": 10.78,
+            "heapTotalMb": 13.64,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 5,
+      "timestamp": "2026-03-06T13:09:11.079Z",
+      "elapsedMs": 2540,
+      "tasksDone": 50,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 21.74,
+      "latencyMs": {
+        "p50": 49,
+        "p95": 57,
+        "p99": 57
+      },
+      "memory": {
+        "rssMb": 358.56,
+        "heapUsedMb": 12.58,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 55,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 358.56,
+            "heapUsedMb": 11.73,
+            "heapTotalMb": 16.57,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 6,
+      "timestamp": "2026-03-06T13:09:11.605Z",
+      "elapsedMs": 3066,
+      "tasksDone": 60,
+      "windowSize": 10,
+      "windowSuccesses": 10,
+      "reqPerSec": 22.27,
+      "latencyMs": {
+        "p50": 48,
+        "p95": 75,
+        "p99": 75
+      },
+      "memory": {
+        "rssMb": 381.36,
+        "heapUsedMb": 12.65,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 65,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 381.36,
+            "heapUsedMb": 13.61,
+            "heapTotalMb": 18.44,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "workerRecycles": 0,
+  "workerRespawns": 0,
+  "summary": {
+    "startedAt": "2026-03-06T13:09:08.539Z",
+    "finishedAt": "2026-03-06T13:09:11.605Z",
+    "durationMs": 3066,
+    "success": 60,
+    "failed": 0,
+    "totalReqPerSec": 19.57,
+    "latencyMs": {
+      "p50": 49,
+      "p95": 55,
+      "p99": 75
+    },
+    "peakRssMb": 381.36,
+    "finalMemory": {
+      "rssMb": 381.36,
+      "heapUsedMb": 12.66,
+      "heapTotalMb": 16.45,
+      "externalMb": 2.11,
+      "arrayBuffersMb": 0.58
+    },
+    "workerTasksHandledFinal": {
+      "thread-worker-1": {
+        "tasksHandled": 65,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 381.36,
+          "heapUsedMb": 13.61,
+          "heapTotalMb": 18.44,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0,
+          "timeoutCount": 0,
+          "intervalCount": 0,
+          "pendingTimerCount": 0,
+          "messageChannelCount": 0,
+          "messagePortOpenCount": 0,
+          "messagePortClosedCount": 0,
+          "messagePortQueueCount": 0,
+          "placeholderXhrCreatedCount": 0,
+          "placeholderXhrFallbackCount": 0
+        }
+      }
+    },
+    "growth": {
+      "firstSample": {
+        "tasksDone": 10,
+        "rssMb": 222.66,
+        "heapUsedMb": 12.29,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "peakSample": {
+        "tasksDone": 60,
+        "rssMb": 381.36,
+        "heapUsedMb": 12.65,
+        "heapTotalMb": 16.45,
+        "externalMb": 2.11,
+        "arrayBuffersMb": 0.58
+      },
+      "deltaToPeak": {
+        "rssMb": 158.7,
+        "heapUsedMb": 0.36,
+        "heapTotalMb": 0,
+        "externalMb": 0,
+        "arrayBuffersMb": 0
+      }
+    }
+  }
+}

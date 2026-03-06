@@ -48,8 +48,30 @@
 
   function setHrefAndSync(self, href) {
     var nextHref = String(href == null || href === '' ? 'about:blank' : href);
-    getState(self).href = nextHref;
+    var state = getState(self);
+    state.href = nextHref;
+    if (state.__perfDispatchCache && typeof state.__perfDispatchCache === 'object') {
+      delete state.__perfDispatchCache.host;
+    }
     syncActiveDocumentUrl(nextHref);
+  }
+
+  function isDispatchCacheEnabled() {
+    return typeof leapenv.isPerfDispatchCacheEnabled === 'function' &&
+      leapenv.isPerfDispatchCacheEnabled();
+  }
+
+  function getStateDispatchCache(state, createIfMissing) {
+    if (!isDispatchCacheEnabled()) {
+      return null;
+    }
+    if (!state.__perfDispatchCache || typeof state.__perfDispatchCache !== 'object') {
+      if (!createIfMissing) {
+        return null;
+      }
+      state.__perfDispatchCache = {};
+    }
+    return state.__perfDispatchCache;
   }
 
   // ── URL 解析 ────────────────────────────────────────────────────────────────
@@ -143,7 +165,18 @@
     }
 
     // ── host ────────────────────────────────────────────────────────────────────
-    get host() { return _parseUrl(getState(this).href).host; }
+    get host() {
+      var state = getState(this);
+      var cache = getStateDispatchCache(state, true);
+      if (cache && Object.prototype.hasOwnProperty.call(cache, 'host')) {
+        return cache.host;
+      }
+      var value = _parseUrl(state.href).host;
+      if (cache) {
+        cache.host = value;
+      }
+      return value;
+    }
     set host(val) {
       var p = _parseUrl(getState(this).href);
       var hostStr = String(val || '');

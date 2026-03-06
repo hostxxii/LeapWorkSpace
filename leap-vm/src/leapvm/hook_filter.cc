@@ -1,9 +1,21 @@
 #include "hook_filter.h"
 
 #include <algorithm>
+#include <cstdlib>
 
 namespace leapvm {
 namespace {
+
+bool IsObservationPipelineDisabled() {
+    static const bool disabled = []() {
+        const char* raw = std::getenv("LEAP_PERF_DISABLE_OBSERVE");
+        if (!raw) {
+            return false;
+        }
+        return raw[0] == '1';
+    }();
+    return disabled;
+}
 
 std::string ComposeObjectPath(const HookEventKey& key) {
     if (key.root.empty()) {
@@ -55,6 +67,10 @@ bool MatchObjectList(const std::unordered_set<std::string>& list,
 
 bool ShouldEnterHookPipeline(const GlobalHookConfig& cfg,
                              const HookEventKey& key) {
+    if (IsObservationPipelineDisabled()) {
+        return false;
+    }
+
     const std::string object_path = ComposeObjectPath(key);
     const std::string prop_name = ExtractPropName(key);
 
@@ -87,4 +103,3 @@ bool ShouldEnterHookPipeline(const GlobalHookConfig& cfg,
 }
 
 }  // namespace leapvm
-

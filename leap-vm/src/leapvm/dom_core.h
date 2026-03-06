@@ -38,6 +38,10 @@ struct TraceSnapshotNode {
 
 class DomManager {
 public:
+    size_t document_count() const { return documents_.size(); }
+    size_t task_scope_count() const { return task_scope_docs_.size(); }
+    size_t handle_count() const { return handle_table_.size(); }
+
     uint32_t CreateDocument(const std::string& task_id);
     bool ReleaseDocument(uint32_t doc_id);
     size_t ReleaseTaskScope(const std::string& task_id);

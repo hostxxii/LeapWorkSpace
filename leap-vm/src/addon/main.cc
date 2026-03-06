@@ -19,6 +19,83 @@
 
 namespace {
 
+bool ParseForceGcOption(const Napi::CallbackInfo& info) {
+    if (info.Length() < 1) {
+        return false;
+    }
+    if (info[0].IsBoolean()) {
+        return info[0].As<Napi::Boolean>().Value();
+    }
+    if (info[0].IsObject()) {
+        Napi::Object obj = info[0].As<Napi::Object>();
+        if (obj.Has("forceGc") && obj.Get("forceGc").IsBoolean()) {
+            return obj.Get("forceGc").As<Napi::Boolean>().Value();
+        }
+    }
+    return false;
+}
+
+Napi::Object ToJsRuntimeStats(Napi::Env env, const leapvm::VmRuntimeStats& stats) {
+    Napi::Object out = Napi::Object::New(env);
+    out.Set("vmPendingTaskCount", Napi::Number::New(env, static_cast<double>(stats.pending_task_count)));
+    out.Set("vmTimerCount", Napi::Number::New(env, static_cast<double>(stats.timer_count)));
+    out.Set("vmTimerQueueSize", Napi::Number::New(env, static_cast<double>(stats.timer_queue_size)));
+    out.Set("vmStaleTimerQueueCount", Napi::Number::New(env, static_cast<double>(stats.stale_timer_queue_count)));
+    out.Set("vmDomWrapperCacheSize", Napi::Number::New(env, static_cast<double>(stats.dom_wrapper_cache_size)));
+    out.Set("vmPendingDomWrapperCleanupCount", Napi::Number::New(env, static_cast<double>(stats.pending_dom_wrapper_cleanup_count)));
+    out.Set("vmChildFrameCount", Napi::Number::New(env, static_cast<double>(stats.child_frame_count)));
+    out.Set("vmChildFrameDispatchFnCount", Napi::Number::New(env, static_cast<double>(stats.child_frame_dispatch_fn_count)));
+    out.Set("vmMainDispatchFnCached", Napi::Number::New(env, static_cast<double>(stats.main_dispatch_fn_cached)));
+    out.Set("domDocumentCount", Napi::Number::New(env, static_cast<double>(stats.dom_document_count)));
+    out.Set("domTaskScopeCount", Napi::Number::New(env, static_cast<double>(stats.dom_task_scope_count)));
+    out.Set("domHandleCount", Napi::Number::New(env, static_cast<double>(stats.dom_handle_count)));
+    out.Set("skeletonCount", Napi::Number::New(env, static_cast<double>(stats.skeleton_count)));
+    out.Set("skeletonTemplateCount", Napi::Number::New(env, static_cast<double>(stats.skeleton_template_count)));
+    out.Set("skeletonDispatchMetaCount", Napi::Number::New(env, static_cast<double>(stats.skeleton_dispatch_meta_count)));
+    out.Set("skeletonBrandCompatCacheSize", Napi::Number::New(env, static_cast<double>(stats.skeleton_brand_compat_cache_size)));
+    out.Set("v8TotalHeapSize", Napi::Number::New(env, static_cast<double>(stats.v8_total_heap_size)));
+    out.Set("v8TotalHeapSizeExecutable", Napi::Number::New(env, static_cast<double>(stats.v8_total_heap_size_executable)));
+    out.Set("v8TotalPhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_total_physical_size)));
+    out.Set("v8TotalAvailableSize", Napi::Number::New(env, static_cast<double>(stats.v8_total_available_size)));
+    out.Set("v8UsedHeapSize", Napi::Number::New(env, static_cast<double>(stats.v8_used_heap_size)));
+    out.Set("v8HeapSizeLimit", Napi::Number::New(env, static_cast<double>(stats.v8_heap_size_limit)));
+    out.Set("v8MallocedMemory", Napi::Number::New(env, static_cast<double>(stats.v8_malloced_memory)));
+    out.Set("v8PeakMallocedMemory", Napi::Number::New(env, static_cast<double>(stats.v8_peak_malloced_memory)));
+    out.Set("v8ExternalMemory", Napi::Number::New(env, static_cast<double>(stats.v8_external_memory)));
+    out.Set("v8TotalGlobalHandlesSize", Napi::Number::New(env, static_cast<double>(stats.v8_total_global_handles_size)));
+    out.Set("v8UsedGlobalHandlesSize", Napi::Number::New(env, static_cast<double>(stats.v8_used_global_handles_size)));
+    out.Set("v8NumberOfNativeContexts", Napi::Number::New(env, static_cast<double>(stats.v8_number_of_native_contexts)));
+    out.Set("v8NumberOfDetachedContexts", Napi::Number::New(env, static_cast<double>(stats.v8_number_of_detached_contexts)));
+    out.Set("v8CodeAndMetadataSize", Napi::Number::New(env, static_cast<double>(stats.v8_code_and_metadata_size)));
+    out.Set("v8BytecodeAndMetadataSize", Napi::Number::New(env, static_cast<double>(stats.v8_bytecode_and_metadata_size)));
+    out.Set("v8ExternalScriptSourceSize", Napi::Number::New(env, static_cast<double>(stats.v8_external_script_source_size)));
+    out.Set("v8CpuProfilerMetadataSize", Napi::Number::New(env, static_cast<double>(stats.v8_cpu_profiler_metadata_size)));
+    out.Set("v8OldSpaceUsedSize", Napi::Number::New(env, static_cast<double>(stats.v8_old_space_used_size)));
+    out.Set("v8OldSpacePhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_old_space_physical_size)));
+    out.Set("v8NewSpaceUsedSize", Napi::Number::New(env, static_cast<double>(stats.v8_new_space_used_size)));
+    out.Set("v8NewSpacePhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_new_space_physical_size)));
+    out.Set("v8CodeSpaceUsedSize", Napi::Number::New(env, static_cast<double>(stats.v8_code_space_used_size)));
+    out.Set("v8CodeSpacePhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_code_space_physical_size)));
+    out.Set("v8MapSpaceUsedSize", Napi::Number::New(env, static_cast<double>(stats.v8_map_space_used_size)));
+    out.Set("v8MapSpacePhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_map_space_physical_size)));
+    out.Set("v8LargeObjectSpaceUsedSize", Napi::Number::New(env, static_cast<double>(stats.v8_large_object_space_used_size)));
+    out.Set("v8LargeObjectSpacePhysicalSize", Napi::Number::New(env, static_cast<double>(stats.v8_large_object_space_physical_size)));
+    out.Set("v8TrackedHeapObjectTypeCount", Napi::Number::New(env, static_cast<double>(stats.v8_tracked_heap_object_type_count)));
+    out.Set("v8HeapObjectStatsAvailable", Napi::Number::New(env, static_cast<double>(stats.v8_heap_object_stats_available)));
+    Napi::Array top_heap_types = Napi::Array::New(env, stats.v8_top_heap_object_types.size());
+    for (size_t i = 0; i < stats.v8_top_heap_object_types.size(); ++i) {
+        const auto& entry = stats.v8_top_heap_object_types[i];
+        Napi::Object item = Napi::Object::New(env);
+        item.Set("type", Napi::String::New(env, entry.type));
+        item.Set("subType", Napi::String::New(env, entry.sub_type));
+        item.Set("count", Napi::Number::New(env, static_cast<double>(entry.count)));
+        item.Set("size", Napi::Number::New(env, static_cast<double>(entry.size)));
+        top_heap_types.Set(i, item);
+    }
+    out.Set("v8TopHeapObjectTypes", top_heap_types);
+    return out;
+}
+
 struct AddonData {
     std::unique_ptr<leapvm::VmInstance> default_vm;
     std::atomic<uint64_t> inspector_target_seq{0};
@@ -303,6 +380,15 @@ Napi::Value RunLoop(const Napi::CallbackInfo& info) {
 
     vm->RunLoopOnce(std::chrono::milliseconds(max_ms));
     return env.Undefined();
+}
+
+Napi::Value GetRuntimeStats(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    leapvm::VmInstance* vm = GetOrCreateDefaultVm(env);
+    if (!vm) {
+        return env.Null();
+    }
+    return ToJsRuntimeStats(env, vm->GetRuntimeStats(ParseForceGcOption(info)));
 }
 
 Napi::Value Shutdown(const Napi::CallbackInfo& info) {
@@ -643,6 +729,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set(Napi::String::New(env, "createCodeCache"), Napi::Function::New(env, CreateCodeCache));
     exports.Set(Napi::String::New(env, "runScriptWithCache"), Napi::Function::New(env, RunScriptWithCache));
     exports.Set(Napi::String::New(env, "runLoop"), Napi::Function::New(env, RunLoop));
+    exports.Set(Napi::String::New(env, "getRuntimeStats"), Napi::Function::New(env, GetRuntimeStats));
     exports.Set(Napi::String::New(env, "enableHighResTimer"), Napi::Function::New(env, EnableHighResTimer));
     exports.Set(Napi::String::New(env, "disableHighResTimer"), Napi::Function::New(env, DisableHighResTimer));
     exports.Set(Napi::String::New(env, "shutdown"), Napi::Function::New(env, Shutdown));

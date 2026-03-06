@@ -13,24 +13,54 @@
     pdfViewerEnabled: true,
     plugins: [
       {
+        name: 'PDF Viewer',
+        filename: 'internal-pdf-viewer',
+        description: 'Portable Document Format',
+        mimeTypes: [
+          { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+          { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
+        ]
+      },
+      {
         name: 'Chrome PDF Viewer',
         filename: 'internal-pdf-viewer',
         description: 'Portable Document Format',
         mimeTypes: [
-          {
-            type: 'application/pdf',
-            suffixes: 'pdf',
-            description: 'Portable Document Format'
-          }
+          { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+          { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
+        ]
+      },
+      {
+        name: 'Chromium PDF Viewer',
+        filename: 'internal-pdf-viewer',
+        description: 'Portable Document Format',
+        mimeTypes: [
+          { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+          { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
+        ]
+      },
+      {
+        name: 'Microsoft Edge PDF Viewer',
+        filename: 'internal-pdf-viewer',
+        description: 'Portable Document Format',
+        mimeTypes: [
+          { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+          { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
+        ]
+      },
+      {
+        name: 'WebKit built-in PDF',
+        filename: 'internal-pdf-viewer',
+        description: 'Portable Document Format',
+        mimeTypes: [
+          { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+          { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
         ]
       }
     ],
     mimeTypes: [
-      {
-        type: 'application/pdf',
-        suffixes: 'pdf',
-        description: 'Portable Document Format'
-      }
+      { type: 'application/pdf', suffixes: 'pdf', description: 'Portable Document Format' },
+      { type: 'text/pdf', suffixes: 'pdf', description: 'Portable Document Format' }
     ],
     permissions: {
       geolocation: 'prompt',
@@ -183,6 +213,26 @@
     return state && state.navigator ? state.navigator : null;
   }
 
+  function getDispatchCacheBucket(bucketName) {
+    if (typeof leapenv.isPerfDispatchCacheEnabled !== 'function' ||
+        !leapenv.isPerfDispatchCacheEnabled() ||
+        typeof leapenv.getDispatchExperimentCache !== 'function') {
+      return null;
+    }
+    try {
+      var root = leapenv.getDispatchExperimentCache();
+      if (!root || typeof root !== 'object') {
+        return null;
+      }
+      if (!root[bucketName] || typeof root[bucketName] !== 'object') {
+        root[bucketName] = {};
+      }
+      return root[bucketName];
+    } catch (_) {
+      return null;
+    }
+  }
+
   function getNavigatorValue(key) {
     var overrides = getTaskNavigatorOverrides();
     if (overrides && Object.prototype.hasOwnProperty.call(overrides, key)) {
@@ -193,7 +243,15 @@
 
   class NavigatorImpl {
     get userAgent() {
-      return String(getNavigatorValue('userAgent'));
+      var cache = getDispatchCacheBucket('navigator');
+      if (cache && Object.prototype.hasOwnProperty.call(cache, 'userAgent')) {
+        return cache.userAgent;
+      }
+      var value = String(getNavigatorValue('userAgent'));
+      if (cache) {
+        cache.userAgent = value;
+      }
+      return value;
     }
 
     get platform() {

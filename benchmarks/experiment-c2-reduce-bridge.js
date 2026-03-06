@@ -1,0 +1,105 @@
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const {
+  nowForFilename,
+  ensureDir,
+  pickMedianRun,
+  runBaselineCase,
+  buildSummary,
+  summaryTable
+} = require('./experiment-common');
+
+const REPEATS = 3;
+const BASE_ARGS = [
+  '--mode', 'baseline',
+  '--pool', '12',
+  '--concurrency', '48',
+  '--max-tasks-per-worker', '50',
+  '--total', '500'
+];
+
+function main() {
+  const repoRoot = path.resolve(__dirname, '..');
+  const timestamp = nowForFilename();
+  const resultsDir = path.join(__dirname, 'results');
+  const reportDir = path.join(__dirname, 'report');
+  ensureDir(resultsDir);
+  ensureDir(reportDir);
+
+  const controlRuns = [];
+  const experimentRuns = [];
+
+  for (let i = 1; i <= REPEATS; i++) {
+    controlRuns.push(runBaselineCase({
+      repoRoot,
+      label: 'c2-control',
+      args: BASE_ARGS,
+      env: {},
+      runIndex: i
+    }));
+    experimentRuns.push(runBaselineCase({
+      repoRoot,
+      label: 'c2-reduce-bridge',
+      args: BASE_ARGS,
+      env: {
+        LEAP_PERF_DISPATCH_CACHE: '1'
+      },
+      runIndex: i
+    }));
+  }
+
+  const medianControl = pickMedianRun(controlRuns, 'overall.reqPerSec');
+  const medianExperiment = pickMedianRun(experimentRuns, 'overall.reqPerSec');
+  const summary = buildSummary(medianControl, medianExperiment);
+
+  const output = {
+    timestamp: new Date().toISOString(),
+    experiment: 'C2 reduce bridge',
+    repeats: REPEATS,
+    controlLabel: 'baseline',
+    experimentLabel: 'dispatch-cache',
+    cachedApis: [
+      'Navigator.userAgent',
+      'Storage.getItem',
+      'Document.body',
+      'Document.cookie',
+      'Location.host'
+    ],
+    controlRuns,
+    experimentRuns,
+    medianControlRun: medianControl,
+    medianExperimentRun: medianExperiment,
+    summary
+  };
+
+  const jsonPath = path.join(resultsDir, `experiment-c2-reduce-bridge-${timestamp}.json`);
+  fs.writeFileSync(jsonPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+
+  const markdown = [
+    '# C2 减桥接实验',
+    '',
+    `- 时间：${new Date().toISOString()}`,
+    `- 重复次数：${REPEATS}`,
+    '- 控制组：当前默认基线',
+    '- 实验组：设置 `LEAP_PERF_DISPATCH_CACHE=1`，在 JS Impl 侧启用任务级热点缓存',
+    '- 缓存 API：`Navigator.userAgent`、`Storage.getItem`、`Document.body`、`Document.cookie`、`Location.host`',
+    '',
+    summaryTable(summary, '基线', 'C2 减桥接'),
+    '',
+    `- JSON 结果：${path.relative(repoRoot, jsonPath)}`,
+    `- 控制组中位 run：${path.relative(repoRoot, medianControl.outputPath)}`,
+    `- 实验组中位 run：${path.relative(repoRoot, medianExperiment.outputPath)}`
+  ].join('\n');
+
+  const mdPath = path.join(reportDir, `experiment-c2-reduce-bridge-${timestamp}.md`);
+  fs.writeFileSync(mdPath, `${markdown}\n`, 'utf8');
+
+  console.log('\n[C2] median summary');
+  console.log(summaryTable(summary, '基线', 'C2 减桥接'));
+  console.log(`[C2] json: ${jsonPath}`);
+  console.log(`[C2] report: ${mdPath}`);
+}
+
+main();

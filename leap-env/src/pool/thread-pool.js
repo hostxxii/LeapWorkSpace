@@ -4,7 +4,7 @@ const os = require('os');
 const path = require('path');
 const { hostLog } = require('../instance/host-log');
 const { resolveRunOptions, generateBundleCodeCache } = require('../../runner');
-const { toPositiveInteger } = require('./worker-common');
+const { toPositiveInteger, parseRuntimeStats } = require('./worker-common');
 const { ProcessPool } = require('./process-pool');
 
 function getCpuCount() {
@@ -123,11 +123,14 @@ class ThreadPool {
       waitForInspector: !!options.waitForInspector,
       beforeRunScript: options.beforeRunScript || '',
       bundlePath: options.bundlePath,
-      domBackend: options.domBackend
+      domBackend: options.domBackend,
+      signatureProfile: options.signatureProfile,
+      debugCppWrapperRules: options.debugCppWrapperRules
     };
     this.workerInitOptions = resolveRunOptions(initOptions);
 
     this.workers = new Map();
+    this.closedWorkers = new Map();
     this.idleWorkerIds = new Set();
     this.pendingQueue = [];
     this.activeTasks = new Map();
@@ -205,6 +208,7 @@ class ThreadPool {
 
     this.started = true;
     this.closing = false;
+    this.closedWorkers.clear();
 
     // Pre-read the bundle once so all workers share the same in-memory string
     // instead of each worker issuing its own readFileSync on startup/recycle.
@@ -309,9 +313,12 @@ class ThreadPool {
     for (const [workerId, state] of this.workers.entries()) {
       exitPromises.push(state.exitPromise);
       if (forceTerminate) {
-        this._forceKillWorker(workerId, 'pool shutdown (forceTerminate)');
+        this._beginTerminateWorker(workerId, 'pool shutdown (forceTerminate)', 'force');
       } else {
-        this._recycleWorker(workerId, 'pool shutdown');
+        this._beginTerminateWorker(workerId, 'pool shutdown', 'graceful', {
+          countRecycle: true,
+          status: 'recycling'
+        });
       }
     }
 
@@ -321,7 +328,7 @@ class ThreadPool {
     ]);
 
     for (const workerId of this.workers.keys()) {
-      this._forceKillWorker(workerId, 'pool close timeout');
+      this._beginTerminateWorker(workerId, 'pool close timeout', 'force');
     }
 
     await Promise.allSettled(Array.from(this.workers.values()).map((state) => state.exitPromise));
@@ -363,15 +370,30 @@ class ThreadPool {
       initDone: false,
       exitPromise,
       resolveExit,
-      forceKillTimer: null
+      forceKillTimer: null,
+      terminating: false,
+      terminatingHard: false,
+      terminateReason: null,
+      terminateMode: null,
+      terminateRequestedAt: null,
+      cleanupSkipped: false,
+      shutdownAckAt: null,
+      shutdownAck: null
     };
+
+    state.terminatePromise = Promise.race([
+      exitPromise,
+      new Promise((resolve) => {
+        state.resolveShutdownSignal = resolve;
+      })
+    ]);
 
     const initTimer = setTimeout(() => {
       if (state.initDone || this.closing) {
         return;
       }
       state.rejectInit(createTaskError(`Worker init timeout: ${workerId}`));
-      this._forceKillWorker(workerId, 'init timeout');
+      this._beginTerminateWorker(workerId, 'init timeout', 'force');
     }, this.workerInitTimeoutMs);
     initTimer.unref();
     state.initTimer = initTimer;
@@ -407,11 +429,7 @@ class ThreadPool {
       state.memoryUsage = toMemorySnapshot(message.memoryUsage);
     }
     if (message.runtimeStats && typeof message.runtimeStats === 'object') {
-      state.runtimeStats = {
-        activeDocs: Number(message.runtimeStats.activeDocs || 0),
-        activeNodes: Number(message.runtimeStats.activeNodes || 0),
-        activeTasks: Number(message.runtimeStats.activeTasks || 0)
-      };
+      state.runtimeStats = parseRuntimeStats(message.runtimeStats);
     }
     if (Number.isFinite(message.cleanupFailureCount)) {
       state.cleanupFailureCount = Number(message.cleanupFailureCount);
@@ -432,6 +450,9 @@ class ThreadPool {
         if (Number.isFinite(message.cleanupFailureCount)) {
           state.cleanupFailureCount = Number(message.cleanupFailureCount);
         }
+        break;
+      case 'shutdown_ack':
+        this._onWorkerShutdownAck(workerId, message);
         break;
       default:
         break;
@@ -478,6 +499,8 @@ class ThreadPool {
     state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
       ? Number(message.cleanupFailureCount)
       : state.cleanupFailureCount;
+    state.cleanupSkipped = false;
+    state.runtimeStats = parseRuntimeStats(message.runtimeStats || message);
     this.metrics.succeeded += 1;
 
     active.resolve({
@@ -491,6 +514,19 @@ class ThreadPool {
       activeDocs: Number(message.activeDocs || 0),
       activeNodes: Number(message.activeNodes || 0),
       activeTasks: Number(message.activeTasks || 0),
+      windowListenerCount: Number(message.windowListenerCount || 0),
+      rafCount: Number(message.rafCount || 0),
+      runtimeStats: parseRuntimeStats(message.runtimeStats || message),
+      phaseTimings: message.phaseTimings && typeof message.phaseTimings === 'object'
+        ? {
+            executeSignatureTaskMs: Number(message.phaseTimings.executeSignatureTaskMs || 0),
+            postTaskCleanupMs: Number(message.phaseTimings.postTaskCleanupMs || 0),
+            taskExecutionBreakdown: message.phaseTimings.taskExecutionBreakdown || null
+          }
+        : null,
+      taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
+        ? message.taskApiTrace
+        : null,
       cleanupFailureCount: Number(message.cleanupFailureCount || 0),
       memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
     });
@@ -522,6 +558,8 @@ class ThreadPool {
       state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
         ? Number(message.cleanupFailureCount)
         : state.cleanupFailureCount;
+      state.cleanupSkipped = false;
+      state.runtimeStats = parseRuntimeStats(message.runtimeStats || message);
       this.metrics.failed += 1;
 
       const taskError = createTaskError(
@@ -529,7 +567,19 @@ class ThreadPool {
         {
           workerId,
           taskId: message.taskId,
-          details: message.error || null
+          details: message.error || null,
+          runtimeStats: parseRuntimeStats(message.runtimeStats || message),
+          phaseTimings: message.phaseTimings && typeof message.phaseTimings === 'object'
+            ? {
+                executeSignatureTaskMs: Number(message.phaseTimings.executeSignatureTaskMs || 0),
+                postTaskCleanupMs: Number(message.phaseTimings.postTaskCleanupMs || 0),
+                taskExecutionBreakdown: message.phaseTimings.taskExecutionBreakdown || null
+              }
+            : null,
+          taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
+            ? message.taskApiTrace
+            : null,
+          memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
         }
       );
       active.reject(taskError);
@@ -545,6 +595,88 @@ class ThreadPool {
 
     hostLog('error', `Worker fatal error (${workerId})`, message.error || message);
     this._recycleWorker(workerId, 'worker fatal');
+  }
+
+  _onWorkerShutdownAck(workerId, message) {
+    const state = this.workers.get(workerId);
+    if (!state) {
+      return;
+    }
+
+    state.shutdownAckAt = Date.now();
+    state.shutdownAck = {
+      cleanupError: message.cleanupError || null,
+      shutdownError: message.shutdownError || null
+    };
+    state.status = 'terminating';
+    state.cleanupSkipped = false;
+    if (message.memoryUsage) {
+      state.memoryUsage = toMemorySnapshot(message.memoryUsage) || state.memoryUsage;
+    }
+    if (message.runtimeStats && typeof message.runtimeStats === 'object') {
+      state.runtimeStats = parseRuntimeStats(message.runtimeStats);
+    }
+    if (typeof state.resolveShutdownSignal === 'function') {
+      state.resolveShutdownSignal({
+        type: 'shutdown_ack',
+        workerId,
+        cleanupError: message.cleanupError || null,
+        shutdownError: message.shutdownError || null
+      });
+      state.resolveShutdownSignal = null;
+    }
+    clearTimeout(state.forceKillTimer);
+    state.forceKillTimer = setTimeout(() => {
+      this._beginTerminateWorker(
+        workerId,
+        `shutdown ack exit timeout (${state.terminateReason || 'unknown'})`,
+        'force'
+      );
+    }, Math.min(this.shutdownGraceMs, 500));
+    state.forceKillTimer.unref();
+  }
+
+  _beginTerminateWorker(workerId, reason, mode = 'graceful', options = {}) {
+    const state = this.workers.get(workerId);
+    if (!state) {
+      return null;
+    }
+
+    if (mode === 'force') {
+      return this._forceKillWorker(workerId, reason, options);
+    }
+
+    if (state.terminating) {
+      return state.terminatePromise;
+    }
+
+    this.idleWorkerIds.delete(workerId);
+    clearTimeout(state.forceKillTimer);
+    state.terminating = true;
+    state.terminateReason = state.terminateReason || reason;
+    state.terminateMode = 'graceful';
+    state.terminateRequestedAt = Date.now();
+    state.cleanupSkipped = options.cleanupSkipped === true;
+    state.status = options.status || 'terminating';
+
+    if (options.countRecycle) {
+      this.metrics.recycled += 1;
+    }
+
+    try {
+      state.worker.postMessage({
+        type: 'shutdown',
+        reason
+      });
+    } catch (_) {
+      return this._forceKillWorker(workerId, `recycle send failed (${reason})`, options);
+    }
+
+    state.forceKillTimer = setTimeout(() => {
+      this._beginTerminateWorker(workerId, `recycle timeout (${reason})`, 'force', options);
+    }, this.shutdownGraceMs);
+    state.forceKillTimer.unref();
+    return state.terminatePromise;
   }
 
   _releaseWorkerAfterTask(workerId) {
@@ -600,6 +732,7 @@ class ThreadPool {
 
       this.activeTasks.delete(task.taskId);
       state.currentTaskId = null;
+      state.cleanupSkipped = true;
       this.metrics.failed += 1;
       this.metrics.timedOut += 1;
       active.reject(
@@ -608,7 +741,10 @@ class ThreadPool {
           { workerId, taskId: task.taskId }
         )
       );
-      this._forceKillWorker(workerId, 'task timeout');
+      this._beginTerminateWorker(workerId, 'task timeout', 'force', {
+        cleanupSkipped: true,
+        status: 'terminating'
+      });
     }, task.timeoutMs);
     timeoutTimer.unref();
 
@@ -672,7 +808,10 @@ class ThreadPool {
           { workerId, taskId: task.taskId, cause: error }
         )
       );
-      this._forceKillWorker(workerId, 'dispatch failure');
+      this._beginTerminateWorker(workerId, 'dispatch failure', 'force', {
+        cleanupSkipped: true,
+        status: 'terminating'
+      });
     }
   }
 
@@ -707,6 +846,48 @@ class ThreadPool {
     }
 
     state.resolveExit({ code, signal });
+    if (typeof state.resolveShutdownSignal === 'function') {
+      state.resolveShutdownSignal({ type: 'exit', workerId, code, signal });
+      state.resolveShutdownSignal = null;
+    }
+    hostLog(
+      state.terminateMode === 'force' ? 'warn' : 'info',
+      `[ThreadPool] Worker exit ${workerId}: ${JSON.stringify({
+        code,
+        signal,
+        terminateReason: state.terminateReason,
+        terminateMode: state.terminateMode,
+        terminateRequestedAt: state.terminateRequestedAt,
+        shutdownAckAt: state.shutdownAckAt,
+        cleanupSkipped: state.cleanupSkipped,
+        tasksHandled: state.tasksHandled,
+        currentTaskId: state.currentTaskId,
+        cleanupFailureCount: state.cleanupFailureCount,
+        runtimeStats: state.runtimeStats,
+        memoryUsage: state.memoryUsage
+      })}`
+    );
+    if (state.shutdownAck && (state.shutdownAck.cleanupError || state.shutdownAck.shutdownError)) {
+      hostLog(
+        'warn',
+        `[ThreadPool] ${workerId} acknowledged shutdown with cleanup errors: ${JSON.stringify(state.shutdownAck)}`
+      );
+    }
+    this.closedWorkers.set(workerId, {
+      workerId,
+      pid: state.pid || null,
+      threadId: state.threadId || null,
+      tasksHandled: state.tasksHandled,
+      cleanupFailureCount: state.cleanupFailureCount,
+      status: state.status,
+      terminateReason: state.terminateReason,
+      terminateMode: state.terminateMode,
+      terminateRequestedAt: state.terminateRequestedAt,
+      shutdownAckAt: state.shutdownAckAt,
+      cleanupSkipped: state.cleanupSkipped,
+      memoryUsage: state.memoryUsage || null,
+      runtimeStats: state.runtimeStats || null
+    });
     this.workers.delete(workerId);
 
     if (!this.closing && this.started) {
@@ -720,43 +901,36 @@ class ThreadPool {
   }
 
   _recycleWorker(workerId, reason) {
-    const state = this.workers.get(workerId);
-    if (!state || state.status === 'recycling') {
-      return;
-    }
-
-    this.idleWorkerIds.delete(workerId);
-    state.status = 'recycling';
-    this.metrics.recycled += 1;
-
-    try {
-      state.worker.postMessage({
-        type: 'shutdown',
-        reason
-      });
-    } catch (_) {
-      this._forceKillWorker(workerId, `recycle send failed (${reason})`);
-      return;
-    }
-
-    state.forceKillTimer = setTimeout(() => {
-      this._forceKillWorker(workerId, `recycle timeout (${reason})`);
-    }, this.shutdownGraceMs);
-    state.forceKillTimer.unref();
+    return this._beginTerminateWorker(workerId, reason, 'graceful', {
+      countRecycle: true,
+      status: 'recycling'
+    });
   }
 
-  _forceKillWorker(workerId, reason) {
+  _forceKillWorker(workerId, reason, options = {}) {
     const state = this.workers.get(workerId);
     if (!state) {
-      return;
+      return null;
+    }
+    if (state.terminatingHard) {
+      return state.terminatePromise;
     }
 
     this.idleWorkerIds.delete(workerId);
+    state.terminating = true;
+    state.terminatingHard = true;
+    state.terminateReason = state.terminateReason || reason;
+    state.terminateMode = 'force';
+    state.terminateRequestedAt = state.terminateRequestedAt || Date.now();
+    state.cleanupSkipped = options.cleanupSkipped !== false;
+    state.status = options.status || 'terminating';
+    clearTimeout(state.forceKillTimer);
     hostLog('warn', `Force terminating ${workerId}: ${reason}`);
 
     state.worker.terminate().catch(() => {
       // ignore terminate errors
     });
+    return state.terminatePromise;
   }
 
   _rejectPendingQueue(error) {
@@ -777,7 +951,10 @@ class ThreadPool {
       const now = Date.now();
       for (const [workerId, state] of this.workers.entries()) {
         if (now - state.lastHeartbeatAt > this.heartbeatTimeoutMs) {
-          this._forceKillWorker(workerId, 'heartbeat timeout');
+          this._beginTerminateWorker(workerId, 'heartbeat timeout', 'force', {
+            cleanupSkipped: true,
+            status: 'terminating'
+          });
         }
       }
     }, this.heartbeatIntervalMs);
@@ -807,7 +984,10 @@ class ThreadPool {
     let workerHeapUsedTotal = 0;
     let workersWithMemory = 0;
     const workersDetail = [];
-    for (const [workerId, state] of this.workers.entries()) {
+    const sourceWorkers = this.workers.size > 0
+      ? Array.from(this.workers.entries()).map(([workerId, state]) => ({ workerId, state }))
+      : Array.from(this.closedWorkers.entries()).map(([workerId, snapshot]) => ({ workerId, state: snapshot }));
+    for (const { workerId, state } of sourceWorkers) {
       const memoryUsage = state.memoryUsage || null;
       if (memoryUsage) {
         workersWithMemory += 1;
@@ -821,6 +1001,11 @@ class ThreadPool {
         tasksHandled: state.tasksHandled,
         cleanupFailureCount: state.cleanupFailureCount,
         status: state.status,
+        terminateReason: state.terminateReason,
+        terminateMode: state.terminateMode,
+        terminateRequestedAt: state.terminateRequestedAt,
+        shutdownAckAt: state.shutdownAckAt,
+        cleanupSkipped: state.cleanupSkipped,
         memoryUsage,
         runtimeStats: state.runtimeStats
       });
@@ -828,8 +1013,8 @@ class ThreadPool {
 
     return {
       ...this.metrics,
-      workers: this.workers.size,
-      idleWorkers: this.idleWorkerIds.size,
+      workers: sourceWorkers.length,
+      idleWorkers: this.workers.size > 0 ? this.idleWorkerIds.size : sourceWorkers.length,
       activeTasks: this.activeTasks.size,
       pendingTasks: this.pendingQueue.length,
       memory: {

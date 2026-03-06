@@ -164,6 +164,10 @@
     runtime.task.signatureState = runtime.task.signatureState && typeof runtime.task.signatureState === 'object'
       ? runtime.task.signatureState
       : {};
+    runtime.task.dispatchExperimentCache =
+      runtime.task.dispatchExperimentCache && typeof runtime.task.dispatchExperimentCache === 'object'
+        ? runtime.task.dispatchExperimentCache
+        : {};
 
     runtime.bridge = runtime.bridge && typeof runtime.bridge === 'object'
       ? runtime.bridge
@@ -353,6 +357,14 @@
     runtime.config.globalFacadeMode = normalizeGlobalFacadeMode(
       bootstrapGlobalFacadeMode || runtime.config.globalFacadeMode || 'strict'
     );
+    runtime.config.perfTraceEnabled = !!(
+      (bootstrap && bootstrap.perfTraceEnabled) ||
+      (typeof process !== 'undefined' && process.env && process.env.LEAP_PERF_TRACE === '1')
+    );
+    runtime.config.perfDispatchCacheEnabled = !!(
+      (bootstrap && bootstrap.perfDispatchCacheEnabled) ||
+      (typeof process !== 'undefined' && process.env && process.env.LEAP_PERF_DISPATCH_CACHE === '1')
+    );
     runtime.host.timers = normalizeHostTimers(bootstrapHostTimers, runtime.host.timers);
     runtime.debug.enabled = !!(bootstrap && bootstrap.debugEnabled);
 
@@ -499,16 +511,32 @@
     return ensureRuntimeStore().debug.hookRuntime;
   };
 
+  leapenv.isPerfDispatchCacheEnabled = function isPerfDispatchCacheEnabled() {
+    const runtime = ensureRuntimeStore();
+    return !!(runtime.config && runtime.config.perfDispatchCacheEnabled);
+  };
+
+  leapenv.getDispatchExperimentCache = function getDispatchExperimentCache() {
+    const runtime = ensureRuntimeStore();
+    runtime.task.dispatchExperimentCache =
+      runtime.task.dispatchExperimentCache && typeof runtime.task.dispatchExperimentCache === 'object'
+        ? runtime.task.dispatchExperimentCache
+        : {};
+    return runtime.task.dispatchExperimentCache;
+  };
+
   leapenv.beginTask = function beginTask(taskId) {
     const runtime = ensureRuntimeStore();
     const normalizedTaskId = String(taskId == null ? '' : taskId);
     runtime.task.currentTaskId = normalizedTaskId;
+    runtime.task.dispatchExperimentCache = {};
     return normalizedTaskId;
   };
 
   leapenv.endTask = function endTask(taskId) {
     const runtime = ensureRuntimeStore();
     const normalizedTaskId = String(taskId == null ? '' : taskId);
+    runtime.task.dispatchExperimentCache = {};
     if (!normalizedTaskId || runtime.task.currentTaskId === normalizedTaskId) {
       runtime.task.currentTaskId = '';
     }
@@ -544,8 +572,93 @@
   // O1: 预建 descriptor 缓存，避免每次 dispatch 都调用 getOwnPropertyDescriptor
   var _implDescCache = {};
 
+  function readPerfTraceBootstrapFlag() {
+    var bootstrap = leapenv && leapenv.__runtimeBootstrap && typeof leapenv.__runtimeBootstrap === 'object'
+      ? leapenv.__runtimeBootstrap
+      : (global.__LEAP_BOOTSTRAP__ && typeof global.__LEAP_BOOTSTRAP__ === 'object'
+          ? global.__LEAP_BOOTSTRAP__
+          : null);
+    return !!(bootstrap && bootstrap.perfTraceEnabled);
+  }
+
+  function isPerfTraceEnabledForRuntime(runtime) {
+    var runtimeConfig = runtime && runtime.config && typeof runtime.config === 'object'
+      ? runtime.config
+      : null;
+    if (runtimeConfig && typeof runtimeConfig.perfTraceEnabled === 'boolean') {
+      return runtimeConfig.perfTraceEnabled;
+    }
+    if (typeof process !== 'undefined' && process.env && process.env.LEAP_PERF_TRACE === '1') {
+      return true;
+    }
+    return readPerfTraceBootstrapFlag();
+  }
+
+  var perfNow = (typeof global.performance !== 'undefined' &&
+      global.performance &&
+      typeof global.performance.now === 'function')
+    ? function () { return global.performance.now(); }
+    : function () { return Date.now(); };
+
+  function getPerfNow() {
+    return perfNow();
+  }
+
+  function createDispatchPerfCounters() {
+    return {
+      total: 0,
+      getter: 0,
+      setter: 0,
+      apply: 0,
+      construct: 0,
+      hotspots: {}
+    };
+  }
+
+  function mapActionTypeToOperation(actionType) {
+    if (actionType === 'GET') return 'getter';
+    if (actionType === 'SET') return 'setter';
+    if (actionType === 'CALL') return 'apply';
+    if (actionType === 'CONSTRUCT') return 'construct';
+    return 'unknown';
+  }
+
+  function ensurePerfStore() {
+    var runtime = ensureRuntimeStore();
+    if (!isPerfTraceEnabledForRuntime(runtime)) {
+      return null;
+    }
+    var perf = runtime.perf && typeof runtime.perf === 'object'
+      ? runtime.perf
+      : {};
+    runtime.perf = perf;
+
+    perf.bundle = perf.bundle && typeof perf.bundle === 'object'
+      ? perf.bundle
+      : {};
+
+    perf.bundle.implRegister = perf.bundle.implRegister && typeof perf.bundle.implRegister === 'object'
+      ? perf.bundle.implRegister
+      : { totalMs: 0, count: 0 };
+
+    perf.bundle.skeletonLoad = perf.bundle.skeletonLoad && typeof perf.bundle.skeletonLoad === 'object'
+      ? perf.bundle.skeletonLoad
+      : { totalMs: 0, count: 0 };
+
+    perf.task = perf.task && typeof perf.task === 'object'
+      ? perf.task
+      : null;
+
+    return perf;
+  }
+
   // 注册 Impl 类（含 O1 descriptor 预缓存）
   leapenv.registerImpl = function(typeName, implClass) {
+    var runtimeForPerf = leapenv.__runtime && typeof leapenv.__runtime === 'object'
+      ? leapenv.__runtime
+      : null;
+    var perfEnabled = isPerfTraceEnabledForRuntime(runtimeForPerf);
+    var perfStart = perfEnabled ? getPerfNow() : 0;
     leapenv.implRegistry[typeName] = implClass;
     // 遍历整个原型链，收集各层的 own property descriptor
     var cache = {};
@@ -560,6 +673,12 @@
       proto = Object.getPrototypeOf(proto);
     }
     _implDescCache[typeName] = cache;
+
+    var perf = perfEnabled ? ensurePerfStore() : null;
+    if (perf && perf.bundle && perf.bundle.implRegister) {
+      perf.bundle.implRegister.totalMs += Math.max(0, getPerfNow() - perfStart);
+      perf.bundle.implRegister.count += 1;
+    }
   };
 
   // I-8: 追踪日志（通过 LEAP_TRACE=1 环境变量开启）
@@ -567,6 +686,36 @@
 
   // 统一分发函数 - 由 C++ 侧调用
   function dispatch(typeName, propName, actionType) {
+    var perf = ensurePerfStore();
+    var taskPerf = perf && perf.task && typeof perf.task === 'object'
+      ? perf.task
+      : null;
+    if (taskPerf) {
+      taskPerf.dispatch = taskPerf.dispatch && typeof taskPerf.dispatch === 'object'
+        ? taskPerf.dispatch
+        : createDispatchPerfCounters();
+      taskPerf.dispatch.hotspots = taskPerf.dispatch.hotspots && typeof taskPerf.dispatch.hotspots === 'object'
+        ? taskPerf.dispatch.hotspots
+        : {};
+      taskPerf.dispatch.total += 1;
+      if (actionType === 'GET') {
+        taskPerf.dispatch.getter += 1;
+      } else if (actionType === 'SET') {
+        taskPerf.dispatch.setter += 1;
+      } else if (actionType === 'CALL') {
+        taskPerf.dispatch.apply += 1;
+      } else if (actionType === 'CONSTRUCT') {
+        taskPerf.dispatch.construct += 1;
+      }
+      var operationType = mapActionTypeToOperation(actionType);
+      var hotspotKey = JSON.stringify([
+        String(typeName == null ? '' : typeName),
+        String(propName == null ? '' : propName),
+        operationType
+      ]);
+      taskPerf.dispatch.hotspots[hotspotKey] = Number(taskPerf.dispatch.hotspots[hotspotKey] || 0) + 1;
+    }
+
     if (TRACE) {
       console.log(JSON.stringify({
         t: Date.now(),

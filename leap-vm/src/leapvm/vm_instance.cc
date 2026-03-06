@@ -5086,6 +5086,155 @@ void VmInstance::RunLoopOnce(std::chrono::milliseconds max_duration) {
     future.get();
 }
 
+VmRuntimeStats VmInstance::GetRuntimeStats(bool force_gc) {
+    VmRuntimeStats stats;
+    {
+        std::lock_guard<std::mutex> lock(task_mu_);
+        stats.pending_task_count = task_queue_.size();
+    }
+
+    if (!isolate_) {
+        return stats;
+    }
+
+    std::promise<void> done_promise;
+    auto future = done_promise.get_future();
+
+    PostTask([this, force_gc, &stats, &done_promise](v8::Isolate* isolate, v8::Local<v8::Context> context) {
+        (void)context;
+        v8::HandleScope handle_scope(isolate);
+
+        if (force_gc) {
+            isolate->LowMemoryNotification();
+        }
+
+        stats.timer_count = timers_by_id_.size();
+        stats.timer_queue_size = timer_queue_.size();
+        stats.stale_timer_queue_count =
+            stats.timer_queue_size > stats.timer_count
+                ? (stats.timer_queue_size - stats.timer_count)
+                : 0;
+        stats.dom_wrapper_cache_size = dom_wrapper_cache_.size();
+        stats.pending_dom_wrapper_cleanup_count = pending_dom_wrapper_cleanup_.size();
+        stats.child_frame_count = child_frames_.size();
+        stats.main_dispatch_fn_cached = dispatch_fn_.IsEmpty() ? 0u : 1u;
+
+        for (const auto& [id, frame] : child_frames_) {
+            (void)id;
+            if (!frame.dispatch_fn.IsEmpty()) {
+                stats.child_frame_dispatch_fn_count += 1;
+            }
+        }
+
+        stats.dom_document_count = dom_manager_.document_count();
+        stats.dom_task_scope_count = dom_manager_.task_scope_count();
+        stats.dom_handle_count = dom_manager_.handle_count();
+
+        if (skeleton_registry_) {
+            stats.skeleton_count = skeleton_registry_->skeleton_count();
+            stats.skeleton_template_count = skeleton_registry_->template_count();
+            stats.skeleton_dispatch_meta_count = skeleton_registry_->dispatch_meta_count();
+            stats.skeleton_brand_compat_cache_size = skeleton_registry_->brand_compat_cache_size();
+        }
+
+        v8::HeapStatistics heap_stats;
+        isolate->GetHeapStatistics(&heap_stats);
+        stats.v8_total_heap_size = heap_stats.total_heap_size();
+        stats.v8_total_heap_size_executable = heap_stats.total_heap_size_executable();
+        stats.v8_total_physical_size = heap_stats.total_physical_size();
+        stats.v8_total_available_size = heap_stats.total_available_size();
+        stats.v8_used_heap_size = heap_stats.used_heap_size();
+        stats.v8_heap_size_limit = heap_stats.heap_size_limit();
+        stats.v8_malloced_memory = heap_stats.malloced_memory();
+        stats.v8_peak_malloced_memory = heap_stats.peak_malloced_memory();
+        stats.v8_external_memory = heap_stats.external_memory();
+        stats.v8_total_global_handles_size = heap_stats.total_global_handles_size();
+        stats.v8_used_global_handles_size = heap_stats.used_global_handles_size();
+        stats.v8_number_of_native_contexts = heap_stats.number_of_native_contexts();
+        stats.v8_number_of_detached_contexts = heap_stats.number_of_detached_contexts();
+
+        v8::HeapCodeStatistics heap_code_stats;
+        if (isolate->GetHeapCodeAndMetadataStatistics(&heap_code_stats)) {
+            stats.v8_code_and_metadata_size = heap_code_stats.code_and_metadata_size();
+            stats.v8_bytecode_and_metadata_size = heap_code_stats.bytecode_and_metadata_size();
+            stats.v8_external_script_source_size = heap_code_stats.external_script_source_size();
+            stats.v8_cpu_profiler_metadata_size = heap_code_stats.cpu_profiler_metadata_size();
+        }
+
+        const size_t space_count = isolate->NumberOfHeapSpaces();
+        for (size_t i = 0; i < space_count; ++i) {
+            v8::HeapSpaceStatistics space_stats;
+            if (!isolate->GetHeapSpaceStatistics(&space_stats, i)) {
+                continue;
+            }
+            const char* space_name = space_stats.space_name();
+            if (!space_name) {
+                continue;
+            }
+            if (std::strcmp(space_name, "old_space") == 0) {
+                stats.v8_old_space_used_size = space_stats.space_used_size();
+                stats.v8_old_space_physical_size = space_stats.physical_space_size();
+            } else if (std::strcmp(space_name, "new_space") == 0) {
+                stats.v8_new_space_used_size = space_stats.space_used_size();
+                stats.v8_new_space_physical_size = space_stats.physical_space_size();
+            } else if (std::strcmp(space_name, "code_space") == 0) {
+                stats.v8_code_space_used_size = space_stats.space_used_size();
+                stats.v8_code_space_physical_size = space_stats.physical_space_size();
+            } else if (std::strcmp(space_name, "map_space") == 0) {
+                stats.v8_map_space_used_size = space_stats.space_used_size();
+                stats.v8_map_space_physical_size = space_stats.physical_space_size();
+            } else if (std::strcmp(space_name, "lo_space") == 0 ||
+                       std::strcmp(space_name, "large_object_space") == 0) {
+                stats.v8_large_object_space_used_size = space_stats.space_used_size();
+                stats.v8_large_object_space_physical_size = space_stats.physical_space_size();
+            }
+        }
+
+        stats.v8_tracked_heap_object_type_count = isolate->NumberOfTrackedHeapObjectTypes();
+        std::vector<VmRuntimeStats::HeapObjectTypeStat> heap_object_types;
+        heap_object_types.reserve(stats.v8_tracked_heap_object_type_count);
+        for (size_t i = 0; i < stats.v8_tracked_heap_object_type_count; ++i) {
+            v8::HeapObjectStatistics object_stats;
+            if (!isolate->GetHeapObjectStatisticsAtLastGC(&object_stats, i)) {
+                continue;
+            }
+            if (object_stats.object_size() == 0) {
+                continue;
+            }
+            VmRuntimeStats::HeapObjectTypeStat entry;
+            const char* object_type = object_stats.object_type();
+            const char* object_sub_type = object_stats.object_sub_type();
+            entry.type = object_type ? object_type : "";
+            entry.sub_type = object_sub_type ? object_sub_type : "";
+            entry.count = object_stats.object_count();
+            entry.size = object_stats.object_size();
+            heap_object_types.push_back(std::move(entry));
+        }
+        stats.v8_heap_object_stats_available = heap_object_types.empty() ? 0u : 1u;
+        std::sort(heap_object_types.begin(), heap_object_types.end(),
+                  [](const VmRuntimeStats::HeapObjectTypeStat& lhs,
+                     const VmRuntimeStats::HeapObjectTypeStat& rhs) {
+                      if (lhs.size != rhs.size) {
+                          return lhs.size > rhs.size;
+                      }
+                      if (lhs.count != rhs.count) {
+                          return lhs.count > rhs.count;
+                      }
+                      return lhs.type < rhs.type;
+                  });
+        constexpr size_t kMaxHeapObjectTypes = 8;
+        if (heap_object_types.size() > kMaxHeapObjectTypes) {
+            heap_object_types.resize(kMaxHeapObjectTypes);
+        }
+        stats.v8_top_heap_object_types = std::move(heap_object_types);
+
+        done_promise.set_value();
+    });
+
+    future.get();
+    return stats;
+}
+
 void VmInstance::SetHookLogEnabled(bool enabled) {
     hook_config_.pending_monitor_enabled = enabled;
     hook_config_.pending_monitor_enabled_set = true;

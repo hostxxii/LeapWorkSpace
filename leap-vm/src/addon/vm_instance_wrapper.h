@@ -24,6 +24,7 @@ private:
     Napi::Value CreateCodeCache(const Napi::CallbackInfo& info);
     Napi::Value RunScriptWithCache(const Napi::CallbackInfo& info);
     Napi::Value RunLoop(const Napi::CallbackInfo& info);
+    Napi::Value GetRuntimeStats(const Napi::CallbackInfo& info);
     Napi::Value Shutdown(const Napi::CallbackInfo& info);
     Napi::Value SetMonitorEnabled(const Napi::CallbackInfo& info);
     Napi::Value SetHookLogEnabled(const Napi::CallbackInfo& info);

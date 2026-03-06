@@ -5,6 +5,29 @@
   const weakPorts = typeof WeakMap === 'function' ? new WeakMap() : null;
   const fallbackChannels = [];
   const fallbackPorts = [];
+  const liveChannels = [];
+  const livePorts = [];
+  const runtimeStats = {
+    messageChannelCount: 0,
+    messagePortOpenCount: 0,
+    messagePortClosedCount: 0,
+    messagePortQueueCount: 0
+  };
+
+  function trackLive(list, value) {
+    if (value == null || list.indexOf(value) !== -1) {
+      return;
+    }
+    list.push(value);
+  }
+
+  function untrackLive(list, value) {
+    var index = list.indexOf(value);
+    if (index === -1) {
+      return;
+    }
+    list.splice(index, 1);
+  }
 
   function getFallbackEntry(list, key) {
     for (var i = 0; i < list.length; i++) {
@@ -158,6 +181,9 @@
 
     while (!state.closed && state.started && state.queue.length > 0) {
       var item = state.queue.shift();
+      if (runtimeStats.messagePortQueueCount > 0) {
+        runtimeStats.messagePortQueueCount -= 1;
+      }
       dispatchPortMessage(port, item);
     }
 
@@ -207,6 +233,7 @@
     var state = {
       port: port,
       entangledPort: null,
+      channelState: null,
       onmessage: null,
       onmessageerror: null,
       started: true,
@@ -214,6 +241,8 @@
       deliveryScheduled: false,
       queue: []
     };
+    runtimeStats.messagePortOpenCount += 1;
+    trackLive(livePorts, port);
     setPortState(port, state);
     return state;
   }
@@ -231,11 +260,75 @@
     port2State.entangledPort = port1;
 
     state = {
+      channel: channel,
       port1: port1,
-      port2: port2
+      port2: port2,
+      openPorts: 2,
+      active: true
     };
+    port1State.channelState = state;
+    port2State.channelState = state;
+    runtimeStats.messageChannelCount += 1;
+    trackLive(liveChannels, channel);
     setChannelState(channel, state);
     return state;
+  }
+
+  function getMessagePortRuntimeStats() {
+    return {
+      messageChannelCount: runtimeStats.messageChannelCount,
+      messagePortOpenCount: runtimeStats.messagePortOpenCount,
+      messagePortClosedCount: runtimeStats.messagePortClosedCount,
+      messagePortQueueCount: runtimeStats.messagePortQueueCount
+    };
+  }
+
+  function notePortClosed(port) {
+    var state = getPortState(port);
+    if (!state) {
+      return;
+    }
+    untrackLive(livePorts, port);
+    if (runtimeStats.messagePortOpenCount > 0) {
+      runtimeStats.messagePortOpenCount -= 1;
+    }
+    runtimeStats.messagePortClosedCount += 1;
+    if (runtimeStats.messagePortQueueCount > 0 && Array.isArray(state.queue) && state.queue.length > 0) {
+      runtimeStats.messagePortQueueCount = Math.max(0, runtimeStats.messagePortQueueCount - state.queue.length);
+    }
+    if (state.channelState && state.channelState.active) {
+      state.channelState.openPorts = Math.max(0, Number(state.channelState.openPorts || 0) - 1);
+      if (state.channelState.openPorts === 0) {
+        state.channelState.active = false;
+        untrackLive(liveChannels, state.channelState.channel);
+        if (runtimeStats.messageChannelCount > 0) {
+          runtimeStats.messageChannelCount -= 1;
+        }
+      }
+    }
+  }
+
+  function noteMessageQueued() {
+    runtimeStats.messagePortQueueCount += 1;
+  }
+
+  function resetMessagePortTaskState() {
+    var ports = livePorts.slice();
+    for (var i = 0; i < ports.length; i++) {
+      var port = ports[i];
+      try {
+        if (port && typeof port.close === 'function') {
+          port.close();
+        }
+      } catch (_) {}
+    }
+    livePorts.length = 0;
+    liveChannels.length = 0;
+    runtimeStats.messageChannelCount = 0;
+    runtimeStats.messagePortOpenCount = 0;
+    runtimeStats.messagePortClosedCount = 0;
+    runtimeStats.messagePortQueueCount = 0;
+    return true;
   }
 
   leapenv.messagePortShared = leapenv.messagePortShared || {};
@@ -245,6 +338,10 @@
   leapenv.messagePortShared.schedulePortFlush = schedulePortFlush;
   leapenv.messagePortShared.flushPortQueue = flushPortQueue;
   leapenv.messagePortShared.reportAsyncError = reportAsyncError;
+  leapenv.messagePortShared.getRuntimeStats = getMessagePortRuntimeStats;
+  leapenv.messagePortShared.notePortClosed = notePortClosed;
+  leapenv.messagePortShared.noteMessageQueued = noteMessageQueued;
+  leapenv.messagePortShared.resetRuntimeState = resetMessagePortTaskState;
 
   class MessageChannelImpl {
     get port1() {
@@ -257,4 +354,20 @@
   }
 
   leapenv.registerImpl('MessageChannel', MessageChannelImpl);
+  try {
+    MessageChannelImpl.__leapGetRuntimeStats = getMessagePortRuntimeStats;
+    MessageChannelImpl.__leapResetTaskState = resetMessagePortTaskState;
+  } catch (_) {}
+  try {
+    if (leapenv.implRegistry && leapenv.implRegistry.MessageChannel) {
+      leapenv.implRegistry.MessageChannel.__leapGetRuntimeStats = getMessagePortRuntimeStats;
+      leapenv.implRegistry.MessageChannel.__leapResetTaskState = resetMessagePortTaskState;
+    }
+  } catch (_) {}
+  try {
+    if (leapenv.__runtime && typeof leapenv.__runtime === 'object') {
+      leapenv.__runtime.messagePortGetStats = getMessagePortRuntimeStats;
+      leapenv.__runtime.messagePortTaskReset = resetMessagePortTaskState;
+    }
+  } catch (_) {}
 })(globalThis);

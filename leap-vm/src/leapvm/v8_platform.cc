@@ -1,6 +1,30 @@
 #include "v8_platform.h"
 
+#include <cctype>
+#include <cstdlib>
+#include <string>
+
 namespace leapvm {
+
+namespace {
+
+bool ShouldTrackGcObjectStats() {
+#if defined(__linux__)
+    const char* raw = std::getenv("LEAPVM_TRACK_GC_OBJECT_STATS");
+    if (!raw || raw[0] == '\0') {
+        return false;
+    }
+    std::string value(raw);
+    for (char& c : value) {
+        c = static_cast<char>(::tolower(static_cast<unsigned char>(c)));
+    }
+    return value == "1" || value == "true" || value == "yes";
+#else
+    return false;
+#endif
+}
+
+}  // namespace
 
 V8Platform& V8Platform::Instance() {
     static V8Platform instance;
@@ -28,6 +52,11 @@ void V8Platform::InitOnce(const char* exec_path) {
 #ifdef V8_ENABLE_I18N_SUPPORT
     v8::V8::InitializeICU();
 #endif
+
+    if (ShouldTrackGcObjectStats()) {
+        const char track_flag[] = "--track-gc-object-stats";
+        v8::V8::SetFlagsFromString(track_flag, static_cast<int>(sizeof(track_flag) - 1));
+    }
 
     // 2. 创建我们自己的 Platform
     // 关键修复：使用 NewDefaultPlatform 而不是 NewSingleThreadedDefaultPlatform

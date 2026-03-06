@@ -1,14 +1,21 @@
 const { parentPort, threadId } = require('worker_threads');
 const {
   initializeEnvironment,
-  executeSignatureTask
+  executeSignatureTask,
+  shutdownEnvironment
 } = require('../../runner');
 const {
   toPositiveInteger,
   getMemorySnapshot,
   serializeError,
+  buildReleaseAllScopesScript,
+  buildRuntimeStatsScript,
+  buildTaskApiTraceSnapshotScript,
   buildPostTaskCleanupScript,
-  CLEANUP_FAILURE_LIMIT
+  parseRuntimeStats,
+  getNativeRuntimeStats,
+  mergeRuntimeStats,
+  shouldRecycleAfterCleanup
 } = require('./worker-common');
 
 // DoD (Data-Oriented Design) imports - required (dod is the only supported backend)
@@ -28,6 +35,9 @@ let tasksHandled = 0;
 let heartbeatTimer = null;
 let cleanupFailureCount = 0;
 let currentDomBackend = 'dod';
+const forceGcOnShutdownStats = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TRACK_GC_OBJECT_STATS || ''));
+const taskPhaseTraceEnabled = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TASK_PHASE_TRACE || ''));
+const taskApiTraceEnabled = /^(1|true|yes)$/i.test(String(process.env.LEAPVM_TASK_API_TRACE || ''));
 
 function send(message) {
   try {
@@ -45,6 +55,9 @@ function runPostTaskCleanup(taskId) {
     activeDocs: 0,
     activeNodes: 0,
     activeTasks: 0,
+    windowListenerCount: 0,
+    rafCount: 0,
+    runtimeStats: null,
     cleanupFailureCount: cleanupFailureCount,
     shouldRecycle: false,
     cleanupError: null
@@ -68,9 +81,7 @@ function runPostTaskCleanup(taskId) {
     if (parsed && typeof parsed === 'object') {
       var releasedDocs = Number.parseInt(parsed.releasedDocs, 10);
       var releasedNodes = Number.parseInt(parsed.releasedNodes, 10);
-      var activeDocs = Number.parseInt(parsed.activeDocs, 10);
-      var activeNodes = Number.parseInt(parsed.activeNodes, 10);
-      var activeTasks = Number.parseInt(parsed.activeTasks, 10);
+      var runtimeStats = mergeRuntimeStats(parsed, getNativeRuntimeStats(leapvm));
       if (Number.isFinite(releasedDocs) && releasedDocs > 0) {
         summary.leakedDocsReleased = releasedDocs;
         summary.releasedDocs = releasedDocs;
@@ -79,14 +90,13 @@ function runPostTaskCleanup(taskId) {
       if (Number.isFinite(releasedNodes) && releasedNodes > 0) {
         summary.releasedNodes = releasedNodes;
       }
-      if (Number.isFinite(activeDocs) && activeDocs >= 0) {
-        summary.activeDocs = activeDocs;
-      }
-      if (Number.isFinite(activeNodes) && activeNodes >= 0) {
-        summary.activeNodes = activeNodes;
-      }
-      if (Number.isFinite(activeTasks) && activeTasks >= 0) {
-        summary.activeTasks = activeTasks;
+      if (runtimeStats) {
+        summary.activeDocs = runtimeStats.activeDocs;
+        summary.activeNodes = runtimeStats.activeNodes;
+        summary.activeTasks = runtimeStats.activeTasks;
+        summary.windowListenerCount = runtimeStats.windowListenerCount;
+        summary.rafCount = runtimeStats.rafCount;
+        summary.runtimeStats = runtimeStats;
       }
     } else {
       var released = Number.parseInt(raw, 10);
@@ -102,7 +112,7 @@ function runPostTaskCleanup(taskId) {
   }
 
   summary.cleanupFailureCount = cleanupFailureCount;
-  summary.shouldRecycle = cleanupFailureCount >= CLEANUP_FAILURE_LIMIT;
+  summary.shouldRecycle = shouldRecycleAfterCleanup(summary);
   return summary;
 }
 
@@ -126,6 +136,7 @@ function startHeartbeat(intervalMs) {
       uptimeMs: Math.floor(process.uptime() * 1000),
       tasksHandled,
       cleanupFailureCount,
+      runtimeStats: getRuntimeStatsSnapshot(),
       memoryUsage: getMemorySnapshot()
     });
   }, intervalMs);
@@ -135,11 +146,38 @@ function startHeartbeat(intervalMs) {
 
 function finalizeExit(code) {
   stopHeartbeat();
-  // NOTE: Any leapvm call (runScript, shutdown) in a worker_threads context
-  // causes a SIGSEGV on Windows after multiple DOM tasks have been processed
-  // (the V8 isolate accumulates state that makes teardown unsafe). Skip all
-  // VM calls; the OS reclaims native resources when the process exits.
   process.exit(code);
+}
+
+function safeShutdownEnvironment(reason) {
+  var cleanupError = null;
+  var shutdownError = null;
+  var runtimeStats = null;
+
+  if (leapvm && typeof leapvm.runScript === 'function') {
+    try {
+      leapvm.runScript(buildReleaseAllScopesScript());
+    } catch (error) {
+      cleanupError = serializeError(error);
+    }
+  }
+
+  runtimeStats = getRuntimeStatsSnapshot(forceGcOnShutdownStats ? { forceGc: true } : null);
+
+  try {
+    shutdownEnvironment(leapvm, { skipTaskScopeRelease: true });
+  } catch (error) {
+    shutdownError = serializeError(error);
+  } finally {
+    leapvm = null;
+  }
+
+  return {
+    reason: reason || null,
+    runtimeStats: runtimeStats,
+    cleanupError: cleanupError,
+    shutdownError: shutdownError
+  };
 }
 
 function handleInit(message) {
@@ -197,6 +235,7 @@ function handleInit(message) {
       warmupMs: Date.now() - begin,
       tasksHandled,
       cleanupFailureCount,
+      runtimeStats: getRuntimeStatsSnapshot(),
       inspectorInfo: envContext.inspectorInfo || null,
       memoryUsage: getMemorySnapshot()
     });
@@ -241,14 +280,27 @@ function handleRunSignature(message) {
 
   const payload = message.payload || {};
   const begin = Date.now();
+  const phaseTimings = taskPhaseTraceEnabled ? {} : null;
+  const executeStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
 
   try {
     const result = executeSignatureTask(leapvm, {
       ...payload,
       taskId
     });
+    const taskApiTrace = getTaskApiTraceSnapshot();
+    if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
+      phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
+    }
+    if (phaseTimings) {
+      phaseTimings.executeSignatureTaskMs = Date.now() - executeStartedAt;
+    }
     tasksHandled += 1;
+    const cleanupStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
     const cleanup = runPostTaskCleanup(taskId);
+    if (phaseTimings) {
+      phaseTimings.postTaskCleanupMs = Date.now() - cleanupStartedAt;
+    }
     send({
       type: 'result',
       workerId,
@@ -263,12 +315,27 @@ function handleRunSignature(message) {
       activeDocs: cleanup.activeDocs,
       activeNodes: cleanup.activeNodes,
       activeTasks: cleanup.activeTasks,
+      windowListenerCount: cleanup.windowListenerCount,
+      rafCount: cleanup.rafCount,
+      runtimeStats: cleanup.runtimeStats,
+      phaseTimings: phaseTimings,
+      taskApiTrace: taskApiTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
     });
   } catch (error) {
+    const executeFailedAt = taskPhaseTraceEnabled ? Date.now() : 0;
+    const taskApiTrace = getTaskApiTraceSnapshot();
+    if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
+      phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
+    }
+    const cleanupStartedAt = taskPhaseTraceEnabled ? Date.now() : 0;
     const cleanup = runPostTaskCleanup(taskId);
+    if (phaseTimings) {
+      phaseTimings.executeSignatureTaskMs = executeFailedAt - executeStartedAt;
+      phaseTimings.postTaskCleanupMs = Date.now() - cleanupStartedAt;
+    }
     send({
       type: 'error',
       workerId,
@@ -283,6 +350,11 @@ function handleRunSignature(message) {
       activeDocs: cleanup.activeDocs,
       activeNodes: cleanup.activeNodes,
       activeTasks: cleanup.activeTasks,
+      windowListenerCount: cleanup.windowListenerCount,
+      rafCount: cleanup.rafCount,
+      runtimeStats: cleanup.runtimeStats,
+      phaseTimings: phaseTimings,
+      taskApiTrace: taskApiTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
@@ -290,36 +362,32 @@ function handleRunSignature(message) {
   }
 }
 
-function getRuntimeStatsSnapshot() {
+function getRuntimeStatsSnapshot(options) {
   if (!leapvm || typeof leapvm.runScript !== 'function') {
     return null;
   }
-  var script = `
-    (function () {
-      var domService = (globalThis.leapenv && globalThis.leapenv.domShared)
-        ? globalThis.leapenv.domShared
-        : null;
-      if (domService && typeof domService.getRuntimeStats === 'function') {
-        return JSON.stringify(domService.getRuntimeStats());
-      }
-      return '';
-    })();
-    //# sourceURL=leapenv.worker.runtime-stats.js
-  `;
   try {
-    var raw = leapvm.runScript(script);
-    var parsed = JSON.parse(String(raw || '{}'));
-    if (parsed && typeof parsed === 'object') {
-      return {
-        activeDocs: Number(parsed.activeDocs || 0),
-        activeNodes: Number(parsed.activeNodes || 0),
-        activeTasks: Number(parsed.activeTasks || 0)
-      };
-    }
+    var raw = leapvm.runScript(buildRuntimeStatsScript());
+    return mergeRuntimeStats(String(raw || ''), getNativeRuntimeStats(leapvm, options));
   } catch (_) {
     // ignore runtime snapshot failures on shutdown
   }
   return null;
+}
+
+function getTaskApiTraceSnapshot() {
+  if (!taskApiTraceEnabled || !leapvm || typeof leapvm.runScript !== 'function') {
+    return null;
+  }
+  try {
+    var raw = leapvm.runScript(buildTaskApiTraceSnapshotScript());
+    if (!raw || raw === 'null') {
+      return null;
+    }
+    return JSON.parse(String(raw));
+  } catch (_) {
+    return null;
+  }
 }
 
 function handleShutdown() {
@@ -328,24 +396,21 @@ function handleShutdown() {
   }
   shuttingDown = true;
   stopHeartbeat();
-
-  // Windows + worker_threads 下，部分 DOM 任务后在关闭阶段再次调用
-  // leapvm.runScript() 可能触发 native 崩溃。关闭路径只上报基础心跳，
-  // 不再采集 runtime stats（避免触发 runScript）。
-  var runtimeStats = null;
+  var shutdownSummary = safeShutdownEnvironment('shutdown');
   send({
-    type: 'heartbeat',
+    type: 'shutdown_ack',
     workerId,
     threadId,
     pid: process.pid,
     uptimeMs: Math.floor(process.uptime() * 1000),
     tasksHandled,
     cleanupFailureCount,
-    runtimeStats: runtimeStats,
+    runtimeStats: shutdownSummary.runtimeStats,
+    cleanupError: shutdownSummary.cleanupError,
+    shutdownError: shutdownSummary.shutdownError,
     memoryUsage: getMemorySnapshot()
   });
-
-  finalizeExit(0);
+  finalizeExit(shutdownSummary.shutdownError ? 1 : 0);
 }
 
 parentPort.on('message', (message) => {
@@ -376,6 +441,11 @@ process.on('uncaughtException', (error) => {
     fatal: true,
     error: serializeError(error)
   });
+  try {
+    safeShutdownEnvironment('uncaughtException');
+  } catch (_) {
+    // ignore cleanup failures on fatal exit
+  }
   finalizeExit(1);
 });
 
@@ -387,5 +457,10 @@ process.on('unhandledRejection', (reason) => {
     fatal: true,
     error: serializeError(reason instanceof Error ? reason : new Error(String(reason)))
   });
+  try {
+    safeShutdownEnvironment('unhandledRejection');
+  } catch (_) {
+    // ignore cleanup failures on fatal exit
+  }
   finalizeExit(1);
 });

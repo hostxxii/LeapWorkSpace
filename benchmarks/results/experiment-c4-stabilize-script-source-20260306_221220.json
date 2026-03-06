@@ -1,0 +1,130 @@
+{
+  "timestamp": "2026-03-06T14:12:20.843Z",
+  "experiment": "C4 stabilize script source",
+  "iterations": 100,
+  "cases": [
+    {
+      "name": "constant-task-id",
+      "iterations": 100,
+      "v8UsedHeapMb": 29.47,
+      "v8LargeObjectSpaceUsedMb": 4.47,
+      "v8CodeSpaceUsedMb": 5.67,
+      "v8OldSpaceUsedMb": 17.02,
+      "v8TrackedHeapObjectTypeCount": 2240,
+      "topHeapObjectTypes": [
+        {
+          "type": "ARRAY_ELEMENTS_TYPE",
+          "subType": "",
+          "count": 1321,
+          "sizeMb": 5.07
+        },
+        {
+          "type": "SCRIPT_SOURCE_NON_EXTERNAL_TWO_BYTE_TYPE",
+          "subType": "",
+          "count": 2,
+          "sizeMb": 4.47
+        },
+        {
+          "type": "MAGLEV",
+          "subType": "",
+          "count": 2465,
+          "sizeMb": 3.82
+        },
+        {
+          "type": "TURBOFAN_JS",
+          "subType": "",
+          "count": 158,
+          "sizeMb": 1.45
+        },
+        {
+          "type": "OBJECT_PROPERTY_DICTIONARY_TYPE",
+          "subType": "",
+          "count": 633,
+          "sizeMb": 1.37
+        }
+      ]
+    },
+    {
+      "name": "unique-task-id",
+      "iterations": 100,
+      "v8UsedHeapMb": 181.54,
+      "v8LargeObjectSpaceUsedMb": 99.03,
+      "v8CodeSpaceUsedMb": 32.09,
+      "v8OldSpaceUsedMb": 33.41,
+      "v8TrackedHeapObjectTypeCount": 2240,
+      "topHeapObjectTypes": [
+        {
+          "type": "SCRIPT_SOURCE_NON_EXTERNAL_TWO_BYTE_TYPE",
+          "subType": "",
+          "count": 101,
+          "sizeMb": 99.03
+        },
+        {
+          "type": "BASELINE",
+          "subType": "",
+          "count": 14304,
+          "sizeMb": 21.49
+        },
+        {
+          "type": "MAGLEV",
+          "subType": "",
+          "count": 2457,
+          "sizeMb": 7.69
+        },
+        {
+          "type": "BYTECODE_ARRAY_TYPE",
+          "subType": "",
+          "count": 36571,
+          "sizeMb": 6.67
+        },
+        {
+          "type": "FIXED_ARRAY_TYPE",
+          "subType": "",
+          "count": 6208,
+          "sizeMb": 6.02
+        }
+      ]
+    },
+    {
+      "name": "cached-target-small-wrapper",
+      "iterations": 100,
+      "v8UsedHeapMb": 20.27,
+      "v8LargeObjectSpaceUsedMb": 6.36,
+      "v8CodeSpaceUsedMb": 1.09,
+      "v8OldSpaceUsedMb": 12.04,
+      "v8TrackedHeapObjectTypeCount": 2240,
+      "topHeapObjectTypes": [
+        {
+          "type": "SCRIPT_SOURCE_NON_EXTERNAL_TWO_BYTE_TYPE",
+          "subType": "",
+          "count": 3,
+          "sizeMb": 5.43
+        },
+        {
+          "type": "ARRAY_ELEMENTS_TYPE",
+          "subType": "",
+          "count": 1321,
+          "sizeMb": 5.03
+        },
+        {
+          "type": "OBJECT_PROPERTY_DICTIONARY_TYPE",
+          "subType": "",
+          "count": 633,
+          "sizeMb": 1.37
+        },
+        {
+          "type": "JS_FUNCTION_TYPE",
+          "subType": "",
+          "count": 36073,
+          "sizeMb": 1.09
+        },
+        {
+          "type": "INTERNALIZED_TWO_BYTE_STRING_TYPE",
+          "subType": "",
+          "count": 4,
+          "sizeMb": 0.93
+        }
+      ]
+    }
+  ]
+}

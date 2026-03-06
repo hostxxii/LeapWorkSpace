@@ -1,0 +1,1006 @@
+{
+  "timestamp": "2026-03-06T12:46:28.643Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "logicalCores": 16,
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "totalMemoryMb": 15954.18
+  },
+  "config": {
+    "backend": "thread",
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 200,
+    "warmupTasks": 5,
+    "totalTasks": 50,
+    "sampleEvery": 25,
+    "debug": false,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 3000,
+    "heartbeatTimeoutMs": 12000,
+    "signatureProfile": "fp-occupy",
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "warmup": {
+    "tasks": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": []
+  },
+  "samples": [
+    {
+      "sampleIndex": 1,
+      "timestamp": "2026-03-06T12:46:28.410Z",
+      "elapsedMs": 288,
+      "tasksDone": 25,
+      "windowSize": 25,
+      "windowSuccesses": 25,
+      "reqPerSec": 127.55,
+      "latencyMs": {
+        "p50": 99,
+        "p95": 135,
+        "p99": 143
+      },
+      "memory": {
+        "rssMb": 791.51,
+        "heapUsedMb": 12.97,
+        "heapTotalMb": 16.67,
+        "externalMb": 2.1,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 12,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 4,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 791.01,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.52,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-2": {
+          "tasksHandled": 3,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 761.44,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.13,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-3": {
+          "tasksHandled": 3,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 761.32,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.88,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-4": {
+          "tasksHandled": 3,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 756.69,
+            "heapUsedMb": 10.8,
+            "heapTotalMb": 19.88,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-5": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 779.55,
+            "heapUsedMb": 12.8,
+            "heapTotalMb": 21.27,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-6": {
+          "tasksHandled": 3,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 762.19,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.13,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-7": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 782.57,
+            "heapUsedMb": 12.8,
+            "heapTotalMb": 21.02,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-8": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 780.3,
+            "heapUsedMb": 12.76,
+            "heapTotalMb": 20.77,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-9": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 777.22,
+            "heapUsedMb": 12.8,
+            "heapTotalMb": 20.77,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-10": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 776.07,
+            "heapUsedMb": 12.73,
+            "heapTotalMb": 20.77,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-11": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 780.3,
+            "heapUsedMb": 12.73,
+            "heapTotalMb": 21.02,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-12": {
+          "tasksHandled": 2,
+          "status": "busy",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 777.8,
+            "heapUsedMb": 12.76,
+            "heapTotalMb": 20.77,
+            "externalMb": 3.51,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    },
+    {
+      "sampleIndex": 2,
+      "timestamp": "2026-03-06T12:46:28.642Z",
+      "elapsedMs": 520,
+      "tasksDone": 50,
+      "windowSize": 25,
+      "windowSuccesses": 25,
+      "reqPerSec": 123.15,
+      "latencyMs": {
+        "p50": 103,
+        "p95": 128,
+        "p99": 132
+      },
+      "memory": {
+        "rssMb": 877.65,
+        "heapUsedMb": 13.08,
+        "heapTotalMb": 16.67,
+        "externalMb": 2.1,
+        "arrayBuffersMb": 0.58
+      },
+      "activeWorkers": 0,
+      "workerRecycles": 0,
+      "workerRespawns": 0,
+      "workers": {
+        "thread-worker-1": {
+          "tasksHandled": 6,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 874.15,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.52,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-2": {
+          "tasksHandled": 5,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 859.4,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.13,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-3": {
+          "tasksHandled": 5,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 858.02,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.88,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-4": {
+          "tasksHandled": 5,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 858.15,
+            "heapUsedMb": 10.77,
+            "heapTotalMb": 19.88,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-5": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 857.9,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.27,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-6": {
+          "tasksHandled": 6,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 877.52,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.02,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-7": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 858.15,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.02,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-8": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 857.9,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.02,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-9": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 867.27,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 20.77,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-10": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 858.77,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 20.77,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-11": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 861.77,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 21.02,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        },
+        "thread-worker-12": {
+          "tasksHandled": 4,
+          "status": "idle",
+          "cleanupFailureCount": 0,
+          "terminateReason": null,
+          "terminateMode": null,
+          "terminateRequestedAt": null,
+          "shutdownAckAt": null,
+          "cleanupSkipped": false,
+          "memoryUsage": {
+            "rssMb": 861.52,
+            "heapUsedMb": 12.7,
+            "heapTotalMb": 20.77,
+            "externalMb": 2.37,
+            "arrayBuffersMb": 0.01
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0
+          }
+        }
+      },
+      "warningsCount": 0
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "workerRecycles": 0,
+  "workerRespawns": 0,
+  "summary": {
+    "startedAt": "2026-03-06T12:46:28.122Z",
+    "finishedAt": "2026-03-06T12:46:28.643Z",
+    "durationMs": 521,
+    "success": 50,
+    "failed": 0,
+    "totalReqPerSec": 95.97,
+    "latencyMs": {
+      "p50": 101,
+      "p95": 132,
+      "p99": 143
+    },
+    "peakRssMb": 877.77,
+    "finalMemory": {
+      "rssMb": 877.77,
+      "heapUsedMb": 13.11,
+      "heapTotalMb": 16.67,
+      "externalMb": 2.1,
+      "arrayBuffersMb": 0.58
+    },
+    "workerTasksHandledFinal": {
+      "thread-worker-1": {
+        "tasksHandled": 6,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 874.15,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.52,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-2": {
+        "tasksHandled": 5,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 859.4,
+          "heapUsedMb": 10.77,
+          "heapTotalMb": 19.13,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-3": {
+        "tasksHandled": 5,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 858.02,
+          "heapUsedMb": 10.77,
+          "heapTotalMb": 19.88,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-4": {
+        "tasksHandled": 5,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 858.15,
+          "heapUsedMb": 10.77,
+          "heapTotalMb": 19.88,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-5": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 857.9,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.27,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-6": {
+        "tasksHandled": 6,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 877.52,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.02,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-7": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 858.15,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.02,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-8": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 857.9,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.02,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-9": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 867.27,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 20.77,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-10": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 858.77,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 20.77,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-11": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 861.77,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 21.02,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      },
+      "thread-worker-12": {
+        "tasksHandled": 4,
+        "status": "idle",
+        "cleanupFailureCount": 0,
+        "terminateReason": null,
+        "terminateMode": null,
+        "terminateRequestedAt": null,
+        "shutdownAckAt": null,
+        "cleanupSkipped": false,
+        "memoryUsage": {
+          "rssMb": 861.52,
+          "heapUsedMb": 12.7,
+          "heapTotalMb": 20.77,
+          "externalMb": 2.37,
+          "arrayBuffersMb": 0.01
+        },
+        "runtimeStats": {
+          "activeDocs": 0,
+          "activeNodes": 0,
+          "activeTasks": 0,
+          "windowListenerCount": 0,
+          "rafCount": 0
+        }
+      }
+    },
+    "growth": {
+      "firstSample": {
+        "tasksDone": 25,
+        "rssMb": 791.51,
+        "heapUsedMb": 12.97,
+        "heapTotalMb": 16.67,
+        "externalMb": 2.1,
+        "arrayBuffersMb": 0.58
+      },
+      "peakSample": {
+        "tasksDone": 50,
+        "rssMb": 877.65,
+        "heapUsedMb": 13.08,
+        "heapTotalMb": 16.67,
+        "externalMb": 2.1,
+        "arrayBuffersMb": 0.58
+      },
+      "deltaToPeak": {
+        "rssMb": 86.14,
+        "heapUsedMb": 0.11,
+        "heapTotalMb": 0,
+        "externalMb": 0,
+        "arrayBuffersMb": 0
+      }
+    }
+  }
+}

@@ -83,6 +83,62 @@ struct TimerTaskCompare {
     }
 };
 
+struct VmRuntimeStats {
+    struct HeapObjectTypeStat {
+        std::string type;
+        std::string sub_type;
+        size_t count = 0;
+        size_t size = 0;
+    };
+
+    size_t pending_task_count = 0;
+    size_t timer_count = 0;
+    size_t timer_queue_size = 0;
+    size_t stale_timer_queue_count = 0;
+    size_t dom_wrapper_cache_size = 0;
+    size_t pending_dom_wrapper_cleanup_count = 0;
+    size_t child_frame_count = 0;
+    size_t child_frame_dispatch_fn_count = 0;
+    size_t main_dispatch_fn_cached = 0;
+    size_t dom_document_count = 0;
+    size_t dom_task_scope_count = 0;
+    size_t dom_handle_count = 0;
+    size_t skeleton_count = 0;
+    size_t skeleton_template_count = 0;
+    size_t skeleton_dispatch_meta_count = 0;
+    size_t skeleton_brand_compat_cache_size = 0;
+    size_t v8_total_heap_size = 0;
+    size_t v8_total_heap_size_executable = 0;
+    size_t v8_total_physical_size = 0;
+    size_t v8_total_available_size = 0;
+    size_t v8_used_heap_size = 0;
+    size_t v8_heap_size_limit = 0;
+    size_t v8_malloced_memory = 0;
+    size_t v8_peak_malloced_memory = 0;
+    size_t v8_external_memory = 0;
+    size_t v8_total_global_handles_size = 0;
+    size_t v8_used_global_handles_size = 0;
+    size_t v8_number_of_native_contexts = 0;
+    size_t v8_number_of_detached_contexts = 0;
+    size_t v8_code_and_metadata_size = 0;
+    size_t v8_bytecode_and_metadata_size = 0;
+    size_t v8_external_script_source_size = 0;
+    size_t v8_cpu_profiler_metadata_size = 0;
+    size_t v8_old_space_used_size = 0;
+    size_t v8_old_space_physical_size = 0;
+    size_t v8_new_space_used_size = 0;
+    size_t v8_new_space_physical_size = 0;
+    size_t v8_code_space_used_size = 0;
+    size_t v8_code_space_physical_size = 0;
+    size_t v8_map_space_used_size = 0;
+    size_t v8_map_space_physical_size = 0;
+    size_t v8_large_object_space_used_size = 0;
+    size_t v8_large_object_space_physical_size = 0;
+    size_t v8_tracked_heap_object_type_count = 0;
+    size_t v8_heap_object_stats_available = 0;
+    std::vector<HeapObjectTypeStat> v8_top_heap_object_types;
+};
+
 // Independent VM instance (one isolate/context per instance)
 class VmInstance {
 public:
@@ -120,6 +176,7 @@ public:
                             const std::string& resource_name = "");
 
     void RunLoopOnce(std::chrono::milliseconds max_duration);
+    VmRuntimeStats GetRuntimeStats(bool force_gc = false);
 
     // --- Skeleton / Env integration ---
     v8::Local<v8::Object> InternalWrapObject(

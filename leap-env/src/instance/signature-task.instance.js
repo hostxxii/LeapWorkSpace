@@ -115,6 +115,51 @@
     }
   }
 
+  function resolveTaskApi(name) {
+    const key = String(name == null ? '' : name).trim();
+    if (!key) {
+      return null;
+    }
+    const direct = leapenv[key];
+    if (typeof direct === 'function') {
+      return direct;
+    }
+    if (typeof leapenv.getRuntimeStore === 'function') {
+      try {
+        const runtime = leapenv.getRuntimeStore();
+        const internal = runtime && runtime.facade && runtime.facade.internalLeapenv;
+        const internalValue = internal && internal[key];
+        if (typeof internalValue === 'function') {
+          return internalValue;
+        }
+        const runtimeValue =
+          key === 'resetWindowTaskState'
+            ? runtime && runtime.windowTaskReset
+            : (key === 'resetMessagePortTaskState' ? runtime && runtime.messagePortTaskReset : null);
+        if (typeof runtimeValue === 'function') {
+          return runtimeValue;
+        }
+        const implReset =
+          internal &&
+          internal.implRegistry &&
+          internal.implRegistry.Window &&
+          internal.implRegistry.Window.__leapResetTaskState;
+        if (key === 'resetWindowTaskState' && typeof implReset === 'function') {
+          return implReset;
+        }
+        const messagePortReset =
+          internal &&
+          internal.implRegistry &&
+          internal.implRegistry.MessageChannel &&
+          internal.implRegistry.MessageChannel.__leapResetTaskState;
+        if (key === 'resetMessagePortTaskState' && typeof messagePortReset === 'function') {
+          return messagePortReset;
+        }
+      } catch (_) {}
+    }
+    return null;
+  }
+
   function getNativeInstance(name) {
     return leapenv.nativeInstances && leapenv.nativeInstances[name];
   }
@@ -436,6 +481,14 @@
     clearStorage(getActiveStorage('sessionStorage'));
     resetLocationAndHistory();
     resetPerformanceSeed();
+    const resetWindowTaskState = resolveTaskApi('resetWindowTaskState');
+    if (typeof resetWindowTaskState === 'function') {
+      try { resetWindowTaskState(); } catch (_) {}
+    }
+    const resetMessagePortTaskState = resolveTaskApi('resetMessagePortTaskState');
+    if (typeof resetMessagePortTaskState === 'function') {
+      try { resetMessagePortTaskState(); } catch (_) {}
+    }
     resetDocumentState(getActiveDocument());
     return true;
   }
