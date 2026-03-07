@@ -1,0 +1,4917 @@
+{
+  "timestamp": "2026-03-07T15:20:10.646Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 12,
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 20,
+    "totalTasks": 360,
+    "sampleEvery": 50,
+    "enableVmInspector": true,
+    "captureVmCpuProfileOnStall": true,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignWs": false,
+    "stubParamSignJsonStringify": false,
+    "stubParamSignWsDispatch": false,
+    "stubParamSignWsDirectCall": false,
+    "stubParamSignWsDirectFullArgs": false,
+    "stubParamSignWsApplyArray": false,
+    "stubParamSignWsGenericArray": false,
+    "stubParamSignWsReflectArray": false,
+    "stubParamSignWsFnApplyCallArray": false,
+    "stubParamSignWsShallowArg": false,
+    "stubParamSignEncodeChain": false,
+    "stubParamSignUtf8Parse": false,
+    "stubParamSignBase64Encode": false,
+    "stubInputBodySha256": false,
+    "stubParamSignAtm": false,
+    "stubParamSignGdk": false,
+    "stubParamSignGs": false,
+    "stubParamSignGsd": false,
+    "stubParamSignCps": false,
+    "stubParamSignCpsSingleEntry": false,
+    "stubParamSignCpsEmpty": false,
+    "stubParamSignClt": false,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 2195,
+      "reqPerSec": 164.01,
+      "p95": 98,
+      "p99": 126,
+      "maxTaskMs": 138,
+      "maxSampleP99Ms": 138,
+      "minSampleReqPerSec": 147.49,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 66.673,
+          "duration": 0.467
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 890.265,
+          "duration": 1.01
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 2742.582,
+          "duration": 1.617
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3333.26,
+          "duration": 0.538
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3339.875,
+          "duration": 0.66
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3345.249,
+          "duration": 0.295
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3350.286,
+          "duration": 0.296
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3355.347,
+          "duration": 0.263
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3365.762,
+          "duration": 0.504
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3370.584,
+          "duration": 0.495
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3375.307,
+          "duration": 0.23
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3379.794,
+          "duration": 0.288
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3384.119,
+          "duration": 0.179
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3392.497,
+          "duration": 0.495
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3396.995,
+          "duration": 0.75
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3402.579,
+          "duration": 0.312
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3407.743,
+          "duration": 0.217
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3412.847,
+          "duration": 0.306
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3420.795,
+          "duration": 0.98
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3433.48,
+          "duration": 0.687
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3444.364,
+          "duration": 0.328
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 3444.7,
+          "duration": 0.281
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 3447.248,
+          "duration": 1.08
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3461.123,
+          "duration": 0.513
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3469.711,
+          "duration": 0.711
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3483.253,
+          "duration": 0.536
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3492.322,
+          "duration": 0.669
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3505.265,
+          "duration": 0.596
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3513.922,
+          "duration": 0.573
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3522.519,
+          "duration": 0.332
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3535.888,
+          "duration": 0.588
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3544.889,
+          "duration": 0.661
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3557.877,
+          "duration": 0.511
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 3878.549,
+          "duration": 0.577
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.169,
+        "maxMs": 47.809,
+        "meanMs": 21.267,
+        "stddevMs": 2.859,
+        "p95Ms": 26.411,
+        "p99Ms": 28.738
+      }
+    },
+    {
+      "runIndex": 2,
+      "backend": "thread",
+      "overallMs": 2060,
+      "reqPerSec": 174.76,
+      "p95": 85,
+      "p99": 104,
+      "maxTaskMs": 113,
+      "maxSampleP99Ms": 113,
+      "minSampleReqPerSec": 159.74,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6806.972,
+          "duration": 0.782
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6815.618,
+          "duration": 1.409
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6842.91,
+          "duration": 0.499
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6874.588,
+          "duration": 0.85
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6896.666,
+          "duration": 0.6
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6918.653,
+          "duration": 0.855
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 6940.932,
+          "duration": 0.683
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 34.079,
+        "meanMs": 20.983,
+        "stddevMs": 2.038,
+        "p95Ms": 24.74,
+        "p99Ms": 28.066
+      }
+    },
+    {
+      "runIndex": 3,
+      "backend": "thread",
+      "overallMs": 2166,
+      "reqPerSec": 166.2,
+      "p95": 91,
+      "p99": 114,
+      "maxTaskMs": 129,
+      "maxSampleP99Ms": 129,
+      "minSampleReqPerSec": 142.86,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 9580.931,
+          "duration": 3.213
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10376.457,
+          "duration": 0.864
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10396.958,
+          "duration": 0.574
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10417.604,
+          "duration": 0.884
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10438.07,
+          "duration": 0.842
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10463.783,
+          "duration": 0.909
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10489.606,
+          "duration": 0.869
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.137,
+        "maxMs": 31.277,
+        "meanMs": 21.15,
+        "stddevMs": 2.071,
+        "p95Ms": 25.477,
+        "p99Ms": 28.967
+      }
+    },
+    {
+      "runIndex": 4,
+      "backend": "thread",
+      "overallMs": 2269,
+      "reqPerSec": 158.66,
+      "p95": 97,
+      "p99": 117,
+      "maxTaskMs": 124,
+      "maxSampleP99Ms": 124,
+      "minSampleReqPerSec": 143.27,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 13938.668,
+          "duration": 0.887
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 13959.74,
+          "duration": 0.905
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 13986.105,
+          "duration": 0.659
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 14006.549,
+          "duration": 0.461
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 14032.645,
+          "duration": 1.305
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.005,
+        "maxMs": 31.228,
+        "meanMs": 20.988,
+        "stddevMs": 2.001,
+        "p95Ms": 25.002,
+        "p99Ms": 28.295
+      }
+    },
+    {
+      "runIndex": 5,
+      "backend": "thread",
+      "overallMs": 2085,
+      "reqPerSec": 172.66,
+      "p95": 87,
+      "p99": 94,
+      "maxTaskMs": 97,
+      "maxSampleP99Ms": 97,
+      "minSampleReqPerSec": 165.56,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 14434.731,
+          "duration": 1.268
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 17214.31,
+          "duration": 0.726
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 17238.207,
+          "duration": 0.784
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 17242.466,
+          "duration": 0.276
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 17244.629,
+          "duration": 1.466
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 17266.516,
+          "duration": 0.633
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 17286.223,
+          "duration": 0.616
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.284,
+        "maxMs": 29.802,
+        "meanMs": 21.041,
+        "stddevMs": 1.799,
+        "p95Ms": 24.51,
+        "p99Ms": 27.427
+      }
+    },
+    {
+      "runIndex": 6,
+      "backend": "thread",
+      "overallMs": 2303,
+      "reqPerSec": 156.32,
+      "p95": 96,
+      "p99": 108,
+      "maxTaskMs": 125,
+      "maxSampleP99Ms": 125,
+      "minSampleReqPerSec": 148.37,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20821.223,
+          "duration": 0.85
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20839.343,
+          "duration": 0.706
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20859.066,
+          "duration": 0.572
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20882.562,
+          "duration": 0.689
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20902.229,
+          "duration": 0.985
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20926.291,
+          "duration": 0.817
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20944.848,
+          "duration": 0.916
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 20945.85,
+          "duration": 0.376
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 20948.797,
+          "duration": 3.377
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.137,
+        "maxMs": 35.422,
+        "meanMs": 21.174,
+        "stddevMs": 2.188,
+        "p95Ms": 25.444,
+        "p99Ms": 28.934
+      }
+    },
+    {
+      "runIndex": 7,
+      "backend": "thread",
+      "overallMs": 2285,
+      "reqPerSec": 157.55,
+      "p95": 106,
+      "p99": 128,
+      "maxTaskMs": 135,
+      "maxSampleP99Ms": 135,
+      "minSampleReqPerSec": 142.45,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 24418.131,
+          "duration": 0.775
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 24439.824,
+          "duration": 1.053
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 24459.425,
+          "duration": 0.56
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 24483.302,
+          "duration": 0.681
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 24502.867,
+          "duration": 0.717
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.104,
+        "maxMs": 29.344,
+        "meanMs": 21.033,
+        "stddevMs": 1.745,
+        "p95Ms": 24.707,
+        "p99Ms": 27.623
+      }
+    },
+    {
+      "runIndex": 8,
+      "backend": "thread",
+      "overallMs": 2175,
+      "reqPerSec": 165.52,
+      "p95": 92,
+      "p99": 107,
+      "maxTaskMs": 109,
+      "maxSampleP99Ms": 109,
+      "minSampleReqPerSec": 155.76,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 25347.701,
+          "duration": 0.35
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 25349.785,
+          "duration": 1.364
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27741.73,
+          "duration": 0.667
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27762.25,
+          "duration": 0.69
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27781.032,
+          "duration": 0.558
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 27806.85,
+          "duration": 1.943
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.431,
+        "maxMs": 37.88,
+        "meanMs": 21.221,
+        "stddevMs": 2.426,
+        "p95Ms": 25.887,
+        "p99Ms": 28.934
+      }
+    },
+    {
+      "runIndex": 9,
+      "backend": "thread",
+      "overallMs": 2205,
+      "reqPerSec": 163.27,
+      "p95": 101,
+      "p99": 110,
+      "maxTaskMs": 120,
+      "maxSampleP99Ms": 120,
+      "minSampleReqPerSec": 148.81,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 28679.061,
+          "duration": 0.962
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31160.782,
+          "duration": 0.598
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 31161.558,
+          "duration": 0.291
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 31163.501,
+          "duration": 1.422
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31186.071,
+          "duration": 0.583
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31204.359,
+          "duration": 0.584
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31227.929,
+          "duration": 0.745
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31248.632,
+          "duration": 0.928
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.137,
+        "maxMs": 28.049,
+        "meanMs": 21.258,
+        "stddevMs": 1.968,
+        "p95Ms": 25.395,
+        "p99Ms": 27.754
+      }
+    },
+    {
+      "runIndex": 10,
+      "backend": "thread",
+      "overallMs": 2298,
+      "reqPerSec": 156.66,
+      "p95": 104,
+      "p99": 121,
+      "maxTaskMs": 127,
+      "maxSampleP99Ms": 127,
+      "minSampleReqPerSec": 146.63,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34665.491,
+          "duration": 0.805
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34688.718,
+          "duration": 0.923
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34709.245,
+          "duration": 0.76
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34736.263,
+          "duration": 0.929
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34758.671,
+          "duration": 0.698
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.12,
+        "maxMs": 30.589,
+        "meanMs": 20.989,
+        "stddevMs": 1.842,
+        "p95Ms": 24.052,
+        "p99Ms": 28.656
+      }
+    },
+    {
+      "runIndex": 11,
+      "backend": "thread",
+      "overallMs": 5097,
+      "reqPerSec": 70.63,
+      "p95": 105,
+      "p99": 3008,
+      "maxTaskMs": 3016,
+      "maxSampleP99Ms": 3016,
+      "minSampleReqPerSec": 15.63,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [
+        {
+          "taskId": "measure-68",
+          "workerId": "thread-worker-12",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3008,
+          "startedOffsetMs": 138,
+          "completedOffsetMs": 3349,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 77,
+            "postTaskCleanupMs": 2931,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 6,
+              "beforeScriptMs": 3,
+              "targetScriptMs": 64,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-88",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1434755072,
+            "heapTotal": 23240704,
+            "heapUsed": 14647608,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 10,
+            "vmStaleTimerQueueCount": 10,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 32563200,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 32563200,
+            "v8TotalAvailableSize": 1550055300,
+            "v8UsedHeapSize": 18599016,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 3166276,
+            "v8PeakMallocedMemory": 7273816,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2272,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1500857,
+            "v8BytecodeAndMetadataSize": 273928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4522296,
+            "v8OldSpacePhysicalSize": 5505024,
+            "v8NewSpaceUsedSize": 5085232,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1626464,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6601648,
+            "v8LargeObjectSpacePhysicalSize": 6610944,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-71",
+          "workerId": "thread-worker-11",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3005,
+          "startedOffsetMs": 143,
+          "completedOffsetMs": 3351,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 78,
+            "postTaskCleanupMs": 2927,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 2,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 73,
+              "cleanupMs": 3
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-91",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1436196864,
+            "heapTotal": 23240704,
+            "heapUsed": 14605744,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 10,
+            "vmStaleTimerQueueCount": 10,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 33419264,
+            "v8TotalHeapSizeExecutable": 2883584,
+            "v8TotalPhysicalSize": 33419264,
+            "v8TotalAvailableSize": 1551070236,
+            "v8UsedHeapSize": 17581064,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1793724,
+            "v8PeakMallocedMemory": 13180760,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 53056,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1954668,
+            "v8BytecodeAndMetadataSize": 273928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 5288480,
+            "v8OldSpacePhysicalSize": 5505024,
+            "v8NewSpaceUsedSize": 3638916,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1713808,
+            "v8CodeSpacePhysicalSize": 2883584,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5885384,
+            "v8LargeObjectSpacePhysicalSize": 5894144,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-66",
+          "workerId": "thread-worker-8",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3016,
+          "startedOffsetMs": 130,
+          "completedOffsetMs": 3352,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 88,
+            "postTaskCleanupMs": 2928,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 2,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 85,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-86",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1433731072,
+            "heapTotal": 21020672,
+            "heapUsed": 12420368,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 9,
+            "vmStaleTimerQueueCount": 9,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 31326208,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 31326208,
+            "v8TotalAvailableSize": 1556289240,
+            "v8UsedHeapSize": 12096644,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1835268,
+            "v8PeakMallocedMemory": 8351384,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2272,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1109151,
+            "v8BytecodeAndMetadataSize": 271724,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4362980,
+            "v8OldSpacePhysicalSize": 4980736,
+            "v8NewSpaceUsedSize": 269908,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1204048,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5629056,
+            "v8LargeObjectSpacePhysicalSize": 5636096,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-74",
+          "workerId": "thread-worker-3",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2979,
+          "startedOffsetMs": 193,
+          "completedOffsetMs": 3380,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2977,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2974,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-94",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1439408128,
+            "heapTotal": 21807104,
+            "heapUsed": 12564776,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 33796096,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 33796096,
+            "v8TotalAvailableSize": 1551125116,
+            "v8UsedHeapSize": 17517476,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 3289212,
+            "v8PeakMallocedMemory": 11410608,
+            "v8ExternalMemory": 1112,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 55232,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1955341,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4830752,
+            "v8OldSpacePhysicalSize": 5242880,
+            "v8NewSpaceUsedSize": 2088152,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1640400,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 7830568,
+            "v8LargeObjectSpacePhysicalSize": 7843840,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-79",
+          "workerId": "thread-worker-4",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2974,
+          "startedOffsetMs": 202,
+          "completedOffsetMs": 3389,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2972,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2969,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-99",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1442947072,
+            "heapTotal": 21544960,
+            "heapUsed": 12488120,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 32038912,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 32038912,
+            "v8TotalAvailableSize": 1550065860,
+            "v8UsedHeapSize": 18586332,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2711452,
+            "v8PeakMallocedMemory": 6786272,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2272,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1608587,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4704836,
+            "v8OldSpacePhysicalSize": 5242880,
+            "v8NewSpaceUsedSize": 5023000,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1459968,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6601648,
+            "v8LargeObjectSpacePhysicalSize": 6610944,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-77",
+          "workerId": "thread-worker-2",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2987,
+          "startedOffsetMs": 197,
+          "completedOffsetMs": 3389,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2985,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 2,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2981,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-97",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1442947072,
+            "heapTotal": 21282816,
+            "heapUsed": 12428376,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 33271808,
+            "v8TotalHeapSizeExecutable": 2097152,
+            "v8TotalPhysicalSize": 33271808,
+            "v8TotalAvailableSize": 1550565824,
+            "v8UsedHeapSize": 18082816,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 3891900,
+            "v8PeakMallocedMemory": 15027800,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 55232,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1790379,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4886372,
+            "v8OldSpacePhysicalSize": 5242880,
+            "v8NewSpaceUsedSize": 2629848,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1474560,
+            "v8CodeSpacePhysicalSize": 2097152,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 7830568,
+            "v8LargeObjectSpacePhysicalSize": 7843840,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-73",
+          "workerId": "thread-worker-6",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3010,
+          "startedOffsetMs": 193,
+          "completedOffsetMs": 3398,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 3008,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 5,
+              "beforeScriptMs": 2,
+              "targetScriptMs": 3000,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-93",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1447272448,
+            "heapTotal": 23240704,
+            "heapUsed": 14459080,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 10,
+            "vmStaleTimerQueueCount": 10,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 32636928,
+            "v8TotalHeapSizeExecutable": 2883584,
+            "v8TotalPhysicalSize": 32636928,
+            "v8TotalAvailableSize": 1551616364,
+            "v8UsedHeapSize": 17038088,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2034636,
+            "v8PeakMallocedMemory": 8240928,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2272,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2231061,
+            "v8BytecodeAndMetadataSize": 273928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4859208,
+            "v8OldSpacePhysicalSize": 5505024,
+            "v8NewSpaceUsedSize": 3535572,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 2058832,
+            "v8CodeSpacePhysicalSize": 2883584,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5629056,
+            "v8LargeObjectSpacePhysicalSize": 5636096,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-75",
+          "workerId": "thread-worker-5",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3001,
+          "startedOffsetMs": 195,
+          "completedOffsetMs": 3402,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2995,
+            "postTaskCleanupMs": 6,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2990,
+              "cleanupMs": 2
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-95",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1446862848,
+            "heapTotal": 23764992,
+            "heapUsed": 14651040,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 10,
+            "vmStaleTimerQueueCount": 10,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 32821248,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 32821248,
+            "v8TotalAvailableSize": 1549926204,
+            "v8UsedHeapSize": 18726752,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2711148,
+            "v8PeakMallocedMemory": 10525752,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 51968,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1611936,
+            "v8BytecodeAndMetadataSize": 273928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4437116,
+            "v8OldSpacePhysicalSize": 5242880,
+            "v8NewSpaceUsedSize": 4931900,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1539024,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6857976,
+            "v8LargeObjectSpacePhysicalSize": 6868992,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-78",
+          "workerId": "thread-worker-10",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2991,
+          "startedOffsetMs": 201,
+          "completedOffsetMs": 3403,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2982,
+            "postTaskCleanupMs": 9,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 3,
+              "targetScriptMs": 2978,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-98",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1447124992,
+            "heapTotal": 21544960,
+            "heapUsed": 12452192,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 34131968,
+            "v8TotalHeapSizeExecutable": 2883584,
+            "v8TotalPhysicalSize": 34131968,
+            "v8TotalAvailableSize": 1545649968,
+            "v8UsedHeapSize": 22999692,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 4447300,
+            "v8PeakMallocedMemory": 13748816,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 55808,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2347093,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 5092876,
+            "v8OldSpacePhysicalSize": 5505024,
+            "v8NewSpaceUsedSize": 7858676,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1980880,
+            "v8CodeSpacePhysicalSize": 2883584,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6857976,
+            "v8LargeObjectSpacePhysicalSize": 6868992,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-81",
+          "workerId": "thread-worker-9",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2985,
+          "startedOffsetMs": 203,
+          "completedOffsetMs": 3409,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2981,
+            "postTaskCleanupMs": 4,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 2,
+              "beforeScriptMs": 2924,
+              "targetScriptMs": 54,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-101",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1448517632,
+            "heapTotal": 23502848,
+            "heapUsed": 14628216,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 10,
+            "vmStaleTimerQueueCount": 10,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 32559104,
+            "v8TotalHeapSizeExecutable": 2359296,
+            "v8TotalPhysicalSize": 32559104,
+            "v8TotalAvailableSize": 1549767248,
+            "v8UsedHeapSize": 18884096,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1843940,
+            "v8PeakMallocedMemory": 13774640,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 51648,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1373712,
+            "v8BytecodeAndMetadataSize": 273928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4223528,
+            "v8OldSpacePhysicalSize": 4718592,
+            "v8NewSpaceUsedSize": 5815568,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1125248,
+            "v8CodeSpacePhysicalSize": 2359296,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6857976,
+            "v8LargeObjectSpacePhysicalSize": 6868992,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-76",
+          "workerId": "thread-worker-1",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3009,
+          "startedOffsetMs": 195,
+          "completedOffsetMs": 3414,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 3006,
+            "postTaskCleanupMs": 3,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 1,
+              "targetScriptMs": 3001,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-96",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1448153088,
+            "heapTotal": 21282816,
+            "heapUsed": 12424352,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 34324480,
+            "v8TotalHeapSizeExecutable": 2883584,
+            "v8TotalPhysicalSize": 34324480,
+            "v8TotalAvailableSize": 1552836460,
+            "v8UsedHeapSize": 15815804,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 700684,
+            "v8PeakMallocedMemory": 6647064,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2272,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1948939,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4797328,
+            "v8OldSpacePhysicalSize": 5505024,
+            "v8NewSpaceUsedSize": 742988,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1812048,
+            "v8CodeSpacePhysicalSize": 2883584,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 7574240,
+            "v8LargeObjectSpacePhysicalSize": 7585792,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-80",
+          "workerId": "thread-worker-7",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2991,
+          "startedOffsetMs": 202,
+          "completedOffsetMs": 3418,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2988,
+            "postTaskCleanupMs": 3,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 486286,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 1,
+              "targetScriptMs": 2979,
+              "cleanupMs": 6
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-100",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1448022016,
+            "heapTotal": 21544960,
+            "heapUsed": 12597376,
+            "external": 2687272,
+            "arrayBuffers": 217323
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 11,
+            "vmStaleTimerQueueCount": 11,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 35106816,
+            "v8TotalHeapSizeExecutable": 2883584,
+            "v8TotalPhysicalSize": 35106816,
+            "v8TotalAvailableSize": 1552848460,
+            "v8UsedHeapSize": 15794244,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 81980,
+            "v8PeakMallocedMemory": 12925584,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 57344,
+            "v8UsedGlobalHandlesSize": 55264,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1995717,
+            "v8BytecodeAndMetadataSize": 276132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4982116,
+            "v8OldSpacePhysicalSize": 5767168,
+            "v8NewSpaceUsedSize": 272020,
+            "v8NewSpacePhysicalSize": 16777216,
+            "v8CodeSpaceUsedSize": 1624960,
+            "v8CodeSpacePhysicalSize": 2883584,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 7830568,
+            "v8LargeObjectSpacePhysicalSize": 7843840,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        }
+      ],
+      "synchronizedStall": {
+        "workerCount": 12,
+        "spreadMs": 69,
+        "firstCompletedOffsetMs": 3349,
+        "lastCompletedOffsetMs": 3418
+      },
+      "vmCpuProfiles": [
+        {
+          "workerId": "thread-worker-1",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1906,
+            "nodeCount": 499,
+            "startTime": 1597359397,
+            "endTime": 1600000740,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 722
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 224
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 180
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 113
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 58
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 41
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 40
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 34
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 28
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 25
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 24
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 21
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1906
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1037
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 722
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 563
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 463
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 458
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 458
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 446
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 437
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 412
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 293
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 228
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 722
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 224
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 180
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 113
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 58
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 41
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 40
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 34
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 224
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 180
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 58
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 48
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 40
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 34
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+                "hitCount": 28
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747",
+                "hitCount": 25
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "_$sdnmd",
+                "hitCount": 458,
+                "ratio": 24.03
+              },
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 454,
+                "ratio": 23.82
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 293,
+                "ratio": 15.37
+              },
+              {
+                "key": "_$u",
+                "hitCount": 228,
+                "ratio": 11.96
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 154,
+                "ratio": 8.08
+              },
+              {
+                "key": "encode",
+                "hitCount": 106,
+                "ratio": 5.56
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 94,
+                "ratio": 4.93
+              },
+              {
+                "key": "apply",
+                "hitCount": 21,
+                "ratio": 1.1
+              },
+              {
+                "key": "stringify",
+                "hitCount": 12,
+                "ratio": 0.63
+              },
+              {
+                "key": "parse",
+                "hitCount": 11,
+                "ratio": 0.58
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 2,
+                "ratio": 0.1
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 293,
+                "ratio": 15.37
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 68,
+                "ratio": 3.57
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-2",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "error": "No recording profiles found"
+        },
+        {
+          "workerId": "thread-worker-3",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1860,
+            "nodeCount": 555,
+            "startTime": 1597427204,
+            "endTime": 1600016468,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 650
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 217
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 200
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 120
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 55
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 46
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 38
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 38
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 28
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 26
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 23
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 23
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1860
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1050
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 650
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 573
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 473
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 472
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 472
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 471
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 439
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 427
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 301
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 224
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 650
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 217
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 200
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 120
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 55
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 46
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 38
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 38
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 217
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 200
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 57
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 55
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 46
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 38
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+                "hitCount": 28
+              },
+              {
+                "signature": "h5st:zfqvc > h5st:_$pv > h5st:_$pb > h5st:(anonymous):13038 > h5st:_$p8 > h5st:(anonymous):12463",
+                "hitCount": 27
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 481,
+                "ratio": 25.86
+              },
+              {
+                "key": "_$sdnmd",
+                "hitCount": 472,
+                "ratio": 25.38
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 301,
+                "ratio": 16.18
+              },
+              {
+                "key": "_$u",
+                "hitCount": 224,
+                "ratio": 12.04
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 160,
+                "ratio": 8.6
+              },
+              {
+                "key": "encode",
+                "hitCount": 111,
+                "ratio": 5.97
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 103,
+                "ratio": 5.54
+              },
+              {
+                "key": "apply",
+                "hitCount": 22,
+                "ratio": 1.18
+              },
+              {
+                "key": "stringify",
+                "hitCount": 20,
+                "ratio": 1.08
+              },
+              {
+                "key": "parse",
+                "hitCount": 7,
+                "ratio": 0.38
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 1,
+                "ratio": 0.05
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 301,
+                "ratio": 16.18
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 62,
+                "ratio": 3.33
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-4",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1828,
+            "nodeCount": 552,
+            "startTime": 1597492069,
+            "endTime": 1600030661,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 630
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 221
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 208
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 98
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 61
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 44
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 41
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 39
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 29
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 28
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 25
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 23
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1828
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1067
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 630
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 616
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 495
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 463
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 444
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 443
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 443
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 440
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 274
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 233
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 630
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 221
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 208
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 98
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 61
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 44
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 41
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 39
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 221
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 208
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 61
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 59
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 41
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 39
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+                "hitCount": 29
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$ms > h5st:encode",
+                "hitCount": 28
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 506,
+                "ratio": 27.68
+              },
+              {
+                "key": "_$sdnmd",
+                "hitCount": 443,
+                "ratio": 24.23
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 274,
+                "ratio": 14.99
+              },
+              {
+                "key": "_$u",
+                "hitCount": 233,
+                "ratio": 12.75
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 159,
+                "ratio": 8.7
+              },
+              {
+                "key": "encode",
+                "hitCount": 112,
+                "ratio": 6.13
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 92,
+                "ratio": 5.03
+              },
+              {
+                "key": "stringify",
+                "hitCount": 23,
+                "ratio": 1.26
+              },
+              {
+                "key": "apply",
+                "hitCount": 20,
+                "ratio": 1.09
+              },
+              {
+                "key": "parse",
+                "hitCount": 10,
+                "ratio": 0.55
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 1,
+                "ratio": 0.05
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 274,
+                "ratio": 14.99
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 71,
+                "ratio": 3.88
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 1,
+                "ratio": 0.05
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-5",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1806,
+            "nodeCount": 533,
+            "startTime": 1597556957,
+            "endTime": 1600045872,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 565
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 256
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 179
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 106
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 52
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 47
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 43
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 39
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 28
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 26
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 25
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 23
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1806
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1099
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 623
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 565
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 486
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 473
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 464
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 458
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 458
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 445
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 303
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 265
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 565
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 256
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 179
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 106
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 52
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 47
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 43
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 39
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 256
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 179
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 60
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 52
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 43
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 39
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747",
+                "hitCount": 28
+              },
+              {
+                "signature": "h5st:zfqvc > h5st:_$pv > h5st:_$pb > h5st:(anonymous):13038 > h5st:_$p8 > h5st:(anonymous):12463",
+                "hitCount": 27
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 496,
+                "ratio": 27.46
+              },
+              {
+                "key": "_$sdnmd",
+                "hitCount": 458,
+                "ratio": 25.36
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 303,
+                "ratio": 16.78
+              },
+              {
+                "key": "_$u",
+                "hitCount": 265,
+                "ratio": 14.67
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 140,
+                "ratio": 7.75
+              },
+              {
+                "key": "encode",
+                "hitCount": 104,
+                "ratio": 5.76
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 98,
+                "ratio": 5.43
+              },
+              {
+                "key": "stringify",
+                "hitCount": 23,
+                "ratio": 1.27
+              },
+              {
+                "key": "apply",
+                "hitCount": 21,
+                "ratio": 1.16
+              },
+              {
+                "key": "parse",
+                "hitCount": 11,
+                "ratio": 0.61
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 3,
+                "ratio": 0.17
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 303,
+                "ratio": 16.78
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 59,
+                "ratio": 3.27
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-6",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1737,
+            "nodeCount": 490,
+            "startTime": 1597624061,
+            "endTime": 1600059787,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 559
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 241
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 157
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 108
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 59
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 50
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 43
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 35
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 34
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 30
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 29
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 25
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1737
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1039
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 578
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 559
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 456
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 455
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 454
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 451
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 432
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 408
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 287
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 250
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 559
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 241
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 157
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 108
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 59
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 50
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 43
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 35
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 241
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 157
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 59
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 58
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 50
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 35
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+                "hitCount": 34
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$ms > h5st:encode",
+                "hitCount": 30
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 461,
+                "ratio": 26.54
+              },
+              {
+                "key": "_$sdnmd",
+                "hitCount": 454,
+                "ratio": 26.14
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 287,
+                "ratio": 16.52
+              },
+              {
+                "key": "_$u",
+                "hitCount": 250,
+                "ratio": 14.39
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 155,
+                "ratio": 8.92
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 114,
+                "ratio": 6.56
+              },
+              {
+                "key": "encode",
+                "hitCount": 110,
+                "ratio": 6.33
+              },
+              {
+                "key": "stringify",
+                "hitCount": 17,
+                "ratio": 0.98
+              },
+              {
+                "key": "apply",
+                "hitCount": 17,
+                "ratio": 0.98
+              },
+              {
+                "key": "parse",
+                "hitCount": 11,
+                "ratio": 0.63
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 287,
+                "ratio": 16.52
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 68,
+                "ratio": 3.91
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-7",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1693,
+            "nodeCount": 544,
+            "startTime": 1597690971,
+            "endTime": 1600073160,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 458
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 232
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 188
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 104
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 69
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 49
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 48
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 37
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 37
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 23
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 22
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 21
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1693
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1096
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 598
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 488
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 487
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 487
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 477
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 458
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 452
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 430
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 297
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 246
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 458
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 232
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 188
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 104
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 69
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 49
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 48
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 37
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 232
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 188
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 69
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 63
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 48
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 37
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+                "hitCount": 37
+              },
+              {
+                "signature": "h5st:zfqvc > h5st:_$pv > h5st:_$pb > h5st:(anonymous):13038 > h5st:_$p8 > h5st:(anonymous):12463",
+                "hitCount": 28
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "_$sdnmd",
+                "hitCount": 487,
+                "ratio": 28.77
+              },
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 487,
+                "ratio": 28.77
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 297,
+                "ratio": 17.54
+              },
+              {
+                "key": "_$u",
+                "hitCount": 246,
+                "ratio": 14.53
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 174,
+                "ratio": 10.28
+              },
+              {
+                "key": "encode",
+                "hitCount": 112,
+                "ratio": 6.62
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 100,
+                "ratio": 5.91
+              },
+              {
+                "key": "stringify",
+                "hitCount": 24,
+                "ratio": 1.42
+              },
+              {
+                "key": "apply",
+                "hitCount": 18,
+                "ratio": 1.06
+              },
+              {
+                "key": "parse",
+                "hitCount": 10,
+                "ratio": 0.59
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 2,
+                "ratio": 0.12
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 297,
+                "ratio": 17.54
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 76,
+                "ratio": 4.49
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-8",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "error": "No recording profiles found"
+        },
+        {
+          "workerId": "thread-worker-9",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "error": "No recording profiles found"
+        },
+        {
+          "workerId": "thread-worker-10",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "error": "No recording profiles found"
+        },
+        {
+          "workerId": "thread-worker-11",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "summary": {
+            "sampleCount": 1674,
+            "nodeCount": 585,
+            "startTime": 1597762544,
+            "endTime": 1600089273,
+            "top": [
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 423
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 242
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 199
+              },
+              {
+                "functionName": "(garbage collector)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 106
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 67
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 45
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 43
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 42
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 26
+              },
+              {
+                "functionName": "_seData1",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 7405,
+                "columnNumber": 30,
+                "hitCount": 24
+              },
+              {
+                "functionName": "encode",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 9509,
+                "columnNumber": 30,
+                "hitCount": 24
+              },
+              {
+                "functionName": "_$pz._$clt",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15176,
+                "columnNumber": 38,
+                "hitCount": 24
+              }
+            ],
+            "topInclusive": [
+              {
+                "functionName": "(root)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1674
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 1108
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 2,
+                "columnNumber": 28,
+                "hitCount": 626
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 686,
+                "columnNumber": 28,
+                "hitCount": 507
+              },
+              {
+                "functionName": "(anonymous)",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 747,
+                "columnNumber": 13,
+                "hitCount": 480
+              },
+              {
+                "functionName": "geth5st",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15509,
+                "columnNumber": 17,
+                "hitCount": 465
+              },
+              {
+                "functionName": "_$pz.signSync",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15459,
+                "columnNumber": 41,
+                "hitCount": 465
+              },
+              {
+                "functionName": "_$pz._$sdnmd",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 15309,
+                "columnNumber": 40,
+                "hitCount": 464
+              },
+              {
+                "functionName": "a0a1b0cv",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 683,
+                "columnNumber": 20,
+                "hitCount": 454
+              },
+              {
+                "functionName": "(program)",
+                "url": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "hitCount": 423
+              },
+              {
+                "functionName": "_$pz._$ms",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 14837,
+                "columnNumber": 37,
+                "hitCount": 284
+              },
+              {
+                "functionName": "_$u",
+                "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+                "lineNumber": 690,
+                "columnNumber": 30,
+                "hitCount": 259
+              }
+            ],
+            "topStacks": [
+              {
+                "signature": "(program)",
+                "hitCount": 423
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 242
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 199
+              },
+              {
+                "signature": "(garbage collector)",
+                "hitCount": 106
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 67
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 45
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 43
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 42
+              }
+            ],
+            "topH5stStacks": [
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+                "hitCount": 242
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+                "hitCount": 199
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+                "hitCount": 67
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+                "hitCount": 50
+              },
+              {
+                "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+                "hitCount": 45
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+                "hitCount": 42
+              },
+              {
+                "signature": "h5st:zfqvc > h5st:_$pv > h5st:_$pb > h5st:(anonymous):13038 > h5st:_$p8 > h5st:(anonymous):12463",
+                "hitCount": 27
+              },
+              {
+                "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747",
+                "hitCount": 26
+              }
+            ],
+            "focusHits": [
+              {
+                "key": "a0a1b0cv",
+                "hitCount": 520,
+                "ratio": 31.06
+              },
+              {
+                "key": "_$sdnmd",
+                "hitCount": 464,
+                "ratio": 27.72
+              },
+              {
+                "key": "_$ms",
+                "hitCount": 284,
+                "ratio": 16.97
+              },
+              {
+                "key": "_$u",
+                "hitCount": 259,
+                "ratio": 15.47
+              },
+              {
+                "key": "_$clt",
+                "hitCount": 163,
+                "ratio": 9.74
+              },
+              {
+                "key": "encode",
+                "hitCount": 126,
+                "ratio": 7.53
+              },
+              {
+                "key": "_seData1",
+                "hitCount": 92,
+                "ratio": 5.5
+              },
+              {
+                "key": "stringify",
+                "hitCount": 25,
+                "ratio": 1.49
+              },
+              {
+                "key": "apply",
+                "hitCount": 24,
+                "ratio": 1.43
+              },
+              {
+                "key": "parse",
+                "hitCount": 7,
+                "ratio": 0.42
+              },
+              {
+                "key": "_$cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "_$ws",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ],
+            "comboHits": [
+              {
+                "key": "sdnmd+ms",
+                "hitCount": 284,
+                "ratio": 16.97
+              },
+              {
+                "key": "clt+encode",
+                "hitCount": 78,
+                "ratio": 4.66
+              },
+              {
+                "key": "ms+cps",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "ms+clt",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+ws",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+encode+parse",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "clt+seData1",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "decoder+encode",
+                "hitCount": 0,
+                "ratio": 0
+              },
+              {
+                "key": "stringify+apply",
+                "hitCount": 0,
+                "ratio": 0
+              }
+            ]
+          }
+        },
+        {
+          "workerId": "thread-worker-12",
+          "inspectorInfo": {
+            "port": 9229,
+            "targetId": "leapvm-target-1"
+          },
+          "error": "No recording profiles found"
+        }
+      ],
+      "gc": [
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 35888.518,
+          "duration": 0.338
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 35891.664,
+          "duration": 5.929
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 38078.276,
+          "duration": 0.705
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 38097.077,
+          "duration": 0.781
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 38115.313,
+          "duration": 0.64
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 38138.544,
+          "duration": 1.016
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 38158.765,
+          "duration": 0.838
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.284,
+        "maxMs": 30.999,
+        "meanMs": 21.208,
+        "stddevMs": 2.111,
+        "p95Ms": 25.625,
+        "p99Ms": 28.459
+      }
+    },
+    {
+      "runIndex": 12,
+      "backend": "thread",
+      "overallMs": 2234,
+      "reqPerSec": 161.15,
+      "p95": 97,
+      "p99": 115,
+      "maxTaskMs": 125,
+      "maxSampleP99Ms": 125,
+      "minSampleReqPerSec": 140.45,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "vmCpuProfiles": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 41514.095,
+          "duration": 0.895
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 41541.692,
+          "duration": 1.138
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 41550.768,
+          "duration": 0.345
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 41554.07,
+          "duration": 2.062
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 41581.678,
+          "duration": 0.711
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 41600.635,
+          "duration": 0.579
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 32.014,
+        "meanMs": 20.927,
+        "stddevMs": 1.816,
+        "p95Ms": 24.494,
+        "p99Ms": 26.935
+      }
+    }
+  ]
+}

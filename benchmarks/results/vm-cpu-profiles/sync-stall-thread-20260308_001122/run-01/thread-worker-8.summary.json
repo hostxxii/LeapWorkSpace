@@ -1,0 +1,598 @@
+{
+  "sampleCount": 2514,
+  "nodeCount": 614,
+  "startTime": 4438867778,
+  "endTime": 4442526550,
+  "top": [
+    {
+      "functionName": "(program)",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "hitCount": 1229
+    },
+    {
+      "functionName": "a0a1b0cv",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 686,
+      "columnNumber": 28,
+      "hitCount": 218
+    },
+    {
+      "functionName": "_$u",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 690,
+      "columnNumber": 30,
+      "hitCount": 212
+    },
+    {
+      "functionName": "(garbage collector)",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "hitCount": 143
+    },
+    {
+      "functionName": "encode",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 9509,
+      "columnNumber": 30,
+      "hitCount": 67
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 2,
+      "columnNumber": 28,
+      "hitCount": 47
+    },
+    {
+      "functionName": "a0a1b0cv",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 686,
+      "columnNumber": 28,
+      "hitCount": 32
+    },
+    {
+      "functionName": "_seData1",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 7405,
+      "columnNumber": 30,
+      "hitCount": 29
+    },
+    {
+      "functionName": "_$pz._$clt",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 15176,
+      "columnNumber": 38,
+      "hitCount": 27
+    },
+    {
+      "functionName": "_seData1",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 7405,
+      "columnNumber": 30,
+      "hitCount": 25
+    },
+    {
+      "functionName": "_seData1",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 7405,
+      "columnNumber": 30,
+      "hitCount": 21
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 747,
+      "columnNumber": 13,
+      "hitCount": 20
+    }
+  ],
+  "topInclusive": [
+    {
+      "functionName": "(root)",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "hitCount": 2514
+    },
+    {
+      "functionName": "(program)",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "hitCount": 1229
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "hitCount": 1101
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 2,
+      "columnNumber": 28,
+      "hitCount": 616
+    },
+    {
+      "functionName": "a0a1b0cv",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 686,
+      "columnNumber": 28,
+      "hitCount": 495
+    },
+    {
+      "functionName": "geth5st",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 15509,
+      "columnNumber": 17,
+      "hitCount": 471
+    },
+    {
+      "functionName": "_$pz.signSync",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 15459,
+      "columnNumber": 41,
+      "hitCount": 469
+    },
+    {
+      "functionName": "_$pz._$sdnmd",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 15309,
+      "columnNumber": 40,
+      "hitCount": 469
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 747,
+      "columnNumber": 13,
+      "hitCount": 463
+    },
+    {
+      "functionName": "a0a1b0cv",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 683,
+      "columnNumber": 20,
+      "hitCount": 443
+    },
+    {
+      "functionName": "_$pz._$ms",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 14837,
+      "columnNumber": 37,
+      "hitCount": 298
+    },
+    {
+      "functionName": "_$u",
+      "url": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+      "lineNumber": 690,
+      "columnNumber": 30,
+      "hitCount": 233
+    }
+  ],
+  "topNormalized": [
+    {
+      "key": "(program)",
+      "hitCount": 1229,
+      "ratio": 48.89
+    },
+    {
+      "key": "h5st:a0a1b0cv",
+      "hitCount": 276,
+      "ratio": 10.98
+    },
+    {
+      "key": "h5st:_$u",
+      "hitCount": 233,
+      "ratio": 9.27
+    },
+    {
+      "key": "(garbage collector)",
+      "hitCount": 143,
+      "ratio": 5.69
+    },
+    {
+      "key": "h5st:encode",
+      "hitCount": 100,
+      "ratio": 3.98
+    },
+    {
+      "key": "h5st:_seData1",
+      "hitCount": 84,
+      "ratio": 3.34
+    },
+    {
+      "key": "h5st:(anonymous):2",
+      "hitCount": 47,
+      "ratio": 1.87
+    },
+    {
+      "key": "h5st:_seData",
+      "hitCount": 33,
+      "ratio": 1.31
+    },
+    {
+      "key": "h5st:_$pz._$clt",
+      "hitCount": 27,
+      "ratio": 1.07
+    },
+    {
+      "key": "h5st:(anonymous):747",
+      "hitCount": 20,
+      "ratio": 0.8
+    },
+    {
+      "key": "h5st:parse",
+      "hitCount": 18,
+      "ratio": 0.72
+    },
+    {
+      "key": "ensureRuntimeStore@leapenv.bundle.exec.js",
+      "hitCount": 16,
+      "ratio": 0.64
+    }
+  ],
+  "topNormalizedInclusive": [
+    {
+      "key": "(root)",
+      "hitCount": 2514,
+      "ratio": 100
+    },
+    {
+      "key": "(program)",
+      "hitCount": 1229,
+      "ratio": 48.89
+    },
+    {
+      "key": "h5st:(anonymous):0",
+      "hitCount": 1101,
+      "ratio": 43.79
+    },
+    {
+      "key": "h5st:(anonymous):2",
+      "hitCount": 616,
+      "ratio": 24.5
+    },
+    {
+      "key": "h5st:a0a1b0cv",
+      "hitCount": 508,
+      "ratio": 20.21
+    },
+    {
+      "key": "h5st:geth5st",
+      "hitCount": 471,
+      "ratio": 18.74
+    },
+    {
+      "key": "h5st:_$pz.signSync",
+      "hitCount": 469,
+      "ratio": 18.66
+    },
+    {
+      "key": "h5st:_$pz._$sdnmd",
+      "hitCount": 469,
+      "ratio": 18.66
+    },
+    {
+      "key": "h5st:(anonymous):747",
+      "hitCount": 463,
+      "ratio": 18.42
+    },
+    {
+      "key": "h5st:_$pz._$ms",
+      "hitCount": 298,
+      "ratio": 11.85
+    },
+    {
+      "key": "h5st:_$u",
+      "hitCount": 233,
+      "ratio": 9.27
+    },
+    {
+      "key": "h5st:(anonymous):7595",
+      "hitCount": 200,
+      "ratio": 7.96
+    }
+  ],
+  "topStacks": [
+    {
+      "signature": "(program)",
+      "hitCount": 1229
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+      "hitCount": 218
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+      "hitCount": 212
+    },
+    {
+      "signature": "(garbage collector)",
+      "hitCount": 143
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+      "hitCount": 67
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+      "hitCount": 47
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+      "hitCount": 32
+    },
+    {
+      "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+      "hitCount": 29
+    }
+  ],
+  "topH5stStacks": [
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv",
+      "hitCount": 218
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:(anonymous):747 > h5st:a0a1b0cv > h5st:a0a1b0cv > h5st:_$u",
+      "hitCount": 212
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+      "hitCount": 67
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2",
+      "hitCount": 58
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:(anonymous):2 > h5st:a0a1b0cv",
+      "hitCount": 32
+    },
+    {
+      "signature": "h5st:(anonymous):13712 > h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+      "hitCount": 29
+    },
+    {
+      "signature": "h5st:(anonymous):0 > h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt",
+      "hitCount": 27
+    },
+    {
+      "signature": "h5st:zfqvc > h5st:_$pv > h5st:_$pb > h5st:(anonymous):13038 > h5st:_$p8 > h5st:(anonymous):12463",
+      "hitCount": 26
+    }
+  ],
+  "focusHits": [
+    {
+      "key": "a0a1b0cv",
+      "hitCount": 508,
+      "ratio": 20.21
+    },
+    {
+      "key": "_$sdnmd",
+      "hitCount": 469,
+      "ratio": 18.66
+    },
+    {
+      "key": "_$ms",
+      "hitCount": 298,
+      "ratio": 11.85
+    },
+    {
+      "key": "_$u",
+      "hitCount": 233,
+      "ratio": 9.27
+    },
+    {
+      "key": "_$clt",
+      "hitCount": 158,
+      "ratio": 6.28
+    },
+    {
+      "key": "encode",
+      "hitCount": 111,
+      "ratio": 4.42
+    },
+    {
+      "key": "_seData1",
+      "hitCount": 85,
+      "ratio": 3.38
+    },
+    {
+      "key": "parse",
+      "hitCount": 23,
+      "ratio": 0.91
+    },
+    {
+      "key": "apply",
+      "hitCount": 23,
+      "ratio": 0.91
+    },
+    {
+      "key": "stringify",
+      "hitCount": 16,
+      "ratio": 0.64
+    },
+    {
+      "key": "_$cps",
+      "hitCount": 1,
+      "ratio": 0.04
+    },
+    {
+      "key": "_$ws",
+      "hitCount": 0,
+      "ratio": 0
+    }
+  ],
+  "comboHits": [
+    {
+      "key": "sdnmd+ms",
+      "hitCount": 298,
+      "ratio": 11.85
+    },
+    {
+      "key": "clt+encode",
+      "hitCount": 77,
+      "ratio": 3.06
+    },
+    {
+      "key": "ms+cps",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "ms+clt",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "clt+ws",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "clt+encode+parse",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "clt+seData1",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "decoder+encode",
+      "hitCount": 0,
+      "ratio": 0
+    },
+    {
+      "key": "stringify+apply",
+      "hitCount": 0,
+      "ratio": 0
+    }
+  ],
+  "directChildren": [
+    {
+      "parentKey": "_$clt",
+      "children": [
+        {
+          "key": "h5st:encode",
+          "hitCount": 77,
+          "ratio": 3.06
+        },
+        {
+          "key": "h5st:zfqvc",
+          "hitCount": 49,
+          "ratio": 1.95
+        },
+        {
+          "key": "h5st:parse",
+          "hitCount": 4,
+          "ratio": 0.16
+        },
+        {
+          "key": "h5st:_$wL",
+          "hitCount": 1,
+          "ratio": 0.04
+        }
+      ]
+    },
+    {
+      "parentKey": "_$ms",
+      "children": [
+        {
+          "key": "h5st:_$pz._$gdk",
+          "hitCount": 93,
+          "ratio": 3.7
+        },
+        {
+          "key": "h5st:_$Ok",
+          "hitCount": 64,
+          "ratio": 2.55
+        },
+        {
+          "key": "h5st:_$pz._$gs",
+          "hitCount": 55,
+          "ratio": 2.19
+        },
+        {
+          "key": "h5st:_$pz._$gsd",
+          "hitCount": 51,
+          "ratio": 2.03
+        },
+        {
+          "key": "h5st:encode",
+          "hitCount": 17,
+          "ratio": 0.68
+        },
+        {
+          "key": "h5st:a0a1b0cv",
+          "hitCount": 3,
+          "ratio": 0.12
+        },
+        {
+          "key": "h5st:_$pz._$gsp",
+          "hitCount": 3,
+          "ratio": 0.12
+        },
+        {
+          "key": "h5st:_$O6",
+          "hitCount": 3,
+          "ratio": 0.12
+        }
+      ]
+    }
+  ],
+  "parentChains": [
+    {
+      "targetKey": "encode",
+      "chains": [
+        {
+          "signature": "h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$clt > h5st:encode",
+          "hitCount": 77,
+          "ratio": 3.06
+        },
+        {
+          "signature": "h5st:_$pz._$sdnmd > h5st:_$pz._$ms > h5st:_$Ok > h5st:(anonymous):11604 > h5st:encode",
+          "hitCount": 17,
+          "ratio": 0.68
+        },
+        {
+          "signature": "h5st:geth5st > h5st:_$pz.signSync > h5st:_$pz._$sdnmd > h5st:_$pz._$ms > h5st:encode",
+          "hitCount": 17,
+          "ratio": 0.68
+        }
+      ]
+    },
+    {
+      "targetKey": "_seData1",
+      "chains": [
+        {
+          "signature": "h5st:_$pz._$atm > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+          "hitCount": 29,
+          "ratio": 1.15
+        },
+        {
+          "signature": "h5st:_$pz._$gsd > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+          "hitCount": 25,
+          "ratio": 0.99
+        },
+        {
+          "signature": "h5st:_$pz._$gs > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+          "hitCount": 21,
+          "ratio": 0.84
+        },
+        {
+          "signature": "h5st:_$Ok > h5st:(anonymous):7595 > h5st:finalize > h5st:_seData > h5st:_seData1",
+          "hitCount": 10,
+          "ratio": 0.4
+        }
+      ]
+    }
+  ]
+}

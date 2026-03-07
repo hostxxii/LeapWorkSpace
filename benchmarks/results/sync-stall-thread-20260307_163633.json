@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-03-07T08:36:33.609Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 4,
+    "concurrency": 4,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 2,
+    "totalTasks": 20,
+    "sampleEvery": 10,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignCps": true,
+    "stubParamSignClt": false,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 4711,
+      "reqPerSec": 4.25,
+      "p95": 197,
+      "p99": 200,
+      "maxTaskMs": 200,
+      "maxSampleP99Ms": 200,
+      "minSampleReqPerSec": 2.27,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 33.048,
+          "duration": 0.586
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.726,
+        "maxMs": 32.424,
+        "meanMs": 21.055,
+        "stddevMs": 2.215,
+        "p95Ms": 23.265,
+        "p99Ms": 32.424
+      }
+    }
+  ]
+}

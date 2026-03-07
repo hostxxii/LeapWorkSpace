@@ -1,0 +1,1967 @@
+{
+  "timestamp": "2026-03-07T09:52:41.705Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 20,
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 20,
+    "totalTasks": 360,
+    "sampleEvery": 30,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignWs": false,
+    "stubParamSignJsonStringify": false,
+    "stubParamSignWsDispatch": false,
+    "stubParamSignWsDirectCall": false,
+    "stubParamSignWsDirectFullArgs": false,
+    "stubParamSignWsApplyArray": true,
+    "stubParamSignWsGenericArray": false,
+    "stubParamSignWsShallowArg": false,
+    "stubParamSignEncodeChain": true,
+    "stubParamSignAtm": false,
+    "stubParamSignGdk": false,
+    "stubParamSignGs": false,
+    "stubParamSignGsd": false,
+    "stubParamSignCps": true,
+    "stubParamSignClt": false,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 2056,
+      "reqPerSec": 175.1,
+      "p95": 97,
+      "p99": 119,
+      "maxTaskMs": 133,
+      "maxSampleP99Ms": 133,
+      "minSampleReqPerSec": 152.28,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 31.874,
+          "duration": 0.513
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 845.304,
+          "duration": 2.017
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 15.376,
+        "maxMs": 25.723,
+        "meanMs": 20.994,
+        "stddevMs": 1.509,
+        "p95Ms": 24.052,
+        "p99Ms": 25.215
+      }
+    },
+    {
+      "runIndex": 2,
+      "backend": "thread",
+      "overallMs": 1980,
+      "reqPerSec": 181.82,
+      "p95": 85,
+      "p99": 94,
+      "maxTaskMs": 101,
+      "maxSampleP99Ms": 101,
+      "minSampleReqPerSec": 168.54,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 2743.098,
+          "duration": 0.51
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 4652.826,
+          "duration": 2.96
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 16.073,
+        "maxMs": 30.31,
+        "meanMs": 21.152,
+        "stddevMs": 1.853,
+        "p95Ms": 24.986,
+        "p99Ms": 25.657
+      }
+    },
+    {
+      "runIndex": 3,
+      "backend": "thread",
+      "overallMs": 1869,
+      "reqPerSec": 192.62,
+      "p95": 79,
+      "p99": 88,
+      "maxTaskMs": 98,
+      "maxSampleP99Ms": 98,
+      "minSampleReqPerSec": 182.93,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [],
+      "eventLoopDelay": {
+        "minMs": 19.071,
+        "maxMs": 25.068,
+        "meanMs": 20.871,
+        "stddevMs": 1.335,
+        "p95Ms": 24.003,
+        "p99Ms": 24.953
+      }
+    },
+    {
+      "runIndex": 4,
+      "backend": "thread",
+      "overallMs": 1864,
+      "reqPerSec": 193.13,
+      "p95": 77,
+      "p99": 85,
+      "maxTaskMs": 94,
+      "maxSampleP99Ms": 94,
+      "minSampleReqPerSec": 185.19,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 7796.656,
+          "duration": 0.592
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.333,
+        "maxMs": 27.967,
+        "meanMs": 21.343,
+        "stddevMs": 1.792,
+        "p95Ms": 24.51,
+        "p99Ms": 27.836
+      }
+    },
+    {
+      "runIndex": 5,
+      "backend": "thread",
+      "overallMs": 1845,
+      "reqPerSec": 195.12,
+      "p95": 76,
+      "p99": 87,
+      "maxTaskMs": 93,
+      "maxSampleP99Ms": 93,
+      "minSampleReqPerSec": 181.82,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10259.964,
+          "duration": 0.642
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 10300.457,
+          "duration": 0.302
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 10302.563,
+          "duration": 1.565
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.235,
+        "maxMs": 29.737,
+        "meanMs": 21.075,
+        "stddevMs": 1.864,
+        "p95Ms": 24.691,
+        "p99Ms": 27.591
+      }
+    },
+    {
+      "runIndex": 6,
+      "backend": "thread",
+      "overallMs": 1961,
+      "reqPerSec": 183.58,
+      "p95": 84,
+      "p99": 93,
+      "maxTaskMs": 99,
+      "maxSampleP99Ms": 99,
+      "minSampleReqPerSec": 174.42,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [],
+      "eventLoopDelay": {
+        "minMs": 19.3,
+        "maxMs": 29.295,
+        "meanMs": 21.437,
+        "stddevMs": 1.925,
+        "p95Ms": 25.887,
+        "p99Ms": 27.656
+      }
+    },
+    {
+      "runIndex": 7,
+      "backend": "thread",
+      "overallMs": 1941,
+      "reqPerSec": 185.47,
+      "p95": 82,
+      "p99": 94,
+      "maxTaskMs": 100,
+      "maxSampleP99Ms": 100,
+      "minSampleReqPerSec": 164.84,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 15218.753,
+          "duration": 0.666
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.251,
+        "maxMs": 30.458,
+        "meanMs": 21.013,
+        "stddevMs": 1.851,
+        "p95Ms": 24.003,
+        "p99Ms": 28.148
+      }
+    },
+    {
+      "runIndex": 8,
+      "backend": "thread",
+      "overallMs": 1852,
+      "reqPerSec": 194.38,
+      "p95": 74,
+      "p99": 86,
+      "maxTaskMs": 91,
+      "maxSampleP99Ms": 91,
+      "minSampleReqPerSec": 185.19,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 17753.934,
+          "duration": 0.725
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 18404.334,
+          "duration": 0.353
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 18407.9,
+          "duration": 7.017
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 19011.981,
+          "duration": 0.694
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 19023.636,
+          "duration": 0.292
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 19029.56,
+          "duration": 10.219
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 19623.354,
+          "duration": 0.87
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.038,
+        "maxMs": 30.687,
+        "meanMs": 21.165,
+        "stddevMs": 1.88,
+        "p95Ms": 24.543,
+        "p99Ms": 27.001
+      }
+    },
+    {
+      "runIndex": 9,
+      "backend": "thread",
+      "overallMs": 1835,
+      "reqPerSec": 196.19,
+      "p95": 74,
+      "p99": 84,
+      "maxTaskMs": 89,
+      "maxSampleP99Ms": 89,
+      "minSampleReqPerSec": 186.34,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20180.71,
+          "duration": 0.369
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 20543.22,
+          "duration": 2.301
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 21604.657,
+          "duration": 0.855
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 29.721,
+        "meanMs": 21.433,
+        "stddevMs": 2.132,
+        "p95Ms": 26.051,
+        "p99Ms": 29.393
+      }
+    },
+    {
+      "runIndex": 10,
+      "backend": "thread",
+      "overallMs": 4791,
+      "reqPerSec": 75.14,
+      "p95": 88,
+      "p99": 3000,
+      "maxTaskMs": 3014,
+      "maxSampleP99Ms": 3014,
+      "minSampleReqPerSec": 9.73,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [
+        {
+          "taskId": "measure-221",
+          "workerId": "thread-worker-7",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3000,
+          "startedOffsetMs": 893,
+          "completedOffsetMs": 4070,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 62,
+            "postTaskCleanupMs": 2938,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 2,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 59,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-241",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1379401728,
+            "heapTotal": 21532672,
+            "heapUsed": 12394720,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55619584,
+            "v8TotalHeapSizeExecutable": 4980736,
+            "v8TotalPhysicalSize": 55619584,
+            "v8TotalAvailableSize": 1541509724,
+            "v8UsedHeapSize": 27138956,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2164532,
+            "v8PeakMallocedMemory": 6737432,
+            "v8ExternalMemory": 1112,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2694656,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6958692,
+            "v8OldSpacePhysicalSize": 8126464,
+            "v8NewSpaceUsedSize": 10000576,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2373824,
+            "v8CodeSpacePhysicalSize": 4980736,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6591136,
+            "v8LargeObjectSpacePhysicalSize": 6598656,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-224",
+          "workerId": "thread-worker-12",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2984,
+          "startedOffsetMs": 901,
+          "completedOffsetMs": 4071,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 47,
+            "postTaskCleanupMs": 2937,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 44,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-244",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1380597760,
+            "heapTotal": 21532672,
+            "heapUsed": 12611264,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55095296,
+            "v8TotalHeapSizeExecutable": 4718592,
+            "v8TotalPhysicalSize": 55095296,
+            "v8TotalAvailableSize": 1541496640,
+            "v8UsedHeapSize": 27150496,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1093996,
+            "v8PeakMallocedMemory": 8828248,
+            "v8ExternalMemory": 1112,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2885280,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6739116,
+            "v8OldSpacePhysicalSize": 7864320,
+            "v8NewSpaceUsedSize": 9977644,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2579328,
+            "v8CodeSpacePhysicalSize": 4718592,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6591136,
+            "v8LargeObjectSpacePhysicalSize": 6598656,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-225",
+          "workerId": "thread-worker-4",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2988,
+          "startedOffsetMs": 909,
+          "completedOffsetMs": 4079,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2984,
+            "postTaskCleanupMs": 4,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 7,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2975,
+              "cleanupMs": 2
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-245",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1387806720,
+            "heapTotal": 21270528,
+            "heapUsed": 12537040,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 65142784,
+            "v8TotalHeapSizeExecutable": 6029312,
+            "v8TotalPhysicalSize": 65142784,
+            "v8TotalAvailableSize": 1524760600,
+            "v8UsedHeapSize": 42905192,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1159564,
+            "v8PeakMallocedMemory": 8148464,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 6243177,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 7289432,
+            "v8OldSpacePhysicalSize": 7602176,
+            "v8NewSpaceUsedSize": 12388696,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 5613584,
+            "v8CodeSpacePhysicalSize": 6029312,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 14343840,
+            "v8LargeObjectSpacePhysicalSize": 14364672,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-220",
+          "workerId": "thread-worker-3",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3014,
+          "startedOffsetMs": 882,
+          "completedOffsetMs": 4082,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 3010,
+            "postTaskCleanupMs": 4,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 3009,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-240",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1390952448,
+            "heapTotal": 21532672,
+            "heapUsed": 12507792,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 54648832,
+            "v8TotalHeapSizeExecutable": 4718592,
+            "v8TotalPhysicalSize": 54648832,
+            "v8TotalAvailableSize": 1546804668,
+            "v8UsedHeapSize": 17555376,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1894172,
+            "v8PeakMallocedMemory": 7478464,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2410278,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6655924,
+            "v8OldSpacePhysicalSize": 7864320,
+            "v8NewSpaceUsedSize": 1627148,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2292688,
+            "v8CodeSpacePhysicalSize": 4718592,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-228",
+          "workerId": "thread-worker-6",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2987,
+          "startedOffsetMs": 923,
+          "completedOffsetMs": 4099,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2985,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2974,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-248",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1384333312,
+            "heapTotal": 21008384,
+            "heapUsed": 12482544,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 54571008,
+            "v8TotalHeapSizeExecutable": 4456448,
+            "v8TotalPhysicalSize": 54571008,
+            "v8TotalAvailableSize": 1542501044,
+            "v8UsedHeapSize": 26146136,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2065012,
+            "v8PeakMallocedMemory": 8941352,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2785515,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6681112,
+            "v8OldSpacePhysicalSize": 7602176,
+            "v8NewSpaceUsedSize": 9195376,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2448320,
+            "v8CodeSpacePhysicalSize": 4456448,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6591136,
+            "v8LargeObjectSpacePhysicalSize": 6598656,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-226",
+          "workerId": "thread-worker-5",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3011,
+          "startedOffsetMs": 917,
+          "completedOffsetMs": 4102,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 3006,
+            "postTaskCleanupMs": 5,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 4,
+              "targetScriptMs": 2997,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-246",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1386692608,
+            "heapTotal": 21532672,
+            "heapUsed": 12586800,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55435264,
+            "v8TotalHeapSizeExecutable": 5505024,
+            "v8TotalPhysicalSize": 55435264,
+            "v8TotalAvailableSize": 1542564452,
+            "v8UsedHeapSize": 25560264,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 2151724,
+            "v8PeakMallocedMemory": 8096048,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2527433,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6917844,
+            "v8OldSpacePhysicalSize": 8126464,
+            "v8NewSpaceUsedSize": 9603968,
+            "v8NewSpacePhysicalSize": 33292288,
+            "v8CodeSpaceUsedSize": 2249664,
+            "v8CodeSpacePhysicalSize": 5505024,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-229",
+          "workerId": "thread-worker-9",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2991,
+          "startedOffsetMs": 930,
+          "completedOffsetMs": 4103,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2988,
+            "postTaskCleanupMs": 3,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 4,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2982,
+              "cleanupMs": 2
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-249",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1387479040,
+            "heapTotal": 21532672,
+            "heapUsed": 12586544,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55881728,
+            "v8TotalHeapSizeExecutable": 4980736,
+            "v8TotalPhysicalSize": 55881728,
+            "v8TotalAvailableSize": 1542793700,
+            "v8UsedHeapSize": 25856960,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 81980,
+            "v8PeakMallocedMemory": 8810248,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2817739,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6653476,
+            "v8OldSpacePhysicalSize": 8126464,
+            "v8NewSpaceUsedSize": 8890904,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2481344,
+            "v8CodeSpacePhysicalSize": 4980736,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6591136,
+            "v8LargeObjectSpacePhysicalSize": 6598656,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-227",
+          "workerId": "thread-worker-8",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3000,
+          "startedOffsetMs": 921,
+          "completedOffsetMs": 4106,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2998,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 4,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2992,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-247",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1392984064,
+            "heapTotal": 23220224,
+            "heapUsed": 14461264,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 22,
+            "vmStaleTimerQueueCount": 22,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55881728,
+            "v8TotalHeapSizeExecutable": 5242880,
+            "v8TotalPhysicalSize": 55881728,
+            "v8TotalAvailableSize": 1536907076,
+            "v8UsedHeapSize": 30772004,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 3721116,
+            "v8PeakMallocedMemory": 8961232,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 3981997,
+            "v8BytecodeAndMetadataSize": 298920,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6764256,
+            "v8OldSpacePhysicalSize": 7864320,
+            "v8NewSpaceUsedSize": 12341944,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 3518848,
+            "v8CodeSpacePhysicalSize": 5242880,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-230",
+          "workerId": "thread-worker-2",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2992,
+          "startedOffsetMs": 939,
+          "completedOffsetMs": 4107,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2989,
+            "postTaskCleanupMs": 3,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 2987,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-250",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1392984064,
+            "heapTotal": 22958080,
+            "heapUsed": 14428368,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 24,
+            "vmStaleTimerQueueCount": 24,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 57008128,
+            "v8TotalHeapSizeExecutable": 6291456,
+            "v8TotalPhysicalSize": 57008128,
+            "v8TotalAvailableSize": 1545092840,
+            "v8UsedHeapSize": 18785676,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 5268764,
+            "v8PeakMallocedMemory": 9293960,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2390739,
+            "v8BytecodeAndMetadataSize": 303328,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6892612,
+            "v8OldSpacePhysicalSize": 8650752,
+            "v8NewSpaceUsedSize": 2460124,
+            "v8NewSpacePhysicalSize": 33292288,
+            "v8CodeSpaceUsedSize": 2440224,
+            "v8CodeSpacePhysicalSize": 6291456,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-231",
+          "workerId": "thread-worker-1",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 2994,
+          "startedOffsetMs": 941,
+          "completedOffsetMs": 4128,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2986,
+            "postTaskCleanupMs": 8,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 2936,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 50,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-251",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1389846528,
+            "heapTotal": 23220224,
+            "heapUsed": 14474680,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 24,
+            "vmStaleTimerQueueCount": 24,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 56668160,
+            "v8TotalHeapSizeExecutable": 5767168,
+            "v8TotalPhysicalSize": 56668160,
+            "v8TotalAvailableSize": 1537116880,
+            "v8UsedHeapSize": 30560220,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1245700,
+            "v8PeakMallocedMemory": 7434408,
+            "v8ExternalMemory": 586,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2622035,
+            "v8BytecodeAndMetadataSize": 303328,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6865544,
+            "v8OldSpacePhysicalSize": 7864320,
+            "v8NewSpaceUsedSize": 13613380,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2301248,
+            "v8CodeSpacePhysicalSize": 5767168,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-232",
+          "workerId": "thread-worker-10",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 3003,
+          "startedOffsetMs": 952,
+          "completedOffsetMs": 4137,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 2999,
+            "postTaskCleanupMs": 4,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 484534,
+              "beforeScriptLength": 16101,
+              "setupMs": 2937,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 61,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-252",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": null,
+          "memoryUsage": {
+            "rss": 1383346176,
+            "heapTotal": 21532672,
+            "heapUsed": 12468224,
+            "external": 2687128,
+            "arrayBuffers": 217179
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 23,
+            "vmStaleTimerQueueCount": 23,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 55435264,
+            "v8TotalHeapSizeExecutable": 5767168,
+            "v8TotalPhysicalSize": 55435264,
+            "v8TotalAvailableSize": 1551848540,
+            "v8UsedHeapSize": 15974052,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 897340,
+            "v8PeakMallocedMemory": 7220640,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 2277837,
+            "v8BytecodeAndMetadataSize": 301124,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 6748120,
+            "v8OldSpacePhysicalSize": 7864320,
+            "v8NewSpaceUsedSize": 496544,
+            "v8NewSpacePhysicalSize": 33554432,
+            "v8CodeSpaceUsedSize": 2007296,
+            "v8CodeSpacePhysicalSize": 5767168,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5622048,
+            "v8LargeObjectSpacePhysicalSize": 5627904,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        }
+      ],
+      "synchronizedStall": {
+        "workerCount": 11,
+        "spreadMs": 67,
+        "firstCompletedOffsetMs": 4070,
+        "lastCompletedOffsetMs": 4137
+      },
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 22591.495,
+          "duration": 0.341
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 22625.466,
+          "duration": 0.44
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 22627.264,
+          "duration": 4.492
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 29.049,
+        "meanMs": 21.164,
+        "stddevMs": 1.806,
+        "p95Ms": 24.003,
+        "p99Ms": 28.738
+      }
+    },
+    {
+      "runIndex": 11,
+      "backend": "thread",
+      "overallMs": 2097,
+      "reqPerSec": 171.67,
+      "p95": 95,
+      "p99": 106,
+      "maxTaskMs": 117,
+      "maxSampleP99Ms": 117,
+      "minSampleReqPerSec": 153.06,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 25010.222,
+          "duration": 0.677
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 26682.185,
+          "duration": 2.148
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 26684.559,
+          "duration": 6.862
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 26693.25,
+          "duration": 5.655
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 28.033,
+        "meanMs": 21.131,
+        "stddevMs": 1.694,
+        "p95Ms": 24.281,
+        "p99Ms": 27.066
+      }
+    },
+    {
+      "runIndex": 12,
+      "backend": "thread",
+      "overallMs": 1868,
+      "reqPerSec": 192.72,
+      "p95": 79,
+      "p99": 89,
+      "maxTaskMs": 98,
+      "maxSampleP99Ms": 98,
+      "minSampleReqPerSec": 180.72,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [],
+      "eventLoopDelay": {
+        "minMs": 19.317,
+        "maxMs": 27.607,
+        "meanMs": 20.873,
+        "stddevMs": 1.564,
+        "p95Ms": 24.084,
+        "p99Ms": 26.853
+      }
+    },
+    {
+      "runIndex": 13,
+      "backend": "thread",
+      "overallMs": 1828,
+      "reqPerSec": 196.94,
+      "p95": 74,
+      "p99": 83,
+      "maxTaskMs": 98,
+      "maxSampleP99Ms": 98,
+      "minSampleReqPerSec": 182.93,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 30115.842,
+          "duration": 0.619
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.251,
+        "maxMs": 29.573,
+        "meanMs": 20.946,
+        "stddevMs": 1.564,
+        "p95Ms": 23.56,
+        "p99Ms": 25.903
+      }
+    },
+    {
+      "runIndex": 14,
+      "backend": "thread",
+      "overallMs": 1838,
+      "reqPerSec": 195.87,
+      "p95": 76,
+      "p99": 88,
+      "maxTaskMs": 93,
+      "maxSampleP99Ms": 93,
+      "minSampleReqPerSec": 187.5,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 32499.758,
+          "duration": 0.581
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.038,
+        "maxMs": 29.557,
+        "meanMs": 20.98,
+        "stddevMs": 1.839,
+        "p95Ms": 24.543,
+        "p99Ms": 27.165
+      }
+    },
+    {
+      "runIndex": 15,
+      "backend": "thread",
+      "overallMs": 1843,
+      "reqPerSec": 195.33,
+      "p95": 78,
+      "p99": 89,
+      "maxTaskMs": 103,
+      "maxSampleP99Ms": 103,
+      "minSampleReqPerSec": 176.47,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 34898.149,
+          "duration": 0.692
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.169,
+        "maxMs": 25.952,
+        "meanMs": 20.857,
+        "stddevMs": 1.507,
+        "p95Ms": 24.51,
+        "p99Ms": 25.461
+      }
+    },
+    {
+      "runIndex": 16,
+      "backend": "thread",
+      "overallMs": 1954,
+      "reqPerSec": 184.24,
+      "p95": 83,
+      "p99": 90,
+      "maxTaskMs": 109,
+      "maxSampleP99Ms": 109,
+      "minSampleReqPerSec": 170.45,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 37300.742,
+          "duration": 0.629
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.153,
+        "maxMs": 24.691,
+        "meanMs": 20.797,
+        "stddevMs": 1.27,
+        "p95Ms": 23.97,
+        "p99Ms": 24.429
+      }
+    },
+    {
+      "runIndex": 17,
+      "backend": "thread",
+      "overallMs": 1851,
+      "reqPerSec": 194.49,
+      "p95": 79,
+      "p99": 87,
+      "maxTaskMs": 91,
+      "maxSampleP99Ms": 91,
+      "minSampleReqPerSec": 175.44,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 39825.356,
+          "duration": 0.669
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.35,
+        "maxMs": 28.017,
+        "meanMs": 20.97,
+        "stddevMs": 1.682,
+        "p95Ms": 25.018,
+        "p99Ms": 27.05
+      }
+    },
+    {
+      "runIndex": 18,
+      "backend": "thread",
+      "overallMs": 1842,
+      "reqPerSec": 195.44,
+      "p95": 76,
+      "p99": 86,
+      "maxTaskMs": 98,
+      "maxSampleP99Ms": 98,
+      "minSampleReqPerSec": 189.87,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 42234.361,
+          "duration": 0.582
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.137,
+        "maxMs": 26.427,
+        "meanMs": 20.788,
+        "stddevMs": 1.346,
+        "p95Ms": 23.233,
+        "p99Ms": 25.215
+      }
+    },
+    {
+      "runIndex": 19,
+      "backend": "thread",
+      "overallMs": 1863,
+      "reqPerSec": 193.24,
+      "p95": 78,
+      "p99": 83,
+      "maxTaskMs": 105,
+      "maxSampleP99Ms": 105,
+      "minSampleReqPerSec": 181.82,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 44633.967,
+          "duration": 0.629
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.284,
+        "maxMs": 33.473,
+        "meanMs": 20.995,
+        "stddevMs": 1.786,
+        "p95Ms": 23.658,
+        "p99Ms": 27.591
+      }
+    },
+    {
+      "runIndex": 20,
+      "backend": "thread",
+      "overallMs": 1873,
+      "reqPerSec": 192.21,
+      "p95": 79,
+      "p99": 92,
+      "maxTaskMs": 102,
+      "maxSampleP99Ms": 102,
+      "minSampleReqPerSec": 180.72,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 47078.385,
+          "duration": 0.597
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.186,
+        "maxMs": 27.001,
+        "meanMs": 21.001,
+        "stddevMs": 1.509,
+        "p95Ms": 24.248,
+        "p99Ms": 26.46
+      }
+    }
+  ]
+}

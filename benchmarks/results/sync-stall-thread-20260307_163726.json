@@ -1,0 +1,368 @@
+{
+  "timestamp": "2026-03-07T08:37:26.944Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 10,
+    "poolSize": 12,
+    "concurrency": 48,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 20,
+    "totalTasks": 360,
+    "sampleEvery": 30,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignCps": false,
+    "stubParamSignClt": false,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": true,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 1067,
+      "reqPerSec": 337.39,
+      "p95": 46,
+      "p99": 54,
+      "maxTaskMs": 63,
+      "maxSampleP99Ms": 63,
+      "minSampleReqPerSec": 256.41,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 32.186,
+          "duration": 0.488
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 595.993,
+          "duration": 6.366
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.087,
+        "maxMs": 25.936,
+        "meanMs": 20.364,
+        "stddevMs": 0.945,
+        "p95Ms": 21.791,
+        "p99Ms": 23.347
+      }
+    },
+    {
+      "runIndex": 2,
+      "backend": "thread",
+      "overallMs": 1098,
+      "reqPerSec": 327.87,
+      "p95": 46,
+      "p99": 51,
+      "maxTaskMs": 52,
+      "maxSampleP99Ms": 52,
+      "minSampleReqPerSec": 300,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 1583.838,
+          "duration": 0.646
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 2668.736,
+          "duration": 4.618
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 24.707,
+        "meanMs": 20.558,
+        "stddevMs": 1.007,
+        "p95Ms": 22.315,
+        "p99Ms": 24.543
+      }
+    },
+    {
+      "runIndex": 3,
+      "backend": "thread",
+      "overallMs": 1004,
+      "reqPerSec": 358.57,
+      "p95": 40,
+      "p99": 46,
+      "maxTaskMs": 50,
+      "maxSampleP99Ms": 50,
+      "minSampleReqPerSec": 300,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [],
+      "eventLoopDelay": {
+        "minMs": 19.137,
+        "maxMs": 29.442,
+        "meanMs": 20.795,
+        "stddevMs": 1.619,
+        "p95Ms": 23.282,
+        "p99Ms": 26.313
+      }
+    },
+    {
+      "runIndex": 4,
+      "backend": "thread",
+      "overallMs": 973,
+      "reqPerSec": 369.99,
+      "p95": 39,
+      "p99": 43,
+      "maxTaskMs": 44,
+      "maxSampleP99Ms": 44,
+      "minSampleReqPerSec": 352.94,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 4520.658,
+          "duration": 0.62
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.202,
+        "maxMs": 25.297,
+        "meanMs": 20.387,
+        "stddevMs": 0.954,
+        "p95Ms": 22.118,
+        "p99Ms": 22.905
+      }
+    },
+    {
+      "runIndex": 5,
+      "backend": "thread",
+      "overallMs": 975,
+      "reqPerSec": 369.23,
+      "p95": 38,
+      "p99": 43,
+      "maxTaskMs": 44,
+      "maxSampleP99Ms": 44,
+      "minSampleReqPerSec": 337.08,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 5901.394,
+          "duration": 0.703
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 5939.6,
+          "duration": 0.576
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 5941.744,
+          "duration": 1.381
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.022,
+        "maxMs": 23.462,
+        "meanMs": 20.455,
+        "stddevMs": 0.812,
+        "p95Ms": 21.955,
+        "p99Ms": 23.151
+      }
+    },
+    {
+      "runIndex": 6,
+      "backend": "thread",
+      "overallMs": 990,
+      "reqPerSec": 363.64,
+      "p95": 39,
+      "p99": 47,
+      "maxTaskMs": 56,
+      "maxSampleP99Ms": 56,
+      "minSampleReqPerSec": 333.33,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [],
+      "eventLoopDelay": {
+        "minMs": 19.415,
+        "maxMs": 26.591,
+        "meanMs": 20.531,
+        "stddevMs": 1.272,
+        "p95Ms": 23.216,
+        "p99Ms": 25.133
+      }
+    },
+    {
+      "runIndex": 7,
+      "backend": "thread",
+      "overallMs": 965,
+      "reqPerSec": 373.06,
+      "p95": 37,
+      "p99": 45,
+      "maxTaskMs": 50,
+      "maxSampleP99Ms": 50,
+      "minSampleReqPerSec": 340.91,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 8691.021,
+          "duration": 0.804
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.071,
+        "maxMs": 25.149,
+        "meanMs": 20.47,
+        "stddevMs": 1.079,
+        "p95Ms": 23.101,
+        "p99Ms": 24.412
+      }
+    },
+    {
+      "runIndex": 8,
+      "backend": "thread",
+      "overallMs": 1015,
+      "reqPerSec": 354.68,
+      "p95": 39,
+      "p99": 45,
+      "maxTaskMs": 47,
+      "maxSampleP99Ms": 47,
+      "minSampleReqPerSec": 322.58,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 10068.102,
+          "duration": 0.839
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.3,
+        "maxMs": 27.673,
+        "meanMs": 20.704,
+        "stddevMs": 1.273,
+        "p95Ms": 23.314,
+        "p99Ms": 23.871
+      }
+    },
+    {
+      "runIndex": 9,
+      "backend": "thread",
+      "overallMs": 978,
+      "reqPerSec": 368.1,
+      "p95": 39,
+      "p99": 43,
+      "maxTaskMs": 53,
+      "maxSampleP99Ms": 53,
+      "minSampleReqPerSec": 344.83,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 11494.866,
+          "duration": 0.645
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 17.252,
+        "maxMs": 25.33,
+        "meanMs": 20.547,
+        "stddevMs": 1.238,
+        "p95Ms": 23.118,
+        "p99Ms": 24.445
+      }
+    },
+    {
+      "runIndex": 10,
+      "backend": "thread",
+      "overallMs": 940,
+      "reqPerSec": 382.98,
+      "p95": 36,
+      "p99": 42,
+      "maxTaskMs": 43,
+      "maxSampleP99Ms": 43,
+      "minSampleReqPerSec": 348.84,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 12882.616,
+          "duration": 1.234
+        },
+        {
+          "kind": 8,
+          "kindLabel": "incremental",
+          "startTime": 12922.079,
+          "duration": 0.376
+        },
+        {
+          "kind": 4,
+          "kindLabel": "major",
+          "startTime": 12923.959,
+          "duration": 1.381
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.087,
+        "maxMs": 22.626,
+        "meanMs": 20.304,
+        "stddevMs": 0.681,
+        "p95Ms": 21.545,
+        "p99Ms": 22.282
+      }
+    }
+  ]
+}

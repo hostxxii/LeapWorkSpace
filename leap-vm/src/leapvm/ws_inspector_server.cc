@@ -15,8 +15,7 @@ WsInspectorServer::WsInspectorServer(
     OnMessageCallback on_message)
     : port_(port)
     , target_id_(target_id)
-    , on_message_(std::move(on_message))
-    , app_(nullptr) {
+    , on_message_(std::move(on_message)) {
 }
 
 WsInspectorServer::~WsInspectorServer() {
@@ -45,6 +44,8 @@ bool WsInspectorServer::Start(std::string* error_out) {
         listen_socket_ = nullptr;
     }
 
+    app_.store(nullptr, std::memory_order_release);
+
     running_.store(true, std::memory_order_release);
     io_thread_ = std::thread([this]() { RunEventLoop(); });
 
@@ -60,10 +61,6 @@ bool WsInspectorServer::Start(std::string* error_out) {
 
         if (io_thread_.joinable()) {
             io_thread_.join();
-        }
-        if (app_) {
-            delete static_cast<UwsApp*>(app_);
-            app_ = nullptr;
         }
 
         LEAPVM_LOG_ERROR("[ws] Failed to start: %s", start_error_.c_str());
@@ -82,8 +79,7 @@ void WsInspectorServer::Stop() {
         return;
     }
 
-    if (app_) {
-        auto* app = static_cast<UwsApp*>(app_);
+    if (auto* app = static_cast<UwsApp*>(app_.load(std::memory_order_acquire))) {
         app->getLoop()->defer([this, app]() {
             app->close();
             listen_socket_ = nullptr;
@@ -96,12 +92,6 @@ void WsInspectorServer::Stop() {
     if (io_thread_.joinable()) {
         io_thread_.join();
     }
-
-    if (app_) {
-        delete static_cast<UwsApp*>(app_);
-        app_ = nullptr;
-    }
-
 }
 
 void WsInspectorServer::RunEventLoop() {
@@ -119,8 +109,9 @@ void WsInspectorServer::RunEventLoop() {
     };
 
     try {
-        auto* app = new UwsApp();
-        app_ = static_cast<void*>(app);
+        std::unique_ptr<UwsApp> app_holder = std::make_unique<UwsApp>();
+        auto* app = app_holder.get();
+        app_.store(static_cast<void*>(app), std::memory_order_release);
 
         app->get("/json/list", [this](auto* res, auto* req) {
             std::ostringstream json;
@@ -258,22 +249,28 @@ void WsInspectorServer::RunEventLoop() {
         }
 
         app->run();
+
+        app_.store(nullptr, std::memory_order_release);
+        listen_socket_ = nullptr;
+        app_holder.reset();
     } catch (const std::exception& e) {
         report_start_failure(std::string("WS event loop exception: ") + e.what());
     } catch (...) {
         report_start_failure("Unknown WS event loop exception");
     }
 
+    app_.store(nullptr, std::memory_order_release);
+    listen_socket_ = nullptr;
     running_.store(false, std::memory_order_release);
     ws_cv_.notify_all();
 }
 
 void WsInspectorServer::BroadcastToTarget(const std::string& message) {
-    if (!app_ || !running_.load(std::memory_order_acquire)) {
+    auto* app = static_cast<UwsApp*>(app_.load(std::memory_order_acquire));
+    if (!app || !running_.load(std::memory_order_acquire)) {
         return;
     }
 
-    auto* app = static_cast<UwsApp*>(app_);
     app->getLoop()->defer([this, message]() {
         std::vector<UwsWebSocket*> sockets;
         {

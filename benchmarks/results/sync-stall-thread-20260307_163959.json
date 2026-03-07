@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-03-07T08:39:59.029Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 4,
+    "concurrency": 4,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 2,
+    "totalTasks": 20,
+    "sampleEvery": 10,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignCps": true,
+    "stubParamSignClt": true,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 159,
+      "reqPerSec": 125.79,
+      "p95": 70,
+      "p99": 71,
+      "maxTaskMs": 71,
+      "maxSampleP99Ms": 71,
+      "minSampleReqPerSec": 135.14,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 28.994,
+          "duration": 0.52
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 33.001,
+          "duration": 0.209
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.628,
+        "maxMs": 20.414,
+        "meanMs": 20.012,
+        "stddevMs": 0.208,
+        "p95Ms": 20.382,
+        "p99Ms": 20.414
+      }
+    }
+  ]
+}

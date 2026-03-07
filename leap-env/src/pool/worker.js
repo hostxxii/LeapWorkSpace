@@ -239,6 +239,7 @@ function handleRunSignature(message) {
       taskId
     });
     const taskApiTrace = getTaskApiTraceSnapshot();
+    const paramSignMethodTrace = getParamSignMethodTraceSnapshot();
     if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
       phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
     }
@@ -270,6 +271,7 @@ function handleRunSignature(message) {
       runtimeStats: cleanup.runtimeStats,
       phaseTimings: phaseTimings,
       taskApiTrace: taskApiTrace,
+      paramSignMethodTrace: paramSignMethodTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
@@ -277,6 +279,7 @@ function handleRunSignature(message) {
   } catch (error) {
     const executeFailedAt = taskPhaseTraceEnabled ? Date.now() : 0;
     const taskApiTrace = getTaskApiTraceSnapshot();
+    const paramSignMethodTrace = getParamSignMethodTraceSnapshot();
     if (phaseTimings && leapvm && leapvm.__leapLastTaskExecutionPhaseTimings) {
       phaseTimings.taskExecutionBreakdown = leapvm.__leapLastTaskExecutionPhaseTimings;
     }
@@ -305,6 +308,7 @@ function handleRunSignature(message) {
       runtimeStats: cleanup.runtimeStats,
       phaseTimings: phaseTimings,
       taskApiTrace: taskApiTrace,
+      paramSignMethodTrace: paramSignMethodTrace,
       shouldRecycle: cleanup.shouldRecycle,
       cleanupError: cleanup.cleanupError,
       memoryUsage: getMemorySnapshot()
@@ -331,6 +335,27 @@ function getTaskApiTraceSnapshot() {
   }
   try {
     const raw = leapvm.runScript(buildTaskApiTraceSnapshotScript());
+    if (!raw || raw === 'null') {
+      return null;
+    }
+    return JSON.parse(String(raw));
+  } catch (_) {
+    return null;
+  }
+}
+
+function getParamSignMethodTraceSnapshot() {
+  if (!leapvm || typeof leapvm.runScript !== 'function') {
+    return null;
+  }
+  try {
+    const raw = leapvm.runScript(
+      '(function () {' +
+        'var trace = globalThis.__leapParamSignMethodTrace;' +
+        'if (!trace || typeof trace !== "object") return "null";' +
+        'try { return JSON.stringify(trace); } catch (_) { return "null"; }' +
+      '})()'
+    );
     if (!raw || raw === 'null') {
       return null;
     }

@@ -201,7 +201,8 @@ function buildPlan() {
     { mode: 'thread', poolSize: 16, concurrency: 64, ...common },
     { mode: 'process', poolSize: 2, concurrency: 8, ...common },
     { mode: 'process', poolSize: 4, concurrency: 16, ...common },
-    { mode: 'process', poolSize: 8, concurrency: 32, ...common }
+    { mode: 'process', poolSize: 8, concurrency: 32, ...common },
+    { mode: 'process', poolSize: 12, concurrency: 48, ...common }
   ];
 }
 

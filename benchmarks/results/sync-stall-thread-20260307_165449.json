@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-03-07T08:54:49.041Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 4,
+    "concurrency": 4,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 2,
+    "totalTasks": 20,
+    "sampleEvery": 10,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1000,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": true,
+    "disableParamSignRam": false,
+    "stubParamSignWs": true,
+    "stubParamSignEncodeChain": true,
+    "stubParamSignAtm": false,
+    "stubParamSignGdk": false,
+    "stubParamSignGs": false,
+    "stubParamSignGsd": false,
+    "stubParamSignCps": true,
+    "stubParamSignClt": false,
+    "stubParamSignMs": false,
+    "stubParamSignSdnmd": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": true,
+    "traceParamSignMethods": false,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 169,
+      "reqPerSec": 118.34,
+      "p95": 71,
+      "p99": 79,
+      "maxTaskMs": 79,
+      "maxSampleP99Ms": 79,
+      "minSampleReqPerSec": 116.28,
+      "slowTaskThresholdMs": 1000,
+      "slowTasks": [],
+      "synchronizedStall": null,
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 32.118,
+          "duration": 0.224
+        },
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 36.021,
+          "duration": 0.431
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.644,
+        "maxMs": 21.103,
+        "meanMs": 20.197,
+        "stddevMs": 0.39,
+        "p95Ms": 21.021,
+        "p99Ms": 21.103
+      }
+    }
+  ]
+}

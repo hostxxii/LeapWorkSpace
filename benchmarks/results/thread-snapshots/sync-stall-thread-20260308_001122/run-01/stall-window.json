@@ -1,0 +1,5584 @@
+{
+  "startMs": 1772899887186,
+  "startIso": "2026-03-07T16:11:27.186Z",
+  "endMs": 1772899889190,
+  "endIso": "2026-03-07T16:11:29.190Z",
+  "sampleCount": 10,
+  "snapshots": [
+    {
+      "capturedAtMs": 1772899888237,
+      "capturedAtIso": "2026-03-07T16:11:28.237Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 17.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 0.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 22.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 21.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 25.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 23.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 24.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 25.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 26.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 21.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 6.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 52.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 52.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 51.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 52.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 52.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 50.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 48.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 0,
+        "sleepingCount": 67,
+        "states": [
+          {
+            "state": "S",
+            "count": 67
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 40
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 26
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.1,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 52.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 52.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 52.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 52.5,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 51.4,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888337,
+      "capturedAtIso": "2026-03-07T16:11:28.337Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 17.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 22.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 25.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 24.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 24.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 28.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 26,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 22.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 5.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 52.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 51.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 53,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 50.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 48.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 0,
+        "sleepingCount": 67,
+        "states": [
+          {
+            "state": "S",
+            "count": 67
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 41
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 26
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.3,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 53,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 52.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 51.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888437,
+      "capturedAtIso": "2026-03-07T16:11:28.437Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 17.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 24.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.7,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 25.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 23.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 28.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 26.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 23,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 51.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 52.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53.2,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 51.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 49.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 2.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 4,
+        "sleepingCount": 63,
+        "states": [
+          {
+            "state": "S",
+            "count": 63
+          },
+          {
+            "state": "R",
+            "count": 4
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 38
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 26
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53.2,
+            "stat": "Rl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 52.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 51.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888538,
+      "capturedAtIso": "2026-03-07T16:11:28.538Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 17.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23.6,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 22,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 27.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 25.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 24.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 26.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 23.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 27.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 6.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.6,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 52.2,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 52.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 51.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 49.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 7,
+        "sleepingCount": 60,
+        "states": [
+          {
+            "state": "S",
+            "count": 60
+          },
+          {
+            "state": "R",
+            "count": 7
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 34
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 25
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.6,
+            "stat": "Rl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53.1,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 52.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.5,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 52.2,
+            "stat": "Sl",
+            "wchan": "-",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888638,
+      "capturedAtIso": "2026-03-07T16:11:28.638Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 18,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.6,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 26,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 24.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 26.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 23.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 27.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.7,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 52.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 53.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 51.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 50,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 2.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.3,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 22,
+        "sleepingCount": 45,
+        "states": [
+          {
+            "state": "S",
+            "count": 45
+          },
+          {
+            "state": "R",
+            "count": 22
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 29
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 17
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.5,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.7,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53.4,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.3,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 53.3,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53.3,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 52.3,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888739,
+      "capturedAtIso": "2026-03-07T16:11:28.739Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 18,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 22.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.6,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.9,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 26.3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 25,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 26.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 24.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 6.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 54,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.6,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 52.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 53.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.9,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53.1,
+          "stat": "Dl",
+          "wchan": "do_mprotect_pkey",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 51.6,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 50.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 3,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 2.9,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 18,
+        "sleepingCount": 49,
+        "states": [
+          {
+            "state": "S",
+            "count": 48
+          },
+          {
+            "state": "R",
+            "count": 18
+          },
+          {
+            "state": "D",
+            "count": 1
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 35
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 14
+          },
+          {
+            "wchan": "do_mprotect_pkey",
+            "count": 1
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.5,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 54,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.6,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 53.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53.1,
+            "stat": "Dl",
+            "wchan": "do_mprotect_pkey",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 52.1,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888840,
+      "capturedAtIso": "2026-03-07T16:11:28.840Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 18.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 24.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 22,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 27.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 24.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 26.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 23.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 26.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 25.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 24.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 27.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 5.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 52.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.9,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 51.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 53.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.7,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 52.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.7,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 51.7,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 54.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 50.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 2.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3.2,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 10,
+        "sleepingCount": 57,
+        "states": [
+          {
+            "state": "S",
+            "count": 57
+          },
+          {
+            "state": "R",
+            "count": 10
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 40
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 18
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23987,
+            "pcpu": 54.2,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23970,
+            "pcpu": 53.9,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53.5,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 53.4,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 52.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.7,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 52.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23985,
+            "pcpu": 51.7,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899888941,
+      "capturedAtIso": "2026-03-07T16:11:28.941Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 18.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 0.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 0.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 23.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 24.5,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 22,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 24.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 27.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 24,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 26.2,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 25.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 28.4,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 23.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 27.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 5.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 53.1,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 53.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 53.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 52.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 52.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 50.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 53,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 52.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 51.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 50.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 53.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 49.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23991,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 67,
+        "runnableCount": 6,
+        "sleepingCount": 61,
+        "states": [
+          {
+            "state": "S",
+            "count": 61
+          },
+          {
+            "state": "R",
+            "count": 6
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 36
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 24
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23970,
+            "pcpu": 53.8,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23987,
+            "pcpu": 53.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 53.1,
+            "stat": "Rl",
+            "wchan": "-",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 53.1,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 53,
+            "stat": "Rl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 52.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 52.1,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 52.1,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899889062,
+      "capturedAtIso": "2026-03-07T16:11:29.062Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 19.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 1.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 4.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 22.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 24,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 21.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 26.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 23.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 26.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 25.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 24.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 29.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 27.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 27.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 23.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 5.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 5.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.3,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.6,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 7.1,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 6.8,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 52,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 51.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 52.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 50.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 51.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 49.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 51.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 50.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 50,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 49.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 52.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 48.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23992,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "-",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 66,
+        "runnableCount": 0,
+        "sleepingCount": 66,
+        "states": [
+          {
+            "state": "S",
+            "count": 66
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 38
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 26
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23970,
+            "pcpu": 52.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23987,
+            "pcpu": 52.4,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 52,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 51.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 51.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 51.3,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 50.9,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 50.7,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    },
+    {
+      "capturedAtMs": 1772899889164,
+      "capturedAtIso": "2026-03-07T16:11:29.164Z",
+      "ok": true,
+      "error": null,
+      "threads": [
+        {
+          "tid": 23932,
+          "pcpu": 20.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23933,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23934,
+          "pcpu": 1.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23935,
+          "pcpu": 2.8,
+          "stat": "Rl",
+          "wchan": "-",
+          "comm": "node"
+        },
+        {
+          "tid": 23936,
+          "pcpu": 4.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23937,
+          "pcpu": 1.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23938,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23939,
+          "pcpu": 22.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23940,
+          "pcpu": 23.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23941,
+          "pcpu": 20.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23942,
+          "pcpu": 25.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23943,
+          "pcpu": 23.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23944,
+          "pcpu": 26.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23945,
+          "pcpu": 22.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23946,
+          "pcpu": 25.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23947,
+          "pcpu": 25.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23948,
+          "pcpu": 24,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23949,
+          "pcpu": 28.5,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23950,
+          "pcpu": 27.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23951,
+          "pcpu": 26.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23952,
+          "pcpu": 22.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23953,
+          "pcpu": 26.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "V8 DefaultWorke"
+        },
+        {
+          "tid": 23954,
+          "pcpu": 0.7,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23955,
+          "pcpu": 5.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23956,
+          "pcpu": 5.5,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23957,
+          "pcpu": 6.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23958,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23959,
+          "pcpu": 6.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23960,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23961,
+          "pcpu": 6.4,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23962,
+          "pcpu": 6.9,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23963,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23964,
+          "pcpu": 7.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23965,
+          "pcpu": 50.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23966,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23967,
+          "pcpu": 6.2,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23968,
+          "pcpu": 6.7,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23969,
+          "pcpu": 50.6,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23970,
+          "pcpu": 51.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23971,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23972,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23973,
+          "pcpu": 49.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23974,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23975,
+          "pcpu": 50.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23976,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23977,
+          "pcpu": 48.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23978,
+          "pcpu": 50.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23979,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23980,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23981,
+          "pcpu": 49.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23982,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23983,
+          "pcpu": 48.8,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23984,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23985,
+          "pcpu": 48.3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23986,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23987,
+          "pcpu": 51.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23988,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23989,
+          "pcpu": 47.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "node"
+        },
+        {
+          "tid": 23990,
+          "pcpu": 0,
+          "stat": "Sl",
+          "wchan": "do_epoll_wait",
+          "comm": "node"
+        },
+        {
+          "tid": 23993,
+          "pcpu": 3,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23994,
+          "pcpu": 3.1,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23995,
+          "pcpu": 3.2,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23996,
+          "pcpu": 2.9,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23998,
+          "pcpu": 3.3,
+          "stat": "Rl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        },
+        {
+          "tid": 23999,
+          "pcpu": 3.4,
+          "stat": "Sl",
+          "wchan": "futex_wait_queue",
+          "comm": "v8:ProfEvntProc"
+        }
+      ],
+      "summary": {
+        "totalThreads": 65,
+        "runnableCount": 2,
+        "sleepingCount": 63,
+        "states": [
+          {
+            "state": "S",
+            "count": 63
+          },
+          {
+            "state": "R",
+            "count": 2
+          }
+        ],
+        "topWchan": [
+          {
+            "wchan": "futex_wait_queue",
+            "count": 38
+          },
+          {
+            "wchan": "do_epoll_wait",
+            "count": 26
+          }
+        ],
+        "topCpuThreads": [
+          {
+            "tid": 23970,
+            "pcpu": 51.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23987,
+            "pcpu": 51.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23965,
+            "pcpu": 50.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23978,
+            "pcpu": 50.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23969,
+            "pcpu": 50.6,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23975,
+            "pcpu": 50.2,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23973,
+            "pcpu": 49.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          },
+          {
+            "tid": 23981,
+            "pcpu": 49.8,
+            "stat": "Sl",
+            "wchan": "futex_wait_queue",
+            "comm": "node"
+          }
+        ]
+      }
+    }
+  ]
+}

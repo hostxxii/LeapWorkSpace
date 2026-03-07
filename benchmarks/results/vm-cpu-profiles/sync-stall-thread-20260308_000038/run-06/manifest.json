@@ -1,0 +1,85 @@
+{
+  "savedAt": "2026-03-07T16:01:01.955Z",
+  "artifactBaseName": "sync-stall-thread-20260308_000038",
+  "runIndex": 6,
+  "synchronizedStall": {
+    "workerCount": 12,
+    "spreadMs": 50,
+    "firstCompletedOffsetMs": 2966,
+    "lastCompletedOffsetMs": 3016
+  },
+  "entries": [
+    {
+      "workerId": "thread-worker-1",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-1.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-1.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-2",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-2.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-2.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-3",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-3.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-3.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-4",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-4.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-4.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-5",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-5.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-5.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-6",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-6.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-6.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-7",
+      "error": "No recording profiles found",
+      "summaryPath": null,
+      "cpuprofilePath": null
+    },
+    {
+      "workerId": "thread-worker-8",
+      "error": "No recording profiles found",
+      "summaryPath": null,
+      "cpuprofilePath": null
+    },
+    {
+      "workerId": "thread-worker-9",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-9.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-9.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-10",
+      "error": "No recording profiles found",
+      "summaryPath": null,
+      "cpuprofilePath": null
+    },
+    {
+      "workerId": "thread-worker-11",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-11.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-11.cpuprofile"
+    },
+    {
+      "workerId": "thread-worker-12",
+      "error": null,
+      "summaryPath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-12.summary.json",
+      "cpuprofilePath": "benchmarks/results/vm-cpu-profiles/sync-stall-thread-20260308_000038/run-06/thread-worker-12.cpuprofile"
+    }
+  ]
+}

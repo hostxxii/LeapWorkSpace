@@ -76,6 +76,7 @@ class ProcessPool {
 
     const initOptions = {
       debug: !!options.debug,
+      enableInspector: !!options.enableInspector,
       waitForInspector: !!options.waitForInspector,
       beforeRunScript: options.beforeRunScript || '',
       bundlePath: options.bundlePath,
@@ -305,6 +306,7 @@ class ProcessPool {
     state.status = 'idle';
     state.pid = message.pid || state.pid;
     state.threadId = message.threadId || state.threadId;
+    state.inspectorInfo = message.inspectorInfo || state.inspectorInfo || null;
     state.memoryUsage = toMemorySnapshot(message.memoryUsage) || state.memoryUsage;
     state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
       ? Number(message.cleanupFailureCount)
@@ -314,7 +316,8 @@ class ProcessPool {
     state.resolveInit({
       workerId,
       pid: message.pid,
-      warmupMs: message.warmupMs
+      warmupMs: message.warmupMs,
+      inspectorInfo: message.inspectorInfo || null
     });
     this._drainQueue();
   }
@@ -359,6 +362,9 @@ class ProcessPool {
         : null,
       taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
         ? message.taskApiTrace
+        : null,
+      paramSignMethodTrace: message.paramSignMethodTrace && typeof message.paramSignMethodTrace === 'object'
+        ? message.paramSignMethodTrace
         : null,
       cleanupFailureCount: Number(message.cleanupFailureCount || 0),
       memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
@@ -410,6 +416,9 @@ class ProcessPool {
             : null,
           taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
             ? message.taskApiTrace
+            : null,
+          paramSignMethodTrace: message.paramSignMethodTrace && typeof message.paramSignMethodTrace === 'object'
+            ? message.paramSignMethodTrace
             : null,
           memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
         }

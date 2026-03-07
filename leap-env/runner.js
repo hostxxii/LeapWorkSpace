@@ -160,6 +160,7 @@ function resolveRunOptions(options = {}) {
       : DEFAULT_TASK_EXECUTION_CACHE_MIN_SOURCE_LENGTH;
   return {
     debug: false,
+    enableInspector: false,
     waitForInspector: false,
     beforeRunScript: '',
     targetScript: DEFAULT_TARGET_SCRIPT,
@@ -613,7 +614,7 @@ function emitPerfTraceSummary(leapvm, taskPhases) {
 }
 
 function maybeEnableInspector(leapvm, options) {
-  if (!options.debug) return null;
+  if (!options.debug && !options.enableInspector) return null;
   if (typeof leapvm.enableInspector !== 'function') {
     hostLog('warn', 'Inspector API is not available in current leap-vm build.');
     return null;

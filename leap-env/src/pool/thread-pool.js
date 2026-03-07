@@ -120,6 +120,7 @@ class ThreadPool {
 
     const initOptions = {
       debug: !!options.debug,
+      enableInspector: !!options.enableInspector,
       waitForInspector: !!options.waitForInspector,
       beforeRunScript: options.beforeRunScript || '',
       bundlePath: options.bundlePath,
@@ -470,6 +471,7 @@ class ThreadPool {
     state.pid = message.pid || state.pid;
     state.threadId = message.threadId || state.threadId;
     state.memoryUsage = toMemorySnapshot(message.memoryUsage) || state.memoryUsage;
+    state.inspectorInfo = message.inspectorInfo || state.inspectorInfo || null;
     state.cleanupFailureCount = Number.isFinite(message.cleanupFailureCount)
       ? Number(message.cleanupFailureCount)
       : state.cleanupFailureCount;
@@ -527,6 +529,9 @@ class ThreadPool {
       taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
         ? message.taskApiTrace
         : null,
+      paramSignMethodTrace: message.paramSignMethodTrace && typeof message.paramSignMethodTrace === 'object'
+        ? message.paramSignMethodTrace
+        : null,
       cleanupFailureCount: Number(message.cleanupFailureCount || 0),
       memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
     });
@@ -578,6 +583,9 @@ class ThreadPool {
             : null,
           taskApiTrace: message.taskApiTrace && typeof message.taskApiTrace === 'object'
             ? message.taskApiTrace
+            : null,
+          paramSignMethodTrace: message.paramSignMethodTrace && typeof message.paramSignMethodTrace === 'object'
+            ? message.paramSignMethodTrace
             : null,
           memoryUsage: toMemorySnapshot(message.memoryUsage) || state.memoryUsage || null
         }

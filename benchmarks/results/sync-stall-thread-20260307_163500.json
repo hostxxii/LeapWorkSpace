@@ -1,0 +1,1423 @@
+{
+  "timestamp": "2026-03-07T08:35:00.448Z",
+  "machine": {
+    "platform": "linux",
+    "arch": "x64",
+    "nodeVersion": "v20.20.0",
+    "cpuModel": "Intel(R) Core(TM) i9-9900KS CPU @ 4.00GHz",
+    "logicalCores": 16
+  },
+  "config": {
+    "backend": "thread",
+    "repeats": 1,
+    "poolSize": 2,
+    "concurrency": 2,
+    "maxTasksPerWorker": 500,
+    "warmupTasks": 1,
+    "totalTasks": 5,
+    "sampleEvery": 1,
+    "taskTimeoutMs": 30000,
+    "workerInitTimeoutMs": 30000,
+    "heartbeatIntervalMs": 60000,
+    "heartbeatTimeoutMs": 240000,
+    "signatureProfile": "fp-occupy",
+    "slowTaskThresholdMs": 1,
+    "disableMessageChannel": false,
+    "blockSecurityScript": false,
+    "clearH5stCacheKeys": false,
+    "stubCanvasFingerprint": false,
+    "stubCookieEmpty": false,
+    "disableParamSignAsyncInit": false,
+    "disableParamSignRds": false,
+    "disableParamSignRgo": false,
+    "disableParamSignRam": false,
+    "stubParamSignRamEnvOnly": false,
+    "stubParamSignPv": false,
+    "traceParamSignMethods": true,
+    "targetScriptPath": "work/h5st.js",
+    "siteProfilePath": "site-profiles/jd.json"
+  },
+  "runs": [
+    {
+      "runIndex": 1,
+      "backend": "thread",
+      "overallMs": 104,
+      "reqPerSec": 48.08,
+      "p95": 73,
+      "p99": 73,
+      "maxTaskMs": 73,
+      "maxSampleP99Ms": 73,
+      "minSampleReqPerSec": 1000,
+      "slowTaskThresholdMs": 1,
+      "slowTasks": [
+        {
+          "taskId": "measure-2",
+          "workerId": "thread-worker-1",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 26,
+          "startedOffsetMs": 1,
+          "completedOffsetMs": 28,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 25,
+            "postTaskCleanupMs": 1,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 489333,
+              "beforeScriptLength": 16101,
+              "setupMs": 0,
+              "beforeScriptMs": 1,
+              "targetScriptMs": 22,
+              "cleanupMs": 1
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-3",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 2,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": {
+            "methods": {
+              "_$icg": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$cps": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "array",
+                  "length": 6
+                }
+              },
+              "_$pam": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "boolean",
+                  "value": "false"
+                }
+              },
+              "_$rds": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$clt": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 728
+                }
+              },
+              "_$atm": {
+                "count": 4,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gdk": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gs": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsp": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 1071
+                }
+              },
+              "_$ms": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "_$sdnmd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "signSync": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              }
+            }
+          },
+          "memoryUsage": {
+            "rss": 212078592,
+            "heapTotal": 23080960,
+            "heapUsed": 13783832,
+            "external": 2896664,
+            "arrayBuffers": 426715
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 4,
+            "vmStaleTimerQueueCount": 4,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 21303296,
+            "v8TotalHeapSizeExecutable": 1310720,
+            "v8TotalPhysicalSize": 21303296,
+            "v8TotalAvailableSize": 1552200408,
+            "v8UsedHeapSize": 16465152,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 4851152,
+            "v8PeakMallocedMemory": 5380520,
+            "v8ExternalMemory": 565,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1153824,
+            "v8BytecodeAndMetadataSize": 262132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 3787384,
+            "v8OldSpacePhysicalSize": 3932160,
+            "v8NewSpaceUsedSize": 3871904,
+            "v8NewSpacePhysicalSize": 8388608,
+            "v8CodeSpaceUsedSize": 1260192,
+            "v8CodeSpacePhysicalSize": 1310720,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6619936,
+            "v8LargeObjectSpacePhysicalSize": 6623232,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-3",
+          "workerId": "thread-worker-1",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 25,
+          "startedOffsetMs": 28,
+          "completedOffsetMs": 55,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 24,
+            "postTaskCleanupMs": 1,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 489333,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 1,
+              "targetScriptMs": 22,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-4",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": {
+            "methods": {
+              "_$icg": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$cps": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "array",
+                  "length": 6
+                }
+              },
+              "_$pam": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "boolean",
+                  "value": "false"
+                }
+              },
+              "_$rds": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$clt": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 732
+                }
+              },
+              "_$atm": {
+                "count": 4,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gdk": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gs": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsp": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 1075
+                }
+              },
+              "_$ms": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "_$sdnmd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "signSync": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              }
+            }
+          },
+          "memoryUsage": {
+            "rss": 220217344,
+            "heapTotal": 22093824,
+            "heapUsed": 12571616,
+            "external": 2896664,
+            "arrayBuffers": 218547
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 5,
+            "vmStaleTimerQueueCount": 5,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 22806528,
+            "v8TotalHeapSizeExecutable": 1572864,
+            "v8TotalPhysicalSize": 22806528,
+            "v8TotalAvailableSize": 1550715584,
+            "v8UsedHeapSize": 17949656,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 3223680,
+            "v8PeakMallocedMemory": 5380520,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1515875,
+            "v8BytecodeAndMetadataSize": 264336,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4043344,
+            "v8OldSpacePhysicalSize": 4194304,
+            "v8NewSpaceUsedSize": 3784816,
+            "v8NewSpacePhysicalSize": 8388608,
+            "v8CodeSpaceUsedSize": 1558688,
+            "v8CodeSpacePhysicalSize": 1572864,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 7598624,
+            "v8LargeObjectSpacePhysicalSize": 7602176,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-1",
+          "workerId": "thread-worker-2",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 73,
+          "startedOffsetMs": 0,
+          "completedOffsetMs": 75,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 71,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 489333,
+              "beforeScriptLength": 16101,
+              "setupMs": 3,
+              "beforeScriptMs": 1,
+              "targetScriptMs": 65,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-2",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0.00007099393401688303,
+                "maxMs": 0.00007099393401688303,
+                "lastMs": 0.00007099393401688303
+              },
+              "setTimeout.schedule": {
+                "count": 2,
+                "totalMs": 0.000020117163288091433,
+                "maxMs": 0.000020117163288091433,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": {
+            "methods": {
+              "_$icg": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$cps": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "array",
+                  "length": 6
+                }
+              },
+              "_$pam": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "boolean",
+                  "value": "false"
+                }
+              },
+              "_$rds": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$clt": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 728
+                }
+              },
+              "_$atm": {
+                "count": 4,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gdk": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gs": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsp": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 1071
+                }
+              },
+              "_$ms": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "_$sdnmd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "signSync": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              }
+            }
+          },
+          "memoryUsage": {
+            "rss": 233455616,
+            "heapTotal": 20320256,
+            "heapUsed": 11596472,
+            "external": 2896664,
+            "arrayBuffers": 426715
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 2,
+            "vmStaleTimerQueueCount": 2,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 20324352,
+            "v8TotalHeapSizeExecutable": 1310720,
+            "v8TotalPhysicalSize": 20324352,
+            "v8TotalAvailableSize": 1554809128,
+            "v8UsedHeapSize": 13856692,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 5591656,
+            "v8PeakMallocedMemory": 9894976,
+            "v8ExternalMemory": 565,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 702954,
+            "v8BytecodeAndMetadataSize": 259928,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 3102804,
+            "v8OldSpacePhysicalSize": 3670016,
+            "v8NewSpaceUsedSize": 3981824,
+            "v8NewSpacePhysicalSize": 8388608,
+            "v8CodeSpaceUsedSize": 636864,
+            "v8CodeSpacePhysicalSize": 1310720,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 5641248,
+            "v8LargeObjectSpacePhysicalSize": 5644288,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-4",
+          "workerId": "thread-worker-1",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 30,
+          "startedOffsetMs": 55,
+          "completedOffsetMs": 86,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 28,
+            "postTaskCleanupMs": 2,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 489333,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 27,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-5",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": {
+            "methods": {
+              "_$icg": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$cps": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "array",
+                  "length": 6
+                }
+              },
+              "_$pam": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "boolean",
+                  "value": "false"
+                }
+              },
+              "_$rds": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$clt": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 732
+                }
+              },
+              "_$atm": {
+                "count": 4,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gdk": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gs": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsp": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 1075
+                }
+              },
+              "_$ms": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "_$sdnmd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "signSync": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              }
+            }
+          },
+          "memoryUsage": {
+            "rss": 239353856,
+            "heapTotal": 24068096,
+            "heapUsed": 14631112,
+            "external": 2896664,
+            "arrayBuffers": 218547
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 6,
+            "vmStaleTimerQueueCount": 6,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 28504064,
+            "v8TotalHeapSizeExecutable": 1835008,
+            "v8TotalPhysicalSize": 28504064,
+            "v8TotalAvailableSize": 1553558120,
+            "v8UsedHeapSize": 19300848,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 4527856,
+            "v8PeakMallocedMemory": 5380520,
+            "v8ExternalMemory": 566,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1943528,
+            "v8BytecodeAndMetadataSize": 266540,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 4367024,
+            "v8OldSpacePhysicalSize": 4456448,
+            "v8NewSpaceUsedSize": 3558176,
+            "v8NewSpacePhysicalSize": 12582912,
+            "v8CodeSpaceUsedSize": 1822688,
+            "v8CodeSpacePhysicalSize": 1835008,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 8577312,
+            "v8LargeObjectSpacePhysicalSize": 8581120,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        },
+        {
+          "taskId": "measure-5",
+          "workerId": "thread-worker-2",
+          "ok": true,
+          "errorMessage": null,
+          "errorDetails": null,
+          "durationMs": 28,
+          "startedOffsetMs": 75,
+          "completedOffsetMs": 104,
+          "phaseTimings": {
+            "executeSignatureTaskMs": 27,
+            "postTaskCleanupMs": 1,
+            "taskExecutionBreakdown": {
+              "mode": "split-cached",
+              "resourceName": "/home/hostxxii/LeapWorkSpace/work/h5st.js",
+              "targetScriptLength": 489333,
+              "beforeScriptLength": 16101,
+              "setupMs": 1,
+              "beforeScriptMs": 0,
+              "targetScriptMs": 25,
+              "cleanupMs": 0
+            }
+          },
+          "taskApiTrace": {
+            "taskId": "task-6",
+            "stats": {
+              "MessageChannel": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              },
+              "setTimeout.schedule": {
+                "count": 2,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0
+              }
+            }
+          },
+          "paramSignMethodTrace": {
+            "methods": {
+              "_$icg": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$cps": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "array",
+                  "length": 6
+                }
+              },
+              "_$pam": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "boolean",
+                  "value": "false"
+                }
+              },
+              "_$rds": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "undefined"
+                }
+              },
+              "_$clt": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 728
+                }
+              },
+              "_$atm": {
+                "count": 4,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gdk": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gs": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 64
+                }
+              },
+              "_$gsp": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "string",
+                  "length": 1071
+                }
+              },
+              "_$ms": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "_$sdnmd": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              },
+              "signSync": {
+                "count": 1,
+                "totalMs": 0,
+                "maxMs": 0,
+                "lastMs": 0,
+                "lastReturn": {
+                  "type": "object",
+                  "keys": [
+                    "appid",
+                    "functionId",
+                    "client",
+                    "clientVersion",
+                    "t",
+                    "body",
+                    "_stk",
+                    "_ste",
+                    "h5st"
+                  ],
+                  "ctor": "Object"
+                }
+              }
+            }
+          },
+          "memoryUsage": {
+            "rss": 240664576,
+            "heapTotal": 22294528,
+            "heapUsed": 13662632,
+            "external": 2896664,
+            "arrayBuffers": 426715
+          },
+          "runtimeStats": {
+            "activeDocs": 0,
+            "activeNodes": 0,
+            "activeTasks": 0,
+            "windowListenerCount": 0,
+            "rafCount": 0,
+            "timeoutCount": 0,
+            "intervalCount": 0,
+            "pendingTimerCount": 0,
+            "messageChannelCount": 0,
+            "messagePortOpenCount": 0,
+            "messagePortClosedCount": 0,
+            "messagePortQueueCount": 0,
+            "placeholderXhrCreatedCount": 0,
+            "placeholderXhrFallbackCount": 0,
+            "vmPendingTaskCount": 0,
+            "vmTimerCount": 0,
+            "vmTimerQueueSize": 4,
+            "vmStaleTimerQueueCount": 4,
+            "vmDomWrapperCacheSize": 0,
+            "vmPendingDomWrapperCleanupCount": 0,
+            "vmChildFrameCount": 0,
+            "vmChildFrameDispatchFnCount": 0,
+            "vmMainDispatchFnCached": 1,
+            "domDocumentCount": 0,
+            "domTaskScopeCount": 0,
+            "domHandleCount": 0,
+            "skeletonCount": 69,
+            "skeletonTemplateCount": 59,
+            "skeletonDispatchMetaCount": 3303,
+            "skeletonBrandCompatCacheSize": 6,
+            "v8TotalHeapSize": 21827584,
+            "v8TotalHeapSizeExecutable": 1310720,
+            "v8TotalPhysicalSize": 21827584,
+            "v8TotalAvailableSize": 1552787904,
+            "v8UsedHeapSize": 15877628,
+            "v8HeapSizeLimit": 1568669696,
+            "v8MallocedMemory": 1847896,
+            "v8PeakMallocedMemory": 9894976,
+            "v8ExternalMemory": 565,
+            "v8TotalGlobalHandlesSize": 8192,
+            "v8UsedGlobalHandlesSize": 2240,
+            "v8NumberOfNativeContexts": 1,
+            "v8NumberOfDetachedContexts": 0,
+            "v8CodeAndMetadataSize": 1106490,
+            "v8BytecodeAndMetadataSize": 262132,
+            "v8ExternalScriptSourceSize": 0,
+            "v8CpuProfilerMetadataSize": 0,
+            "v8OldSpaceUsedSize": 3666944,
+            "v8OldSpacePhysicalSize": 4194304,
+            "v8NewSpaceUsedSize": 3690180,
+            "v8NewSpacePhysicalSize": 8388608,
+            "v8CodeSpaceUsedSize": 1106384,
+            "v8CodeSpacePhysicalSize": 1310720,
+            "v8MapSpaceUsedSize": 0,
+            "v8MapSpacePhysicalSize": 0,
+            "v8LargeObjectSpaceUsedSize": 6619936,
+            "v8LargeObjectSpacePhysicalSize": 6623232,
+            "v8TrackedHeapObjectTypeCount": 2240,
+            "v8HeapObjectStatsAvailable": 0,
+            "v8TopHeapObjectTypes": []
+          }
+        }
+      ],
+      "synchronizedStall": {
+        "workerCount": 2,
+        "spreadMs": 76,
+        "firstCompletedOffsetMs": 28,
+        "lastCompletedOffsetMs": 104
+      },
+      "gc": [
+        {
+          "kind": 1,
+          "kindLabel": "minor",
+          "startTime": 33.123,
+          "duration": 0.595
+        }
+      ],
+      "eventLoopDelay": {
+        "minMs": 19.644,
+        "maxMs": 20.464,
+        "meanMs": 20.002,
+        "stddevMs": 0.215,
+        "p95Ms": 20.185,
+        "p99Ms": 20.464
+      }
+    }
+  ]
+}

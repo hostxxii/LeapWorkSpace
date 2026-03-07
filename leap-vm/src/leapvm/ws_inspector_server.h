@@ -56,7 +56,7 @@ private:
     OnMessageCallback on_message_;
 
     // uWebSockets 应用实例（使用 void* 隐藏实现细节）
-    void* app_;  // 指向 uWS::App<false>*
+    std::atomic<void*> app_{nullptr};  // 指向 uWS::App<false>*
     us_listen_socket_t* listen_socket_ = nullptr;
 
     // WebSocket 连接管理（前置声明的类型）
