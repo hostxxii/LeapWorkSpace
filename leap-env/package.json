@@ -1,0 +1,37 @@
+{
+  "name": "leap-env",
+  "version": "1.0.0",
+  "description": "High-performance browser environment container based on leap-vm",
+  "main": "runner.js",
+  "scripts": {
+    "build": "node src/build/build.js",
+    "bench:pool": "node ../tests/scripts/perf/bench-process-pool.js",
+    "bench:thread-vs-process": "node ../tests/scripts/perf/bench-thread-vs-process.js",
+    "bench:dom-final-shape-baseline": "node ../tests/scripts/perf/bench-dom-final-shape-baseline.js",
+    "gate:thread-mainline": "node ../tests/scripts/perf/check-thread-mainline-gate.js",
+    "check:skeleton": "node src/build/validate-skeleton-context.js",
+    "check:entry": "node ../tests/scripts/integration/check-entry-coverage.js",
+    "dev": "node src/build/build.js --watch",
+    "debug": "node index_debug.js",
+    "run": "node src/build/build.js",
+    "test:hook-isolation": "node ../tests/scripts/integration/test-leapenv-hook-isolation.js",
+    "test:global-surface": "node ../tests/scripts/integration/test-leapenv-global-surface.js",
+    "test:dom-memory-leak": "node ../tests/scripts/integration/test-leapenv-dom-memory-leak.js",
+    "test:dom-handle-guard": "node ../tests/scripts/integration/test-leapenv-dom-handle-guard.js",
+    "test:dom-m2-minimal": "node ../tests/scripts/integration/test-leapenv-dom-m2-minimal.js",
+    "test:dom-m3-minimal": "node ../tests/scripts/integration/test-leapenv-dom-m3-minimal.js",
+    "test:dom-native-trace": "node ../tests/scripts/integration/test-leapenv-dom-native-trace.js",
+    "test:dom-native-ssot-consistency": "node ../tests/scripts/integration/test-leapenv-dom-native-ssot-consistency.js",
+    "test:dom-pool-isolation": "node ../tests/scripts/integration/test-leapenv-dom-pool-isolation.js",
+    "test:thread-pool-stability": "node ../tests/scripts/integration/test-leapenv-thread-pool-stability.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CrawlerMaster",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.27.3"
+  },
+  "dependencies": {
+    "leap-vm": "file:../leap-vm"
+  }
+}

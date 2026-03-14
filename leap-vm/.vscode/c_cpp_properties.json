@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "includePath": [
+                "${workspaceFolder}/src/leapvm",
+                "${workspaceFolder}/third_party/v8/include",
+                "${workspaceFolder}/node_modules/node-addon-api",
+                "/home/hostxxii/.cmake-js/node-x64/v20.20.0/include/node",
+                "${workspaceFolder}/third_party/uWebSockets/src",
+                "${workspaceFolder}/build/_deps/lexbor-src/source",
+                "${workspaceFolder}/third_party/uSockets/src",
+                "${workspaceFolder}/src",
+                "/usr/include/node"
+            ],
+            "defines": [
+                "LEAPVM_HAS_LEXBOR=1",
+                "V8_COMPRESS_POINTERS",
+                "V8_ENABLE_SANDBOX",
+                "V8_STATIC_LIBRARY",
+                "V8_ENABLE_I18N_SUPPORT",
+                "NAPI_DISABLE_CPP_EXCEPTIONS",
+                "LEXBOR_STATIC",
+                "leapvm_EXPORTS"
+            ],
+            "compilerPath": "/home/hostxxii/v8-build/v8/third_party/llvm-build/Release+Asserts/bin/clang++",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}

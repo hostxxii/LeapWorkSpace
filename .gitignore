@@ -1,0 +1,100 @@
+# ============================================================
+# LeapWorkSpace .gitignore
+# C++ V8 Native Addon (leap-vm) + Node.js Runtime (leap-env)
+# ============================================================
+
+# ------ Node.js ------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# ------ C++ / Native Build ------
+# CMake build output
+leap-vm/build/
+leap-vm/build-server/
+/build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+
+# Third-party dependencies (external sources, too large to track)
+leap-vm/third_party/
+
+# Compiled objects and binaries
+*.o
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.node
+
+# Visual Studio
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+*.VC.db
+*.VC.VC.opendb
+*.ncb
+*.opensdf
+*.sdf
+ipch/
+
+# ------ esbuild / Bundle output ------
+leap-env/src/build/dist/
+leap-env/src/build/out/
+*.bundle.js
+*.bundle.mjs
+
+# ------ Test results (timestamped, auto-generated) ------
+tests/results/
+tests/baselines/*.json
+
+# ------ Logs ------
+logs/
+*.log
+*.log.*
+
+# ------ Environment / Secrets ------
+.env
+.env.*
+!.env.example
+
+# ------ OS generated ------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------ Editor ------
+.vscode/*.log
+.vscode/extensions.json
+.claude/settings.local.json
+
+# ------ Temporary / Working files ------
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~
+
+# ------ Python build artifacts ------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ------ Root-level markdown (only keep README.md) ------
+/*.md
+!/README.md
+docs/
+benchmarks/

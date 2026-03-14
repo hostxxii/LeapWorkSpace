@@ -1,0 +1,177 @@
+#include "v8_platform.h"
+#include "leap_platform.h"
+
+#include <cctype>
+#include <cstdlib>
+#include <chrono>
+#include <thread>
+#include <string>
+
+namespace leapvm {
+
+namespace {
+
+bool ShouldTrackGcObjectStats() {
+#if defined(__linux__)
+    const char* raw = std::getenv("LEAPVM_TRACK_GC_OBJECT_STATS");
+    if (!raw || raw[0] == '\0') {
+        return false;
+    }
+    std::string value(raw);
+    for (char& c : value) {
+        c = static_cast<char>(::tolower(static_cast<unsigned char>(c)));
+    }
+    return value == "1" || value == "true" || value == "yes";
+#else
+    return false;
+#endif
+}
+
+int GetConfiguredPlatformWorkerThreads() {
+    const char* raw = std::getenv("LEAPVM_PLATFORM_WORKER_THREADS");
+    if (raw && raw[0] != '\0') {
+        char* end = nullptr;
+        long parsed = std::strtol(raw, &end, 10);
+        if (end != raw && end && *end == '\0' && parsed > 0) {
+            return static_cast<int>(parsed);
+        }
+    }
+
+    const unsigned int hardware_threads = std::thread::hardware_concurrency();
+    if (hardware_threads <= 1) {
+        return 1;
+    }
+
+    const unsigned int conservative_default = std::max(1u, hardware_threads / 4u);
+    return static_cast<int>(std::min(4u, conservative_default));
+}
+
+}  // namespace
+
+V8Platform& V8Platform::Instance() {
+    static V8Platform instance;
+    return instance;
+}
+
+v8::Platform* V8Platform::platform() const {
+    return platform_.get();
+}
+
+v8::Platform* V8Platform::backend_platform() const {
+    return backend_platform_.get();
+}
+
+void V8Platform::InitOnce(const char* exec_path) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (initialized_.load(std::memory_order_acquire)) return;
+
+    //  【核心原理】静态链接的双 V8 共存
+    //
+    // Node.exe 有它自己的 V8（动态链接在 node.exe 内部）
+    // leapvm.node 有我们的 V8（静态链接 v8_monolith.lib）
+    //
+    // 关键：因为是静态链接，我们的 V8 全局变量（如 v8::V8::platform_）
+    // 存储在 leapvm.node 的数据段，与 Node.exe 的完全隔离！
+    //
+    // 所以我们 **必须** 初始化我们自己的 V8 Platform，
+    // 这不会影响 Node.exe 的 V8，因为它们是两个独立的实例。
+
+    // 1. ICU / Intl API 状态
+    //  v8_monolith.lib 使用 v8_enable_i18n_support=true 编译，ICU 符号已通过
+    //  U_ICU_VERSION_SUFFIX(_leapvm) rename，与 Node.js 自带 ICU 完全隔离。
+#ifdef V8_ENABLE_I18N_SUPPORT
+    v8::V8::InitializeICU();
+#endif
+
+    if (ShouldTrackGcObjectStats()) {
+        const char track_flag[] = "--track-gc-object-stats";
+        v8::V8::SetFlagsFromString(track_flag, static_cast<int>(sizeof(track_flag) - 1));
+    }
+
+    // 2. 创建我们自己的 Platform
+    // 关键修复：使用 NewDefaultPlatform 而不是 NewSingleThreadedDefaultPlatform
+    // Inspector 的 evaluateOnCallFrame 需要多线程平台来处理异步任务
+    // 参数0表示让V8自动选择线程数
+    const int platform_worker_threads = GetConfiguredPlatformWorkerThreads();
+    backend_platform_ = v8::platform::NewDefaultPlatform(
+        platform_worker_threads,
+        v8::platform::IdleTaskSupport::kDisabled,
+        v8::platform::InProcessStackDumping::kDisabled
+    );
+    platform_ = std::make_unique<LeapPlatform>(backend_platform_.get());
+    v8::V8::InitializePlatform(platform_.get());
+
+    // 3. 初始化我们的 V8 引擎
+    // 这只会初始化 v8_monolith.lib 的全局状态
+    v8::V8::Initialize();
+
+    initialized_.store(true, std::memory_order_release);
+}
+
+void V8Platform::RegisterIsolate(v8::Isolate* isolate, VmInstance* owner) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!platform_) {
+        return;
+    }
+    platform_->RegisterIsolate(isolate, owner);
+}
+
+void V8Platform::PrepareIsolateForShutdown(v8::Isolate* isolate) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!platform_) {
+        return;
+    }
+    platform_->PrepareIsolateForShutdown(isolate);
+}
+
+void V8Platform::UnregisterIsolate(v8::Isolate* isolate) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!platform_) {
+        return;
+    }
+    platform_->UnregisterIsolate(isolate);
+}
+
+size_t V8Platform::DrainMessageLoop(v8::Isolate* isolate,
+                                    v8::platform::MessageLoopBehavior behavior,
+                                    size_t max_iterations) {
+    if (!isolate || !backend_platform_) {
+        return 0;
+    }
+
+    const auto started_at = std::chrono::steady_clock::now();
+    size_t iterations = 0;
+    while (iterations < max_iterations &&
+           v8::platform::PumpMessageLoop(backend_platform_.get(), isolate, behavior)) {
+        ++iterations;
+        if (behavior == v8::platform::MessageLoopBehavior::kWaitForWork) {
+            break;
+        }
+    }
+    const double drain_ms =
+        std::chrono::duration<double, std::milli>(
+            std::chrono::steady_clock::now() - started_at)
+            .count();
+
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (platform_) {
+        platform_->RecordPump(isolate, iterations, drain_ms);
+    }
+    return iterations;
+}
+
+LeapPlatformIsolateStatsSnapshot V8Platform::GetIsolateStats(v8::Isolate* isolate) const {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!platform_) {
+        return {};
+    }
+    return platform_->GetIsolateStats(isolate);
+}
+
+V8Platform::~V8Platform() {
+    // Intentionally skip V8 global teardown at process shutdown.
+    // Static destruction order between addon globals can trigger use-after-free
+    // when Inspector/worker resources are still unwinding.
+}
+
+}  // namespace leapvm
